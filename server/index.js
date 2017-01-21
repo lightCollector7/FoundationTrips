@@ -4,9 +4,9 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var utils = require('./utils');
 var configurePassport = require('./config/passport');
-// var fs = require('fs');   do we need?
+var fs = require('fs');
 var path = require('path');
-var clientPath = path.join(__dirname, '..client');
+var clientPath = path.join(__dirname, '../client');
 var api = require('./api');
 
 // var prerender = require('prerender-node');

@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="FoundationTrips">
 
 <head>
-    <title>Exceptional Foundation Field Trip Sign-up</title>
+    <title>Exceptional Foundation Field Trips</title>
+    <base href="/">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-resource.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers.js"></script> 
+    <script src="factories.js"></script>
+    <script src="services.js"></script>
 </head>
 
 <body>
-    <h1> Let's go on a trip!</h1>
+    <div class="app">
+        <div ng-view class="site-content"></div>
+    </div>
 </body>
 
 </html>
