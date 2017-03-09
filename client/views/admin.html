@@ -1,0 +1,118 @@
+  <div class="" id="navbar">
+        <div id="navbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+        <p id="navbarTitle">FIELD TRIPS</p>
+        <a class="navbarLink" ng-click="logout()">logout</a>
+        <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ ME.firstname }} {{ ME.lastname }}</p>
+  </div>
+
+<div class="pageHeaderDiv"><h1 class="pageHeader"> Admin Only: All Events</h1></div>
+
+<div id="greenTripsDiv"> 
+  <p class="tripsDivTitle">Green Field Trips</p>
+  <ol>
+    <li> {{greenEventsArray[0].eventName}}</li>
+    <li> {{greenEventsArray[1].eventName}}</li>
+    <li> {{greenEventsArray[2].eventName}}</li>
+    <li> {{greenEventsArray[3].eventName}}</li>
+    <li> {{greenEventsArray[4].eventName}}</li>
+    <li> {{greenEventsArray[5].eventName}}</li>
+    <li> {{greenEventsArray[6].eventName}}</li>
+    <li> {{greenEventsArray[7].eventName}}</li>
+    <li> {{greenEventsArray[8].eventName}}</li>
+    <li> {{greenEventsArray[9].eventName}}</li>
+    <li> {{greenEventsArray[10].eventName}}</li>
+    <li> {{greenEventsArray[11].eventName}}</li>
+    <li> {{greenEventsArray[12].eventName}}</li>
+    <li> {{greenEventsArray[13].eventName}}</li>
+    <li> {{greenEventsArray[14].eventName}}</li>
+    <li> {{greenEventsArray[15].eventName}}</li>
+    <li> {{greenEventsArray[16].eventName}}</li>
+    <li> {{greenEventsArray[17].eventName}}</li>
+    <li> {{greenEventsArray[18].eventName}}</li>
+    <li> {{greenEventsArray[19].eventName}}</li>
+</ol>
+
+</div>
+
+<div id="orangeTripsDiv"> 
+  <p class="tripsDivTitle">Orange Field Trips</p>
+  <ol>
+    <li>  {{orangeEventsArray[0].eventName}}</li>
+    <li>  {{orangeEventsArray[1].eventName}}</li>
+    <li>  {{orangeEventsArray[2].eventName}}</li>
+    <li>  {{orangeEventsArray[3].eventName}}</li>
+    <li>  {{orangeEventsArray[4].eventName}}</li>
+    <li>  {{orangeEventsArray[5].eventName}}</li>
+    <li>  {{orangeEventsArray[6].eventName}}</li>
+    <li>  {{orangeEventsArray[7].eventName}}</li>
+    <li>  {{orangeEventsArray[8].eventName}}</li>
+    <li>  {{orangeEventsArray[9].eventName}}</li>
+    <li>  {{orangeEventsArray[10].eventName}}</li>
+    <li>  {{orangeEventsArray[11].eventName}}</li>
+    <li>  {{orangeEventsArray[12].eventName}}</li>
+    <li>  {{orangeEventsArray[13].eventName}}</li>
+    <li>  {{orangeEventsArray[14].eventName}}</li>
+    <li>  {{orangeEventsArray[15].eventName}}</li>
+    <li>  {{orangeEventsArray[16].eventName}}</li>
+    <li>  {{orangeEventsArray[17].eventName}}</li>
+    <li>  {{orangeEventsArray[18].eventName}}</li>
+    <li>  {{orangeEventsArray[19].eventName}}</li>
+  </ol>
+
+</div>
+
+<div id="purpleTripsDiv"> 
+  <p class="tripsDivTitle">Purple Field Trips</p>
+  <ol>
+    <li> {{purpleEventsArray[0].eventName}} </li>
+    <li> {{purpleEventsArray[1].eventName}}</li>
+    <li> {{purpleEventsArray[2].eventName}}</li>
+    <li> {{purpleEventsArray[3].eventName}}</li>
+    <li> {{purpleEventsArray[4].eventName}}</li>
+    <li> {{purpleEventsArray[5].eventName}}</li>
+    <li> {{purpleEventsArray[6].eventName}}</li>
+    <li> {{purpleEventsArray[7].eventName}}</li>
+    <li> {{purpleEventsArray[8].eventName}}</li>
+    <li> {{purpleEventsArray[9].eventName}}</li>
+    <li> {{purpleEventsArray[10].eventName}}</li>
+    <li> {{purpleEventsArray[11].eventName}}</li>
+    <li> {{purpleEventsArray[12].eventName}}</li>
+    <li> {{purpleEventsArray[13].eventName}}</li>
+    <li> {{purpleEventsArray[14].eventName}}</li>
+    <li> {{purpleEventsArray[15].eventName}}</li>
+    <li> {{purpleEventsArray[16].eventName}}</li>
+    <li> {{purpleEventsArray[17].eventName}}</li>
+    <li> {{purpleEventsArray[18].eventName}}</li>
+    <li> {{purpleEventsArray[19].eventName}}</li>   
+  </ol>
+
+</div>
+
+<div id="yellowTripsDiv"> 
+  <p class="tripsDivTitle"> Yellow Field Trips</p>
+  <ol>
+    <li> {{yellowEventsArray[0].eventName}}</li>
+    <li> {{yellowEventsArray[1].eventName}}</li>
+    <li> {{yellowEventsArray[2].eventName}}</li>
+    <li> {{yellowEventsArray[3].eventName}}</li>
+    <li> {{yellowEventsArray[4].eventName}}</li>
+    <li> {{yellowEventsArray[5].eventName}}</li>
+    <li> {{yellowEventsArray[6].eventName}}</li>
+    <li> {{yellowEventsArray[7].eventName}}</li>
+    <li> {{yellowEventsArray[8].eventName}}</li>
+    <li> {{yellowEventsArray[9].eventName}}</li>
+    <li> {{yellowEventsArray[10].eventName}}</li>
+    <li> {{yellowEventsArray[11].eventName}}</li>
+    <li> {{yellowEventsArray[12].eventName}}</li>
+    <li> {{yellowEventsArray[13].eventName}}</li>
+    <li> {{yellowEventsArray[14].eventName}}</li>
+    <li> {{yellowEventsArray[15].eventName}}</li>
+    <li> {{yellowEventsArray[16].eventName}}</li>
+    <li> {{yellowEventsArray[17].eventName}}</li>
+    <li> {{yellowEventsArray[18].eventName}}</li>
+    <li> {{yellowEventsArray[19].eventName}}</li>
+  </ol>
+
+</div>

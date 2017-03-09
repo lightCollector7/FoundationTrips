@@ -15,21 +15,13 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/login.html',
             controller: 'LoginController'
         })
-        .when('/green1', {
-            templateUrl: 'views/green1.html',
-            controller: 'views/Green1Controller'
+         .when('/allEvents', {
+            templateUrl: 'views/allEvents.html',
+            controller: 'allEventsController'
         })
-         .when('/green2', {
-            templateUrl: 'views/green2.html',
-            controller: 'views/Green2Controller'
-        })
-         .when('/orange1', {
-            templateUrl: 'views/orange1.html',
-            controller: 'views/orange1Controller'
-        })
-         .when('/orange2', {
-            templateUrl: 'views/orange2.html',
-            controller: 'views/orange2Controller'
+        .when('/admin', {
+            templateUrl: 'views/admin.html',
+            controller: 'AdminController'
         })
         .otherwise({
             redirectTo: '/'

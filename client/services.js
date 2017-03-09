@@ -1,90 +1,93 @@
 angular.module('FoundationTrips.services', [])
-.service('UserService', ['$http', '$location', function($http, $location){
+.service('UserService', ['$http', '$location', function($http, $location) {
+
     var user;
 
-    this.isLoggedIn = function(){
-        if(user){
-            console.log('services.js/UserService/this.isLoggedIn: The logged in user is ' + user.firstname);
-            this.user = user;
+    this.isLoggedIn = function() {
+        if (user) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    this.requireLogin = function(){
-        if(!this.isLoggedIn()){
+    this.requireLogin = function() {
+        if (!this.isLoggedIn()) {
             var current = $location.path();
-            $location.path('/login').search('p', current);
-        }else{
-            this.user = user;
-            console.log('services.js/this.requireLogin(): The user is logged in');
+            $location.path('/login').search('p', current).replace();
         }
     }
 
-    this.isAdmin = function(){
-        if(user && user.role === 'admin'){
-            return true;
-        }else{
-            return false;
-        }
+
+    this.isAdmin = function() {
+        // if (user && user.role === 'admin') {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+        return this.me().then(function(me) {
+            if (me.role === 'admin') {
+                return true;
+            } else {
+                return false;
+            }
+        })
     }
 
-    this.isPostOwner = function(userid){
-        if(user && user.id === userid){
-            return true;
-        }else{
-            return false;
-        }    
+    this.requireAdmin = function() {
+        return this.isAdmin().then(function(userIsAnAdmin) {
+            if (!userIsAnAdmin) { // if the user is not an admin
+                alert('You must be an admin to access this page.');
+                $location.path('/posts').replace();
+            }
+        }, function(err) { // if there was an error getting 'me' (AKA, the user is not logged in with a session on the server)
+            alert('You must be an admin to access this page.');
+            $location.path('/posts').replace();
+        });
+
+        // if(!this.isAdmin()) {
+        //     $location.path('/posts').replace();
+        // }
     }
 
-    this.requiresAdmin = function(){
-        if(!this.isAdmin()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    this.login = function(email, password){
+    this.login = function(e, p) {
         return $http({
             method: 'POST',
             url: '/api/users/login',
             data: {
-                email: email,
-                password: password
+                email: e,
+                password: p
             }
-        }).then(function(success){
-            console.log('logged in!');
+        }).then(function(success) {
             user = success.data;
-            console.log(user);
             return success.data;
-        }, function(err){
-            alert('Incorrect Login!')
-        })
+            })
     }
 
-    this.logout = function(){
+    this.logout = function() {
         return $http({
             method: 'GET',
             url: '/api/users/logout'
-        }).then(function(success){
+        }).then(function(success) {
             user = undefined;
         });
     }
 
-    this.me = function(){
-        if(user){
-            console.log('services.js/this.me: the user is: ' + user.firstname);
-            return Promise.resolve(user);
-        }else{
-            return $http({
-                method: 'GET',
-                url: '/api/users/me'
-            }).then(function(success){
-                user = success.data;
-                return success.data;
-            })
+
+    this.me = function() {
+            if (user) {
+                return Promise.resolve(user);
+            } else {
+                return $http({
+                    method: 'GET',
+                    url: '/api/users/me'
+                }).then(function(success) {
+                    user = success.data;
+                    return success.data;
+                })
+            }
         }
-    }
-}])
+
+
+
+}]);

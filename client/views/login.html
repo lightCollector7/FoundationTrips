@@ -1,0 +1,7 @@
+  <div>
+    <form name="loginForm" id="loginForm">
+        <input type="email" ng-model="email" placeholder="Email" required><br>
+        <input type="password" ng-model="password" placeholder="Password" required><br>
+        <button ng-click="login()" ng-disabled="loginForm.$invalid">Login</button>
+    </form>
+</div>
