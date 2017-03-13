@@ -7,7 +7,7 @@ angular.module('FoundationTrips.controllers',[])
     function redirect() {
         var dest = $location.search().p;
         if (!dest) {
-            dest = '/allEvents';
+            dest = '/Events';
         }
         $location.path(dest).search('p', null).replace();
     }
@@ -21,7 +21,7 @@ angular.module('FoundationTrips.controllers',[])
     }
 }])
 
-.controller('allEventsController', ['$scope', '$location', '$route', '$http', 'UserService', function($scope, $location, $route, $http, UserService) {
+.controller('EventsController', ['$scope', '$location', '$route', '$http', 'UserService', function($scope, $location, $route, $http, UserService) {
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
@@ -84,7 +84,14 @@ angular.module('FoundationTrips.controllers',[])
         console.log($scope.yellowEventsArray[0]);
     }, function(err) {
         console.log(err);
-    });    
+    });
+
+    
+
+    // Setup Modal onClick Events here 
+
+
+
 }])
 
 .controller('AdminController', ['$scope', '$location', '$route', '$http', 'UserService', function($scope, $location, $route, $http, UserService) {

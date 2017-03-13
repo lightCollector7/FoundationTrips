@@ -15,9 +15,9 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/login.html',
             controller: 'LoginController'
         })
-         .when('/allEvents', {
-            templateUrl: 'views/allEvents.html',
-            controller: 'allEventsController'
+         .when('/Events', {
+            templateUrl: 'views/events.html',
+            controller: 'EventsController'
         })
         .when('/admin', {
             templateUrl: 'views/admin.html',
