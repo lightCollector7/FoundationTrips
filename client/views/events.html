@@ -9,10 +9,10 @@
 
 <div class="pageHeaderDiv"><h1 class="pageHeader">Events</h1></div>
 
-<div id="greenTripsDiv"> 
+<div id="greenTripsDiv" class="container"> 
   <p id="greenTripsDivTitle">Green Field Trips</p>
   <ul>
-    <li><a id="g1_modalLink" class="modalLink" href="">  {{greenEventsArray[0].eventName}}</btn></li>
+    <li><a id="g1_modalLink" class="modalLink " data-toggle="modal" data-target="#g1_Modal" href="">  {{greenEventsArray[0].eventName}}</btn></li>
     <li><a id="g2_modalLink" class="modalLink" href="">   {{greenEventsArray[1].eventName}}</a></li>
     <li><a id="g3_modalLink" class="modalLink" href="">   {{greenEventsArray[2].eventName}}</a></li>
     <li><a id="g4_modalLink" class="modalLink" href="">   {{greenEventsArray[3].eventName}}</a></li>
@@ -34,7 +34,27 @@
     <li><a id="g20_modalLink" class="modalLink" href="">  {{greenEventsArray[19].eventName}}</a></li>
   </ul>
 
-  <div id="g1_modal"></div>
+
+<div class="modal fade greenModal" id="g1_Modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">{{greenEventsArray[0].eventName}}</h4>
+            <p>{{greenEventsArray[0].eventDate + " " +  greenEventsArray[0].eventTime}}</p>
+            <p class="modal-title">{{greenEventsArray[0].eventDescription}} </p>
+          </div>
+          <div class="modal-body">
+            <p>This area for the slots in G1</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="">Submit</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
   <div id="g2_modal"></div>
   <div id="g3_modal"></div>
   <div id="g4_modal"></div>

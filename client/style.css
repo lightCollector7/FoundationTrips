@@ -123,6 +123,16 @@
   border: 5px solid orange;
   background-color: rgba(255,158,0,.2);
 }
+.greenModal{
+  position: absolute;
+  top: 325px;
+  left: 400px;
+  height: 425px;
+  width: 60%;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+}
 #orangeTripsDivTitle{
   margin-left: 20px;
   margin-right: 20px;

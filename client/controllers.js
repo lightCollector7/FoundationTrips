@@ -38,11 +38,11 @@ angular.module('FoundationTrips.controllers',[])
         method: 'GET',
         url: '/api/allGreenEvents'
     }).then(function(success){
-        console.log(success.data);
         $scope.greenEventsArray = success.data;
         console.log('this is the greenEventsArray: ');
         console.log($scope.greenEventsArray);
-        console.log($scope.GreenEventsArray[0]);
+        console.log('this is greenEventsArray[0]: ')
+        console.log($scope.greenEventsArray[0]);
     }, function(err) {
         console.log(err);
     });
@@ -51,10 +51,11 @@ angular.module('FoundationTrips.controllers',[])
         method: 'GET',
         url: '/api/allOrangeEvents'
     }).then(function(success){
-        console.log(success.data);
+        // console.log(success.data);
         $scope.orangeEventsArray = success.data;
         console.log('this is the orangeEventsArray: ');
         console.log($scope.orangeEventsArray);
+        console.log('this is orangeEventsArray[0]: ')
         console.log($scope.orangeEventsArray[0]);
     }, function(err) {
         console.log(err);
@@ -64,10 +65,11 @@ angular.module('FoundationTrips.controllers',[])
         method: 'GET',
         url: '/api/allPurpleEvents'
     }).then(function(success){
-        console.log(success.data);
+        // console.log(success.data);
         $scope.purpleEventsArray = success.data;
         console.log('this is the purpleEventsArray: ');
         console.log($scope.purpleEventsArray);
+        console.log('this is purpleEventsArray[0]: ')
         console.log($scope.purpleEventsArray[0]);
     }, function(err) {
         console.log(err);
@@ -77,10 +79,11 @@ angular.module('FoundationTrips.controllers',[])
         method: 'GET',
         url: '/api/allYellowEvents'
     }).then(function(success){
-        console.log(success.data);
+        // console.log(success.data);
         $scope.yellowEventsArray = success.data;
         console.log('this is the yellowEventsArray: ');
         console.log($scope.yellowEventsArray);
+        console.log('this is yellowEventsArray[0]: ')
         console.log($scope.yellowEventsArray[0]);
     }, function(err) {
         console.log(err);
@@ -89,6 +92,7 @@ angular.module('FoundationTrips.controllers',[])
     
 
     // Setup Modal onClick Events here 
+
 
 
 
