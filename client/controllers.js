@@ -21,11 +21,12 @@ angular.module('FoundationTrips.controllers',[])
     }
 }])
 
-.controller('EventsController', ['$scope', '$location', '$route', '$http', 'UserService', function($scope, $location, $route, $http, UserService) {
+.controller('EventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'ParticipantForEvent', function($scope, $location, $route, $http, UserService, ParticipantForEvent) {
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
         $scope.ME = me;
+        console.log($scope.ME);
         $scope.loggedIn = true;
     });
     $scope.logout = function () {
@@ -33,6 +34,16 @@ angular.module('FoundationTrips.controllers',[])
         $route.reload();
         });
     }
+
+     $scope.$watch('$viewContentLoaded', function(){
+        $('.greenModal').hide();
+        $('.orangeModal').hide();
+        $('.purpleModal').hide();
+        $('.yellowModal').hide();
+    });
+    
+   
+
 
     $http({
         method: 'GET',
@@ -47,11 +58,49 @@ angular.module('FoundationTrips.controllers',[])
         console.log(err);
     });
 
+    $http({
+        method: 'GET',
+        url: '/api/GreenSlots01'
+    }).then(function(success){
+        $scope.greenSlots01Array = success.data;
+        console.log('this is the greenSlots01Array: ');
+        console.log($scope.greenSlots01Array);
+        console.log('this is greenSlotsArray01[0]: ')
+        console.log($scope.greenSlots01Array[0]);
+    }, function(err) {
+        console.log(err);
+    });
+
+       
+    $scope.signMeUpG1 = function() {
+        UserService.me().then(function(me) {
+            $scope.ME = me;
+            var data = {
+                firstName: $scope.ME.firstName,
+                lastName: $scope.ME.lastName,
+                colorID: $scope.ME.colorID,
+                userID: $scope.ME.userID
+            }
+
+            var participantToInsertIntoGreenSlots01 = new ParticipantForEvent(data);
+            participantToInsertIntoGreenSlots01.$save(function (success) {
+                console.log('participant signed up successfully');
+
+                //DO THIS NEXT!!!!
+                //write logic to disallow sign up if user is already signed up
+
+            }, function(err){
+                console.log(err);
+            })
+        })
+    };
+            
+
+
      $http({
         method: 'GET',
         url: '/api/allOrangeEvents'
     }).then(function(success){
-        // console.log(success.data);
         $scope.orangeEventsArray = success.data;
         console.log('this is the orangeEventsArray: ');
         console.log($scope.orangeEventsArray);
@@ -79,7 +128,6 @@ angular.module('FoundationTrips.controllers',[])
         method: 'GET',
         url: '/api/allYellowEvents'
     }).then(function(success){
-        // console.log(success.data);
         $scope.yellowEventsArray = success.data;
         console.log('this is the yellowEventsArray: ');
         console.log($scope.yellowEventsArray);
@@ -89,12 +137,11 @@ angular.module('FoundationTrips.controllers',[])
         console.log(err);
     });
 
-    
-
-    // Setup Modal onClick Events here 
-
+   
+   
 
 
+  
 
 }])
 

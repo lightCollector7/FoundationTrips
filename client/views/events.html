@@ -12,51 +12,125 @@
 <div id="greenTripsDiv" class="container"> 
   <p id="greenTripsDivTitle">Green Field Trips</p>
   <ul>
-    <li><a id="g1_modalLink" class="modalLink " data-toggle="modal" data-target="#g1_Modal" href="">  {{greenEventsArray[0].eventName}}</btn></li>
-    <li><a id="g2_modalLink" class="modalLink" href="">   {{greenEventsArray[1].eventName}}</a></li>
-    <li><a id="g3_modalLink" class="modalLink" href="">   {{greenEventsArray[2].eventName}}</a></li>
-    <li><a id="g4_modalLink" class="modalLink" href="">   {{greenEventsArray[3].eventName}}</a></li>
-    <li><a id="g5_modalLink" class="modalLink" href="">   {{greenEventsArray[4].eventName}}</a></li>
-    <li><a id="g6_modalLink" class="modalLink" href="">   {{greenEventsArray[5].eventName}}</a></li>
-    <li><a id="g7_modalLink" class="modalLink" href="">   {{greenEventsArray[6].eventName}}</a></li>
-    <li><a id="g8_modalLink" class="modalLink" href="">   {{greenEventsArray[7].eventName}}</a></li>
-    <li><a id="g9_modalLink" class="modalLink" href="">   {{greenEventsArray[8].eventName}}</a></li>
-    <li><a id="g10_modalLink" class="modalLink" href="">  {{greenEventsArray[9].eventName}}</a></li>
-    <li><a id="g11_modalLink" class="modalLink" href="">  {{greenEventsArray[10].eventName}}</a></li>
-    <li><a id="g12_modalLink" class="modalLink" href="">  {{greenEventsArray[11].eventName}}</a></li>
-    <li><a id="g13_modalLink" class="modalLink" href="">  {{greenEventsArray[12].eventName}}</a></li>
-    <li><a id="g14_modalLink" class="modalLink" href="">  {{greenEventsArray[13].eventName}}</a></li>
-    <li><a id="g15_modalLink" class="modalLink" href="">  {{greenEventsArray[14].eventName}}</a></li>
-    <li><a id="g16_modalLink" class="modalLink" href="">  {{greenEventsArray[15].eventName}}</a></li>
-    <li><a id="g17_modalLink" class="modalLink" href="">  {{greenEventsArray[16].eventName}}</a></li>
-    <li><a id="g18_modalLink" class="modalLink" href="">  {{greenEventsArray[17].eventName}}</a></li>
-    <li><a id="g19_modalLink" class="modalLink" href="">  {{greenEventsArray[18].eventName}}</a></li>
-    <li><a id="g20_modalLink" class="modalLink" href="">  {{greenEventsArray[19].eventName}}</a></li>
+    <!--use ng-repeat-->
+    <li><button id="g1_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g1_Modal">  {{greenEventsArray[0].eventName}}</button></li>
+    <li><button id="g2_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g2_Modal" >  {{greenEventsArray[1].eventName}}</button></li>
+    <li><button id="g3_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g3_Modal" >  {{greenEventsArray[2].eventName}}</button></li>
+    <li><button id="g4_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g4_Modal" >  {{greenEventsArray[3].eventName}}</button></li>
+    <li><button id="g5_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g5_Modal" >  {{greenEventsArray[4].eventName}}</button></li>
+    <li><button id="g6_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g6_Modal" >  {{greenEventsArray[5].eventName}}</button></li>
+    <li><button id="g7_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g7_Modal" >  {{greenEventsArray[6].eventName}}</button></li>
+    <li><button id="g8_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g8_Modal" >  {{greenEventsArray[7].eventName}}</button></li>
+    <li><button id="g9_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g9_Modal" >  {{greenEventsArray[8].eventName}}</button></li>
+    <li><button id="g10_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g10_Modal" >  {{greenEventsArray[9].eventName}}</button></li>
+    <li><button id="g11_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g11_Modal" >  {{greenEventsArray[10].eventName}}</button></li>
+    <li><button id="g12_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g12_Modal" >  {{greenEventsArray[11].eventName}}</button></li>
+    <li><button id="g13_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g13_Modal" >  {{greenEventsArray[12].eventName}}</button></li>
+    <li><button id="g14_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g14_Modal" >  {{greenEventsArray[13].eventName}}</button></li>
+    <li><button id="g15_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g15_Modal" >  {{greenEventsArray[14].eventName}}</button></li>
+    <li><button id="g16_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g16_Modal" >  {{greenEventsArray[15].eventName}}</button></li>
+    <li><button id="g17_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g17_Modal" >  {{greenEventsArray[16].eventName}}</button></li>
+    <li><button id="g18_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g18_Modal" >  {{greenEventsArray[17].eventName}}</button></li>
+    <li><button id="g19_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g19_Modal" >  {{greenEventsArray[18].eventName}}</button></li>
+    <li><button id="g20_modalLink" class="btn btn-primary modalLink" data-toggle="modal" data-target="#g20_Modal" >  {{greenEventsArray[19].eventName}}</button></li>
+
+   
   </ul>
 
 
-<div class="modal fade greenModal" id="g1_Modal" role="dialog">
+<div class="modal fade greenModal " id="g1_Modal" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">{{greenEventsArray[0].eventName}}</h4>
-            <p>{{greenEventsArray[0].eventDate + " " +  greenEventsArray[0].eventTime}}</p>
-            <p class="modal-title">{{greenEventsArray[0].eventDescription}} </p>
+            <button type="button" class="close" data-dismiss="modal" data-target="g1_Modal">&times;</button>
+            <h4 class="modal-title modalEventTitle">{{greenEventsArray[0].eventName}}
+            <span style="margin-left: 20px;">{{greenEventsArray[0].eventDate}}</span><span style="margin-left: 20px;">{{greenEventsArray[0].eventTime}}</span>
+            <span style="margin-left: 20px;">${{greenEventsArray[0].eventCost}}</span>
+            </h4>
+            <h5 class="modal-title modalEventDescription">{{greenEventsArray[0].eventDescription}} </h5>
           </div>
           <div class="modal-body">
-            <p>This area for the slots in G1</p>
+            <ol>
+              <li ng-repeat="x in greenSlots01Array">{{x.firstName}} {{x.lastName}}</li>
+            </ol>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" ng-click="">Submit</button>
+            <!--write script for the submit button-->
+            <button type="button" class="btn btn-default submitButton" ng-click="signMeUpG1()">Sign Me Up</button>
           </div>
       </div>
   </div>
 </div>
 
 
-  <div id="g2_modal"></div>
-  <div id="g3_modal"></div>
+  <div class="modal fade greenModal" id="g2_Modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title modalEventTitle">{{greenEventsArray[1].eventName}}
+              <span style="margin-left: 20px;">{{greenEventsArray[1].eventDate}}</span><span style="margin-left: 20px;">{{greenEventsArray[1].eventTime}}</span>
+            </h4>
+            <h5 class="modal-title modalEventDescription">{{greenEventsArray[1].eventDescription}} </h5>
+          </div>
+          <div class="modal-body">
+            <ol>
+             
+            <li>{{greenSlots02Array[0].firstName}} {{greenSlots02Array[0].lastName}}</li>
+            <li>{{greenSlots02Array[1].firstName}} {{greenSlots02Array[1].lastName}}</li>
+            <li>{{greenSlots02Array[2].firstName}} {{greenSlots02Array[2].lastName}}</li>
+            <li>{{greenSlots02Array[3].firstName}} {{greenSlots02Array[3].lastName}}</li>
+            <li>{{greenSlots02Array[4].firstName}} {{greenSlots02Array[4].lastName}}</li>
+            <li>{{greenSlots02Array[5].firstName}} {{greenSlots02Array[5].lastName}}</li>
+            <li>{{greenSlots02Array[6].firstName}} {{greenSlots02Array[6].lastName}}</li>
+            <li>{{greenSlots02Array[7].firstName}} {{greenSlots02Array[7].lastName}}</li>
+            <li>{{greenSlots02Array[8].firstName}} {{greenSlots02Array[8].lastName}}</li>
+            <li>{{greenSlots02Array[9].firstName}} {{greenSlots02Array[9].lastName}}</li>
+            <li>{{greenSlots02Array[10].firstName}} {{greenSlots02Array[10].lastName}}</li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+           
+            <button type="button" class="btn btn-default submitButton" ng-click="">Submit</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+  <div class="modal fade greenModal " id="g3_Modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title modalEventTitle">{{greenEventsArray[2].eventName}}
+              <span style="margin-left: 20px;">{{greenEventsArray[2].eventDate}}</span><span style="margin-left: 20px;">{{greenEventsArray[2].eventTime}}</span>
+            </h4>
+            <h5 class="modal-title modalEventDescription">{{greenEventsArray[2].eventDescription}} </h5>
+          </div>
+          <div class="modal-body">
+            <ol>
+            
+            <li>{{greenSlots03Array[0].firstName}} {{greenSlots03Array[0].lastName}}</li>
+            <li>{{greenSlots03Array[1].firstName}} {{greenSlots03Array[1].lastName}}</li>
+            <li>{{greenSlots03Array[2].firstName}} {{greenSlots03Array[2].lastName}}</li>
+            <li>{{greenSlots03Array[3].firstName}} {{greenSlots03Array[3].lastName}}</li>
+            <li>{{greenSlots03Array[4].firstName}} {{greenSlots03Array[4].lastName}}</li>
+            <li>{{greenSlots03Array[5].firstName}} {{greenSlots03Array[5].lastName}}</li>
+            <li>{{greenSlots03Array[6].firstName}} {{greenSlots03Array[6].lastName}}</li>
+            <li>{{greenSlots03Array[7].firstName}} {{greenSlots03Array[7].lastName}}</li>
+            <li>{{greenSlots03Array[8].firstName}} {{greenSlots03Array[8].lastName}}</li>
+            <li>{{greenSlots03Array[9].firstName}} {{greenSlots03Array[9].lastName}}</li>
+            <li>{{greenSlots03Array[10].firstName}} {{greenSlots03Array[10].lastName}}</li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+           
+            <button type="button" class="btn btn-default submitButton" ng-click="">Submit</button>
+          </div>
+      </div>
+  </div>
+</div>
+
   <div id="g4_modal"></div>
   <div id="g5_modal"></div>
   <div id="g6_modal"></div>

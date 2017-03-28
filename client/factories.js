@@ -5,3 +5,9 @@ angular.module('FoundationTrips.factories', [])
         update: { method: 'PUT' }
     });      
 }])
+
+.factory('ParticipantForEvent', ['$resource', function($resource) {
+    return $resource('/api/greenSlots01/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])

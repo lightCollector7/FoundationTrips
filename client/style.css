@@ -207,3 +207,15 @@ a {
   text-decoration: underline;
   
 }
+.modalEventTitle{
+  margin-left: 10px;
+}
+.modalEventDescription{
+  margin-left: 90px;
+}
+.modal-body{
+  margin-left: 30px;
+}
+.submitButton{
+  margin-left: 10px;
+}
