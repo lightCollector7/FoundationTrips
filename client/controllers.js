@@ -78,8 +78,10 @@ angular.module('FoundationTrips.controllers',[])
             var data = {
                 firstName: $scope.ME.firstName,
                 lastName: $scope.ME.lastName,
+                waitlist: $scope.ME.waitlist,
+                paid: $scope.ME.paid,
                 colorID: $scope.ME.colorID,
-                userID: $scope.ME.userID
+                userID: $scope.ME.id
             }
 
             var participantToInsertIntoGreenSlots01 = new ParticipantForEvent(data);
@@ -91,6 +93,7 @@ angular.module('FoundationTrips.controllers',[])
 
             }, function(err){
                 console.log(err);
+                alert('You are already signed up for this trip.');
             })
         })
     };

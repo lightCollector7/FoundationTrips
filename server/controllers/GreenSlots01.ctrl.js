@@ -15,7 +15,7 @@ router.route('/')
     })
        .post(function (req, res) {
         var p = req.body;
-        procedures.procInsertMEintoGreenSlots01(p.firstName, p.lastName, p.colorID, p.userID)
+        procedures.procInsertMEintoGreenSlots01(p.firstName, p.lastName, p.waitlist, p.paid, p.colorID, p.userID)
             .then(function (id) {
                 res.status(201).send(id);
             }, function (err) {
