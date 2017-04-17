@@ -16,8 +16,24 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             controller: 'LoginController'
         })
          .when('/Events', {
-            templateUrl: 'views/events.html',
+            templateUrl: 'views/allEvents.html',
             controller: 'EventsController'
+        })
+        .when('/GreenTrips/:id', {
+            templateUrl: 'views/TripDetailsGreen.html',
+            controller: 'GreenTripDetailsController'
+        })
+        .when('/OrangeTrips/:id', {
+            templateUrl: 'views/TripDetailsOrange.html',
+            controller: 'OrangeTripDetailsController'
+        })
+        .when('/PurpleTrips/:id', {
+            templateUrl: 'views/TripDetailsPurple.html',
+            controller: 'PurpleTripDetailsController'
+        })
+        .when('/YellowTrips/:id', {
+            templateUrl: 'views/TripDetailsYellow.html',
+            controller: 'YellowTripDetailsController'
         })
         .when('/admin', {
             templateUrl: 'views/admin.html',

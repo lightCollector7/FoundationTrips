@@ -1,0 +1,17 @@
+  <div class="" id="navbar">
+        <div id="navbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+        <p id="navbarTitle">FIELD TRIPS</p>
+        <a class="navbarLink" ng-click="logout()">logout</a>
+        <a class="navbarLink" href="/allEvents">return to All Trips</a>
+        <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
+  </div>
+
+<div class="pageHeaderDiv"><h1 class="pageHeader">Trip Details</h1></div>
+
+<div id="yellowTripsDiv" class="container"> 
+  <p class="tripsDivTitle">{{yellowTrip.eventName}} <span class="tripDateLine">{{yellowTrip.eventDate}}</span></p>
+  <p class="tripDescriptionLine">{{yellowTrip.eventDescription}} <span class="tripTimeLine">{{yellowTrip.eventTime}}</span><span class="tripCostLine">${{yellowTrip.eventCost}}</span></p>
+  
+</div>

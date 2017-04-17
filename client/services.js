@@ -5,7 +5,9 @@ angular.module('FoundationTrips.services', [])
 
     this.isLoggedIn = function() {
         if (user) {
+            console.log(user);
             return true;
+            
         } else {
             return false;
         }
