@@ -8,7 +8,19 @@ exports.procGetTrip_Green = function(id) {
     return db.fnRow('procGetTrip', [id]);
 }
 
-exports.procGetTripSlots_Green = function(id) {
-    return db.fnRow('procGetTripSlots_Green', [id]);
+exports.procGetTripSlotsByEvent = function(id) {
+    return db.fnRows('procGetTripSlotsByEvent', [id]);
+}
+
+exports.procSignMeUp = function(userID, eventID, colorID) {
+    return db.fnRow('procSignMeUp', [userID, eventID, colorID]);
+}
+
+exports.procGetSlotByUserAndTrip = function(userID, eventID) {
+    return db.fnRow('procGetSlotByUserAndTrip', [userID, eventID])
+}
+
+exports.procRemoveMe = function(slotID) {
+    return db.fnEmpty('procRemoveMe', [slotID])
 }
 

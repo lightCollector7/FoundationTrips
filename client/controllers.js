@@ -64,57 +64,10 @@ angular.module('FoundationTrips.controllers',[])
     }
     getYellowTrips();
 
-
-//======================================================================================
-    // $http({                      MOVE INTO TRIPDETAILS CONTROLLER
-    //     method: 'GET',
-    //     url: '/api/GreenSlots01'
-    // }).then(function(success){
-    //     $scope.greenSlots01Array = success.data;
-    //     console.log('this is the greenSlots01Array: ');
-    //     console.log($scope.greenSlots01Array);
-    //     console.log('this is greenSlotsArray01[0]: ')
-    //     console.log($scope.greenSlots01Array[0]);
-    // }, function(err) {
-    //     console.log(err);
-    // });
-
-       
-    // $scope.signMeUpG1 = function() {
-    //     UserService.me().then(function(me) {
-    //         $scope.ME = me;
-    //         var data = {
-    //             firstName: $scope.ME.firstName,
-    //             lastName: $scope.ME.lastName,
-    //             waitlist: $scope.ME.waitlist,
-    //             paid: $scope.ME.paid,
-    //             colorID: $scope.ME.colorID,
-    //             userID: $scope.ME.id
-    //         }
-
-    //         var participantToInsertIntoGreenSlots01 = new ParticipantForEvent(data);
-    //         participantToInsertIntoGreenSlots01.$save(function (success) {
-    //             console.log('participant signed up successfully');
-    //         }, function(err){
-    //             console.log(err);
-    //             alert('You are already signed up for this trip.');
-    //         })
-    //     })
-    // };
-//=================================================================================================================    
-
-
-
-   
-   
-
-
-  
-
 }])
 
 
-.controller('GreenTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'GreenTripsFactory', 'GreenTripSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, GreenTripsFactory, GreenTripSlotsFactory){
+.controller('GreenTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'GreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, GreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
        console.log( "we are in the GreenTripsDetailsController now.")
     UserService.isLoggedIn();
     $scope.loggedIn = false;
@@ -127,17 +80,76 @@ angular.module('FoundationTrips.controllers',[])
         $route.reload();
         });
     }
-
+    var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
     $scope.greenTrip = GreenTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.greenTrip: ");
     console.log($scope.greenTrip);
 
-    $scope.greenTripSlots = GreenTripSlotsFactory.get( {id: tripID} );
+    $scope.greenTripSlots = GreenTripSlotsFactory.query( {id: tripID} );
     console.log("this is the $scope.greenTripSlots Array: ");
     console.log($scope.greenTripSlots);
+
+    $scope.signMeUp = function() {
+        UserService.me().then(function(me) {
+            $scope.ME = me;
+            var data = {
+                userID: $scope.ME.id,
+                eventID: tripID,
+                colorID: $scope.ME.colorID,
+            }
+            console.log(data);
+
+            var userForEvent = new GreenTripSlotsFactory(data);
+            userForEvent.$save(function (success) {
+                console.log('participant signed up successfully');
+                $route.reload();
+            }, function(err){
+                console.log(err);
+                alert('You are already signed up for this trip.');
+            })
+            
+        })
+    };
+
+
+   $scope.removeMe = function() {                                      
+        var shouldRemove = confirm('Remove you from this field trip?');
+        if (shouldRemove) {
+            var data = null;
+            UserService.me().then(function(me){
+                var data = {userID: me.id, eventID: tripID}
+                console.log(data);
+                
+                return data;
+            }).then (function(data){ 
+                
+               var mySlot = $http.get('/api/GreenTripSlots/' + data.userID + '/' + data.eventID);
+               console.log(mySlot);
+
+               return mySlot;
+            }).then (function(mySlot) {
+
+                var slotToDelete = mySlot.data;
+                console.log(slotToDelete);
+                console.log(slotToDelete.id)
+
+                return slotToDelete;
+            }).then (function(slotToDelete){
+                var slotID = slotToDelete.id;
+                $http.delete('/api/GreenTripSlots/delete/' + slotID);
+                console.log('deleted successfull')     
+                $route.reload();
+            }).catch(function(error){
+                console.log(error);
+            })
+        }   
+    };    
+
 }])
+
+                    
 
 .controller('OrangeTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'OrangeTripsFactory', function($scope, $location, $route, $http, UserService, $routeParams, OrangeTripsFactory){
        console.log( "we are in the OrangeTripDetailsController now.")

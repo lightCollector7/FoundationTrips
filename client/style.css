@@ -92,6 +92,7 @@
   margin-left: 10%;
   margin-top: 25px;
   padding-top: 10px;
+  padding-left: 20px;
   width: 80%;
   height: 500px;
   border-radius: 10px;
@@ -251,7 +252,11 @@ a {
 .modal-body{
   margin-left: 30px;
 }
-.submitButton{
+.submitMeButton{
+  margin-left: 10px;
+}
+
+.removeMeButton{
   margin-left: 10px;
 }
 

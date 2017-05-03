@@ -25,6 +25,10 @@ router.route('/:id')
             res.sendStatus(500);
         });
     })
+
+
+
+    
 // router.route('/:id/slots')           // OR '/slots/:id'         ???
 //     .get(function (req, res) {
 //         procedures.procGetTripSlots_Green(req.params.id).then(function(greenTripSlots){

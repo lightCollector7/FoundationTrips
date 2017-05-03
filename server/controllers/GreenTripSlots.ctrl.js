@@ -5,15 +5,65 @@ var auth = require('../middleware/auth.mw');
 var router = express.Router();
 
 
-// = /api/GreenTripSlots/:id
-router.route('/:id')
+
+// = /api/GreenTripSlots
+router.route('/')
+      .post(function (req, res) {
+        var u = req.body;
+        procedures.procSignMeUp(u.userID, u.eventID, u.colorID)
+            .then(function (id) {
+                res.status(201).send(id);
+            }, function (err) {
+                console.log(err);
+                res.sendStatus(500);
+            });
+    });
+
+    
+// = /api/GreenTripSlots/:eventID
+router.route('/:eventID')
     .get(function(req, res) {
-    procedures.procGetTripSlots_Green(req.params.id).then(function(greenTripSlots) {
+    procedures.procGetTripSlotsByEvent(req.params.eventID).then(function(greenTripSlots) {
             res.send(greenTripSlots);
         }, function(err) {
             console.log(err);
             res.sendStatus(500);
         });
     })
+   
+
+// = /api/GreenTripSlots/:userID/:eventID
+router.route('/:userID/:eventID')
+    .get(function(req,res) {
+        procedures.procGetSlotByUserAndTrip(req.params.userID, req.params.eventID).then(function(greenTripUserSlot){
+            res.send(greenTripUserSlot);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        
+        })
+    })
+
+// = /api/GreenTripSlots/:userID/:eventID/:slotID
+router.route('/mySlot/:userID/:eventID/:slotID')
+    .get(function(req,res) {
+        procedures.procGetSlotByUserAndTrip(req.params.userID, req.params.eventID).then(function(greenTripUserSlot){
+            res.send(greenTripUserSlot);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        
+        })
+    })
+router.route('/delete/:slotID')
+     .delete(function(req, res){
+        procedures.procRemoveMe(req.params.slotID).then(function(){
+            res.sendStatus(204);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        });
+    })
+   
 
 module.exports = router;

@@ -30,8 +30,14 @@ angular.module('FoundationTrips.factories', [])
     });
 }])
 
-.factory('GreenTripSlotsFactory', ['$resource', function($resource) {   // call this Slots ??
+.factory('GreenTripSlotsFactory', ['$resource', function($resource) {   
     return $resource('/api/GreenTripSlots/:id/', {id: '@id' }, {
         update: {method: 'PUT' }
     });
 }])
+.factory('GreenTripFilledSlotsFactory', ['$resource', function($resource) {  
+    return $resource('/api/GreenTripSlots/mySlot/:userID/:eventID/:slotID', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}]) 
+ 
