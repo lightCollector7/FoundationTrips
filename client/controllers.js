@@ -125,12 +125,12 @@ angular.module('FoundationTrips.controllers',[])
                 return data;
             }).then (function(data){ 
                 
-               var mySlot = $http.get('/api/GreenTripSlots/' + data.userID + '/' + data.eventID);
+               var mySlot = $http.get('/api/GreenTripSlots/' + data.eventID + '/' + data.userID);
                console.log(mySlot);
 
                return mySlot;
             }).then (function(mySlot) {
-
+                console.log(mySlot);
                 var slotToDelete = mySlot.data;
                 console.log(slotToDelete);
                 console.log(slotToDelete.id)

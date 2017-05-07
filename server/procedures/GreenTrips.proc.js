@@ -16,8 +16,10 @@ exports.procSignMeUp = function(userID, eventID, colorID) {
     return db.fnRow('procSignMeUp', [userID, eventID, colorID]);
 }
 
-exports.procGetSlotByUserAndTrip = function(userID, eventID) {
-    return db.fnRow('procGetSlotByUserAndTrip', [userID, eventID])
+exports.procGetSlotByUserAndTrip = function(eventID, userID) {
+    console.log('eventID: ', eventID);
+    console.log('userID: ', userID);
+    return db.fnRow('procGetSlotByUserAndTrip', [eventID, userID])
 }
 
 exports.procRemoveMe = function(slotID) {

@@ -19,7 +19,31 @@ router.route('/')
             });
     });
 
-    
+// = /api/GreenTripSlots//:eventID/:userID/:slotID
+router.route('/:eventID/:userID/:slotID')
+    .get(function(req,res) {
+        procedures.procGetSlotByUserAndTrip(req.params.eventID, req.params.userID).then(function(greenTripUserSlot){
+            res.send(greenTripUserSlot);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        
+        })
+    })
+   
+
+// = /api/GreenTripSlots//:eventID/:userID
+router.route('/:eventID/:userID')
+    .get(function(req,res) {
+        procedures.procGetSlotByUserAndTrip(req.params.eventID, req.params.userID).then(function(greenTripUserSlot){
+            res.send(greenTripUserSlot);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        
+        })
+    })
+
 // = /api/GreenTripSlots/:eventID
 router.route('/:eventID')
     .get(function(req, res) {
@@ -30,31 +54,10 @@ router.route('/:eventID')
             res.sendStatus(500);
         });
     })
-   
 
-// = /api/GreenTripSlots/:userID/:eventID
-router.route('/:userID/:eventID')
-    .get(function(req,res) {
-        procedures.procGetSlotByUserAndTrip(req.params.userID, req.params.eventID).then(function(greenTripUserSlot){
-            res.send(greenTripUserSlot);
-        }, function(err) {
-            console.log(err);
-            res.sendStatus(500);
-        
-        })
-    })
 
-// = /api/GreenTripSlots/:userID/:eventID/:slotID
-router.route('/mySlot/:userID/:eventID/:slotID')
-    .get(function(req,res) {
-        procedures.procGetSlotByUserAndTrip(req.params.userID, req.params.eventID).then(function(greenTripUserSlot){
-            res.send(greenTripUserSlot);
-        }, function(err) {
-            console.log(err);
-            res.sendStatus(500);
-        
-        })
-    })
+
+
 router.route('/delete/:slotID')
      .delete(function(req, res){
         procedures.procRemoveMe(req.params.slotID).then(function(){
