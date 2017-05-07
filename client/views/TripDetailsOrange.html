@@ -4,7 +4,7 @@
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
         <a class="navbarLink" ng-click="logout()">logout</a>
-        <a class="navbarLink" href="/allEvents">return to All Trips</a>
+        <a class="navbarLink" href="/Events">return to All Trips</a>
         <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
   </div>
 
@@ -14,4 +14,11 @@
   <p class="tripsDivTitle">{{orangeTrip.eventName}} <span class="tripDateLine">{{orangeTrip.eventDate}}</span></p>
   <p class="tripDescriptionLine">{{orangeTrip.eventDescription}} <span class="tripTimeLine">{{orangeTrip.eventTime}}</span><span class="tripCostLine">${{orangeTrip.eventCost}}</span></p>
   
+  <h3> Field Trip Slots:</h3>
+  <ol>
+   <li class="tripSlots" ng-repeat="orangeTripSlot in orangeTripSlots">{{orangeTripSlot.firstname}} {{orangeTripSlot.lastname}}</li>
+  </ol>
+
+  <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
+  <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>
 </div>

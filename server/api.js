@@ -8,8 +8,11 @@ var ctrlPurpleTrips = require('./controllers/PurpleTrips.ctrl')
 var ctrlYellowTrips = require('./controllers/YellowTrips.ctrl')
 
 var ctrlGreenTripSlots = require('./controllers/GreenTripSlots.ctrl')
+var ctrlOrangeTripSlots = require('./controllers/OrangeTripSlots.ctrl')
+var ctrlPurpleTripSlots = require('./controllers/PurpleTripSlots.ctrl')
+var ctrlYellowTripSlots = require('./controllers/YellowTripSlots.ctrl')
 
-// var ctrlGreenSlots01 = require('./controllers/GreenSlots01.ctrl');
+
 
 
 var router = express.Router();
@@ -24,9 +27,9 @@ router
     .use('/YellowTrips', ctrlYellowTrips)
 
     .use('/GreenTripSlots', ctrlGreenTripSlots)
-
-
-    // .use('/GreenSlots01', ctrlGreenSlots01)
+    .use('/OrangeTripSlots', ctrlOrangeTripSlots)
+    .use('/PurpleTripSlots', ctrlPurpleTripSlots)
+    .use('/YellowTripSlots', ctrlYellowTripSlots)
    
 
 module.exports = router;

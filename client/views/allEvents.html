@@ -4,114 +4,19 @@
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
         <a class="navbarLink" ng-click="logout()">logout</a>
-        <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
+        <p id="signedInAs" class="" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
   </div>
 
 <div class="pageHeaderDiv"><h1 class="pageHeader">Events</h1></div>
 
-<div id="greenTripsDiv" class="container"> 
+<div id="greenTripsDiv" class="container" ng-show="isGreen"> 
   <p class="tripsDivTitle">Green Field Trips</p>
   <ul>
     <li ng-repeat="greenTrip in greenTrips"><a class="btn btn-primary singleTripLink"  ng-href="/GreenTrips/{{greenTrip.id}}">  {{greenTrip.eventName}} </a><span class="tripDateLineSmall">{{greenTrip.eventDate}}</span></li>
   </ul>
-
-
-                <!--<div class="modal fade greenModal " id="g1_Modal" role="dialog">       href to new view instead of modals  
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" data-target="g1_Modal">&times;</button>
-                            <h4 class="modal-title modalEventTitle">{{greenTripsArray[0].eventName}}
-                            <span style="margin-left: 20px;">{{greenTripsArray[0].eventDate}}</span><span style="margin-left: 20px;">{{greenTripsArray[0].eventTime}}</span>
-                            <span style="margin-left: 20px;">${{greenTripsArray[0].eventCost}}</span>
-                            </h4>
-                            <h5 class="modal-title modalEventDescription">{{greenTripsArray[0].eventDescription}} </h5>
-                          </div>
-                          <div class="modal-body">
-                            <ol>
-                              <li ng-repeat="x in greenSlots01Array">{{x.firstName}} {{x.lastName}}</li>
-                            </ol>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default submitButton" ng-click="signMeUpG1()">Sign Me Up</button>
-                          </div>
-                      </div>
-                  </div>
-                </div>-->
-
-
-                <!--<div class="modal fade greenModal" id="g2_Modal" role="dialog">               HREF TO NEW VIEW INSTEAD OF MODALS
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title modalEventTitle">{{greenEventsArray[1].eventName}}
-                            <span style="margin-left: 20px;">{{greenEventsArray[1].eventDate}}</span><span style="margin-left: 20px;">{{greenEventsArray[1].eventTime}}</span>
-                          </h4>
-                          <h5 class="modal-title modalEventDescription">{{greenEventsArray[1].eventDescription}} </h5>
-                        </div>
-                        <div class="modal-body">
-                          <ol>
-                          
-                          <li>{{greenSlots02Array[0].firstName}} {{greenSlots02Array[0].lastName}}</li>
-                          <li>{{greenSlots02Array[1].firstName}} {{greenSlots02Array[1].lastName}}</li>
-                          <li>{{greenSlots02Array[2].firstName}} {{greenSlots02Array[2].lastName}}</li>
-                          <li>{{greenSlots02Array[3].firstName}} {{greenSlots02Array[3].lastName}}</li>
-                          <li>{{greenSlots02Array[4].firstName}} {{greenSlots02Array[4].lastName}}</li>
-                          <li>{{greenSlots02Array[5].firstName}} {{greenSlots02Array[5].lastName}}</li>
-                          <li>{{greenSlots02Array[6].firstName}} {{greenSlots02Array[6].lastName}}</li>
-                          <li>{{greenSlots02Array[7].firstName}} {{greenSlots02Array[7].lastName}}</li>
-                          <li>{{greenSlots02Array[8].firstName}} {{greenSlots02Array[8].lastName}}</li>
-                          <li>{{greenSlots02Array[9].firstName}} {{greenSlots02Array[9].lastName}}</li>
-                          <li>{{greenSlots02Array[10].firstName}} {{greenSlots02Array[10].lastName}}</li>
-                          </ol>
-                        </div>
-                        <div class="modal-footer">
-                        
-                          <button type="button" class="btn btn-default submitButton" ng-click="">Submit</button>
-                        </div>
-                    </div>
-                </div>
-              </div>
-
-                <div class="modal fade greenModal " id="g3_Modal" role="dialog">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title modalEventTitle">{{greenEventsArray[2].eventName}}
-                            <span style="margin-left: 20px;">{{greenEventsArray[2].eventDate}}</span><span style="margin-left: 20px;">{{greenEventsArray[2].eventTime}}</span>
-                          </h4>
-                          <h5 class="modal-title modalEventDescription">{{greenEventsArray[2].eventDescription}} </h5>
-                        </div>
-                        <div class="modal-body">
-                          <ol>
-                          
-                          <li>{{greenSlots03Array[0].firstName}} {{greenSlots03Array[0].lastName}}</li>
-                          <li>{{greenSlots03Array[1].firstName}} {{greenSlots03Array[1].lastName}}</li>
-                          <li>{{greenSlots03Array[2].firstName}} {{greenSlots03Array[2].lastName}}</li>
-                          <li>{{greenSlots03Array[3].firstName}} {{greenSlots03Array[3].lastName}}</li>
-                          <li>{{greenSlots03Array[4].firstName}} {{greenSlots03Array[4].lastName}}</li>
-                          <li>{{greenSlots03Array[5].firstName}} {{greenSlots03Array[5].lastName}}</li>
-                          <li>{{greenSlots03Array[6].firstName}} {{greenSlots03Array[6].lastName}}</li>
-                          <li>{{greenSlots03Array[7].firstName}} {{greenSlots03Array[7].lastName}}</li>
-                          <li>{{greenSlots03Array[8].firstName}} {{greenSlots03Array[8].lastName}}</li>
-                          <li>{{greenSlots03Array[9].firstName}} {{greenSlots03Array[9].lastName}}</li>
-                          <li>{{greenSlots03Array[10].firstName}} {{greenSlots03Array[10].lastName}}</li>
-                          </ol>
-                        </div>
-                        <div class="modal-footer">
-                        
-                          <button type="button" class="btn btn-default submitButton" ng-click="">Submit</button>
-                        </div>
-                    </div>
-                </div>
-              </div>-->
-  
-
 </div>
 
-<div id="orangeTripsDiv"> 
+<div id="orangeTripsDiv" class="container" ng-show="isOrange"> 
   <p class="tripsDivTitle">Orange Field Trips</p>
   <ul>
     <li ng-repeat="orangeTrip in orangeTrips"><a class="btn btn-primary singleTripLink"  ng-href="/OrangeTrips/{{orangeTrip.id}}">  {{orangeTrip.eventName}} </a></li>                  
@@ -119,14 +24,14 @@
 
 </div>
 
-<div id="purpleTripsDiv"> 
+<div id="purpleTripsDiv" class="container" ng-show="isPurple"> 
   <p class="tripsDivTitle">Purple Field Trips</p>
   <ul>
       <li ng-repeat="purpleTrip in purpleTrips"><a class="btn btn-primary singleTripLink"  ng-href="/PurpleTrips/{{purpleTrip.id}}">  {{purpleTrip.eventName}} </a></li>  
   </ul>
 </div>
 
-<div id="yellowTripsDiv"> 
+<div id="yellowTripsDiv" class="container" ng-show="isYellow"> 
   <p class="tripsDivTitle"> Yellow Field Trips</p>
   <ul>
      <li ng-repeat="yellowTrip in yellowTrips"><a class="btn btn-primary singleTripLink"  ng-href="/YellowTrips/{{yellowTrip.id}}">  {{yellowTrip.eventName}} </a></li>  

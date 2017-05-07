@@ -24,11 +24,37 @@ angular.module('FoundationTrips.controllers',[])
 .controller('EventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'GreenTripsFactory', 'OrangeTripsFactory', 'PurpleTripsFactory', 'YellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, GreenTripsFactory, OrangeTripsFactory, PurpleTripsFactory, YellowTripsFactory, $routeParams) {
     UserService.requireLogin();
     UserService.isLoggedIn();
+
     $scope.loggedIn = false;
+    $scope.isGreen = false;
+    $scope.isOrange = false;
+    $scope.isPurple = false;
+    $scope.isYellow = false;
+
     UserService.me().then(function(me){
         $scope.ME = me;
-        console.log($scope.ME);
+        console.log("this is $scope.ME: " )
+        console.log( $scope.ME);
         $scope.loggedIn = true;
+        
+        $scope.myColor = me.colorID;
+         console.log("my colorID: " + $scope.myColor);
+        if ($scope.myColor == "1") {
+            $scope.isGreen = true; 
+            console.log("My color group is Green");  
+        }
+        if ($scope.myColor == "2"){
+            $scope.isOrange = true;
+             console.log("My color group is Orange");
+        }
+        if ($scope.myColor == "3"){
+            $scope.isPurple = true;
+            console.log("My color group is Purple");
+        }
+        if ($scope.myColor == "4"){
+            $scope.isYellow = true;
+            console.log("My color group is Yellow");
+        }
     });
     $scope.logout = function () {
         UserService.logout().then(function(){
@@ -68,18 +94,41 @@ angular.module('FoundationTrips.controllers',[])
 
 
 .controller('GreenTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'GreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, GreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
-       console.log( "we are in the GreenTripsDetailsController now.")
+    console.log( "we are in the GreenTripsDetailsController now.")
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
         $scope.ME = me;
         $scope.loggedIn = true;
+        
+        $scope.myColor = me.colorID;
+        console.log($scope.myColor);
+        if ($scope.myColor == "1") {
+            $scope.isGreen = true; 
+            console.log("My color group is Green");  
+        }
+        if ($scope.myColor == "2"){
+            $scope.isOrange = true;
+             console.log("My color group is Orange");
+        }
+        if ($scope.myColor == "3"){
+            $scope.isPurple = true;
+            console.log("My color group is Purple");
+        }
+        if ($scope.myColor == "4"){
+            $scope.isYellow = true;
+            console.log("My color group is Yellow");
+        }
     });
     $scope.logout = function () {
         UserService.logout().then(function(){
         $route.reload();
         });
     }
+
+    
+
+
     var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
@@ -90,6 +139,22 @@ angular.module('FoundationTrips.controllers',[])
     $scope.greenTripSlots = GreenTripSlotsFactory.query( {id: tripID} );
     console.log("this is the $scope.greenTripSlots Array: ");
     console.log($scope.greenTripSlots);
+
+    function isSlotMine(i){                                     // get this to work next!
+        var ngSlot = document.getElementById('slot'+i);
+        console.log(ngSlot);
+            $scope.slotIsMe = false;
+            if (ngSlot.userID == $scope.ME.id){
+                $scope.slotIsMe = true;
+            }
+    };
+  
+
+    for (var i = 0; i < $scope.greenTripSlots.length; i++ ){
+        isSlotMine(i);
+        console.log('isSlotMine is running');
+    }
+    
 
     $scope.signMeUp = function() {
         UserService.me().then(function(me) {
@@ -151,67 +216,311 @@ angular.module('FoundationTrips.controllers',[])
 
                     
 
-.controller('OrangeTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'OrangeTripsFactory', function($scope, $location, $route, $http, UserService, $routeParams, OrangeTripsFactory){
-       console.log( "we are in the OrangeTripDetailsController now.")
+.controller('OrangeTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'OrangeTripsFactory', 'OrangeTripSlotsFactory', 'OrangeTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, OrangeTripsFactory, OrangeTripSlotsFactory, OrangeTripFilledSlotsFactory){
+    console.log( "we are in the OrangeTripDetailsController now.")
+ 
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
         $scope.ME = me;
         $scope.loggedIn = true;
+
+        $scope.myColor = me.colorID;
+        console.log($scope.myColor);
+        if ($scope.myColor == "1") {
+            $scope.isGreen = true; 
+            console.log("My color group is Green");  
+        }
+        if ($scope.myColor == "2"){
+            $scope.isOrange = true;
+             console.log("My color group is Orange");
+        }
+        if ($scope.myColor == "3"){
+            $scope.isPurple = true;
+            console.log("My color group is Purple");
+        }
+        if ($scope.myColor == "4"){
+            $scope.isYellow = true;
+            console.log("My color group is Yellow");
+        }
     });
     $scope.logout = function () {
         UserService.logout().then(function(){
         $route.reload();
         });
     }
-
+    var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
     $scope.orangeTrip = OrangeTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.orangeTrip: ");
     console.log($scope.orangeTrip);
+
+    $scope.orangeTripSlots = OrangeTripSlotsFactory.query( {id: tripID} );
+    console.log("this is the $scope.orangeTripSlots Array: ");
+    console.log($scope.orangeTripSlots);
+
+    $scope.signMeUp = function() {
+        UserService.me().then(function(me) {
+            $scope.ME = me;
+            var data = {
+                userID: $scope.ME.id,
+                eventID: tripID,
+                colorID: $scope.ME.colorID,
+            }
+            console.log(data);
+
+            var userForEvent = new OrangeTripSlotsFactory(data);
+            userForEvent.$save(function (success) {
+                console.log('participant signed up successfully');
+                $route.reload();
+            }, function(err){
+                console.log(err);
+                alert('You are already signed up for this trip.');
+            })
+            
+        })
+    };
+
+
+   $scope.removeMe = function() {                                      
+        var shouldRemove = confirm('Remove you from this field trip?');
+        if (shouldRemove) {
+            var data = null;
+            UserService.me().then(function(me){
+                var data = {userID: me.id, eventID: tripID}
+                console.log(data);
+                
+                return data;
+            }).then (function(data){ 
+                
+               var mySlot = $http.get('/api/OrangeTripSlots/' + data.eventID + '/' + data.userID);
+               console.log(mySlot);
+
+               return mySlot;
+            }).then (function(mySlot) {
+                console.log(mySlot);
+                var slotToDelete = mySlot.data;
+                console.log(slotToDelete);
+                console.log(slotToDelete.id)
+
+                return slotToDelete;
+            }).then (function(slotToDelete){
+                var slotID = slotToDelete.id;
+                $http.delete('/api/OrangeTripSlots/delete/' + slotID);
+                console.log('deleted successfull')     
+                $route.reload();
+            }).catch(function(error){
+                console.log(error);
+            })
+        }   
+    }; 
 }])
 
-.controller('PurpleTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'PurpleTripsFactory', function($scope, $location, $route, $http, UserService, $routeParams, PurpleTripsFactory){
-       console.log( "we are in the GreenTripsDetailsController now.")
+.controller('PurpleTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'PurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, PurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
+    console.log( "we are in the PurpleTripDetailsController now.")
+ 
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
         $scope.ME = me;
         $scope.loggedIn = true;
+
+        $scope.myColor = me.colorID;
+        console.log($scope.myColor);
+        if ($scope.myColor == "1") {
+            $scope.isGreen = true; 
+            console.log("My color group is Green");  
+        }
+        if ($scope.myColor == "2"){
+            $scope.isOrange = true;
+             console.log("My color group is Orange");
+        }
+        if ($scope.myColor == "3"){
+            $scope.isPurple = true;
+            console.log("My color group is Purple");
+        }
+        if ($scope.myColor == "4"){
+            $scope.isYellow = true;
+            console.log("My color group is Yellow");
+        }
     });
     $scope.logout = function () {
         UserService.logout().then(function(){
         $route.reload();
         });
     }
-
+    var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
     $scope.purpleTrip = PurpleTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.purpleTrip: ");
     console.log($scope.purpleTrip);
+
+    $scope.purpleTripSlots = PurpleTripSlotsFactory.query( {id: tripID} );
+    console.log("this is the $scope.purpleTripSlots Array: ");
+    console.log($scope.purpleTripSlots);
+
+    $scope.signMeUp = function() {
+        UserService.me().then(function(me) {
+            $scope.ME = me;
+            var data = {
+                userID: $scope.ME.id,
+                eventID: tripID,
+                colorID: $scope.ME.colorID,
+            }
+            console.log(data);
+
+            var userForEvent = new PurpleTripSlotsFactory(data);
+            userForEvent.$save(function (success) {
+                console.log('participant signed up successfully');
+                $route.reload();
+            }, function(err){
+                console.log(err);
+                alert('You are already signed up for this trip.');
+            })
+            
+        })
+    };
+
+
+   $scope.removeMe = function() {                                      
+        var shouldRemove = confirm('Remove you from this field trip?');
+        if (shouldRemove) {
+            var data = null;
+            UserService.me().then(function(me){
+                var data = {userID: me.id, eventID: tripID}
+                console.log(data);
+                
+                return data;
+            }).then (function(data){ 
+                
+               var mySlot = $http.get('/api/PurpleTripSlots/' + data.eventID + '/' + data.userID);
+               console.log(mySlot);
+
+               return mySlot;
+            }).then (function(mySlot) {
+                console.log(mySlot);
+                var slotToDelete = mySlot.data;
+                console.log(slotToDelete);
+                console.log(slotToDelete.id)
+
+                return slotToDelete;
+            }).then (function(slotToDelete){
+                var slotID = slotToDelete.id;
+                $http.delete('/api/PurpleTripSlots/delete/' + slotID);
+                console.log('deleted successfull')     
+                $route.reload();
+            }).catch(function(error){
+                console.log(error);
+            })
+        }   
+    }; 
 }])
 
-.controller('YellowTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'YellowTripsFactory', function($scope, $location, $route, $http, UserService, $routeParams, YellowTripsFactory){
-       console.log( "we are in the YellowTripDetailsController now.")
+.controller('YellowTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'YellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, YellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
+    console.log( "we are in the YellowTripDetailsController now.")
+ 
     UserService.isLoggedIn();
     $scope.loggedIn = false;
+    $scope.isGreen = false;
+    $scope.isOrange = false;
+    $scope.isPurple = false;
+    $scope.isYellow = false;
     UserService.me().then(function(me){
         $scope.ME = me;
         $scope.loggedIn = true;
+
+        $scope.myColor = me.colorID;
+        console.log($scope.myColor);
+        if ($scope.myColor == "1") {
+            $scope.isGreen = true; 
+            console.log("My color group is Green");  
+        }
+        if ($scope.myColor == "2"){
+            $scope.isOrange = true;
+             console.log("My color group is Orange");
+        }
+        if ($scope.myColor == "3"){
+            $scope.isPurple = true;
+            console.log("My color group is Purple");
+        }
+        if ($scope.myColor == "4"){
+            $scope.isYellow = true;
+            console.log("My color group is Yellow");
+        }
     });
     $scope.logout = function () {
         UserService.logout().then(function(){
         $route.reload();
         });
     }
-
+    var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
     $scope.yellowTrip = YellowTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.yellowTrip: ");
     console.log($scope.yellowTrip);
+
+    $scope.yellowTripSlots = YellowTripSlotsFactory.query( {id: tripID} );
+    console.log("this is the $scope.yellowTripSlots Array: ");
+    console.log($scope.yellowTripSlots);
+
+    $scope.signMeUp = function() {
+        UserService.me().then(function(me) {
+            $scope.ME = me;
+            var data = {
+                userID: $scope.ME.id,
+                eventID: tripID,
+                colorID: $scope.ME.colorID,
+            }
+            console.log(data);
+
+            var userForEvent = new YellowTripSlotsFactory(data);
+            userForEvent.$save(function (success) {
+                console.log('participant signed up successfully');
+                $route.reload();
+            }, function(err){
+                console.log(err);
+                alert('You are already signed up for this trip.');
+            })
+            
+        })
+    };
+
+
+   $scope.removeMe = function() {                                      
+        var shouldRemove = confirm('Remove you from this field trip?');
+        if (shouldRemove) {
+            var data = null;
+            UserService.me().then(function(me){
+                var data = {userID: me.id, eventID: tripID}
+                console.log(data);
+                
+                return data;
+            }).then (function(data){ 
+                
+               var mySlot = $http.get('/api/YellowTripSlots/' + data.eventID + '/' + data.userID);
+               console.log(mySlot);
+
+               return mySlot;
+            }).then (function(mySlot) {
+                console.log(mySlot);
+                var slotToDelete = mySlot.data;
+                console.log(slotToDelete);
+                console.log(slotToDelete.id)
+
+                return slotToDelete;
+            }).then (function(slotToDelete){
+                var slotID = slotToDelete.id;
+                $http.delete('/api/YellowTripSlots/delete/' + slotID);
+                console.log('deleted successfull')     
+                $route.reload();
+            }).catch(function(error){
+                console.log(error);
+            })
+        }   
+    }; 
 }])
 
 .controller('AdminController', ['$scope', '$location', '$route', '$http', 'UserService', function($scope, $location, $route, $http, UserService) {

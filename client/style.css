@@ -63,6 +63,14 @@
   margin-top: 10px;
 }
 
+#signedInAs{
+  color: white;
+  position: relative;
+  float: right;
+  margin-top: 125px;
+  margin-right: 10px;
+}
+
 
 /*=================== Welcome Page ============================*/
 #welcome{

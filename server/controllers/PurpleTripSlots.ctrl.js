@@ -1,12 +1,12 @@
 var express = require('express');
-var procedures = require('../procedures/GreenTrips.proc');
+var procedures = require('../procedures/PurpleTrips.proc');
 var auth = require('../middleware/auth.mw');
 
 var router = express.Router();
 
 
 
-// = /api/GreenTripSlots
+// = /api/PurpleTripSlots
 router.route('/')
       .post(function (req, res) {
         var u = req.body;
@@ -19,7 +19,7 @@ router.route('/')
             });
     });
 
-// = /api/GreenTripSlots/:eventID/:userID/:slotID
+// = /api/PurpleTripsSlots/:eventID/:userID/:slotID
 router.route('/:eventID/:userID/:slotID')
     .get(function(req,res) {
         procedures.procGetSlotByUserAndTrip(req.params.eventID, req.params.userID).then(function(greenTripUserSlot){
@@ -32,7 +32,7 @@ router.route('/:eventID/:userID/:slotID')
     })
    
 
-// = /api/GreenTripSlots/:eventID/:userID
+// = /api/PurpleTripSlots/:eventID/:userID
 router.route('/:eventID/:userID')
     .get(function(req,res) {
         procedures.procGetSlotByUserAndTrip(req.params.eventID, req.params.userID).then(function(greenTripUserSlot){
@@ -43,8 +43,7 @@ router.route('/:eventID/:userID')
         
         })
     })
-
-// = /api/GreenTripSlots/:eventID
+// = /api/PurpleTripSlots/:eventID
 router.route('/:eventID')
     .get(function(req, res) {
     procedures.procGetTripSlotsByEvent(req.params.eventID).then(function(greenTripSlots) {

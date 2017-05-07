@@ -16,10 +16,9 @@
 
   <h3> Field Trip Slots:</h3>
   <ol>
-   <li class="tripSlots" ng-repeat="greenTripSlot in greenTripSlots">{{greenTripSlot.firstname}} {{greenTripSlot.lastname}}</li>
+   <li class="tripSlots" ng-repeat="greenTripSlot in greenTripSlots" ng-attr-id="{{ slot + $index }}"><p ng-hide="slotIsMe" >This slot is filled.</p><p ng-show="slotIsMe">{{greenTripSlot.firstname}} {{greenTripSlot.lastname}}</p></li>
   </ol>
 
   <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
   <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>
-  
 </div>

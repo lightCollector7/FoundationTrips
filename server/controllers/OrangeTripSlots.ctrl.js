@@ -1,12 +1,12 @@
 var express = require('express');
-var procedures = require('../procedures/GreenTrips.proc');
+var procedures = require('../procedures/OrangeTrips.proc');
 var auth = require('../middleware/auth.mw');
 
 var router = express.Router();
 
 
 
-// = /api/GreenTripSlots
+// = /api/OrangeTripSlots/
 router.route('/')
       .post(function (req, res) {
         var u = req.body;
@@ -19,11 +19,11 @@ router.route('/')
             });
     });
 
-// = /api/GreenTripSlots/:eventID/:userID/:slotID
+// = /api/OrangeTripSlots/:eventID/:userID/:slotID
 router.route('/:eventID/:userID/:slotID')
     .get(function(req,res) {
-        procedures.procGetSlotByUserAndTrip(req.params.eventID, req.params.userID).then(function(greenTripUserSlot){
-            res.send(greenTripUserSlot);
+        procedures.procGetSlotByUserAndTrip(req.params.eventID, req.params.userID).then(function(orangeTripUserSlot){
+            res.send(orangeTripUserSlot);
         }, function(err) {
             console.log(err);
             res.sendStatus(500);
@@ -32,11 +32,11 @@ router.route('/:eventID/:userID/:slotID')
     })
    
 
-// = /api/GreenTripSlots/:eventID/:userID
+// = /api/OrangeTripSlots/:eventID/:userID
 router.route('/:eventID/:userID')
     .get(function(req,res) {
-        procedures.procGetSlotByUserAndTrip(req.params.eventID, req.params.userID).then(function(greenTripUserSlot){
-            res.send(greenTripUserSlot);
+        procedures.procGetSlotByUserAndTrip(req.params.eventID, req.params.userID).then(function(orangeTripUserSlot){
+            res.send(orangeTripUserSlot);
         }, function(err) {
             console.log(err);
             res.sendStatus(500);
@@ -44,11 +44,11 @@ router.route('/:eventID/:userID')
         })
     })
 
-// = /api/GreenTripSlots/:eventID
+// = /api/OrangeTripSlots/:eventID
 router.route('/:eventID')
     .get(function(req, res) {
-    procedures.procGetTripSlotsByEvent(req.params.eventID).then(function(greenTripSlots) {
-            res.send(greenTripSlots);
+    procedures.procGetTripSlotsByEvent(req.params.eventID).then(function(orangeTripSlots) {
+            res.send(orangeTripSlots);
         }, function(err) {
             console.log(err);
             res.sendStatus(500);

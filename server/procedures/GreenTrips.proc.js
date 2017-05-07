@@ -9,6 +9,7 @@ exports.procGetTrip_Green = function(id) {
 }
 
 exports.procGetTripSlotsByEvent = function(id) {
+    console.log('id of event: ', id);
     return db.fnRows('procGetTripSlotsByEvent', [id]);
 }
 
