@@ -71,4 +71,11 @@ angular.module('FoundationTrips.factories', [])
         update: {method: 'PUT' }
     });
 }]) 
+.factory('UpdateSlotFactory', ['$resource', function($resource){
+    return $resource('api/AdminTripSlots/slot/:id/', {id: '@id' }, {
+    update: {method: 'PUT' }
+    })
+}])
+
+//====================================================================
  

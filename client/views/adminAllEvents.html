@@ -1,0 +1,41 @@
+  <div class="" id="navbar">
+        <div id="navbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+        <p id="navbarTitle">FIELD TRIPS</p>
+        <a class="navbarLink" ng-click="logout()">logout</a>
+        <p id="signedInAs" class="" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
+  </div>
+
+<div class="pageHeaderDiv"><h1 class="pageHeader">Events</h1></div>
+
+<div id="greenTripsDiv" class="container" > 
+  <p class="tripsDivTitle">Green Field Trips</p>
+  <ul>
+    <li ng-repeat="greenTrip in greenTrips"><a class="btn btn-primary singleTripLink"  ng-href="/admin/GreenTrips/{{greenTrip.id}}">  {{greenTrip.eventName}} </a><span class="tripDateLineSmall">{{greenTrip.eventDate}}</span></li>
+  </ul>
+</div>
+
+<div id="orangeTripsDiv" class="container" > 
+  <p class="tripsDivTitle">Orange Field Trips</p>
+  <ul>
+    <li ng-repeat="orangeTrip in orangeTrips"><a class="btn btn-primary singleTripLink"  ng-href="/admin/OrangeTrips/{{orangeTrip.id}}">  {{orangeTrip.eventName}} </a></li>                  
+  </ul>
+
+</div>
+
+<div id="purpleTripsDiv" class="container"> 
+  <p class="tripsDivTitle">Purple Field Trips</p>
+  <ul>
+      <li ng-repeat="purpleTrip in purpleTrips"><a class="btn btn-primary singleTripLink"  ng-href="/admin/PurpleTrips/{{purpleTrip.id}}">  {{purpleTrip.eventName}} </a></li>  
+  </ul>
+</div>
+
+<div id="yellowTripsDiv" class="container" > 
+  <p class="tripsDivTitle"> Yellow Field Trips</p>
+  <ul>
+     <li ng-repeat="yellowTrip in yellowTrips"><a class="btn btn-primary singleTripLink"  ng-href="/admin/YellowTrips/{{yellowTrip.id}}">  {{yellowTrip.eventName}} </a></li>  
+  </ul>
+</div>
+
+

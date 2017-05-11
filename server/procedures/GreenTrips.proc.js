@@ -8,6 +8,14 @@ exports.procGetTrip_Green = function(id) {
     return db.fnRow('procGetTrip', [id]);
 }
 
+exports.procGetSlotBySlotID = function(id) {
+    return db.fnRow('procGetSlotBySlotID', [id]);
+}
+
+exports.procUpdateSlot = function(id, paidValue){
+    return db.fnEmpty('procUpdateSlot', [id, paidValue]);
+}
+
 exports.procGetTripSlotsByEvent = function(id) {
     console.log('id of event: ', id);
     return db.fnRows('procGetTripSlotsByEvent', [id]);
@@ -18,8 +26,6 @@ exports.procSignMeUp = function(userID, eventID, colorID) {
 }
 
 exports.procGetSlotByUserAndTrip = function(eventID, userID) {
-    console.log('eventID: ', eventID);
-    console.log('userID: ', userID);
     return db.fnRow('procGetSlotByUserAndTrip', [eventID, userID])
 }
 

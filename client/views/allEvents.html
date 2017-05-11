@@ -3,20 +3,21 @@
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
-        <a class="navbarLink" ng-click="logout()">logout</a>
+        <a class="navbarLink" ng-click="logout()">logout</a><a class="navbarLink" href="/adminHome" ng-hide="isAdmin">ADMIN</a>
         <p id="signedInAs" class="" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
+        
   </div>
 
 <div class="pageHeaderDiv"><h1 class="pageHeader">Events</h1></div>
 
-<div id="greenTripsDiv" class="container" ng-show="isGreen"> 
+<div id="greenTripsDiv" class="container" ng-show="isGreen || isTheRainbow"> 
   <p class="tripsDivTitle">Green Field Trips</p>
   <ul>
     <li ng-repeat="greenTrip in greenTrips"><a class="btn btn-primary singleTripLink"  ng-href="/GreenTrips/{{greenTrip.id}}">  {{greenTrip.eventName}} </a><span class="tripDateLineSmall">{{greenTrip.eventDate}}</span></li>
   </ul>
 </div>
 
-<div id="orangeTripsDiv" class="container" ng-show="isOrange"> 
+<div id="orangeTripsDiv" class="container" ng-show="isOrange || isTheRainbow"> 
   <p class="tripsDivTitle">Orange Field Trips</p>
   <ul>
     <li ng-repeat="orangeTrip in orangeTrips"><a class="btn btn-primary singleTripLink"  ng-href="/OrangeTrips/{{orangeTrip.id}}">  {{orangeTrip.eventName}} </a></li>                  
@@ -24,14 +25,14 @@
 
 </div>
 
-<div id="purpleTripsDiv" class="container" ng-show="isPurple"> 
+<div id="purpleTripsDiv" class="container" ng-show="isPurple || isTheRainbow"> 
   <p class="tripsDivTitle">Purple Field Trips</p>
   <ul>
       <li ng-repeat="purpleTrip in purpleTrips"><a class="btn btn-primary singleTripLink"  ng-href="/PurpleTrips/{{purpleTrip.id}}">  {{purpleTrip.eventName}} </a></li>  
   </ul>
 </div>
 
-<div id="yellowTripsDiv" class="container" ng-show="isYellow"> 
+<div id="yellowTripsDiv" class="container" ng-show="isYellow || isTheRainbow"> 
   <p class="tripsDivTitle"> Yellow Field Trips</p>
   <ul>
      <li ng-repeat="yellowTrip in yellowTrips"><a class="btn btn-primary singleTripLink"  ng-href="/YellowTrips/{{yellowTrip.id}}">  {{yellowTrip.eventName}} </a></li>  

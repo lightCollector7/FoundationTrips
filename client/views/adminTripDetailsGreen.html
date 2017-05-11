@@ -3,7 +3,7 @@
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
-        <a class="navbarLink" ng-click="logout()" href="/">logout</a>
+        <a class="navbarLink" ng-click="logout()">logout</a>
         <a class="navbarLink" href="/Events">return to All Trips</a>
         <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
   </div>
@@ -16,9 +16,13 @@
 
   <h3> Field Trip Slots:</h3>
   <ol>
-   <li class="tripSlots" ng-repeat="greenTripSlot in greenTripSlots" ><p>{{greenTripSlot.firstname}} {{greenTripSlot.lastname}}</p></li>
+    <li id="{{greenTripSlot.id}}"class="tripSlots" ng-repeat="greenTripSlot in greenTripSlots" >
+      <a href="admin/slotDetails/{{ greenTripSlot.id }}"><button id="editSlotButton" >edit</button></a>
+      <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{greenTripSlot.paid}}"></input></label>
+      {{greenTripSlot.firstname}} {{greenTripSlot.lastname}}
+    </li>
   </ol>
-
+<!--
   <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
-  <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>
+  <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>-->
 </div>

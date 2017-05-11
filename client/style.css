@@ -273,3 +273,48 @@ a {
 #tripDateLine{
   margin-left: 10px;
 }
+
+
+/*======================== admin Home ======================================*/
+
+#adminHomeDiv{
+  background-color: black;
+  height: 100%;
+  width: 100%;
+}
+
+#adminHomeTitle{
+ color: white
+}
+
+.adminHomeLinks{
+  color: white;
+  float: left;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+
+
+
+
+
+
+/*======================== adminAllEvents ======================================*/
+
+
+/*========================  adminTripDetails Pages ======================================*/
+
+#editSlotButton {
+  background-color: black;
+  color: white;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+#hasPaidOrNot{
+  margin-right: 20px;
+}
+
+
+

@@ -19,6 +19,28 @@ router.route('/')
             });
     });
 
+// // = /api/GreenTripSlots/slot/:slotID           ONLY NEED FOR AdminTripSlots.ctrl
+// router.route('/slot/:slotID')
+//     .get(function(req, res) {
+//         procedures.procGetSlotBySlotID(req.params.slotID).then(function(singleSlot){
+//             res.send(singleSlot);
+//         }, function(err) {
+//             console.log(err);
+//             res.sendStatus(500);
+        
+//         });
+//     })
+//     .put(function (req, res) {
+//         var e = req.body;
+//         procedures.procUpdateSlot(req.params.id, u.paid)
+//             .then(function () {
+//                 res.sendStatus(204);
+//             }, function (err) {
+//                 console.log(err);
+//                 res.sendStatus(500);
+//             });
+//     })
+
 // = /api/GreenTripSlots/:eventID/:userID/:slotID
 router.route('/:eventID/:userID/:slotID')
     .get(function(req,res) {
@@ -54,8 +76,6 @@ router.route('/:eventID')
             res.sendStatus(500);
         });
     })
-
-
 
 
 router.route('/delete/:slotID')

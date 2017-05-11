@@ -35,9 +35,33 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/TripDetailsYellow.html',
             controller: 'YellowTripDetailsController'
         })
-        .when('/admin', {
-            templateUrl: 'views/admin.html',
-            controller: 'AdminController'
+        .when('/adminHome',{
+            templateUrl: 'views/adminHome.html',
+            controller: 'AdminHomeController'
+        })
+        .when('/adminAllEvents', {
+            templateUrl: 'views/adminAllEvents.html',
+            controller: 'AdminHomeController'
+        })
+         .when('/admin/GreenTrips/:id', {
+            templateUrl: 'views/adminTripDetailsGreen.html',
+            controller: 'adminGreenTripDetailsController'
+        })
+        .when('/admin/OrangeTrips/:id', {
+            templateUrl: 'views/adminTripDetailsOrange.html',
+            controller: 'adminOrangeTripDetailsController'
+        })
+        .when('/admin/PurpleTrips/:id', {
+            templateUrl: 'views/adminTripDetailsPurple.html',
+            controller: 'adminPurpleTripDetailsController'
+        })
+        .when('/admin/YellowTrips/:id', {
+            templateUrl: 'views/adminTripDetailsYellow.html',
+            controller: 'adminYellowTripDetailsController'
+        })
+        .when('/admin/slotDetails/:slotID', {
+            templateUrl: 'views/adminSlotDetails.html',
+            controller: 'adminSlotDetailsController'
         })
         .otherwise({
             redirectTo: '/'

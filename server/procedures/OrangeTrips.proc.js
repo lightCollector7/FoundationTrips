@@ -8,6 +8,10 @@ exports.procGetTrip_Orange = function(id) {
     return db.fnRow('procGetTrip', [id]);
 }
 
+exports.procGetSlotBySlotID = function(id) {
+    return db.fnRow('procGetSlotBySlotID', [id]);
+}
+
 exports.procGetTripSlotsByEvent = function(id) {
     console.log('id of event: ', id);
     return db.fnRows('procGetTripSlotsByEvent', [id]);

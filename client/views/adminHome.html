@@ -1,0 +1,19 @@
+  <div class="" id="navbar">
+        <div id="navbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+        <p id="navbarTitle">FIELD TRIPS</p>
+        <a class="navbarLink" ng-click="logout()">logout</a>
+        <a class="navbarLink" href="/Events">return to All Trips</a>
+        <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
+  </div>
+
+<div id="adminHomeDiv">
+    <h1 class="adminHomeTitle">Welcome to admin Home.</h1>
+
+    <h1><a class="adminHomeLinks" href="/admin/Users">Users</a></h1>
+
+    <h1><a class="adminHomeLinks" href="/adminAllEvents">Feild Trips</a></h1>
+
+    <h1><a class="adminHomeLinks" href="/adminEditColors">Color Groups</a></h1>
+</div>

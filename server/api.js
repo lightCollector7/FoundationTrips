@@ -12,6 +12,10 @@ var ctrlOrangeTripSlots = require('./controllers/OrangeTripSlots.ctrl')
 var ctrlPurpleTripSlots = require('./controllers/PurpleTripSlots.ctrl')
 var ctrlYellowTripSlots = require('./controllers/YellowTripSlots.ctrl')
 
+var ctrlAdminTripSlots = require('./controllers/AdminTripSlots.ctrl')
+
+
+
 
 
 
@@ -30,6 +34,8 @@ router
     .use('/OrangeTripSlots', ctrlOrangeTripSlots)
     .use('/PurpleTripSlots', ctrlPurpleTripSlots)
     .use('/YellowTripSlots', ctrlYellowTripSlots)
+    .use('/AdminTripSlots', ctrlAdminTripSlots)
+
    
 
 module.exports = router;
