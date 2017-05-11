@@ -12,7 +12,8 @@
 .app .site-content {
   height: 5000px;
   /*-webkit-overflow-scrolling: touch;*/
-  background:#CAE1FF;
+  /*background:#CAE1FF;*/
+  background: black;
 }
 
 .pageHeaderDiv{
@@ -24,6 +25,7 @@
 .pageHeader{
   color: rgb(018,055,156);
   font-size: 50px;
+  margin-top: 0px;
 }
 
 /*=================== NavBar ============================*/
@@ -33,10 +35,13 @@
   height: 150px;
   width: 100%;
   background-color: rgb(018, 055,156);
+  border: 5px solid gray;
+  border-radius: 5px;
 }
 #navbarLogo{
   height: 150px;
   margin-left: 25px;
+  
 }
 #navbarLogoBox{
   height: 150px;
@@ -45,6 +50,11 @@
   top: 0;
   left: 0;
   background-color: white;
+  border: 5px solid gray;
+  /*border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;*/
+  
+
 }
 #navbarTitle{
   position: absolute;
@@ -52,7 +62,7 @@
   color: white;
   margin-top: 10px;
   margin-left: 225px;
-  font-size: 100px;
+  font-size: 50px;
 }
 .navbarLink{
   color: white;
@@ -90,53 +100,83 @@
 
 /*=================== All Events Page ============================*/
 
-.tripsDivTitle{
-  margin-left: 20px;
+.tripsDivTitle{         /* can delete this one now?*/
+  margin-left: 10px;
+  margin-right: 10px;
   /*margin-top: 20px;*/
   font-size: 25px;
+  color:white;
+  border-bottom: 3px solid green;
 }
 
 #greenTripsDiv{
   margin-left: 10%;
-  margin-top: 25px;
+  margin-top: 45px;
   padding-top: 10px;
   padding-left: 20px;
+  padding-right: 20px;
   width: 80%;
   height: 500px;
   border-radius: 10px;
-  border: 5px solid green;
+  border: 5px solid lightgreen;
   /*background-color: #BCD2EE;*/
-    background-color:rgba(0,255,0,.1);
+  background-color:black;
+  color: white;
 
 }
-.tripsDivTitle{
-  margin-left: 20px;
-  margin-right: 20px;
+.greenTripsDivTitle{
+  margin-left: 10px;
+  margin-right: 10px;
   /*margin-top: 20px;*/
   font-size: 25px;
-  color: white;
-  border-bottom: 1px solid green;
+  color:white;
+  border-bottom: 3px solid green;
 }
 .tripDateLine{
   margin-left: 20px;
   margin-right: 20px;
   /*margin-top: 20px;*/
-  font-size: 25px;
-  color: white;
-  float: right;
-}
-.tripDateLineSmall{
-  margin-right: 800px;
   font-size: 17px;
   color: white;
   float: right;
 }
-.tripDescriptionLine{
+.tripDateLineSmall{
+  position: absolute;
+  left: 400px;
+  font-size: 12px;
+  color: white;
+}
+.greenTripDescriptionLine{
   margin-left: 60px;
   margin-right: 20px;
   /*margin-top: 20px;*/
   font-size: 20px;
   color: white;
+  border-bottom: 1px solid green;
+}
+.orangeTripDescriptionLine{
+  margin-left: 60px;
+  margin-right: 20px;
+  /*margin-top: 20px;*/
+  font-size: 20px;
+  color: white;
+  border-bottom: 1px solid orange;
+}
+.purpleTripDescriptionLine{
+  margin-left: 60px;
+  margin-right: 20px;
+  /*margin-top: 20px;*/
+  font-size: 20px;
+  color: white;
+  border-bottom: 1px solid purple;
+}
+.yellowTripDescriptionLine{
+  margin-left: 60px;
+  margin-right: 20px;
+  /*margin-top: 20px;*/
+  font-size: 20px;
+  color: white;
+  border-bottom: 1px solid yellow;
 }
 .tripCostLine{
   margin-left: 100px;
@@ -152,22 +192,25 @@
   font-size: 20px;
   color: white;
 }
-#greenTripsDiv li{
-  color: Black;
+.greenLI{
+  color: green;
   margin-left: 50px;
+  text-decoration: white;
 }
 
 #orangeTripsDiv{
   margin-left: 10%;
   margin-top: 25px;
   padding-top: 10px;
+  padding: 20px;
   width: 80%;
   height: 500px;
   border-radius: 10px;
   border: 5px solid orange;
-  background-color: rgba(255,158,0,.2);
+  background-color: black;
+  color: white;
 }
-.greenModal{
+/*.greenModal{
   position: absolute;
   top: 325px;
   left: 400px;
@@ -176,78 +219,86 @@
   background-color: white;
   border: 2px solid black;
   border-radius: 10px;
-}
-#orangeTripsDivTitle{
-  margin-left: 20px;
-  margin-right: 20px;
+}*/
+.orangeTripsDivTitle{
+  margin-left: 10px;
+  margin-right: 10px;
   /*margin-top: 20px;*/
   font-size: 25px;
-  color: white;
-  border-bottom: 1px solid orange;
+  color:white;
+  border-bottom: 3px solid orange;
 }
-#orangeTripsDiv li{
-  color: black;
+.orangeLI{
+  color: orange;
   margin-left: 50px;
+  text-decoration: white;
 }
 
 #purpleTripsDiv{
   margin-left: 10%;
   margin-top: 25px;
   padding-top: 10px;
+  padding: 20px;
   width: 80%;
   height: 500px;
   border-radius: 10px;
   border: 5px solid purple;
-  background-color: rgba(174,0,229,.2);
+  background-color: black;
+  color:white;
 }
-#purpleTripsDivTitle{
-  margin-left: 20px;
-  margin-right: 20px;
+.purpleTripsDivTitle{
+  margin-left: 10px;
+  margin-right: 10px;
   /*margin-top: 20px;*/
   font-size: 25px;
-  color: white;
-  border-bottom: 1px solid purple;
+  color:white;
+  border-bottom: 3px solid purple;
   
 }
-#purpleTripsDiv li{
-  color: black;
+.purpleLI{
+  color: purple;
   margin-left: 50px;
+  text-decoration: white;
 }
 
 #yellowTripsDiv{
   margin-left: 10%;
   margin-top: 25px;
   padding-top: 10px;
+  padding: 20px;
   width: 80%;
   height: 500px;
   border-radius: 10px;
   border: 5px solid yellow;
-  background-color: rgba(255,255,0,.2);
+  background-color: black;
+  color:white;
 }
-#yellowTripsDivTitle{
-  margin-left: 20px;
-  margin-right: 20px;
+.yellowTripsDivTitle{
+  margin-left: 10px;
+  margin-right: 10px;
   /*margin-top: 20px;*/
   font-size: 25px;
-  color: white;
-  border-bottom: 1px solid yellow;
+  color:white;
+  border-bottom: 3px solid yellow;
 }
-#yellowTripsDiv li{
-  color: black;
+.yellowLI{
+  color: yellow;
   margin-left: 50px;
+  font-size: 17px;
+  text-decoration: white;
 }
 
-li {
-  color: yellow;
+/*li {
+  color: white;
   font-size: 17px;
-}
+}*/
 
 a {
-  color:inherit;
+  color:white;
   text-decoration: none;
  }
 
-.modalLink:hover{
+/*.modalLink:hover{
   text-decoration: underline;
   
 }
@@ -259,7 +310,7 @@ a {
 }
 .modal-body{
   margin-left: 30px;
-}
+}*/
 .submitMeButton{
   margin-left: 10px;
 }
@@ -278,9 +329,12 @@ a {
 /*======================== admin Home ======================================*/
 
 #adminHomeDiv{
+  position: absolute;
+  top: 150;
   background-color: black;
   height: 100%;
   width: 100%;
+  margin-top:-10px;
 }
 
 #adminHomeTitle{
@@ -301,7 +355,75 @@ a {
 
 
 /*======================== adminAllEvents ======================================*/
+#adminNavbar{
+  height: 150px;
+  width: 100%;
+  background-color: black;
+}
 
+#adminBackground{
+  position: absolute;
+  top: 150;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  /*border-top: 5px solid gray;*/
+
+}
+#adminGreenTripsDiv{
+  margin-left: 10%;
+  margin-top: 25px;
+  padding:20px;
+  padding-top: 10px;
+  width: 80%;
+  height: 500px;
+  border-radius: 10px;
+  border: 5px solid white;
+  background-color: black;
+  color: white;
+}
+#adminOrangeTripsDiv{
+  margin-left: 10%;
+  margin-top: 25px;
+  padding-top: 10px;
+  padding: 20px;
+  width: 80%;
+  height: 500px;
+  border-radius: 10px;
+  border: 5px solid white;
+  background-color: black;
+  color: white;
+}
+#adminPurpleTripsDiv{
+  margin-left: 10%;
+  margin-top: 25px;
+  padding-top: 10px;
+  padding: 20px;
+  width: 80%;
+  height: 500px;
+  border-radius: 10px;
+  border: 5px solid white;
+  background-color: black;
+  color:white;
+}
+#adminYellowTripsDiv{
+  margin-left: 10%;
+  margin-top: 25px;
+  padding-top: 10px;
+  padding: 20px;
+  width: 80%;
+  height: 500px;
+  border-radius: 10px;
+  border: 5px solid white;
+  background-color: black;
+  color:white;
+}
+.adminTripLink{
+  color: white;
+}
+.admin li{
+  color: white;
+}
 
 /*========================  adminTripDetails Pages ======================================*/
 
@@ -313,8 +435,73 @@ a {
 }
 
 #hasPaidOrNot{
-  margin-right: 20px;
+  margin-right: 30px;
+  margin-left: 10px;
 }
 
+.greenTripSlots{
+  color: green;
+}
+#participantName{
+  color:white;
+}
+#greenEditSlotButton{
+  margin:5px;
+  background-color: black;
+  border: 1px solid green;
+  color: white;
+}
+#orangeEditSlotButton{
+  margin:5px;
+  background-color: black;
+  border: 1px solid orange;
+  color: white;
+}
+#purpleEditSlotButton{
+  margin:5px;
+  background-color: black;
+  border: 1px solid purple;
+  color: white;
+}
+#yellowEditSlotButton{
+  margin:5px;
+  background-color: black;
+  border: 1px solid yellow;
+  color: white;
+}
+
+/*========================  adminSlotDetails Pages ======================================*/
 
 
+#editSlotHeader{
+  border-bottom: 2px solid black;
+}
+#editSlotDiv{
+  margin-left: 10%;
+  margin-top: 25px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 80%;
+  height: 500px;
+  border-radius: 10px;
+  border: 5px solid white;
+  /*background-color: #BCD2EE;*/
+  background-color:gray;
+  color: white;
+}
+
+#paidCheckBox{
+  margin-left: 10px;
+}
+
+#updateSlotButton{
+  margin: 15px;
+  border: 2px solid green;
+}
+
+#deleteSlotButton{
+  /*margin: 15px;*/
+  background-color: none;
+  border: 2px solid red;
+}

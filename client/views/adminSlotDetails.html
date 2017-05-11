@@ -4,12 +4,13 @@
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
         <a class="navbarLink" ng-click="logout()">logout</a>
-        <a class="navbarLink" href="/Events">return to All Trips</a>
+        <a class="navbarLink" href="/adminAllEvents">return to ADMIN TRIP LIST</a>
         <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
   </div>
 
-  <div>
-      <h1> Edit Trip Slot Page</h1>
+<div id="adminBackground">
+  <div id="editSlotDiv">
+      <h1 id="editSlotHeader"> Edit Slot</h1>
 
       <form name="updateSlotForm">
         <label>First Name: <span> {{slotToEdit.firstName}} </span></label>
@@ -18,6 +19,7 @@
         <p></p>
         <label>paid<input id="paidCheckBox" name="paid" type="checkbox" ng-model="slotToEdit.paid" ng-checked="slotToEdit.paid" value="slotToEdit.paid" ng-true-value="1" ng-false-value="0"></input></label>
     </form>
-    <button class="btn btn-default" id="button" ng-click="updateThisSlot()" ng-disabled="updateSlotForm.$invalid">UPDATE SLOT</button>
-    <button class="btn btn-default" id="button" ng-click="promptDeleteThisSlot()">DELETE SLOT</button>
+    <button class="btn btn-default" id="updateSlotButton" ng-click="updateThisSlot()" ng-disabled="updateSlotForm.$invalid">UPDATE SLOT</button>
+    <button class="btn btn-default" id="deleteSlotButton" ng-click="promptDeleteThisSlot()">DELETE SLOT</button>
   </div>
+</div>

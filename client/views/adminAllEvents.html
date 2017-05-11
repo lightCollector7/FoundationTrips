@@ -4,38 +4,39 @@
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
         <a class="navbarLink" ng-click="logout()">logout</a>
+         <a class="navbarLink" href="/Events">(exit ADMIN)</a>
         <p id="signedInAs" class="" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
   </div>
+<div id="adminBackground">
 
-<div class="pageHeaderDiv"><h1 class="pageHeader">Events</h1></div>
+    <div id="adminGreenTripsDiv" class="container" > 
+      <p class="greenTripsDivTitle">Green Field Trips</p>
+      <ul>
+        <li ng-repeat="greenTrip in greenTrips" class="greenLI admin li"><a class="btn btn-primary singleTripLink adminTripLink"  ng-href="/admin/GreenTrips/{{greenTrip.id}}">  {{greenTrip.eventName}} </a><span class="tripDateLineSmall">{{greenTrip.eventDate}}</span></li>
+      </ul>
+    </div>
 
-<div id="greenTripsDiv" class="container" > 
-  <p class="tripsDivTitle">Green Field Trips</p>
-  <ul>
-    <li ng-repeat="greenTrip in greenTrips"><a class="btn btn-primary singleTripLink"  ng-href="/admin/GreenTrips/{{greenTrip.id}}">  {{greenTrip.eventName}} </a><span class="tripDateLineSmall">{{greenTrip.eventDate}}</span></li>
-  </ul>
-</div>
+    <div id="adminOrangeTripsDiv" class="container " > 
+      <p class="orangeTripsDivTitle">Orange Field Trips</p>
+      <ul>
+        <li ng-repeat="orangeTrip in orangeTrips" class="orangeLI admin li"><a class="btn btn-primary singleTripLink adminTripLink"  ng-href="/admin/OrangeTrips/{{orangeTrip.id}}">  {{orangeTrip.eventName}} </a><span class="tripDateLineSmall">{{orangeTrip.eventDate}}</span></li>                  
+      </ul>
 
-<div id="orangeTripsDiv" class="container" > 
-  <p class="tripsDivTitle">Orange Field Trips</p>
-  <ul>
-    <li ng-repeat="orangeTrip in orangeTrips"><a class="btn btn-primary singleTripLink"  ng-href="/admin/OrangeTrips/{{orangeTrip.id}}">  {{orangeTrip.eventName}} </a></li>                  
-  </ul>
+    </div>
 
-</div>
+    <div id="adminPurpleTripsDiv" class="container "> 
+      <p class="purpleTripsDivTitle">Purple Field Trips</p>
+      <ul>
+          <li ng-repeat="purpleTrip in purpleTrips" class="purpleLI admin li"><a class="btn btn-primary singleTripLink adminTripLink"  ng-href="/admin/PurpleTrips/{{purpleTrip.id}}">  {{purpleTrip.eventName}} </a><span class="tripDateLineSmall">{{purpleTrip.eventDate}}</span></li>  
+      </ul>
+    </div>
 
-<div id="purpleTripsDiv" class="container"> 
-  <p class="tripsDivTitle">Purple Field Trips</p>
-  <ul>
-      <li ng-repeat="purpleTrip in purpleTrips"><a class="btn btn-primary singleTripLink"  ng-href="/admin/PurpleTrips/{{purpleTrip.id}}">  {{purpleTrip.eventName}} </a></li>  
-  </ul>
-</div>
-
-<div id="yellowTripsDiv" class="container" > 
-  <p class="tripsDivTitle"> Yellow Field Trips</p>
-  <ul>
-     <li ng-repeat="yellowTrip in yellowTrips"><a class="btn btn-primary singleTripLink"  ng-href="/admin/YellowTrips/{{yellowTrip.id}}">  {{yellowTrip.eventName}} </a></li>  
-  </ul>
+    <div id="adminYellowTripsDiv" class="container " > 
+      <p class="yellowTripsDivTitle"> Yellow Field Trips</p>
+      <ul>
+        <li ng-repeat="yellowTrip in yellowTrips" class="yellowLI admin li"><a class="btn btn-primary singleTripLink adminTripLink"  ng-href="/admin/YellowTrips/{{yellowTrip.id}}">  {{yellowTrip.eventName}} </a><span class="tripDateLineSmall">{{yellowTrip.eventDate}}</span></li>  
+      </ul>
+    </div>
 </div>
 
 

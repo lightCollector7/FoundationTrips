@@ -8,10 +8,9 @@
         <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
   </div>
 
-<div class="pageHeaderDiv"><h1 class="pageHeader">Trip Details</h1></div>
 
 <div id="yellowTripsDiv" class="container"> 
-  <p class="tripsDivTitle">{{yellowTrip.eventName}} <span class="tripDateLine">{{yellowTrip.eventDate}}</span></p>
+  <p class="yellowTripsDivTitle">{{yellowTrip.eventName}} <span class="tripDateLine">{{yellowTrip.eventDate}}</span></p>
   <p class="tripDescriptionLine">{{yellowTrip.eventDescription}} <span class="tripTimeLine">{{yellowTrip.eventTime}}</span><span class="tripCostLine">${{yellowTrip.eventCost}}</span></p>
   
   <h3> Field Trip Slots:</h3>

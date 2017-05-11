@@ -4,21 +4,27 @@
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
         <a class="navbarLink" ng-click="logout()">logout</a>
-        <a class="navbarLink" href="/Events">return to All Trips</a>
+        <a class="navbarLink" href="/adminAllEvents">return to ADMIN TRIP LIST</a>
         <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
   </div>
 
-<div class="pageHeaderDiv"><h1 class="pageHeader">Trip Details</h1></div>
 
-<div id="orangeTripsDiv" class="container"> 
-  <p class="tripsDivTitle">{{orangeTrip.eventName}} <span class="tripDateLine">{{orangeTrip.eventDate}}</span></p>
-  <p class="tripDescriptionLine">{{orangeTrip.eventDescription}} <span class="tripTimeLine">{{orangeTrip.eventTime}}</span><span class="tripCostLine">${{orangeTrip.eventCost}}</span></p>
-  
-  <h3> Field Trip Slots:</h3>
-  <ol>
-   <li class="tripSlots" ng-repeat="orangeTripSlot in orangeTripSlots">{{orangeTripSlot.firstname}} {{orangeTripSlot.lastname}}<button id="editSlotButton">edit</button></li>
-  </ol>
+<div id="adminBackground">
+    <div id="adminOrangeTripsDiv" class="container"> 
+      <p class="orangeTripsDivTitle">{{orangeTrip.eventName}} <span class="tripDateLine">{{orangeTrip.eventDate}}</span></p>
+      <p class="orangeTripDescriptionLine">{{orangeTrip.eventDescription}} <span class="tripTimeLine">{{orangeTrip.eventTime}}</span><span class="tripCostLine">${{orangeTrip.eventCost}}</span></p>
+      
+      <h3> Field Trip Slots:</h3>
+      <ol>
+        <li id="{{orangeTripSlot.id}}" class="orangeTripSlots" ng-repeat="orangeTripSlot in orangeTripSlots" >
+          <a href="admin/slotDetails/{{ orangeTripSlot.id }}"><button id="orangeEditSlotButton" >edit</button></a>
+          <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{orangeTripSlot.paid}}"></input></label>
+          {{orangeTripSlot.firstname}} {{orangeTripSlot.lastname}}
+        </li>
+      </ol>
 
-  <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
-  <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>
+      <!--<button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
+      <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>-->
+    </div>
+
 </div>
