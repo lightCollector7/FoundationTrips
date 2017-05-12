@@ -35,15 +35,17 @@
   height: 150px;
   width: 100%;
   background-color: rgb(018, 055,156);
-  border: 5px solid white;
-  border-radius: 5px;
+  border: 5px solid rgb(018, 055,156);
+  padding: 15px;
+  /*border-radius: 15px;*/
 }
 #adminNavbar{
   height: 150px;
   width: 100%;
   background-color: black;
-  border: 5px solid white;
-  border-radius: 5px;
+  border-bottom: 1px solid white;
+  padding: 15px;
+  
 }
 #navbarLogo{
   height: 150px;
@@ -56,8 +58,11 @@
   position: absolute;
   top: 0;
   left: 0;
+  margin-top: 10px;
+  margin-left: 10px;
   background-color: white;
-  border: 5px solid white;
+  border: 5px solid royalblue;
+  border-radius: 15px;
   /*border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;*/
 }
@@ -67,8 +72,11 @@
   position: absolute;
   top: 0;
   left: 0;
+  margin-top: 10px;
+  margin-left: 10px;
   background-color: white;
-  border: 5px solid white;
+  border: 5px solid royalblue;
+  border-radius: 15px;
   /*border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;*/
 }
@@ -76,7 +84,7 @@
   position: absolute;
   top: 0;
   color: white;
-  margin-top: 10px;
+  margin-top: 70px;
   margin-left: 225px;
   font-size: 50px;
 }

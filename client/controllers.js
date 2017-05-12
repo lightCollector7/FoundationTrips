@@ -920,9 +920,9 @@ angular.module('FoundationTrips.controllers',[])
     };
 }])
 
-.controller('adminSlotDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'UpdateSlotFactory', function($scope, $location, $route, $http, UserService, $routeParams, UpdateSlotFactory){
+.controller('adminSlotDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'UpdateSlotFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UpdateSlotFactory){
 //require admin
-
+    $window.scrollTo(0, 0);
 
 
             var slotID = $routeParams.slotID;
@@ -972,7 +972,8 @@ angular.module('FoundationTrips.controllers',[])
 
 }])
 
-.controller('adminEditTripController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'AdminTripFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, AdminTripFactory){
+.controller('adminEditTripController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'AdminTripFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, AdminTripFactory){
+    $window.scrollTo(0, 0);
     UserService.isLoggedIn();
     UserService.isAdmin();
     $scope.loggedIn = false;
