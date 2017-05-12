@@ -4,7 +4,7 @@ exports.procGetTrips_Purple = function() {
     return db.fnRows('procGetTrips_Purple');    
 }
 
-exports.procGetTrip_Purple = function(id) {
+exports.procGetTrip = function(id) {
     return db.fnRow('procGetTrip', [id]);
 }
 

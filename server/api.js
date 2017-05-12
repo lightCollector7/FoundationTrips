@@ -6,12 +6,12 @@ var ctrlGreenTrips = require('./controllers/GreenTrips.ctrl')
 var ctrlOrangeTrips = require('./controllers/OrangeTrips.ctrl')
 var ctrlPurpleTrips = require('./controllers/PurpleTrips.ctrl')
 var ctrlYellowTrips = require('./controllers/YellowTrips.ctrl')
+var ctrlAdminTrips = require('./controllers/AdminTrips.ctrl')
 
 var ctrlGreenTripSlots = require('./controllers/GreenTripSlots.ctrl')
 var ctrlOrangeTripSlots = require('./controllers/OrangeTripSlots.ctrl')
 var ctrlPurpleTripSlots = require('./controllers/PurpleTripSlots.ctrl')
 var ctrlYellowTripSlots = require('./controllers/YellowTripSlots.ctrl')
-
 var ctrlAdminTripSlots = require('./controllers/AdminTripSlots.ctrl')
 
 
@@ -29,6 +29,7 @@ router
     .use('/OrangeTrips', ctrlOrangeTrips)
     .use('/PurpleTrips', ctrlPurpleTrips)
     .use('/YellowTrips', ctrlYellowTrips)
+    .use('/AdminTrips', ctrlAdminTrips)
 
     .use('/GreenTripSlots', ctrlGreenTripSlots)
     .use('/OrangeTripSlots', ctrlOrangeTripSlots)

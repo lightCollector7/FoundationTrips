@@ -18,7 +18,7 @@ router.route('/')
 // = /api/YellowTrips/:id
 router.route('/:id')
     .get(function(req, res) {
-    procedures.procGetTrip_Yellow(req.params.id).then(function(yellowTrip) {
+    procedures.procGetTrip(req.params.id).then(function(yellowTrip) {
             res.send(yellowTrip);
         }, function(err) {
             console.log(err);

@@ -63,6 +63,10 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/adminSlotDetails.html',
             controller: 'adminSlotDetailsController'
         })
+        .when('/admin/editTrip/:id',{
+            templateUrl: 'views/adminEditTrip.html',
+            controller: 'adminEditTripController'
+        })
         .otherwise({
             redirectTo: '/'
         });

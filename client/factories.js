@@ -6,6 +6,11 @@ angular.module('FoundationTrips.factories', [])
     });      
 }])
 
+.factory('AdminTripFactory', ['$resource', function($resource) {
+    return $resource('/api/AdminTrips/:id', {id: '@id'}, {
+        update: {method: 'PUT'}
+    })
+}])
 .factory('GreenTripsFactory', ['$resource', function($resource) {
     return $resource('/api/GreenTrips/:id', {id: '@id' }, {
         update: {method: 'PUT' }

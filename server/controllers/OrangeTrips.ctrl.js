@@ -18,7 +18,7 @@ router.route('/')
 // = /api/OrangeTrips/:id
 router.route('/:id')
     .get(function(req, res) {
-    procedures.procGetTrip_Orange(req.params.id).then(function(orangeTrip) {
+    procedures.procGetTrip(req.params.id).then(function(orangeTrip) {
             res.send(orangeTrip);
         }, function(err) {
             console.log(err);

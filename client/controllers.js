@@ -97,7 +97,8 @@ angular.module('FoundationTrips.controllers',[])
 }])
 
 
-.controller('GreenTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'GreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, GreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
+.controller('GreenTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'GreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, GreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
+    $window.scrollTo(0, 0);
     console.log( "we are in the GreenTripsDetailsController now.")
     UserService.isLoggedIn();
     $scope.loggedIn = false;
@@ -250,9 +251,9 @@ angular.module('FoundationTrips.controllers',[])
 
                     
 
-.controller('OrangeTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'OrangeTripsFactory', 'OrangeTripSlotsFactory', 'OrangeTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, OrangeTripsFactory, OrangeTripSlotsFactory, OrangeTripFilledSlotsFactory){
+.controller('OrangeTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'OrangeTripsFactory', 'OrangeTripSlotsFactory', 'OrangeTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, OrangeTripsFactory, OrangeTripSlotsFactory, OrangeTripFilledSlotsFactory){
     console.log( "we are in the OrangeTripDetailsController now.")
- 
+    $window.scrollTo(0, 0);
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
@@ -351,9 +352,9 @@ angular.module('FoundationTrips.controllers',[])
     }; 
 }])
 
-.controller('PurpleTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'PurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, PurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
+.controller('PurpleTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'PurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, PurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
     console.log( "we are in the PurpleTripDetailsController now.")
- 
+    $window.scrollTo(0, 0);
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
@@ -452,9 +453,9 @@ angular.module('FoundationTrips.controllers',[])
     }; 
 }])
 
-.controller('YellowTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'YellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, YellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
+.controller('YellowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'YellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, YellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
     console.log( "we are in the YellowTripDetailsController now.")
- 
+    $window.scrollTo(0, 0);
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     $scope.isGreen = false;
@@ -611,9 +612,10 @@ angular.module('FoundationTrips.controllers',[])
 }])
 
 
-.controller('adminGreenTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'GreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, GreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
+.controller('adminGreenTripDetailsController', ['$scope', '$location', '$route', '$http', "$window", 'UserService', '$routeParams', 'GreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, GreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
     console.log( "we are in the GreenTripsDetailsController now.")
     //require admin
+    $window.scrollTo(0, 0);
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
@@ -642,9 +644,10 @@ angular.module('FoundationTrips.controllers',[])
 
                     
 
-.controller('adminOrangeTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'OrangeTripsFactory', 'OrangeTripSlotsFactory', 'OrangeTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, OrangeTripsFactory, OrangeTripSlotsFactory, OrangeTripFilledSlotsFactory){
+.controller('adminOrangeTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'OrangeTripsFactory', 'OrangeTripSlotsFactory', 'OrangeTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, OrangeTripsFactory, OrangeTripSlotsFactory, OrangeTripFilledSlotsFactory){
     console.log( "we are in the OrangeTripDetailsController now.")
     //require admin
+    $window.scrollTo(0, 0);
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
@@ -743,9 +746,10 @@ angular.module('FoundationTrips.controllers',[])
     }; 
 }])
 
-.controller('adminPurpleTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'PurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, PurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
+.controller('adminPurpleTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'PurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, PurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
     console.log( "we are in the PurpleTripDetailsController now.")
     //require admin
+    $window.scrollTo(0, 0);
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
@@ -844,9 +848,10 @@ angular.module('FoundationTrips.controllers',[])
     }; 
 }])
 
-.controller('adminYellowTripDetailsController', ['$scope', '$location', '$route', '$http', 'UserService', '$routeParams', 'YellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, UserService, $routeParams, YellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
+.controller('adminYellowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'YellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, YellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
     console.log( "we are in the YellowTripDetailsController now.")
     //require admin
+    $window.scrollTo(0, 0);
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     $scope.isGreen = false;
@@ -964,6 +969,46 @@ angular.module('FoundationTrips.controllers',[])
         }
 
 
+
+}])
+
+.controller('adminEditTripController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'AdminTripFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, AdminTripFactory){
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+    $scope.loggedIn = false;
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        $scope.loggedIn = true;
+    });
+    $scope.logout = function() {
+         UserService.logout().then(function(){
+        $route.reload();
+        });
+    }
+
+    var tripID = $routeParams.id;
+    $scope.tripToEdit = AdminTripFactory.get( {id: tripID} );
+    console.log("this is the $scope.tripToEdit: ");
+    console.log($scope.tripToEdit);
+
+    $scope.updateTrip = function() {
+        $scope.tripToEdit.$update(function(success) {
+            console.log('the trip was updated!');
+            $route.reload();
+            // $location.path('/adminAllEvents');
+        });
+    };
+
+    $scope.promptDeleteThisTrip = function () {
+        var shouldDelete = confirm('Are you sure you want to delete this trip?');
+        if (shouldDelete) {
+            console.log($scope.tripToEdit);
+
+            $scope.tripToEdit.$delete(function (success) {
+                $location.path('/adminAllEvents');
+            });
+        };
+    };
 
 }])
 
