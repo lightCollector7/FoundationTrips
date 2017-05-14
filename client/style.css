@@ -175,6 +175,7 @@
   color:white;
   border-bottom: 3px solid limegreen;
 }
+
 .tripDateLine{
   margin-left: 20px;
   margin-right: 20px;
@@ -258,6 +259,10 @@
   color: limegreen;
   margin-left: 50px;
   text-decoration: white;
+  margin-top: 3px;
+  border-bottom: 1px solid limegreen;
+  width: 55%;
+  padding: 10px;
 }
 
 #orangeTripsDiv{
@@ -295,6 +300,10 @@
   color: orange;
   margin-left: 50px;
   text-decoration: white;
+  margin-top: 3px;
+  border-bottom: 1px solid orange;
+  width: 55%;
+  padding: 10px;
 }
 
 #purpleTripsDiv{
@@ -323,6 +332,10 @@
   color: purple;
   margin-left: 50px;
   text-decoration: white;
+  margin-top: 3px;
+  border-bottom: 1px solid purple;
+  width: 55%;
+  padding: 10px;
 }
 
 #yellowTripsDiv{
@@ -349,8 +362,11 @@
 .yellowLI{
   color: yellow;
   margin-left: 50px;
-  font-size: 17px;
   text-decoration: white;
+  margin-top: 3px;
+  border-bottom: 1px solid yellow;
+  width: 55%;
+  padding: 10px;
 }
 
 /*li {
