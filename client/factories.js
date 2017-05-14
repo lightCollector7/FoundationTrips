@@ -82,5 +82,27 @@ angular.module('FoundationTrips.factories', [])
     })
 }])
 
+.factory('AdminUserFactoryGreen', ['$resource', function($resource) {    // write this
+    return $resource('api/AdminUsers/GreenUsers/:id/', {id: '@id' },{
+        update: {method: 'PUT'}
+    });
+}])
+.factory('AdminUserFactoryOrange', ['$resource', function($resource) {    // write this
+    return $resource('api/AdminUsers/OrangeUsers/:id/', {id: '@id' },{
+        update: {method: 'PUT'}
+    });
+}])
+.factory('AdminUserFactoryPurple', ['$resource', function($resource) {    // write this
+    return $resource('api/AdminUsers/PurpleUsers/:id/', {id: '@id' },{
+        update: {method: 'PUT'}
+    });
+}])
+.factory('AdminUserFactoryYellow', ['$resource', function($resource) {    // write this
+    return $resource('api/AdminUsers/YellowUsers/:id/', {id: '@id' },{
+        update: {method: 'PUT'}
+    });
+}])
+
+
 //====================================================================
  

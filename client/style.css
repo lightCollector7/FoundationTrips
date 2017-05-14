@@ -37,7 +37,8 @@
   background-color: rgb(018, 055,156);
   border: 5px solid rgb(018, 055,156);
   padding: 15px;
-  /*border-radius: 15px;*/
+  border-bottom: 1px solid white;
+ 
 }
 #adminNavbar{
   height: 150px;
@@ -125,7 +126,8 @@
   position: relative;
   float: center;
   margin-left: 30%;
-  padding-top: 10px;
+  margin-top: 30px;
+  padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
   width: 40%;
@@ -158,10 +160,11 @@
   width: 80%;
   height: 500px;
   border-radius: 10px;
-  border: 5px solid limegreen;
+  border: 5px solid white;
   /*background-color: #BCD2EE;*/
   background-color:royalblue;
   color: white;
+  /*box-shadow: 0 0 0 3pt white;*/
 
 }
 .greenTripsDivTitle{
@@ -265,9 +268,10 @@
   width: 80%;
   height: 500px;
   border-radius: 10px;
-  border: 5px solid orange;
+  border: 5px solid white;
   background-color: royalblue;
   color: white;
+  /*box-shadow: 0 0 0 3pt white;*/
 }
 /*.greenModal{
   position: absolute;
@@ -301,9 +305,10 @@
   width: 80%;
   height: 500px;
   border-radius: 10px;
-  border: 5px solid purple;
+  border: 5px solid white;
   background-color: royalblue;
   color:white;
+  /*box-shadow: 0 0 0 3pt white;*/
 }
 .purpleTripsDivTitle{
   margin-left: 10px;
@@ -328,9 +333,10 @@
   width: 80%;
   height: 500px;
   border-radius: 10px;
-  border: 5px solid yellow;
+  border: 5px solid white;
   background-color: royalblue;
   color:white;
+  /*box-shadow: 0 0 0 3pt white;*/
 }
 .yellowTripsDivTitle{
   margin-left: 10px;
@@ -450,7 +456,7 @@ a {
   width: 80%;
   height: 500px;
   border-radius: 10px;
-  border: 5px solid white;
+  border: 5px solid limegreen;
   background-color: black;
   color: white;
 }
@@ -462,7 +468,7 @@ a {
   width: 80%;
   height: 500px;
   border-radius: 10px;
-  border: 5px solid white;
+  border: 5px solid orange;
   background-color: black;
   color: white;
 }
@@ -474,7 +480,7 @@ a {
   width: 80%;
   height: 500px;
   border-radius: 10px;
-  border: 5px solid white;
+  border: 5px solid purple;
   background-color: black;
   color:white;
 }
@@ -486,7 +492,7 @@ a {
   width: 80%;
   height: 500px;
   border-radius: 10px;
-  border: 5px solid white;
+  border: 5px solid yellow;
   background-color: black;
   color:white;
 }
@@ -496,6 +502,50 @@ a {
 .adminLI{
   color: white;
   margin: 10px;
+}
+
+#addTripButtonGreen{
+  position: relative;
+  float: center;
+  margin: 20px;
+  height: 40px;
+  width: 80px;
+  background-color: black;
+  border: 2px solid limegreen;
+  color: white;
+
+}
+
+#addTripButtonOrange{
+  position: relative;
+  float: center;
+  margin: 20px;
+  height: 40px;
+  width: 80px;
+  background-color: black;
+  border: 2px solid orange;
+  color: white;
+}
+
+#addTripButtonPurple{
+  position: relative;
+  float: center;
+  margin: 20px;
+  height: 40px;
+  width: 80px;
+  background-color: black;
+  border: 2px solid purple;
+  color: white;
+}
+#addTripButtonYellow{
+  position: relative;
+  float: center;
+  margin: 20px;
+  height: 40px;
+  width: 80px;
+  background-color: black;
+  border: 2px solid yellow;
+  color: white;
 }
 .greenEditTripButton{
   position: absolute;
@@ -641,6 +691,10 @@ a {
   position: absolute;
   left: 300px;
 }
+#colorIDBox{
+  position: absolute;
+  left: 300px;
+}
 #tripTimeBox{
   position: absolute;
   left: 300px;
@@ -658,3 +712,183 @@ a {
 
 
 
+/*========================  adminEditUser Pages ======================================*/
+
+#adminGreenUsersDiv{
+  margin-left: 10%;
+  margin-top: 25px;
+  padding:20px;
+  padding-top: 10px;
+  width: 80%;
+  height: 500px;
+  border-radius: 10px;
+  border: 5px solid limegreen;
+  background-color: black;
+  color: white;
+  overflow-y: auto;
+}
+#greenUsersDivTitle{
+  margin-left: 10px;
+  margin-right: 10px;
+  /*margin-top: 20px;*/
+  font-size: 25px;
+  color:white;
+  border-bottom: 3px solid limegreen;
+}
+
+#adminOrangeUsersDiv{
+  margin-left: 10%;
+  margin-top: 25px;
+  padding:20px;
+  padding-top: 10px;
+  width: 80%;
+  height: 500px;
+  border-radius: 10px;
+  border: 5px solid Orange;
+  background-color: black;
+  color: white;
+  overflow-y: auto;
+}
+#orangeUsersDivTitle{
+  margin-left: 10px;
+  margin-right: 10px;
+  /*margin-top: 20px;*/
+  font-size: 25px;
+  color:white;
+  border-bottom: 3px solid orange;
+}
+
+#adminPurpleUsersDiv{
+  margin-left: 10%;
+  margin-top: 25px;
+  padding:20px;
+  padding-top: 10px;
+  width: 80%;
+  height: 500px;
+  border-radius: 10px;
+  border: 5px solid Purple;
+  background-color: black;
+  color: white;
+  overflow-y: auto;
+}
+#purpleUsersDivTitle{
+    margin-left: 10px;
+  margin-right: 10px;
+  /*margin-top: 20px;*/
+  font-size: 25px;
+  color:white;
+  border-bottom: 3px solid purple;
+}
+
+#adminYellowUsersDiv{
+  margin-left: 10%;
+  margin-top: 25px;
+  padding:20px;
+  padding-top: 10px;
+  width: 80%;
+  height: 500px;
+  border-radius: 10px;
+  border: 5px solid yellow;
+  background-color: black;
+  color: white;
+  overflow-y: auto;
+}
+#yellowUsersDivTitle{
+  margin-left: 10px;
+  margin-right: 10px;
+  /*margin-top: 20px;*/
+  font-size: 25px;
+  color:white;
+  border-bottom: 3px solid yellow;
+  
+}
+
+.greenUser{
+  margin-top: 10px;
+}
+
+.orangeUser{
+  margin-top: 10px;
+}
+
+.purpleUser{
+  margin-top: 10px;
+}
+
+.yellowUser{
+  margin-top: 10px;
+}
+
+
+
+#greenEditUserButton{
+  margin:5px;
+  background-color: black;
+  border: 1px solid limegreen;
+  color: white;
+
+}
+#addUserButtonGreen{
+  position: relative;
+  float: center;
+  margin: 20px;
+  height: 40px;
+  width: 80px;
+  background-color: black;
+  border: 2px solid limegreen;
+  color: white;
+
+}
+#orangeEditUserButton{
+  margin:5px;
+  background-color: black;
+  border: 1px solid orange;
+  color: white;
+}
+#addUserButtonOrange{
+  position: relative;
+  float: center;
+  margin: 20px;
+  height: 40px;
+  width: 80px;
+  background-color: black;
+  border: 2px solid orange;
+  color: white;
+
+}
+
+#purpleEditUserButton{
+  margin:5px;
+  background-color: black;
+  border: 1px solid purple;
+  color: white;
+}
+#addUserButtonPurple{
+  position: relative;
+  float: center;
+  margin: 20px;
+  height: 40px;
+  width: 80px;
+  background-color: black;
+  border: 2px solid purple;
+  color: white;
+
+}
+
+#yellowEditUserButton{
+  margin:5px;
+  background-color: black;
+  border: 1px solid yellow;
+  color: white;
+}
+#addUserButtonYellow{
+  position: relative;
+  float: center;
+  margin: 20px;
+  height: 40px;
+  width: 80px;
+  background-color: black;
+  border: 2px solid yellow;
+  color: white;
+
+}

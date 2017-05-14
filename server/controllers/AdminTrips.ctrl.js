@@ -4,6 +4,21 @@ var auth = require('../middleware/auth.mw');
 
 var router = express.Router();
 
+// = /api/AdminTrips/
+router.route('/')
+    .post(auth.isAdmin, function(req, res){
+        var trip = req.body
+        procedures.procInsertTrip(trip.eventName, trip.eventDescription, trip.colorID, trip.eventDate, trip.eventTime, trip.eventCost, trip.maxSlots)
+        .then(function(data){
+            res.status(201).send(data);
+        }, function(err) {
+            console.log(err);
+            alert(err);
+            res.sendStatus(500);
+        
+        });
+    });
+    
 // = /api/AdminTrips/:id
 router.route('/:id')
     .get(function(req, res) {

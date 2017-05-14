@@ -13,7 +13,20 @@ router.route('/')
             console.log(err);
             res.sendStatus(500);
         });
-    });
+    })
+    // .post(auth.isAdmin, function(req, res){        //put on AdminTrips.ctrl
+    //     var trip = req.body
+    //     procedures.procInsertTrip(trip.eventName, trip.eventDate, trip.eventDescription, trip.colorID, trip.eventTime, trip.eventCost, trip.maxSlots)
+    //     .then(function(data){
+    //         res.status(201).send(data);
+    //     }, function(err) {
+    //         console.log(err);
+    //         alert(err);
+    //         res.sendStatus(500);
+        
+    //     });
+    // });
+
 
 // = /api/GreenTrips/:id
 router.route('/:id')

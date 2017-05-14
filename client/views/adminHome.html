@@ -3,15 +3,15 @@
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
-        <a class="navbarLink" ng-click="logout()">logout</a>
-        <a class="navbarLink" href="/Events">(exit ADMIN)</a>
-        <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
+        <a class="navbarLink hvr-grow" ng-click="logout()">logout</a>
+        <a class="navbarLink hvr-grow" href="/Events">(exit ADMIN)</a>
+        
   </div>
 
 <div id="adminBackground">
     <h1 class="adminHomeTitle">Welcome to admin Home.</h1>
 
-    <h1><a class="adminHomeLinks hvr-grow" href="/admin/Users">Users</a></h1>
+    <h1><a class="adminHomeLinks hvr-grow" href="/adminAllUsers">Users</a></h1>
 
     <h1><a class="adminHomeLinks hvr-grow" href="/adminAllEvents">Field Trips</a></h1>
 

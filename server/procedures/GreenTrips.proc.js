@@ -8,6 +8,10 @@ exports.procGetTrip = function(id) {
     return db.fnRow('procGetTrip', [id]);
 }
 
+exports.procInsertTrip = function(eventName, eventDate, eventDescription, eventColorID, eventTime, eventCost, eventMaxSlots) {
+    return db.fnRow(eventName, eventDate, eventDescription, eventColorID, eventTime, eventCost, eventMaxSlots );
+}
+
 exports.procGetSlotBySlotID = function(id) {
     return db.fnRow('procGetSlotBySlotID', [id]);
 }

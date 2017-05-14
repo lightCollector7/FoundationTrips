@@ -35,7 +35,7 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/TripDetailsYellow.html',
             controller: 'YellowTripDetailsController'
         })
-        .when('/adminHome',{
+        .when('/adminHome', {
             templateUrl: 'views/adminHome.html',
             controller: 'AdminHomeController'
         })
@@ -66,6 +66,46 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
         .when('/admin/editTrip/:id',{
             templateUrl: 'views/adminEditTrip.html',
             controller: 'adminEditTripController'
+        })
+        .when('/admin/addTripGreen', {
+            templateUrl: 'views/adminAddTripGreen.html',
+            controller:'adminAddTripController'
+        })
+        .when('/admin/addTripOrange', {
+            templateUrl: 'views/adminAddTripOrange.html',
+            controller:'adminAddTripController'
+        })
+        .when('/admin/addTripPurple', {
+            templateUrl: 'views/adminAddTripPurple.html',
+            controller:'adminAddTripController'
+        })
+        .when('/admin/addTripYellow', {
+            templateUrl: 'views/adminAddTripYellow.html',
+            controller:'adminAddTripController'
+        })
+        .when('/adminAllUsers', {
+            templateUrl: 'views/adminAllUsers.html',
+            controller: 'adminUsersController'
+        })
+        .when('/admin/addUserGreen', {
+            templateUrl: 'views/adminAddUserGreen.html',
+            controller: 'adminUsersController'
+        })
+        .when('/admin/addUserOrange', {
+            templateUrl: 'views/adminAddUserOrange.html',
+            controller: 'adminUsersController'
+        })
+        .when('/admin/addUserPurple', {
+            templateUrl: 'views/adminAddUserPurple.html',
+            controller: 'adminUsersController'
+        })
+        .when('/admin/addUserYellow', {
+            templateUrl: 'views/adminAddUserYellow.html',
+            controller: 'adminUsersController'
+        })
+        .when('/admin/editUser/:id', {
+            templateUrl: 'views/adminEditUser.html',
+            controller: 'adminEditUserController'
         })
         .otherwise({
             redirectTo: '/'

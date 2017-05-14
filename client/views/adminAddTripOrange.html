@@ -1,0 +1,27 @@
+  <div class="" id="adminNavbar">
+        <div id="adminNavbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+        <p id="navbarTitle">FIELD TRIPS</p>
+        <a class="navbarLink hvr-grow" ng-click="logout()">logout</a>
+        <a class="navbarLink hvr-grow" href="/adminAllEvents">(Admin Trips)</a>
+        <a class="navbarLink hvr-grow" href="/adminHome">(Admin Home)</a>
+        
+  </div>
+
+  <div id="adminBackground">
+      <div id="editTripDiv">
+          <form>
+            <label>Trip Name: <input id="tripNameBox" type="text" ng-model="trip.eventName" placeholder="Trip name..." required></label><br><br>
+            <label>Date:<input id="tripDateBox" type="text" ng-model="trip.eventDate" placeholder="mm/dd/yyyy" required></label><br><br>
+            <label>Description: <input id="tripDescriptionBox" type="text" ng-model="trip.eventDescription" placeholder="Trip description..." required></label><br><br>
+            <!--<label>Orange ColorID: 2  <input id="colorIDBox" type="text" value="2" ng-model="trip.colorID" required></label><br><br>-->
+            <label>Time: <input id="tripTimeBox" type="text" ng-model="trip.eventTime" placeholder="_:__ am/pm" required></label><br><br>
+            <label>Cost: <input id="tripCostBox" type="text" ng-model="trip.eventCost" placeholder="_.__" required></label><br><br>
+            <label>Max Slots: <input id="tripMaxSlotsBox" type="text" ng-model="trip.maxSlots" placeholder="ex. = 15" required></label><br><br>
+        </form>
+        <button id="submitTripButton" ng-click="submitTripOrange()">Submit Trip</button>
+          
+      </div>
+
+  </div>
