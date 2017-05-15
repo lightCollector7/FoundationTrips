@@ -23,3 +23,7 @@ exports.procUpdateTrip = function(id, eventName, eventDescription, eventDate, ev
 exports.procDeleteTrip = function(id){
     return db.fnEmpty('procDeleteTrip', [id]);
 }
+
+exports.procDeleteAllTripsAndSlots = function(){
+    return db.fnEmpty('procDeleteAllTripsAndSlots');
+}

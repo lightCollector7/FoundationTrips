@@ -46,7 +46,7 @@ router.route('/')
     })
     .post(auth.isAdmin, function(req, res){  // make the procedure to create new users and finish this
         var u = req.body
-        procedures.procInsertUser(u.firstname, u.lastname, u.email, u.password, u.role)
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
         .then(function(data){
             res.status(201).send(data);
         }, function(err) {
@@ -63,7 +63,7 @@ router.get('/me', function(req, res) {
 // = /api/users/:id
 router.route('/:id')
     .delete(function(req, res){
-        procedures.procDeleteUser(req.params.id)
+        procedures.procDeleteUserAndSlots(req.params.id)
         .then(function() {
             res.sendStatus(204);
         }, function(err) {
@@ -74,7 +74,7 @@ router.route('/:id')
     })
     .put(function(req, res){
         var u = req.body;
-        procedures.procUpdateUser(req.params.id, u.firstname, u.lastname, u.email, u.role)
+        procedures.procUpdateUser(req.params.id, u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
         .then(function(){
             res.sendStatus(204);
         }, function(err){

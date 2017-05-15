@@ -8,3 +8,21 @@
         <a class="navbarLink hvr-grow" href="/adminHome">(Admin Home)</a>
        
   </div>
+
+  <div id="adminBackground">
+    <div id="editTripDiv">
+        <form name="editUserForm">
+            <label>First Name: <input id="userFirstNameBox" type="text" ng-model="user.firstName" required></label><br><br>
+            <label>Last Name:<input id="userLastNameBox" type="text" ng-model="user.lastName" required></label><br><br>
+            <label>Email: <input id="userEmailBox" type="text" ng-model="user.email" required></label><br><br>
+            <label>Password: <input id="userPasswordBox" type="text" ng-model="user.password" placeholder="enter new password" required></label><br><br>
+            <label>ColorID: <input id="userColorIdBox" type="text" ng-model="user.colorID" required></label><br><br>
+            <label>Role: <input id="userRoleBox" type="text" ng-model="user.role" required></label ><br><br>
+        </form>
+        <button id="updateUserButton" ng-click="updateThisUser()" ng-disabled="editUserForm.$invalid">Submit Changes</button>
+        <button class="btn btn-default" id="deleteUserButton" ng-click="promptDeleteThisUser()">DELETE USER</button>
+    </div>
+
+
+
+</div>

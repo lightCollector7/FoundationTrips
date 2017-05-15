@@ -107,6 +107,10 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/adminEditUser.html',
             controller: 'adminEditUserController'
         })
+        .when('/adminDeleteAllTrips', {
+            templateUrl: 'views/adminDeleteAllTrips.html',
+            controller: 'adminHomeController'
+        })
         .otherwise({
             redirectTo: '/'
         });

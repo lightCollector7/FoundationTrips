@@ -13,6 +13,17 @@ router.route('/GreenUsers')
             console.log(err);
             res.sendStatus(500);
         });
+    })
+     .post(auth.isAdmin, function(req, res){  // make the procedure to create new users and finish this
+        var u = req.body
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
+        .then(function(data){
+            res.status(201).send(data);
+        }, function(err) {
+            console.log(err);
+            alert(err);
+            res.sendStatus(500);
+        });
     });
 
 router.route('/OrangeUsers')
@@ -21,6 +32,17 @@ router.route('/OrangeUsers')
             res.send(orangeUsers);
         }, function(err) {
             console.log(err);
+            res.sendStatus(500);
+        });
+    }) 
+    .post(auth.isAdmin, function(req, res){  // make the procedure to create new users and finish this
+        var u = req.body
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
+        .then(function(data){
+            res.status(201).send(data);
+        }, function(err) {
+            console.log(err);
+            alert(err);
             res.sendStatus(500);
         });
     });
@@ -33,8 +55,20 @@ router.route('/PurpleUsers')
             console.log(err);
             res.sendStatus(500);
         });
+    })
+     .post(auth.isAdmin, function(req, res){  // make the procedure to create new users and finish this
+        var u = req.body
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
+        .then(function(data){
+            res.status(201).send(data);
+        }, function(err) {
+            console.log(err);
+            alert(err);
+            res.sendStatus(500);
+        });
     });
 
+    
 router.route('/YellowUsers')
     .get(function(req, res) {
         procedures.procGetUsersYellow().then(function(yellowUsers) {
@@ -43,7 +77,20 @@ router.route('/YellowUsers')
             console.log(err);
             res.sendStatus(500);
         });
+    })
+     .post(auth.isAdmin, function(req, res){  // make the procedure to create new users and finish this
+        var u = req.body
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
+        .then(function(data){
+            res.status(201).send(data);
+        }, function(err) {
+            console.log(err);
+            alert(err);
+            res.sendStatus(500);
+        });
     });
+
+
 
 
 module.exports = router;

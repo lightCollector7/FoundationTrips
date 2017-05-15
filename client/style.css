@@ -727,6 +727,35 @@ a {
 
 
 
+/*========================  adminAddUser Pages ======================================*/
+
+
+#userFirstNameBox{
+  position: absolute;
+  left: 300px;
+  
+}
+#userLastNameBox{
+  position: absolute;
+  left: 300px;
+}
+#userEmailBox{
+  position: absolute;
+  left: 300px;
+}
+#userPasswordBox{
+  position: absolute;
+  left: 300px;
+}
+#userColorIdBox{
+  position: absolute;
+  left: 300px;
+}
+#userRoleBox{
+  position: absolute;
+  left: 300px;
+}
+
 
 /*========================  adminEditUser Pages ======================================*/
 

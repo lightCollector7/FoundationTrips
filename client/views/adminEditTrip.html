@@ -12,15 +12,15 @@
   
 <div id="adminBackground">
     <div id="editTripDiv">
-        <form>
-            <label>Trip Name: <input id="tripNameBox" type="text" ng-model="tripToEdit.eventName"></label><br><br>
-            <label>Date:<input id="tripDateBox" type="text" ng-model="tripToEdit.eventDate"></label><br><br>
-            <label>Description: <input id="tripDescriptionBox" type="text" ng-model="tripToEdit.eventDescription"></label><br><br>
-            <label>Time: <input id="tripTimeBox" type="text" ng-model="tripToEdit.eventTime"></label><br><br>
-            <label>Cost: <input id="tripCostBox" type="text" ng-model="tripToEdit.eventCost"></label><br><br>
-            <label>Max Slots: <input id="tripMaxSlotsBox" type="text" ng-model="tripToEdit.maxSlots"></label><br><br>
+        <form name="editTripForm">
+            <label>Trip Name: <input id="tripNameBox" type="text" ng-model="tripToEdit.eventName" required></label><br><br>
+            <label>Date:<input id="tripDateBox" type="text" ng-model="tripToEdit.eventDate" required></label><br><br>
+            <label>Description: <input id="tripDescriptionBox" type="text" ng-model="tripToEdit.eventDescription" required></label><br><br>
+            <label>Time: <input id="tripTimeBox" type="text" ng-model="tripToEdit.eventTime" required></label><br><br>
+            <label>Cost: <input id="tripCostBox" type="text" ng-model="tripToEdit.eventCost" required></label><br><br>
+            <label>Max Slots: <input id="tripMaxSlotsBox" type="text" ng-model="tripToEdit.maxSlots" required></label><br><br>
         </form>
-        <button id="updateTripButton" ng-click="updateTrip()">Submit Changes</button>
+        <button id="updateTripButton" ng-click="updateTrip()" ng-disabled="editTripForm.$invalid">Submit Changes</button>
         <button class="btn btn-default" id="deleteTripButton" ng-click="promptDeleteThisTrip()">DELETE TRIP</button>
     </div>
 

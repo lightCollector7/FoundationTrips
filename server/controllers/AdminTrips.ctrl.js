@@ -52,5 +52,17 @@ router.route('/:id')
 
     });
 
+// = /api/AdminTrips/deleteAllTrips
+router.route('/deleteAllTrips')
+    .delete(function(req,res){
+    procedures.procDeleteAllTripsAndSlots()
+    .then(function(){
+        res.sendStatus(204);
+    }, function(err){
+        res.sendStatus(500);
+    });
+
+    });
+
 
 module.exports = router;

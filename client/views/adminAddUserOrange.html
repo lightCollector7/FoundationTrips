@@ -8,3 +8,21 @@
         <a class="navbarLink hvr-grow" href="/adminHome">(Admin Home)</a>
        
   </div>
+
+  <div id="adminBackground">
+    <div id="editTripDiv">
+        <form>
+            <label>First Name: <input id="userFirstNameBox" type="text" ng-model="user.firstName"></label><br><br>
+            <label>Last Name:<input id="userLastNameBox" type="text" ng-model="user.lastName"></label><br><br>
+            <label>Email: <input id="userEmailBox" type="text" ng-model="user.email"></label><br><br>
+            <label>Password: <input id="userPasswordBox" type="text" ng-model="user.password" placeholder="enter new password"></label><br><br>
+            <!--<label>ColorID: <input id="userColorIdBox" type="text" ng-model="user.colorID"></label><br><br>-->
+            <label>Role: <input id="userRoleBox" type="text" ng-model="user.role"></label><br><br>
+        </form>
+        <button id="submitUserButton" ng-click="submitUserOrange()">Submit User</button>
+        
+    </div>
+
+
+
+</div>

@@ -26,6 +26,7 @@ angular.module('FoundationTrips.controllers',[])
     UserService.isLoggedIn();
 
     $scope.loggedIn = false;
+    $scope.isAdmin = false;
     $scope.isGreen = false;
     $scope.isOrange = false;
     $scope.isPurple = false;
@@ -36,6 +37,12 @@ angular.module('FoundationTrips.controllers',[])
         console.log("this is $scope.ME: " )
         console.log( $scope.ME);
         $scope.loggedIn = true;
+
+        $scope.myRole = me.role;
+        console.log("my role: " + $scope.myRole);
+        if($scope.myRole == "admin") {
+            $scope.isAdmin = true;
+        }
         
         $scope.myColor = me.colorID;
          console.log("my colorID: " + $scope.myColor);
@@ -609,6 +616,22 @@ angular.module('FoundationTrips.controllers',[])
     }
     getYellowTrips();
 
+    $scope.deleteAllTripsAndSlots = function(){     // bind this to button on adminDeleteAllTrips.html
+
+          $scope.promptDeleteAllTripsAndSlots = function () {
+            var confirmDeleteTripsAndSlots = confirm('This will delete every Field Trip and associated user enrollments. Are you sure you want to delete this slot?');
+            if (shouldDelete) {
+                var secondConfirmation = confirm('Clicking ok will do it, I promise. Last chance to turn back!')
+            } if (secondConfirmation){
+                $http.delete('/api/deleteAllTripsAndSlots').then(function(success){
+                    alert('the Database has been reset! You can now enter new Field Trips')
+                    $location.path('/adminAllEvents');
+                })
+            }
+          }
+    };
+
+
 }])
 
 
@@ -1164,25 +1187,78 @@ angular.module('FoundationTrips.controllers',[])
 
     //========== now write functions for adding Users for all 4 color groups ======= //
 
-    function addGreenUser() {
+     $scope.submitUserGreen = function() {
+        var data = {
+            firstName: $scope.user.firstName,
+            lastName: $scope.user.lastName,
+            email: $scope.user.email,
+            password: $scope.user.password,
+            colorID: '1',
+            role: $scope.user.role,
+        }
 
-    };
-    function addOrangeUser() {
-
-    };
-    function addPurpleUser() {
-
+        var userToSubmit = new AdminUserFactoryGreen(data);
+        userToSubmit.$save(function (success) {
+            console.log("Trip submitted successfully");
+            $location.path('/adminAllUsers');
+        });
     }
-    function addYellowUser() {
 
+    $scope.submitUserOrange = function() {
+        var data = {
+            firstName: $scope.user.firstName,
+            lastName: $scope.user.lastName,
+            email: $scope.user.email,
+            password: $scope.user.password,
+            colorID: '2',
+            role: $scope.user.role,
+        }
+
+        var userToSubmit = new AdminUserFactoryOrange(data);
+        userToSubmit.$save(function (success) {
+            console.log("Trip submitted successfully");
+            $location.path('/adminAllUsers');
+        });
     }
+    $scope.submitUserPurple = function() {
+        var data = {
+            firstName: $scope.user.firstName,
+            lastName: $scope.user.lastName,
+            email: $scope.user.email,
+            password: $scope.user.password,
+            colorID: '3',
+            role: $scope.user.role,
+        }
 
+        var userToSubmit = new AdminUserFactoryPurple(data);
+        userToSubmit.$save(function (success) {
+            console.log("Trip submitted successfully");
+            $location.path('/adminAllUsers');
+        });
+    }
+    $scope.submitUserYellow = function() {
+        var data = {
+            firstName: $scope.user.firstName,
+            lastName: $scope.user.lastName,
+            email: $scope.user.email,
+            password: $scope.user.password,
+            colorID: '4',
+            role: $scope.user.role,
+        }
+
+        var userToSubmit = new AdminUserFactoryYellow(data);
+        userToSubmit.$save(function (success) {
+            console.log("Trip submitted successfully");
+            $location.path('/adminAllUsers');
+        });
+    }
 
 
 }])
 
-.controller('adminEditUserController', ['$scope', function($scope){
-       UserService.requireLogin();
+.controller('adminEditUserController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'UserFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UserFactory){
+    $window.scrollTo(0, 0);
+    UserService.requireLogin();
     UserService.requireAdmin();
     UserService.isLoggedIn();
 
@@ -1197,9 +1273,33 @@ angular.module('FoundationTrips.controllers',[])
         $route.reload();
         });
     }
-    // write script for editing a userForEvent
+//  script for editing a user
 
-    // write script for deleting a user
+    var userID = $routeParams.id;
+
+    $scope.user = UserFactory.get({id: userID}), function(){
+        $scope.user = success.data;
+        
+    }
+
+    $scope.updateThisUser = function(){
+        console.log('this is the user to be edited: ' );
+        console.log($scope.user);
+        $scope.user.$update(function(success){
+           console.log('The slot was updated!');
+           $location.path('/adminAllUsers') ;
+        })
+    }
+
+    $scope.promptDeleteThisUser = function(){
+        var shouldDelete = confirm('Are you sure you want to delete this user?');
+        if(shouldDelete) {
+            console.log($scope.user);
+            $scope.user.$delete(function(sucess){
+                $location.path('/adminAllUsers');
+            })
+        }
+    }
 
 }])
 
