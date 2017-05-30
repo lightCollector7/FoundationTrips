@@ -261,8 +261,12 @@
   text-decoration: white;
   margin-top: 3px;
   border-bottom: 1px solid limegreen;
-  width: 55%;
+  width: 95%;
   padding: 10px;
+}
+.greenSlotIsMine{
+  border: 1px solid limegreen;
+  padding: 5px;
 }
 
 #orangeTripsDiv{
@@ -302,8 +306,12 @@
   text-decoration: white;
   margin-top: 3px;
   border-bottom: 1px solid orange;
-  width: 55%;
+  width: 95%;
   padding: 10px;
+}
+.orangeSlotIsMine{
+   border: 1px solid orange;
+  padding: 5px;
 }
 
 #purpleTripsDiv{
@@ -334,8 +342,12 @@
   text-decoration: white;
   margin-top: 3px;
   border-bottom: 1px solid purple;
-  width: 55%;
+  width: 95%;
   padding: 10px;
+}
+.purpleSlotIsMine{
+   border: 1px solid purple;
+  padding: 5px;
 }
 
 #yellowTripsDiv{
@@ -365,8 +377,12 @@
   text-decoration: white;
   margin-top: 3px;
   border-bottom: 1px solid yellow;
-  width: 55%;
+  width: 95%;
   padding: 10px;
+}
+.yellowSlotIsMine{
+  border: 1px solid yellow;
+  padding: 5px;
 }
 
 #rainbowTripsDiv{
@@ -384,6 +400,11 @@
   background-color: royalblue;
   color:white;
 
+}
+.waitlist{
+  position: absolute;
+  left: 350px;
+  color: red;
 }
 a {
   color:white;
@@ -595,6 +616,27 @@ a {
 
 /*========================  adminTripDetails Pages ======================================*/
 
+.adminGreenTripSlots{
+  border-bottom: 1px solid limegreen;
+  width: 95%;
+}
+.adminOrangeTripSlots{
+  border-bottom: 1px solid orange;
+  width: 95%;
+}
+.adminPurpleTripSlots{
+  border-bottom: 1px solid purple;
+  width: 95%;
+}
+.adminYellowTripSlots{
+  border-bottom: 1px solid yellow;
+  width: 95%;
+}
+.adminBrownTripSlots{
+  border-bottom: 1px solid white;
+  width: 95%;
+}
+
 #editSlotButton {
   background-color: black;
   color: white;
@@ -636,6 +678,12 @@ a {
   background-color: black;
   border: 1px solid yellow;
   color: white;
+}
+.adminWaitlist{
+  position: absolute;
+  left: 500px;
+  color: red;
+  margin-top: 12px;
 }
 
 /*========================  adminSlotDetails Pages ======================================*/

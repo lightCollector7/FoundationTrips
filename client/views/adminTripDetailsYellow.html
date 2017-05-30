@@ -17,10 +17,11 @@
       
       <h3> Field Trip Slots:</h3>
       <ol>
-        <li id="{{yellowTripSlot.id}}" class="yellowTripSlots" ng-repeat="yellowTripSlot in yellowTripSlots" >
+        <li id="{{yellowTripSlot.id}}" class="adminYellowTripSlots" ng-repeat="yellowTripSlot in yellowTripSlots" >
           <a href="admin/slotDetails/{{ yellowTripSlot.id }}"><button id="yellowEditSlotButton" >edit</button></a>
           <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{yellowTripSlot.paid}}"></input></label>
-          {{yellowTripSlot.firstname}} {{yellowTripSlot.lastname}}
+          <span id="participantName">{{yellowTripSlot.firstname}} {{yellowTripSlot.lastname}} </span>
+            <span ng-if="yellowTripSlots.indexOf(yellowTripSlot) +1 > yellowTrip.maxSlots" class="adminWaitlist">** WaitListed **</span>
         </li>
       </ol>
 

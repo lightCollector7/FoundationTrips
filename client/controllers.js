@@ -17,6 +17,7 @@ angular.module('FoundationTrips.controllers',[])
             redirect();
         }, function(err) {
             console.log(err);
+            alert("an error occurred during login attempt")
         });
     }
 }])
@@ -147,33 +148,45 @@ angular.module('FoundationTrips.controllers',[])
     $scope.greenTrip = GreenTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.greenTrip: ");
     console.log($scope.greenTrip);
+    // console.log("$scope.greenTrip.eventDate: ")
+    // console.log($scope.greenTrip.eventDate);
+    // console.log("$scope.greenTrip.maxSlots: ")
+    // console.log($scope.greenTrip.maxSlots);
+
+    $scope.maxSlots = $http.get('/api/GreenTrips/' + tripID).then(function(success){
+        console.log(success.data.maxSlots);
+        maxSlots = success.data.maxSlots;
+        return maxSlots;
+    })
 
 
+    $scope.greenTripSlots = GreenTripSlotsFactory.query( {id: tripID} );
+    console.log("this is the $scope.greenTripSlots Array: ");
+    console.log($scope.greenTripSlots);
 
-
-    $scope.greenTripSlots = [];
-    $scope.greenTripSlots = $http.get('/api/GreenTripSlots/' + tripID).then(function(success){
-        $scope.greenTripSlots = success.data;
-        console.log("this is the $scope.greenTripSlots Array: ");
-        console.log($scope.greenTripSlots);
-        var tripSlotsArray = $scope.greenTripSlots;
-        return tripSlotsArray;
-    }).then(function(tripSlotsArray){
-        for (var i=0; i<tripSlotsArray.length; i++ ){
-            var ngSlot = $scope.greenTripSlots[i];
-            console.log(ngSlot);
-            $scope.slotIsMine = false;
-            if(ngSlot.userID == $scope.ME.id){       //faulty logic to hide names with ng-show="slotisMine" and ng-hide="slotisMine"
-                $scope.slotIsMine = true;
+    // $scope.greenTripSlots = [];
+    // $scope.greenTripSlots = $http.get('/api/GreenTripSlots/' + tripID).then(function(success){
+    //     $scope.greenTripSlots = success.data;
+    //     console.log("this is the $scope.greenTripSlots Array: ");
+    //     console.log($scope.greenTripSlots);
+    //     var tripSlotsArray = $scope.greenTripSlots;
+    //     return tripSlotsArray;
+    // }).then(function(tripSlotsArray){
+    //     for (var i=0; i<tripSlotsArray.length; i++ ){
+    //         var ngSlot = $scope.greenTripSlots[i];
+    //         console.log(ngSlot);
+    //         $scope.slotIsMine = false;
+    //         if(ngSlot.userID == $scope.ME.id){       //faulty logic to hide names with ng-show="slotisMine" and ng-hide="slotisMine"
+    //             $scope.slotIsMine = true;
                 
-                console.log('values to compare: ')
-                console.log("ngSlot.userID: " + ngSlot.userID);
-                console.log("$scope.ME.id: " + $scope.ME.id);
-                console.log("if both are equal than slotIsMine = true")
-                console.log($scope.slotIsMine);
-                }
-            }
-        });
+    //             console.log('values to compare: ')
+    //             console.log("ngSlot.userID: " + ngSlot.userID);
+    //             console.log("$scope.ME.id: " + $scope.ME.id);
+    //             console.log("if both are equal than slotIsMine = true")
+    //             console.log($scope.slotIsMine);
+    //             }
+    //         }
+    //     });
     
     
 

@@ -16,9 +16,16 @@
   
   <h3> Field Trip Slots:</h3>
   <ol>
-   <li class="tripSlots" ng-repeat="orangeTripSlot in orangeTripSlots">{{orangeTripSlot.firstname}} {{orangeTripSlot.lastname}}</li>
+   <li class="tripSlots" ng-repeat="orangeTripSlot in orangeTripSlots">
+      <p ng-if="ME.id !== orangeTripSlot.userID" class="slotIsNotMine">this slot is filled <span ng-if="orangeTripSlots.indexOf(orangeTripSlot) +1 > orangeTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
+      <p ng-if="ME.id === orangeTripSlot.userID" class="orangeSlotIsMine">{{orangeTripSlot.firstname}} {{orangeTripSlot.lastname}} <span ng-if="orangeTripSlots.indexOf(orangeTripSlot) +1 > orangeTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
+    </li>
   </ol>
 
   <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
   <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>
 </div>
+
+
+
+

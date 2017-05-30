@@ -1,3 +1,4 @@
+
 angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.controllers', 'FoundationTrips.services', 'FoundationTrips.factories'])
 
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
