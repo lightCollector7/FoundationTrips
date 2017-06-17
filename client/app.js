@@ -6,7 +6,7 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
     $routeProvider
         .when('/', {
             templateUrl: 'views/home.html',
-            controller: 'HomeController'
+            controller: ''
         })
         .when('/login', {
             templateUrl: 'views/login.html',
@@ -16,9 +16,9 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/login.html',
             controller: 'LoginController'
         })
-         .when('/Events', {
-            templateUrl: 'views/allEvents.html',
-            controller: 'EventsController'
+         .when('/CurrentEvents', {
+            templateUrl: 'views/allCurrentEvents.html',
+            controller: 'allCurrentEventsController'
         })
         .when('/GreenTrips/:id', {
             templateUrl: 'views/TripDetailsGreen.html',
@@ -40,8 +40,8 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/adminHome.html',
             controller: 'AdminHomeController'
         })
-        .when('/adminAllEvents', {
-            templateUrl: 'views/adminAllEvents.html',
+        .when('/adminCurrentEvents', {
+            templateUrl: 'views/adminCurrentEvents.html',
             controller: 'AdminHomeController'
         })
          .when('/admin/GreenTrips/:id', {
@@ -108,10 +108,10 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/adminEditUser.html',
             controller: 'adminEditUserController'
         })
-        .when('/adminDeleteAllTrips', {
-            templateUrl: 'views/adminDeleteAllTrips.html',
-            controller: 'adminHomeController'
-        })
+        // .when('/adminDeleteAllTrips', {
+        //     templateUrl: 'views/adminDeleteAllTrips.html',
+        //     controller: 'adminHomeController'
+        // })
         .otherwise({
             redirectTo: '/'
         });

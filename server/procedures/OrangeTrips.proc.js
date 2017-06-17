@@ -4,6 +4,13 @@ exports.procGetTrips_Orange = function() {
     return db.fnRows('procGetTrips_Orange');    
 }
 
+exports.procGetTrips_Orange_Current = function(){
+    return db.fnRows('procGetTrips_Orange_Current');
+}
+exports.procGetTrips_Orange_Future = function(){
+    return db.fnRows('procGetTrips_Orange_Future');
+}
+
 exports.procGetTrip = function(id) {
     return db.fnRow('procGetTrip', [id]);
 }

@@ -3,6 +3,12 @@ var db = require('../config/db');
 exports.procGetTrips_Green = function() {
     return db.fnRows('procGetTrips_Green');    
 }
+exports.procGetTrips_Green_Current = function(){
+    return db.fnRows('procGetTrips_Green_Current');
+}
+exports.procGetTrips_Green_Future = function(){
+    return db.fnRows('procGetTrips_Green_Future');
+}
 
 exports.procGetTrip = function(id) {
     return db.fnRow('procGetTrip', [id]);

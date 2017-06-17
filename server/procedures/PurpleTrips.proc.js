@@ -4,6 +4,13 @@ exports.procGetTrips_Purple = function() {
     return db.fnRows('procGetTrips_Purple');    
 }
 
+exports.procGetTrips_Purple_Current = function(){
+    return db.fnRows('procGetTrips_Purple_Current');
+}
+exports.procGetTrips_Purple_Future = function(){
+    return db.fnRows('procGetTrips_Purple_Future');
+}
+
 exports.procGetTrip = function(id) {
     return db.fnRow('procGetTrip', [id]);
 }

@@ -4,14 +4,14 @@
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
         <a class="navbarLink" ng-click="logout()" href="/">logout</a>
-        <a class="navbarLink" href="/Events">return to All Trips</a>
+        <a class="navbarLink" href="/CurrentEvents">return to All Trips</a>
         <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
   </div>
 
 
 
 <div id="greenTripsDiv" class="container"> 
-  <p class="greenTripsDivTitle">{{greenTrip.eventName}} <span class="tripDateLine">{{greenTrip.eventDate}}</span></p>
+  <p class="greenTripsDivTitle">{{greenTrip.eventName}} <span class="tripDateLine">{{greenTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
   <p class="greenTripDescriptionLine">{{greenTrip.eventDescription}} <span class="tripTimeLine">{{greenTrip.eventTime}}</span><span class="tripCostLine">${{greenTrip.eventCost}}</span></p>
 
   <h3> Field Trip Slots:</h3>

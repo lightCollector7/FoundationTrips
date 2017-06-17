@@ -7,7 +7,7 @@ angular.module('FoundationTrips.controllers',[])
     function redirect() {
         var dest = $location.search().p;
         if (!dest) {
-            dest = '/Events';
+            dest = '/CurrentEvents';
         }
         $location.path(dest).search('p', null).replace();
     }
@@ -22,7 +22,7 @@ angular.module('FoundationTrips.controllers',[])
     }
 }])
 
-.controller('EventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'GreenTripsFactory', 'OrangeTripsFactory', 'PurpleTripsFactory', 'YellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, GreenTripsFactory, OrangeTripsFactory, PurpleTripsFactory, YellowTripsFactory, $routeParams) {
+.controller('allCurrentEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'CurrentGreenTripsFactory', 'CurrentOrangeTripsFactory', 'CurrentPurpleTripsFactory', 'CurrentYellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, CurrentGreenTripsFactory, CurrentOrangeTripsFactory, CurrentPurpleTripsFactory, CurrentYellowTripsFactory, $routeParams) {
     UserService.requireLogin();
     UserService.isLoggedIn();
 
@@ -75,28 +75,28 @@ angular.module('FoundationTrips.controllers',[])
     }
  
     function getGreenTrips() {
-        $scope.greenTrips = GreenTripsFactory.query();
+        $scope.greenTrips = CurrentGreenTripsFactory.query();
         console.log('this is the GREENTRIPS ARRAY: ')
         console.log($scope.greenTrips)
     }
     getGreenTrips();
 
     function getOrangeTrips() {
-       $scope.orangeTrips = OrangeTripsFactory.query();
+       $scope.orangeTrips = CurrentOrangeTripsFactory.query();
         console.log('this is the ORANGETRIPS ARRAY: ')
         console.log($scope.orangeTrips)
     }
     getOrangeTrips();
 
     function getPurpleTrips() {
-       $scope.purpleTrips = PurpleTripsFactory.query();
+       $scope.purpleTrips = CurrentPurpleTripsFactory.query();
         console.log('this is the PURPLETRIPS ARRAY: ')
         console.log($scope.purpleTrips)
     }
     getPurpleTrips();
 
     function getYellowTrips() {
-       $scope.yellowTrips = YellowTripsFactory.query();
+       $scope.yellowTrips = CurrentYellowTripsFactory.query();
         console.log('this is the YELLOWTRIPS ARRAY: ')
         console.log($scope.yellowTrips)
     }
@@ -105,7 +105,7 @@ angular.module('FoundationTrips.controllers',[])
 }])
 
 
-.controller('GreenTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'GreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, GreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
+.controller('GreenTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentGreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentGreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
     $window.scrollTo(0, 0);
     console.log( "we are in the GreenTripsDetailsController now.")
     UserService.isLoggedIn();
@@ -145,7 +145,7 @@ angular.module('FoundationTrips.controllers',[])
     
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
-    $scope.greenTrip = GreenTripsFactory.get( {id: tripID} );
+    $scope.greenTrip = CurrentGreenTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.greenTrip: ");
     console.log($scope.greenTrip);
     // console.log("$scope.greenTrip.eventDate: ")
@@ -153,7 +153,7 @@ angular.module('FoundationTrips.controllers',[])
     // console.log("$scope.greenTrip.maxSlots: ")
     // console.log($scope.greenTrip.maxSlots);
 
-    $scope.maxSlots = $http.get('/api/GreenTrips/' + tripID).then(function(success){
+    $scope.maxSlots = $http.get('/api/CurrentGreenTrips/' + tripID).then(function(success){
         console.log(success.data.maxSlots);
         maxSlots = success.data.maxSlots;
         return maxSlots;
@@ -271,7 +271,7 @@ angular.module('FoundationTrips.controllers',[])
 
                     
 
-.controller('OrangeTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'OrangeTripsFactory', 'OrangeTripSlotsFactory', 'OrangeTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, OrangeTripsFactory, OrangeTripSlotsFactory, OrangeTripFilledSlotsFactory){
+.controller('OrangeTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentOrangeTripsFactory', 'OrangeTripSlotsFactory', 'OrangeTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentOrangeTripsFactory, OrangeTripSlotsFactory, OrangeTripFilledSlotsFactory){
     console.log( "we are in the OrangeTripDetailsController now.")
     $window.scrollTo(0, 0);
     UserService.isLoggedIn();
@@ -307,9 +307,15 @@ angular.module('FoundationTrips.controllers',[])
     var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
-    $scope.orangeTrip = OrangeTripsFactory.get( {id: tripID} );
+    $scope.orangeTrip = CurrentOrangeTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.orangeTrip: ");
     console.log($scope.orangeTrip);
+
+    $scope.maxSlots = $http.get('/api/CurrentOrangeTrips/' + tripID).then(function(success){
+        console.log(success.data.maxSlots);
+        maxSlots = success.data.maxSlots;
+        return maxSlots;
+    })
 
     $scope.orangeTripSlots = OrangeTripSlotsFactory.query( {id: tripID} );
     console.log("this is the $scope.orangeTripSlots Array: ");
@@ -372,7 +378,7 @@ angular.module('FoundationTrips.controllers',[])
     }; 
 }])
 
-.controller('PurpleTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'PurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, PurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
+.controller('PurpleTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentPurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentPurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
     console.log( "we are in the PurpleTripDetailsController now.")
     $window.scrollTo(0, 0);
     UserService.isLoggedIn();
@@ -408,9 +414,15 @@ angular.module('FoundationTrips.controllers',[])
     var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
-    $scope.purpleTrip = PurpleTripsFactory.get( {id: tripID} );
+    $scope.purpleTrip = CurrentPurpleTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.purpleTrip: ");
     console.log($scope.purpleTrip);
+
+    $scope.maxSlots = $http.get('/api/CurrentPurpleTrips/' + tripID).then(function(success){
+        console.log(success.data.maxSlots);
+        maxSlots = success.data.maxSlots;
+        return maxSlots;
+    })
 
     $scope.purpleTripSlots = PurpleTripSlotsFactory.query( {id: tripID} );
     console.log("this is the $scope.purpleTripSlots Array: ");
@@ -473,7 +485,7 @@ angular.module('FoundationTrips.controllers',[])
     }; 
 }])
 
-.controller('YellowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'YellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, YellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
+.controller('YellowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentYellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentYellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
     console.log( "we are in the YellowTripDetailsController now.")
     $window.scrollTo(0, 0);
     UserService.isLoggedIn();
@@ -513,9 +525,15 @@ angular.module('FoundationTrips.controllers',[])
     var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
-    $scope.yellowTrip = YellowTripsFactory.get( {id: tripID} );
+    $scope.yellowTrip = CurrentYellowTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.yellowTrip: ");
     console.log($scope.yellowTrip);
+
+    $scope.maxSlots = $http.get('/api/CurrentYellowTrips/' + tripID).then(function(success){
+        console.log(success.data.maxSlots);
+        maxSlots = success.data.maxSlots;
+        return maxSlots;
+    })
 
     $scope.yellowTripSlots = YellowTripSlotsFactory.query( {id: tripID} );
     console.log("this is the $scope.yellowTripSlots Array: ");
@@ -578,7 +596,7 @@ angular.module('FoundationTrips.controllers',[])
     }; 
 }])
 
-.controller('AdminHomeController', ['$scope', '$location', '$route', '$http', 'UserService', 'GreenTripsFactory', 'OrangeTripsFactory', 'PurpleTripsFactory', 'YellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, GreenTripsFactory, OrangeTripsFactory, PurpleTripsFactory, YellowTripsFactory, $routeParams) {
+.controller('AdminHomeController', ['$scope', '$location', '$route', '$http', 'UserService', 'CurrentGreenTripsFactory', 'CurrentOrangeTripsFactory', 'CurrentPurpleTripsFactory', 'CurrentYellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, CurrentGreenTripsFactory, CurrentOrangeTripsFactory, CurrentPurpleTripsFactory, CurrentYellowTripsFactory, $routeParams) {
     //restrict to admins only
 
     UserService.me().then(function(me){
@@ -602,28 +620,28 @@ angular.module('FoundationTrips.controllers',[])
 
  
     function getGreenTrips() {
-        $scope.greenTrips = GreenTripsFactory.query();
+        $scope.greenTrips = CurrentGreenTripsFactory.query();
         console.log('this is the GREENTRIPS ARRAY: ')
         console.log($scope.greenTrips)
     }
     getGreenTrips();
 
     function getOrangeTrips() {
-       $scope.orangeTrips = OrangeTripsFactory.query();
+       $scope.orangeTrips = CurrentOrangeTripsFactory.query();
         console.log('this is the ORANGETRIPS ARRAY: ')
         console.log($scope.orangeTrips)
     }
     getOrangeTrips();
 
     function getPurpleTrips() {
-       $scope.purpleTrips = PurpleTripsFactory.query();
+       $scope.purpleTrips = CurrentPurpleTripsFactory.query();
         console.log('this is the PURPLETRIPS ARRAY: ')
         console.log($scope.purpleTrips)
     }
     getPurpleTrips();
 
     function getYellowTrips() {
-       $scope.yellowTrips = YellowTripsFactory.query();
+       $scope.yellowTrips = CurrentYellowTripsFactory.query();
         console.log('this is the YELLOWTRIPS ARRAY: ')
         console.log($scope.yellowTrips)
     }
@@ -648,7 +666,7 @@ angular.module('FoundationTrips.controllers',[])
 }])
 
 
-.controller('adminGreenTripDetailsController', ['$scope', '$location', '$route', '$http', "$window", 'UserService', '$routeParams', 'GreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, GreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
+.controller('adminGreenTripDetailsController', ['$scope', '$location', '$route', '$http', "$window", 'UserService', '$routeParams', 'CurrentGreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentGreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
     console.log( "we are in the GreenTripsDetailsController now.")
     //require admin
     $window.scrollTo(0, 0);
@@ -666,7 +684,7 @@ angular.module('FoundationTrips.controllers',[])
 
     var tripID = $routeParams.id;
     console.log("This is the tripID: " + tripID);
-    $scope.greenTrip = GreenTripsFactory.get( {id: tripID} );
+    $scope.greenTrip = CurrentGreenTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.greenTrip: ");
     console.log($scope.greenTrip);
 
