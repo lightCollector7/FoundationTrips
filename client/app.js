@@ -40,9 +40,17 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/adminHome.html',
             controller: 'AdminHomeController'
         })
+        .when('/adminEventsNavMenu',{
+            templateUrl: 'views/adminEventsNavMenu.html',
+            controller: ''
+        })
         .when('/adminCurrentEvents', {
             templateUrl: 'views/adminCurrentEvents.html',
             controller: 'AdminHomeController'
+        })
+        .when('/adminFutureEvents', {
+            templateUrl: 'views/adminFutureEvents.html',
+            controller: ''
         })
          .when('/admin/GreenTrips/:id', {
             templateUrl: 'views/adminTripDetailsGreen.html',
