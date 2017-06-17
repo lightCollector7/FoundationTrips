@@ -13,10 +13,10 @@
       <div id="editTripDiv">
           <form name="addTripForm"> 
             <label>Trip Name: <input id="tripNameBox" type="text" ng-model="trip.eventName" placeholder="Trip name..." required></label><br><br>
-            <label>Date:<input id="tripDateBox" type="text" ng-model="trip.eventDate" placeholder="mm/dd/yyyy" required></label><br><br>
+            <label>Date:<input id="tripDateBox" type="date" ng-model="trip.eventDate"  required></label><br><br>
             <label>Description: <input id="tripDescriptionBox" type="text" ng-model="trip.eventDescription" placeholder="Trip description..." required></label><br><br>
             <!--<label>Green ColorID: 1  <input id="colorIDBox" type="text" value="1" ng-model="trip.colorID" required></label><br><br>-->
-            <label>Time: <input id="tripTimeBox" type="text" ng-model="trip.eventTime" placeholder="_:__ am/pm" required></label><br><br>
+            <label>Time: <input id="tripTimeBox" type="time" ng-model="trip.eventTime" placeholder="_:__ am/pm" required></label><br><br>
             <label>Cost: <input id="tripCostBox" type="text" ng-model="trip.eventCost" placeholder="_.__" required></label><br><br>
             <label>Max Slots: <input id="tripMaxSlotsBox" type="text" ng-model="trip.maxSlots" placeholder="ex. = 15" required></label><br><br>
         </form>

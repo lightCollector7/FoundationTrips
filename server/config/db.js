@@ -14,11 +14,11 @@ var mysql = require('mysql');
 
 //==================FOR LOCAL DATABASE===========//
 var pool = mysql.createPool({
-    connectionLimit:10,
-    host: 'localhost',
-    user: 'CharleyHannah',
-    password: 'cphpl8285',
-    database: 'efTrips'
+    connectionLimit:10,      // DOES THIS NEED TO CHANGE FOR PRODUCTION??
+    host: 'localhost',       //change when UPLOADING TO AWS
+    user: 'CharleyHannah',   //change when UPLOADING TO AWS
+    password: 'cphpl8285',   // change when UPLOADING TO AWS
+    database: 'efTrips'      // change when UPLOADING TO AWS
 });
 //----------------------------------------------//
 

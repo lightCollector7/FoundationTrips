@@ -63,7 +63,7 @@
   margin-left: 10px;
   background-color: white;
   border: 5px solid royalblue;
-  border-radius: 15px;
+  border-radius: 5px;
   /*border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;*/
 }
@@ -741,32 +741,37 @@ a {
 
 #tripNameBox{
   position: absolute;
-  left: 300px;
+  left: 350px;
   
 }
 #tripDateBox{
   position: absolute;
-  left: 300px;
+  left: 350px;
+}
+.specifiedDateTime{
+  position: absolute;
+  left: 500px;
+  font-size: 12px;
 }
 #tripDescriptionBox{
   position: absolute;
-  left: 300px;
+  left: 350px;
 }
 #colorIDBox{
   position: absolute;
-  left: 300px;
+  left: 350px;
 }
 #tripTimeBox{
   position: absolute;
-  left: 300px;
+  left: 350px;
 }
 #tripCostBox{
   position: absolute;
-  left: 300px;
+  left: 350px;
 }
 #tripMaxSlotsBox{
   position: absolute;
-  left: 300px;
+  left: 350px;
 }
 
 

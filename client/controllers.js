@@ -1126,19 +1126,57 @@ angular.module('FoundationTrips.controllers',[])
         $route.reload();
         });
     }
+//===========================================================
+    // EITHER THIS:
 
     var tripID = $routeParams.id;
-    $scope.tripToEdit = AdminTripFactory.get( {id: tripID} );
-    console.log("this is the $scope.tripToEdit: ");
-    console.log($scope.tripToEdit);
+    $scope.tripToEdit = AdminTripFactory.get( {id: tripID}, function(){
+        console.log($scope.tripToEdit.eventDate);
+        $scope.tripToEdit.eventDate = new Date($scope.tripToEdit.eventDate);
+        console.log($scope.tripToEdit.eventDate);
+        console.log("this is the $scope.tripToEdit: ");
+        console.log($scope.tripToEdit);
+    } );
+    
 
+    // this is how it did work previously
     $scope.updateTrip = function() {
+        // $scope.tripToEdit.eventDate = Date.parse($scope.tripToEdit.eventDate);
         $scope.tripToEdit.$update(function(success) {
             console.log('the trip was updated!');
             // $route.reload();
             $location.path('/adminAllEvents');
         });
     };
+//========================================================
+    // OR THIS:
+
+    // var tripID = $routeParams.id;
+    // $scope.tripToEdit = $http.get('api/adminTrips/' + tripID).then(function(success){
+    //     $scope.tripToEdit = success.data;
+    //     console.log("this is the $scope.tripToEdit: ");
+    //     // console.log($scope.tripToEdit);
+    //     // console.log($scope.tripToEdit.eventDate);
+    //     // $scope.tripToEdit.eventDate = success.data.eventDate;
+    //     // console.log($scope.tripToEdit.eventDate);
+    //     var tripToEdit = $scope.tripToEdit
+    //     return $scope.tripToEdit;
+    // }).then(function(tripToEdit){
+    //     tripToEdit.eventDate = new Date(tripToEdit.eventDate);
+    //     return tripToEdit
+    // }.then(function(tripToEdit){
+    //     $scope.updateTrip = $http.put('api/adminTrips/' + tripID)
+
+    // }));
+    
+    // // write this as an $HTTP.put request ???
+    // $scope.updateTrip = function(){
+    //     $http.put('api/adminTrips/' + tripID).then(function(tripToEdit){
+
+    //     })
+    // }
+//================================================================
+
 
     $scope.promptDeleteThisTrip = function () {
         var shouldDelete = confirm('Are you sure you want to delete this trip?');
