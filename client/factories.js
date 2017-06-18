@@ -34,6 +34,26 @@ angular.module('FoundationTrips.factories', [])
         update: {method: 'PUT' }
     });
 }])
+.factory('FutureGreenTripsFactory', ['$resource', function($resource) {
+    return $resource('/api/FutureGreenTrips/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+.factory('FutureOrangeTripsFactory', ['$resource', function($resource) {
+    return $resource('/api/FutureOrangeTrips/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+.factory('FuturePurpleTripsFactory', ['$resource', function($resource) {
+    return $resource('/api/FuturePurpleTrips/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+.factory('FutureYellowTripsFactory', ['$resource', function($resource) {
+    return $resource('/api/FutureYellowTrips/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
 
 .factory('GreenTripSlotsFactory', ['$resource', function($resource) {   
     return $resource('/api/GreenTripSlots/:id/', {id: '@id' }, {

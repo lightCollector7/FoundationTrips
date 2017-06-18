@@ -13,7 +13,7 @@
  
 
     <div id="adminGreenTripsDiv" class="container"> 
-      <p class="greenTripsDivTitle">{{greenTrip.eventName}} <span class="tripDateLine">{{greenTrip.eventDate}}</span></p>
+      <p class="greenTripsDivTitle">{{greenTrip.eventName}} <span class="tripDateLine">{{greenTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
       <p class="greenTripDescriptionLine">{{greenTrip.eventDescription}} <span class="tripTimeLine">{{greenTrip.eventTime}}</span><span class="tripCostLine">${{greenTrip.eventCost}}</span></p>
 
       <h3> Field Trip Slots:</h3>

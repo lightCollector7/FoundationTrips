@@ -2,16 +2,16 @@
         <div id="navbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-         <p id="navbarTitle">FIELD TRIPS</p>
-         <a class="navbarLink hvr-grow" ng-click="logout()" href="">logout</a><a class="navbarLink" href="/adminHome" ng-show="isAdmin">ADMIN</a>
-         <a class="navbarLink hvr-grow" href="/UserHomeMenu">Home Menu</a>
-         <p id="signedInAs" class="navbarLink" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
+        <p id="navbarTitle">FIELD TRIPS</p>
+        <a class="navbarLink hvr-grow" ng-click="logout()" href="">logout</a><a class="navbarLink" href="/adminHome" ng-show="isAdmin">ADMIN</a>
+        <a class="navbarLink hvr-grow" href="/UserHomeMenu">Home Menu</a>
+        <p id="signedInAs" class="" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
         
   </div>
 
 
 <div id="greenTripsDiv" class="container" ng-show="isGreen || isTheRainbow"> 
-  <p class="greenTripsDivTitle">Green Field Trips</p>
+  <p class="greenTripsDivTitle">Upcoming Green Field Trips</p>
   <ul>
     <li ng-repeat="greenTrip in greenTrips" class="greenLI">
       <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/GreenTrips/{{greenTrip.id}}">  {{greenTrip.eventName}} </a>
@@ -24,7 +24,7 @@
 </div>
 
 <div id="orangeTripsDiv" class="container" ng-show="isOrange || isTheRainbow"> 
-  <p class="orangeTripsDivTitle">Orange Field Trips</p>
+  <p class="orangeTripsDivTitle">Upcoming Orange Field Trips</p>
   <ul>
     <li ng-repeat="orangeTrip in orangeTrips" class="orangeLI">
       <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/OrangeTrips/{{orangeTrip.id}}">  {{orangeTrip.eventName}} </a>
@@ -38,7 +38,7 @@
 </div>
 
 <div id="purpleTripsDiv" class="container" ng-show="isPurple || isTheRainbow"> 
-  <p class="purpleTripsDivTitle">Purple Field Trips</p>
+  <p class="purpleTripsDivTitle">Upcoming Purple Field Trips</p>
   <ul>
       <li ng-repeat="purpleTrip in purpleTrips" class="purpleLI">
         <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/PurpleTrips/{{purpleTrip.id}}">  {{purpleTrip.eventName}} </a>
@@ -51,7 +51,7 @@
 </div>
 
 <div id="yellowTripsDiv" class="container" ng-show="isYellow || isTheRainbow"> 
-  <p class="yellowTripsDivTitle"> Yellow Field Trips</p>
+  <p class="yellowTripsDivTitle"> Upcoming Yellow Field Trips</p>
   <ul>
      <li ng-repeat="yellowTrip in yellowTrips" class="yellowLI">
        <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/YellowTrips/{{yellowTrip.id}}">  {{yellowTrip.eventName}} </a>
@@ -64,7 +64,7 @@
 </div>
 
 <div id="rainbowTripsDiv" class="container" > 
-  <p class="rainbowTripsDivTitle"> Rainbow Field Trips</p>
+  <p class="rainbowTripsDivTitle"> Upcoming Rainbow Field Trips</p>
   <ul>
      <li ng-repeat="rainbowTrip in rainbowTrips" class="rainbowLI">
        <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/RainbowTrips/{{rainbowTrip.id}}">  {{rainbowTrip.eventName}} </a>
@@ -75,5 +75,3 @@
        </li>  
   </ul>
 </div>
-
-

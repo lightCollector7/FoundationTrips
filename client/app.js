@@ -16,9 +16,17 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/login.html',
             controller: 'LoginController'
         })
+        .when('/UserHomeMenu', {
+            templateUrl: 'views/UserHomeMenu.html',
+            controller: 'UserHomeMenuController'
+        })
          .when('/CurrentEvents', {
             templateUrl: 'views/allCurrentEvents.html',
             controller: 'allCurrentEventsController'
+        })
+        .when('/FutureEvents', {
+            templateUrl: 'views/allFutureEvents.html',
+            controller: 'allFutureEventsController'
         })
         .when('/GreenTrips/:id', {
             templateUrl: 'views/TripDetailsGreen.html',
@@ -46,11 +54,11 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
         })
         .when('/adminCurrentEvents', {
             templateUrl: 'views/adminCurrentEvents.html',
-            controller: 'AdminHomeController'
+            controller: 'AdminCurrentEventsController'
         })
         .when('/adminFutureEvents', {
             templateUrl: 'views/adminFutureEvents.html',
-            controller: ''
+            controller: 'AdminFutureEventsController'
         })
          .when('/admin/GreenTrips/:id', {
             templateUrl: 'views/adminTripDetailsGreen.html',

@@ -12,7 +12,7 @@
 
 <div id="adminBackground">
     <div id="adminPurpleTripsDiv" class="container"> 
-      <p class="purpleTripsDivTitle">{{purpleTrip.eventName}} <span class="tripDateLine">{{purpleTrip.eventDate}}</span></p>
+      <p class="purpleTripsDivTitle">{{purpleTrip.eventName}} <span class="tripDateLine">{{purpleTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
       <p class="purpleTripDescriptionLine">{{purpleTrip.eventDescription}} <span class="tripTimeLine">{{purpleTrip.eventTime}}</span><span class="tripCostLine">${{purpleTrip.eventCost}}</span></p>
       
       <h3> Field Trip Slots:</h3>

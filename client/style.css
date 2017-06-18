@@ -102,6 +102,7 @@
   color: white;
   position: relative;
   float: right;
+  margin-left: 10px;
   margin-top: 125px;
   margin-right: 10px;
 }
@@ -118,6 +119,14 @@
   color: white;
   margin-left: 25%;
   margin-right: 25%;
+}
+
+.homeLinks{
+  color: white;
+  float: left;
+  margin-left: 150px;
+  margin-right: 150px;
+  
 }
 
 /*=================== Login Page ============================*/

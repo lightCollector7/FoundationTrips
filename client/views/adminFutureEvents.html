@@ -1,1 +1,70 @@
-<h1> write this </h1>
+  <div class="" id="adminNavbar">
+        <div id="adminNavbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+        <p id="navbarTitle">FIELD TRIPS: UPCOMING!</p>
+        <a class="navbarLink hvr-grow" ng-click="logout()">logout</a>
+         <a class="navbarLink hvr-grow" href="/">(exit ADMIN)</a>
+         <a class="navbarLink hvr-grow" href="/adminHome">(Admin Home)</a>
+        
+  </div>
+
+<div id="adminBackground">
+
+    <div id="adminGreenTripsDiv" class="container" > 
+      <p class="greenTripsDivTitle">Green Field Trips <span><a href="/admin/addTripGreen"><button id="addTripButtonGreen" class="hvr-grow"> Add Trip</button></a></span> </p>
+      <ul>
+        <li ng-repeat="greenTrip in greenTrips" class="greenLI adminLI">
+          <a class="btn btn-primary singleTripLink adminTripLink"  ng-href="/admin/GreenTrips/{{greenTrip.id}}">  {{greenTrip.eventName}} </a>
+          <span class="tripDateLineSmall">{{greenTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
+          <!--<span class="tripTimeLineSmall">{{greenTrip.eventTime}}</span>-->
+          <span class="tripCostLineSmall">${{greenTrip.eventCost}}</span>
+          <span class="tripMaxSlotsLineSmall">Max Slots: {{greenTrip.maxSlots}}</span>
+          <span><a href="/admin/editTrip/{{greenTrip.id}}"><button class="greenEditTripButton hvr-grow" href="">Edit Trip</button></a></span>
+       </li>
+      </ul>
+    </div>
+
+    <div id="adminOrangeTripsDiv" class="container " > 
+      <p class="orangeTripsDivTitle">Orange Field Trips <span><a href="/admin/addTripOrange"><button id="addTripButtonOrange" class="hvr-grow"> Add Trip</button></a></span></p>
+      <ul>
+        <li ng-repeat="orangeTrip in orangeTrips" class="orangeLI adminLI">
+          <a class="btn btn-primary singleTripLink adminTripLink"  ng-href="/admin/OrangeTrips/{{orangeTrip.id}}">  {{orangeTrip.eventName}} </a>
+          <span class="tripDateLineSmall">{{orangeTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
+          <!--<span class="tripTimeLineSmall">{{orangeTrip.eventTime}}</span>-->
+          <span class="tripCostLineSmall">${{orangeTrip.eventCost}}</span>
+          <span class="tripMaxSlotsLineSmall">Max Slots: {{orangeTrip.maxSlots}}</span>
+          <span><a href="/admin/editTrip/{{orangeTrip.id}}"><button class="orangeEditTripButton hvr-grow">Edit Trip</button></a></span>
+          </li>                  
+      </ul>
+
+    </div>
+
+    <div id="adminPurpleTripsDiv" class="container "> 
+      <p class="purpleTripsDivTitle">Purple Field Trips <span><a href="/admin/addTripPurple"><button id="addTripButtonPurple" class="hvr-grow"> Add Trip</button></a></span></p>
+      <ul>
+          <li ng-repeat="purpleTrip in purpleTrips" class="purpleLI adminLI">
+            <a class="btn btn-primary singleTripLink adminTripLink"  ng-href="/admin/PurpleTrips/{{purpleTrip.id}}">  {{purpleTrip.eventName}} </a>
+            <span class="tripDateLineSmall">{{purpleTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
+            <!--<span class="tripTimeLineSmall">{{purpleTrip.eventTime}}</span>-->
+            <span class="tripCostLineSmall">${{purpleTrip.eventCost}}</span>
+            <span class="tripMaxSlotsLineSmall">Max Slots: {{purpleTrip.maxSlots}}</span>
+            <span><a href="/admin/editTrip/{{purpleTrip.id}}"><button class="purpleEditTripButton hvr-grow" href="">Edit Trip</button></a></span>
+          </li>  
+      </ul>
+    </div>
+
+    <div id="adminYellowTripsDiv" class="container " > 
+      <p class="yellowTripsDivTitle"> Yellow Field Trips <span><a href="/admin/addTripYellow"><button id="addTripButtonYellow" class="hvr-grow"> Add Trip</button></a></span></p>
+      <ul>
+        <li ng-repeat="yellowTrip in yellowTrips" class="yellowLI adminLI">
+          <a class="btn btn-primary singleTripLink adminTripLink "  ng-href="/admin/YellowTrips/{{yellowTrip.id}}">  {{yellowTrip.eventName}} </a>
+          <span class="tripDateLineSmall">{{yellowTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
+          <!--<span class="tripTimeLineSmall">{{yellowTrip.eventTime}}</span>-->
+          <span class="tripCostLineSmall">${{yellowTrip.eventCost}}</span>
+          <span class="tripMaxSlotsLineSmall">Max Slots: {{yellowTrip.maxSlots}}</span>
+          <span><a href="/admin/editTrip/{{yellowTrip.id}}"><button class="yellowEditTripButton hvr-grow" href="">Edit Trip</button></a></span>
+          </li>  
+      </ul>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+  <div class="" id="navbar">
+        <div id="navbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+        <p id="navbarTitle">FIELD TRIPS</p>
+        <a class="navbarLink hvr-grow" ng-click="logout()" href="">logout</a><a class="navbarLink" href="/adminHome" ng-show="isAdmin">ADMIN</a>
+        <p id="signedInAs" class="" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
+        
+  </div>
+
+
+  <div>
+       <h1><a class="homeLinks hvr-grow" href="/CurrentEvents">Current Events</a></h1>
+
+       <h1><a class="homeLinks hvr-grow" href="/FutureEvents">Future Events</a></h1>
+  </div>

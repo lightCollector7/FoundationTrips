@@ -21,7 +21,7 @@ router.route('/GreenUsers')
             res.status(201).send(data);
         }, function(err) {
             console.log(err);
-            alert(err);
+            // alert(err);
             res.sendStatus(500);
         });
     });
@@ -42,7 +42,7 @@ router.route('/OrangeUsers')
             res.status(201).send(data);
         }, function(err) {
             console.log(err);
-            alert(err);
+            // alert(err);
             res.sendStatus(500);
         });
     });
@@ -63,7 +63,7 @@ router.route('/PurpleUsers')
             res.status(201).send(data);
         }, function(err) {
             console.log(err);
-            alert(err);
+            // alert(err);
             res.sendStatus(500);
         });
     });
@@ -85,7 +85,7 @@ router.route('/YellowUsers')
             res.status(201).send(data);
         }, function(err) {
             console.log(err);
-            alert(err);
+            // alert(err);
             res.sendStatus(500);
         });
     });

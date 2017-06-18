@@ -7,7 +7,7 @@ angular.module('FoundationTrips.controllers',[])
     function redirect() {
         var dest = $location.search().p;
         if (!dest) {
-            dest = '/CurrentEvents';
+            dest = '/UserHomeMenu';
         }
         $location.path(dest).search('p', null).replace();
     }
@@ -18,6 +18,59 @@ angular.module('FoundationTrips.controllers',[])
         }, function(err) {
             console.log(err);
             alert("an error occurred during login attempt")
+        });
+    }
+}])
+
+.controller('UserHomeMenuController', ['$scope', '$location', 'UserService', function($scope, $location, UserService) {
+    UserService.requireLogin();
+    UserService.isLoggedIn();
+
+    $scope.loggedIn = false;
+    $scope.isAdmin = false;
+    $scope.isGreen = false;
+    $scope.isOrange = false;
+    $scope.isPurple = false;
+    $scope.isYellow = false;
+
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        console.log("this is $scope.ME: " )
+        console.log( $scope.ME);
+        $scope.loggedIn = true;
+
+        $scope.myRole = me.role;
+        console.log("my role: " + $scope.myRole);
+        if($scope.myRole == "admin") {
+            $scope.isAdmin = true;
+        }
+        
+        $scope.myColor = me.colorID;
+         console.log("my colorID: " + $scope.myColor);
+         if ($scope.myColor == "0") {
+             $scope.isTheRainbow = true;
+             console.log("My color group is Rainbow");
+         }
+        if ($scope.myColor == "1") {
+            $scope.isGreen = true; 
+            console.log("My color group is Green");  
+        }
+        if ($scope.myColor == "2"){
+            $scope.isOrange = true;
+             console.log("My color group is Orange");
+        }
+        if ($scope.myColor == "3"){
+            $scope.isPurple = true;
+            console.log("My color group is Purple");
+        }
+        if ($scope.myColor == "4"){
+            $scope.isYellow = true;
+            console.log("My color group is Yellow");
+        }
+    });
+    $scope.logout = function () {
+        UserService.logout().then(function(){
+        $route.reload();
         });
     }
 }])
@@ -97,6 +150,88 @@ angular.module('FoundationTrips.controllers',[])
 
     function getYellowTrips() {
        $scope.yellowTrips = CurrentYellowTripsFactory.query();
+        console.log('this is the YELLOWTRIPS ARRAY: ')
+        console.log($scope.yellowTrips)
+    }
+    getYellowTrips();
+
+}])
+
+.controller('allFutureEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'FutureGreenTripsFactory', 'FutureOrangeTripsFactory', 'FuturePurpleTripsFactory', 'FutureYellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, FutureGreenTripsFactory, FutureOrangeTripsFactory, FuturePurpleTripsFactory, FutureYellowTripsFactory, $routeParams) {
+    UserService.requireLogin();
+    UserService.isLoggedIn();
+
+    $scope.loggedIn = false;
+    $scope.isAdmin = false;
+    $scope.isGreen = false;
+    $scope.isOrange = false;
+    $scope.isPurple = false;
+    $scope.isYellow = false;
+
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        console.log("this is $scope.ME: " )
+        console.log( $scope.ME);
+        $scope.loggedIn = true;
+
+        $scope.myRole = me.role;
+        console.log("my role: " + $scope.myRole);
+        if($scope.myRole == "admin") {
+            $scope.isAdmin = true;
+        }
+        
+        $scope.myColor = me.colorID;
+         console.log("my colorID: " + $scope.myColor);
+         if ($scope.myColor == "0") {
+             $scope.isTheRainbow = true;
+             console.log("My color group is Rainbow");
+         }
+        if ($scope.myColor == "1") {
+            $scope.isGreen = true; 
+            console.log("My color group is Green");  
+        }
+        if ($scope.myColor == "2"){
+            $scope.isOrange = true;
+             console.log("My color group is Orange");
+        }
+        if ($scope.myColor == "3"){
+            $scope.isPurple = true;
+            console.log("My color group is Purple");
+        }
+        if ($scope.myColor == "4"){
+            $scope.isYellow = true;
+            console.log("My color group is Yellow");
+        }
+    });
+    $scope.logout = function () {
+        UserService.logout().then(function(){
+        $route.reload();
+        });
+    }
+ 
+    function getGreenTrips() {
+        $scope.greenTrips = FutureGreenTripsFactory.query();
+        console.log('this is the GREENTRIPS ARRAY: ')
+        console.log($scope.greenTrips)
+    }
+    getGreenTrips();
+
+    function getOrangeTrips() {
+       $scope.orangeTrips = FutureOrangeTripsFactory.query();
+        console.log('this is the ORANGETRIPS ARRAY: ')
+        console.log($scope.orangeTrips)
+    }
+    getOrangeTrips();
+
+    function getPurpleTrips() {
+       $scope.purpleTrips = FuturePurpleTripsFactory.query();
+        console.log('this is the PURPLETRIPS ARRAY: ')
+        console.log($scope.purpleTrips)
+    }
+    getPurpleTrips();
+
+    function getYellowTrips() {
+       $scope.yellowTrips = FutureYellowTripsFactory.query();
         console.log('this is the YELLOWTRIPS ARRAY: ')
         console.log($scope.yellowTrips)
     }
@@ -619,6 +754,75 @@ angular.module('FoundationTrips.controllers',[])
 
 
  
+    // function getGreenTrips() {
+    //     $scope.greenTrips = CurrentGreenTripsFactory.query();
+    //     console.log('this is the GREENTRIPS ARRAY: ')
+    //     console.log($scope.greenTrips)
+    // }
+    // getGreenTrips();
+
+    // function getOrangeTrips() {
+    //    $scope.orangeTrips = CurrentOrangeTripsFactory.query();
+    //     console.log('this is the ORANGETRIPS ARRAY: ')
+    //     console.log($scope.orangeTrips)
+    // }
+    // getOrangeTrips();
+
+    // function getPurpleTrips() {
+    //    $scope.purpleTrips = CurrentPurpleTripsFactory.query();
+    //     console.log('this is the PURPLETRIPS ARRAY: ')
+    //     console.log($scope.purpleTrips)
+    // }
+    // getPurpleTrips();
+
+    // function getYellowTrips() {
+    //    $scope.yellowTrips = CurrentYellowTripsFactory.query();
+    //     console.log('this is the YELLOWTRIPS ARRAY: ')
+    //     console.log($scope.yellowTrips)
+    // }
+    // getYellowTrips();
+
+    // $scope.deleteAllTripsAndSlots = function(){     // bind this to button on adminDeleteAllTrips.html
+
+    //       $scope.promptDeleteAllTripsAndSlots = function () {
+    //         var confirmDeleteTripsAndSlots = confirm('This will delete every Field Trip and associated user enrollments. Are you sure you want to delete this slot?');
+    //         if (shouldDelete) {
+    //             var secondConfirmation = confirm('Clicking ok will do it, I promise. Last chance to turn back!')
+    //         } if (secondConfirmation){
+    //             $http.delete('/api/deleteAllTripsAndSlots').then(function(success){
+    //                 alert('the Database has been reset! You can now enter new Field Trips')
+    //                 $location.path('/adminAllEvents');
+    //             })
+    //         }
+    //       }
+    // };
+
+
+}])
+
+.controller('AdminCurrentEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'CurrentGreenTripsFactory', 'CurrentOrangeTripsFactory', 'CurrentPurpleTripsFactory', 'CurrentYellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, CurrentGreenTripsFactory, CurrentOrangeTripsFactory, CurrentPurpleTripsFactory, CurrentYellowTripsFactory, $routeParams) {
+    //restrict to admins only
+
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        console.log("this is $scope.ME: " )
+        console.log( $scope.ME);
+        $scope.loggedIn = true;
+        
+    });
+    $scope.logout = function () {
+        UserService.logout().then(function(){
+        $route.reload();
+        });
+    }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+
+
+ 
     function getGreenTrips() {
         $scope.greenTrips = CurrentGreenTripsFactory.query();
         console.log('this is the GREENTRIPS ARRAY: ')
@@ -665,6 +869,75 @@ angular.module('FoundationTrips.controllers',[])
 
 }])
 
+.controller('AdminFutureEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'FutureGreenTripsFactory', 'FutureOrangeTripsFactory', 'FuturePurpleTripsFactory', 'FutureYellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, FutureGreenTripsFactory, FutureOrangeTripsFactory, FuturePurpleTripsFactory, FutureYellowTripsFactory, $routeParams) {
+    //restrict to admins only
+
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        console.log("this is $scope.ME: " )
+        console.log( $scope.ME);
+        $scope.loggedIn = true;
+        
+    });
+    $scope.logout = function () {
+        UserService.logout().then(function(){
+        $route.reload();
+        });
+    }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+
+
+ 
+    function getGreenTrips() {
+        $scope.greenTrips = FutureGreenTripsFactory.query();
+        console.log('this is the GREENTRIPS ARRAY: ')
+        console.log($scope.greenTrips)
+    }
+    getGreenTrips();
+
+    function getOrangeTrips() {
+       $scope.orangeTrips = FutureOrangeTripsFactory.query();
+        console.log('this is the ORANGETRIPS ARRAY: ')
+        console.log($scope.orangeTrips)
+    }
+    getOrangeTrips();
+
+    function getPurpleTrips() {
+       $scope.purpleTrips = FuturePurpleTripsFactory.query();
+        console.log('this is the PURPLETRIPS ARRAY: ')
+        console.log($scope.purpleTrips)
+    }
+    getPurpleTrips();
+
+    function getYellowTrips() {
+       $scope.yellowTrips = FutureYellowTripsFactory.query();
+        console.log('this is the YELLOWTRIPS ARRAY: ')
+        console.log($scope.yellowTrips)
+    }
+    getYellowTrips();
+
+    // $scope.deleteAllTripsAndSlots = function(){     // bind this to button on adminDeleteAllTrips.html
+
+    //       $scope.promptDeleteAllTripsAndSlots = function () {
+    //         var confirmDeleteTripsAndSlots = confirm('This will delete every Field Trip and associated user enrollments. Are you sure you want to delete this slot?');
+    //         if (shouldDelete) {
+    //             var secondConfirmation = confirm('Clicking ok will do it, I promise. Last chance to turn back!')
+    //         } if (secondConfirmation){
+    //             $http.delete('/api/deleteAllTripsAndSlots').then(function(success){
+    //                 alert('the Database has been reset! You can now enter new Field Trips')
+    //                 $location.path('/adminAllEvents');
+    //             })
+    //         }
+    //       }
+    // };
+
+
+}])
+
 
 .controller('adminGreenTripDetailsController', ['$scope', '$location', '$route', '$http', "$window", 'UserService', '$routeParams', 'CurrentGreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentGreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
     console.log( "we are in the GreenTripsDetailsController now.")
@@ -698,7 +971,7 @@ angular.module('FoundationTrips.controllers',[])
 
                     
 
-.controller('adminOrangeTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'OrangeTripsFactory', 'OrangeTripSlotsFactory', 'OrangeTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, OrangeTripsFactory, OrangeTripSlotsFactory, OrangeTripFilledSlotsFactory){
+.controller('adminOrangeTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentOrangeTripsFactory', 'OrangeTripSlotsFactory', 'OrangeTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentOrangeTripsFactory, OrangeTripSlotsFactory, OrangeTripFilledSlotsFactory){
     console.log( "we are in the OrangeTripDetailsController now.")
     //require admin
     $window.scrollTo(0, 0);
@@ -735,7 +1008,7 @@ angular.module('FoundationTrips.controllers',[])
     var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
-    $scope.orangeTrip = OrangeTripsFactory.get( {id: tripID} );
+    $scope.orangeTrip = CurrentOrangeTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.orangeTrip: ");
     console.log($scope.orangeTrip);
 
@@ -800,7 +1073,7 @@ angular.module('FoundationTrips.controllers',[])
     }; 
 }])
 
-.controller('adminPurpleTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'PurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, PurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
+.controller('adminPurpleTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentPurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentPurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
     console.log( "we are in the PurpleTripDetailsController now.")
     //require admin
     $window.scrollTo(0, 0);
@@ -837,7 +1110,7 @@ angular.module('FoundationTrips.controllers',[])
     var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
-    $scope.purpleTrip = PurpleTripsFactory.get( {id: tripID} );
+    $scope.purpleTrip = CurrentPurpleTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.purpleTrip: ");
     console.log($scope.purpleTrip);
 
@@ -902,7 +1175,7 @@ angular.module('FoundationTrips.controllers',[])
     }; 
 }])
 
-.controller('adminYellowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'YellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, YellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
+.controller('adminYellowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentYellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentYellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
     console.log( "we are in the YellowTripDetailsController now.")
     //require admin
     $window.scrollTo(0, 0);
@@ -943,7 +1216,7 @@ angular.module('FoundationTrips.controllers',[])
     var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
-    $scope.yellowTrip = YellowTripsFactory.get( {id: tripID} );
+    $scope.yellowTrip = CurrentYellowTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.yellowTrip: ");
     console.log($scope.yellowTrip);
 
@@ -1270,7 +1543,11 @@ angular.module('FoundationTrips.controllers',[])
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
-        });
+        }, function(err){
+                console.log(err);
+                alert('This User is already registered.');
+        
+            });
     }
 
     $scope.submitUserOrange = function() {
@@ -1287,8 +1564,12 @@ angular.module('FoundationTrips.controllers',[])
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
-        });
+        }, function(err){
+                console.log(err);
+                alert('This User is already registered.');
+            });
     }
+
     $scope.submitUserPurple = function() {
         var data = {
             firstName: $scope.user.firstName,
@@ -1303,7 +1584,11 @@ angular.module('FoundationTrips.controllers',[])
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
-        });
+        }, function(err){
+                console.log(err);
+                alert('This User is already registered.');
+        
+            });
     }
     $scope.submitUserYellow = function() {
         var data = {
@@ -1319,9 +1604,12 @@ angular.module('FoundationTrips.controllers',[])
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
-        });
+        }, function(err){
+                console.log(err);
+                alert('This User is already registered.');
+        
+            });
     }
-
 
 }])
 
