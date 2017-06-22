@@ -1,0 +1,28 @@
+  <div class="" id="navbar">
+        <div id="navbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+        <p id="navbarTitle">FIELD TRIPS</p>
+        <a class="navbarLink" ng-click="logout()" href="/">logout</a>
+        <a class="navbarLink" href="/UserHomeMenu">return to All Trips</a>
+        <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
+  </div>
+
+
+
+<div id="rainbowTripsDiv" class="container"> 
+  <p class="rainbowTripsDivTitle">{{rainbowTrip.eventName}} <span class="tripDateLine">{{rainbowTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
+  <p class="rainbowTripDescriptionLine">{{rainbowTrip.eventDescription}} <span class="tripTimeLine">{{rainbowTrip.eventTime}}</span><span class="tripCostLine">${{rainbowTrip.eventCost}}</span></p>
+
+  <h3> Field Trip Slots:</h3>
+  <ol>
+   <li class="tripSlots" ng-repeat="rainbowTripSlot in rainbowTripSlots" >
+     <p ng-if="ME.id !== rainbowTripSlot.userID" class="slotIsNotMine">this slot is filled <span ng-if="rainbowTripSlots.indexOf(rainbowTripSlot) +1 > rainbowTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
+     <p ng-if="ME.id === rainbowTripSlot.userID" class="rainbowSlotIsMine">{{rainbowTripSlot.firstname}} {{rainbowTripSlot.lastname}}   <span ng-if="rainbowTripSlots.indexOf(rainbowTripSlot) +1 > rainbowTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
+   
+     </li>
+  </ol>
+
+  <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
+  <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>
+</div>

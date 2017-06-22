@@ -12,17 +12,21 @@
   <div id="adminBackground"> 
 
     <div id="adminGreenUsersDiv" class="container"> 
+        
         <h2 id="greenUsersDivTitle"> Green Users <span><a href="/admin/addUserGreen"><button id="addUserButtonGreen" class="hvr-grow"> Add User</button></a></span> </h2>
+            <div class="userListDiv">
             <ol>
                 <li id="greenUser.id" class="greenUser" ng-repeat="greenUser in greenUsers">
                     <a href="/admin/editUser/{{greenUser.id}}"><button id="greenEditUserButton" class="hvr-grow">edit</button></a>
                     <span>{{greenUser.firstName}} {{greenUser.lastName}}</span>
                 </li>
             </ol>
+        </div>
     </div>
 
      <div id="adminOrangeUsersDiv" class="container"> 
         <h2 id="orangeUsersDivTitle"> Orange Users <span><a href="/admin/addUserOrange"><button id="addUserButtonOrange" class="hvr-grow"> Add User</button></a></span></h2>
+            <div class="userListDiv">
             <ol>
               
                  <li id="orangeUser.id" class="orangeUser" ng-repeat="orangeUser in orangeUsers">
@@ -31,26 +35,30 @@
                     
                 </li>
             </ol>
+            </div>
     </div>
 
      <div id="adminPurpleUsersDiv" class="container"> 
         <h2 id="purpleUsersDivTitle"> Purple Users <span><a href="/admin/addUserPurple" ><button id="addUserButtonPurple" class="hvr-grow"> Add User</button></a></span></h2>
+            <div class="userListDiv">
             <ol>
                 <li id="purpleUser.id" class="purpleUser" ng-repeat="purpleUser in purpleUsers">
                     <a href="/admin/editUser/{{purpleUser.id}}"><button id="purpleEditUserButton" class="hvr-grow">edit</button></a>
                     <span>{{purpleUser.firstName}} {{purpleUser.lastName}}</span>
                 </li>
             </ol>
+            </div>
     </div>
 
      <div id="adminYellowUsersDiv" class="container"> 
         <h2 id="yellowUsersDivTitle"> Yellow Users <span><a href="/admin/addUserYellow"><button id="addUserButtonYellow" class="hvr-grow"> Add User</button></a></span></h2>
-            
+            <div class="userListDiv">
              <ol>
                  <li id="yellowUser.id" class="yellowUser" ng-repeat="yellowUser in yellowUsers">
                     <a href="/admin/editUser/{{yellowUser.id}}"><button id="yellowEditUserButton" class="hvr-grow">edit</button></a>
                     <span">{{yellowUser.firstName}} {{yellowUser.lastName}}</span>
                  </li>
             </ol>
+            </div>
     </div>
 </div>

@@ -4,6 +4,13 @@ exports.procGetUsers = function() {
     return db.fnRows('procGetUsers');    
 }
 
+exports.procGetParticipant = function(firstName, lastName){
+    console.log('users.proc.js 8: ')
+    console.log(firstName);
+    console.log(lastName);
+    return db.fnRow('procGetParticipant', [firstName, lastName]);
+}
+
 exports.procGetUsersGreen = function() {
     return db.fnRows('procGetUsersGreen');
 }

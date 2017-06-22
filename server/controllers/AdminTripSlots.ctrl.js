@@ -6,7 +6,19 @@ var router = express.Router();
 
 
 
-// = /api/AdminTripSlots/slot/:slotID
+
+// = /api/AdminTripSlots/etc...
+router.route('/')
+      .post(function (req, res) {
+        var u = req.body;
+        procedures.procSignParticipantUp(u.userID, u.eventID, u.colorID)
+            .then(function (id) {
+                res.status(201).send(id);
+            }, function (err) {
+                console.log(err);
+                res.sendStatus(500);
+            });
+    });
 router.route('/slot/:slotID')
     .get(function(req, res) {
         procedures.procGetSlotBySlotID(req.params.slotID).then(function(singleSlot){

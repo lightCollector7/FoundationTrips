@@ -2,7 +2,7 @@
         <div id="adminNavbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-        <p id="navbarTitle">FIELD TRIPS: THIS MONTH</p>
+        <p id="navbarTitle">CURRENT FIELD TRIPS: </p>
         <a class="navbarLink hvr-grow" ng-click="logout()">logout</a>
          <a class="navbarLink hvr-grow" href="/">(exit ADMIN)</a>
          <a class="navbarLink hvr-grow" href="/adminHome">(Admin Home)</a>
@@ -67,6 +67,20 @@
           </li>  
       </ul>
     </div>
+
+  <div id="adminRainbowTripsDiv" class="container"> 
+  <p class="rainbowTripsDivTitle"> Rainbow Field Trips <span><a href="/admin/addTripRainbow"><button id="addTripButtonRainbow" class="hvr-grow"> Add Trip</button></a></span></p>
+  <ul>
+     <li ng-repeat="rainbowTrip in rainbowTrips" class="rainbowLI adminLI">
+       <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/admin/RainbowTrips/{{rainbowTrip.id}}">  {{rainbowTrip.eventName}} </a>
+        <span class="tripDateLineSmall">{{rainbowTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
+        <!--<span class="tripTimeLineSmall">{{rainbowTrip.eventTime}}</span>-->
+        <span class="tripCostLineSmall">${{rainbowTrip.eventCost}}</span>
+        <span class="tripMaxSlotsLineSmall">Max Slots: {{rainbowTrip.maxSlots}}</span>
+        <span><a href="/admin/editTrip/{{rainbowTrip.id}}"><button class="rainbowEditTripButton hvr-grow" href="">Edit Trip</button></a></span>
+       </li>  
+  </ul>
+</div>
 </div>
 
 

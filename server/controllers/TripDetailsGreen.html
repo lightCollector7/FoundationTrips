@@ -1,0 +1,28 @@
+  <div class="" id="navbar">
+        <div id="navbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+        <p id="navbarTitle">FIELD TRIPS</p>
+        <a class="navbarLink" ng-click="logout()" href="/">logout</a>
+        <a class="navbarLink" href="/UserHomeMenu">return to All Trips</a>
+        <p id="signedInAs" class="" ng-show="isLoggedIn()">Signed in as <a class="navbar-link"></a>{{ $scope.ME.firstname }} {{ $scope.ME.lastname }}</p>
+  </div>
+
+
+
+<div id="greenTripsDiv" class="container"> 
+  <p class="greenTripsDivTitle">{{greenTrip.eventName}} <span class="tripDateLine">{{greenTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
+  <p class="greenTripDescriptionLine">{{greenTrip.eventDescription}} <span class="tripTimeLine">{{greenTrip.eventTime}}</span><span class="tripCostLine">${{greenTrip.eventCost}}</span></p>
+
+  <h3> Field Trip Slots:</h3>
+  <ol>
+   <li class="tripSlots" ng-repeat="greenTripSlot in greenTripSlots" >
+     <p ng-if="ME.id !== greenTripSlot.userID" class="slotIsNotMine">this slot is filled <span ng-if="greenTripSlots.indexOf(greenTripSlot) +1 > greenTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
+     <p ng-if="ME.id === greenTripSlot.userID" class="greenSlotIsMine">{{greenTripSlot.firstname}} {{greenTripSlot.lastname}}   <span ng-if="greenTripSlots.indexOf(greenTripSlot) +1 > greenTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
+   
+     </li>
+  </ol>
+
+  <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
+  <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>
+</div>

@@ -44,6 +44,10 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/TripDetailsYellow.html',
             controller: 'YellowTripDetailsController'
         })
+        .when('/RainbowTrips/:id',{
+            templateUrl: 'views/TripDetailsRainbow.html',
+            controller: 'RainbowTripDetailsController'
+        })
         .when('/adminHome', {
             templateUrl: 'views/adminHome.html',
             controller: 'AdminHomeController'
@@ -76,6 +80,10 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/adminTripDetailsYellow.html',
             controller: 'adminYellowTripDetailsController'
         })
+           .when('/admin/RainbowTrips/:id', {
+            templateUrl: 'views/adminTripDetailsRainbow.html',
+            controller: 'adminRainbowTripDetailsController'
+        })
         .when('/admin/slotDetails/:slotID', {
             templateUrl: 'views/adminSlotDetails.html',
             controller: 'adminSlotDetailsController'
@@ -100,6 +108,15 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/adminAddTripYellow.html',
             controller:'adminAddTripController'
         })
+        .when('/admin/addTripRainbow', {
+            templateUrl: 'views/adminAddTripRainbow.html',
+            controller:'adminAddTripController'
+        })
+        .when('/addParticipant/:id', {
+            templateUrl: 'views/addParticipant.html',
+            controller:'addParticipantController'
+        })
+
         .when('/adminAllUsers', {
             templateUrl: 'views/adminAllUsers.html',
             controller: 'adminUsersController'

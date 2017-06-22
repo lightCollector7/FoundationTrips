@@ -1,0 +1,34 @@
+  <div class="" id="adminNavbar">
+        <div id="adminNavbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+        <p id="navbarTitle">FIELD TRIPS</p>
+        <a class="navbarLink hvr-grow" ng-click="logout()">logout</a>
+        <a class="navbarLink hvr-grow" href="/adminEventsNavMenu">(Admin Trips)</a>
+        <a class="navbarLink hvr-grow" href="/adminHome">(Admin Home)</a>
+        
+  </div>
+
+  <div id="adminBackground">
+      <div id="searchParticipantDiv">
+          <p>Trip to sign Participant up for: <span>{{trip.eventName}}</span></p>
+          <p>Date: <span>{{trip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}<span>
+          <!--<p>Trip ID: {{trip.id}}</p>-->
+          <!--<p>Color ID:<span ng-bind="trip.colorID"></span></p>-->
+          <form name="addParticipantForm">
+              <input id="searchFirstName" type="text" placeholder="first name" ng-model="participant.firstName"></input>
+              <input id="searchLastName" type="text" placeholder="last name" ng-model="participant.lastName"></input>
+
+          </form>
+        <button id="searchForParticipantButton" ng-click="searchForParticipant()" ng-disabled="">Search</button>
+
+        <div id="returnedParticipantDiv" ng-class="class" >
+            <p id="participantSearchResult" ng-bind="participantToSignUp[0].firstName"> <span id="participantLastName" ng-bind="participantToSignUp[0].lastName"></span></p>
+            <!--<span>{{participantToSignUp.lastName}}</span>-->
+            <p >userID: <span id="participantUserID" ng-bind="participantToSignUp[0].id"></span></p>
+            <button id="submitParticipantButton" ng-click="submitParticipant()">Sign Participant Up</button>
+        </div>
+          
+      </div>
+
+  </div>

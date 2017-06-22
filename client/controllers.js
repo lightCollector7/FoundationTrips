@@ -22,7 +22,7 @@ angular.module('FoundationTrips.controllers',[])
     }
 }])
 
-.controller('UserHomeMenuController', ['$scope', '$location', 'UserService', function($scope, $location, UserService) {
+.controller('UserHomeMenuController', ['$scope', '$location', 'UserService', '$route', function($scope, $location, UserService, $route) {
     UserService.requireLogin();
     UserService.isLoggedIn();
 
@@ -75,7 +75,7 @@ angular.module('FoundationTrips.controllers',[])
     }
 }])
 
-.controller('allCurrentEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'CurrentGreenTripsFactory', 'CurrentOrangeTripsFactory', 'CurrentPurpleTripsFactory', 'CurrentYellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, CurrentGreenTripsFactory, CurrentOrangeTripsFactory, CurrentPurpleTripsFactory, CurrentYellowTripsFactory, $routeParams) {
+.controller('allCurrentEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'CurrentGreenTripsFactory', 'CurrentOrangeTripsFactory', 'CurrentPurpleTripsFactory', 'CurrentYellowTripsFactory', 'CurrentRainbowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, CurrentGreenTripsFactory, CurrentOrangeTripsFactory, CurrentPurpleTripsFactory, CurrentYellowTripsFactory, CurrentRainbowTripsFactory, $routeParams) {
     UserService.requireLogin();
     UserService.isLoggedIn();
 
@@ -155,9 +155,16 @@ angular.module('FoundationTrips.controllers',[])
     }
     getYellowTrips();
 
+    function getRainbowTrips(){
+        $scope.rainbowTrips = CurrentRainbowTripsFactory.query();
+        console.log('this is the RAINBOWTRIPS ARRAY: ')
+        console.log($scope.rainbowTrips);
+    }
+    getRainbowTrips();
+
 }])
 
-.controller('allFutureEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'FutureGreenTripsFactory', 'FutureOrangeTripsFactory', 'FuturePurpleTripsFactory', 'FutureYellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, FutureGreenTripsFactory, FutureOrangeTripsFactory, FuturePurpleTripsFactory, FutureYellowTripsFactory, $routeParams) {
+.controller('allFutureEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'FutureGreenTripsFactory', 'FutureOrangeTripsFactory', 'FuturePurpleTripsFactory', 'FutureYellowTripsFactory', 'FutureRainbowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, FutureGreenTripsFactory, FutureOrangeTripsFactory, FuturePurpleTripsFactory, FutureYellowTripsFactory, FutureRainbowTripsFactory, $routeParams) {
     UserService.requireLogin();
     UserService.isLoggedIn();
 
@@ -236,6 +243,12 @@ angular.module('FoundationTrips.controllers',[])
         console.log($scope.yellowTrips)
     }
     getYellowTrips();
+       function getRainbowTrips(){
+        $scope.rainbowTrips = FutureRainbowTripsFactory.query();
+        console.log('this is the RAINBOWTRIPS ARRAY: ')
+        console.log($scope.rainbowTrips);
+    }
+    getRainbowTrips();
 
 }])
 
@@ -731,6 +744,117 @@ angular.module('FoundationTrips.controllers',[])
     }; 
 }])
 
+.controller('RainbowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentRainbowTripsFactory', 'RainbowTripSlotsFactory', 'RainbowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentRainbowTripsFactory, RainbowTripSlotsFactory, RainbowTripFilledSlotsFactory){
+    console.log( "we are in the RainbowTripDetailsController now.")
+    $window.scrollTo(0, 0);
+    UserService.isLoggedIn();
+    $scope.loggedIn = false;
+    $scope.isGreen = false;
+    $scope.isOrange = false;
+    $scope.isPurple = false;
+    $scope.isYellow = false;
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        $scope.loggedIn = true;
+
+        $scope.myColor = me.colorID;
+        console.log($scope.myColor);
+        if ($scope.myColor == "1") {
+            $scope.isGreen = true; 
+            console.log("My color group is Green");  
+        }
+        if ($scope.myColor == "2"){
+            $scope.isOrange = true;
+             console.log("My color group is Orange");
+        }
+        if ($scope.myColor == "3"){
+            $scope.isPurple = true;
+            console.log("My color group is Purple");
+        }
+        if ($scope.myColor == "4"){
+            $scope.isYellow = true;
+            console.log("My color group is Yellow");
+        }
+    });
+    $scope.logout = function () {
+        UserService.logout().then(function(){
+        $route.reload();
+        });
+    }
+    var slotToDelete = [];
+    var tripID =$routeParams.id;
+    console.log("This is the tripID: " + tripID);
+    $scope.rainbowTrip = CurrentRainbowTripsFactory.get( {id: tripID} );
+    console.log("this is the $scope.rainbowTrip: ");
+    console.log($scope.yellowTrip);
+
+    $scope.maxSlots = $http.get('/api/CurrentRainbowTrips/' + tripID).then(function(success){
+        console.log(success.data.maxSlots);
+        maxSlots = success.data.maxSlots;
+        return maxSlots;
+    })
+
+    $scope.rainbowTripSlots = RainbowTripSlotsFactory.query( {id: tripID} );
+    console.log("this is the $scope.rainbowTripSlots Array: ");
+    console.log($scope.rainbowTripSlots);
+
+    $scope.signMeUp = function() {
+        UserService.me().then(function(me) {
+            $scope.ME = me;
+            var data = {
+                userID: $scope.ME.id,
+                eventID: tripID,
+                colorID: $scope.ME.colorID,
+            }
+            console.log(data);
+
+            var userForEvent = new RainbowTripSlotsFactory(data);
+            userForEvent.$save(function (success) {
+                console.log('participant signed up successfully');
+                $route.reload();
+            }, function(err){
+                console.log(err);
+                alert('You are already signed up for this trip.');
+            })
+            
+        })
+    };
+
+
+   $scope.removeMe = function() {                                      
+        var shouldRemove = confirm('Remove you from this field trip?');
+        if (shouldRemove) {
+            var data = null;
+            UserService.me().then(function(me){
+                var data = {userID: me.id, eventID: tripID}
+                console.log(data);
+                
+                return data;
+            }).then (function(data){ 
+                
+               var mySlot = $http.get('/api/RainbowTripSlots/' + data.eventID + '/' + data.userID);
+               console.log(mySlot);
+
+               return mySlot;
+            }).then (function(mySlot) {
+                console.log(mySlot);
+                var slotToDelete = mySlot.data;
+                console.log(slotToDelete);
+                console.log(slotToDelete.id)
+
+                return slotToDelete;
+            }).then (function(slotToDelete){
+                var slotID = slotToDelete.id;
+                $http.delete('/api/RainbowTripSlots/delete/' + slotID);
+                console.log('deleted successfull')     
+                $route.reload();
+            }).catch(function(error){
+                console.log(error);
+            })
+        }   
+    }; 
+}])
+
 .controller('AdminHomeController', ['$scope', '$location', '$route', '$http', 'UserService', 'CurrentGreenTripsFactory', 'CurrentOrangeTripsFactory', 'CurrentPurpleTripsFactory', 'CurrentYellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, CurrentGreenTripsFactory, CurrentOrangeTripsFactory, CurrentPurpleTripsFactory, CurrentYellowTripsFactory, $routeParams) {
     //restrict to admins only
 
@@ -800,7 +924,7 @@ angular.module('FoundationTrips.controllers',[])
 
 }])
 
-.controller('AdminCurrentEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'CurrentGreenTripsFactory', 'CurrentOrangeTripsFactory', 'CurrentPurpleTripsFactory', 'CurrentYellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, CurrentGreenTripsFactory, CurrentOrangeTripsFactory, CurrentPurpleTripsFactory, CurrentYellowTripsFactory, $routeParams) {
+.controller('AdminCurrentEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'CurrentGreenTripsFactory', 'CurrentOrangeTripsFactory', 'CurrentPurpleTripsFactory', 'CurrentYellowTripsFactory', 'CurrentRainbowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, CurrentGreenTripsFactory, CurrentOrangeTripsFactory, CurrentPurpleTripsFactory, CurrentYellowTripsFactory, CurrentRainbowTripsFactory, $routeParams) {
     //restrict to admins only
 
     UserService.me().then(function(me){
@@ -851,6 +975,13 @@ angular.module('FoundationTrips.controllers',[])
     }
     getYellowTrips();
 
+    function getRainbowTrips(){
+        $scope.rainbowTrips = CurrentRainbowTripsFactory.query();
+        console.log('this is the RAINBOWTRIPS ARRAY: ')
+        console.log($scope.rainbowTrips)
+    }
+    getRainbowTrips();
+
     $scope.deleteAllTripsAndSlots = function(){     // bind this to button on adminDeleteAllTrips.html
 
           $scope.promptDeleteAllTripsAndSlots = function () {
@@ -869,7 +1000,7 @@ angular.module('FoundationTrips.controllers',[])
 
 }])
 
-.controller('AdminFutureEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'FutureGreenTripsFactory', 'FutureOrangeTripsFactory', 'FuturePurpleTripsFactory', 'FutureYellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, FutureGreenTripsFactory, FutureOrangeTripsFactory, FuturePurpleTripsFactory, FutureYellowTripsFactory, $routeParams) {
+.controller('AdminFutureEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'FutureGreenTripsFactory', 'FutureOrangeTripsFactory', 'FuturePurpleTripsFactory', 'FutureYellowTripsFactory', 'FutureRainbowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, FutureGreenTripsFactory, FutureOrangeTripsFactory, FuturePurpleTripsFactory, FutureYellowTripsFactory, FutureRainbowTripsFactory, $routeParams) {
     //restrict to admins only
 
     UserService.me().then(function(me){
@@ -920,6 +1051,13 @@ angular.module('FoundationTrips.controllers',[])
     }
     getYellowTrips();
 
+    function getRainbowTrips(){
+        $scope.rainbowTrips = FutureRainbowTripsFactory.query();
+        console.log('this is the RAINBOWTRIPS ARRAY: ')
+        console.log($scope.rainbowTrips)
+    }
+    getRainbowTrips();
+
     // $scope.deleteAllTripsAndSlots = function(){     // bind this to button on adminDeleteAllTrips.html
 
     //       $scope.promptDeleteAllTripsAndSlots = function () {
@@ -940,9 +1078,11 @@ angular.module('FoundationTrips.controllers',[])
 
 
 .controller('adminGreenTripDetailsController', ['$scope', '$location', '$route', '$http', "$window", 'UserService', '$routeParams', 'CurrentGreenTripsFactory', 'GreenTripSlotsFactory', 'GreenTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentGreenTripsFactory, GreenTripSlotsFactory, GreenTripFilledSlotsFactory){
+    
     console.log( "we are in the GreenTripsDetailsController now.")
-    //require admin
+
     $window.scrollTo(0, 0);
+    
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
@@ -954,6 +1094,11 @@ angular.module('FoundationTrips.controllers',[])
         $route.reload();
         });
     }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
 
     var tripID = $routeParams.id;
     console.log("This is the tripID: " + tripID);
@@ -965,6 +1110,9 @@ angular.module('FoundationTrips.controllers',[])
         $scope.greenTripSlots = success.data;
         console.log($scope.greenTripSlots);
     })
+
+    $scope.addParticipantLink = "addParticipant/" + tripID;
+    console.log($scope.addParticipantLink);
       
 
 }])
@@ -972,39 +1120,28 @@ angular.module('FoundationTrips.controllers',[])
                     
 
 .controller('adminOrangeTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentOrangeTripsFactory', 'OrangeTripSlotsFactory', 'OrangeTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentOrangeTripsFactory, OrangeTripSlotsFactory, OrangeTripFilledSlotsFactory){
+
     console.log( "we are in the OrangeTripDetailsController now.")
-    //require admin
+
     $window.scrollTo(0, 0);
+
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
         $scope.ME = me;
         $scope.loggedIn = true;
-
-        $scope.myColor = me.colorID;
-        console.log($scope.myColor);
-        if ($scope.myColor == "1") {
-            $scope.isGreen = true; 
-            console.log("My color group is Green");  
-        }
-        if ($scope.myColor == "2"){
-            $scope.isOrange = true;
-             console.log("My color group is Orange");
-        }
-        if ($scope.myColor == "3"){
-            $scope.isPurple = true;
-            console.log("My color group is Purple");
-        }
-        if ($scope.myColor == "4"){
-            $scope.isYellow = true;
-            console.log("My color group is Yellow");
-        }
     });
     $scope.logout = function () {
         UserService.logout().then(function(){
         $route.reload();
         });
     }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+
     var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
@@ -1016,97 +1153,33 @@ angular.module('FoundationTrips.controllers',[])
     console.log("this is the $scope.orangeTripSlots Array: ");
     console.log($scope.orangeTripSlots);
 
-    $scope.signMeUp = function() {
-        UserService.me().then(function(me) {
-            $scope.ME = me;
-            var data = {
-                userID: $scope.ME.id,
-                eventID: tripID,
-                colorID: $scope.ME.colorID,
-            }
-            console.log(data);
-
-            var userForEvent = new OrangeTripSlotsFactory(data);
-            userForEvent.$save(function (success) {
-                console.log('participant signed up successfully');
-                $route.reload();
-            }, function(err){
-                console.log(err);
-                alert('You are already signed up for this trip.');
-            })
-            
-        })
-    };
-
-
-   $scope.removeMe = function() {                                      
-        var shouldRemove = confirm('Remove you from this field trip?');
-        if (shouldRemove) {
-            var data = null;
-            UserService.me().then(function(me){
-                var data = {userID: me.id, eventID: tripID}
-                console.log(data);
-                
-                return data;
-            }).then (function(data){ 
-                
-               var mySlot = $http.get('/api/OrangeTripSlots/' + data.eventID + '/' + data.userID);
-               console.log(mySlot);
-
-               return mySlot;
-            }).then (function(mySlot) {
-                console.log(mySlot);
-                var slotToDelete = mySlot.data;
-                console.log(slotToDelete);
-                console.log(slotToDelete.id)
-
-                return slotToDelete;
-            }).then (function(slotToDelete){
-                var slotID = slotToDelete.id;
-                $http.delete('/api/OrangeTripSlots/delete/' + slotID);
-                console.log('deleted successfull')     
-                $route.reload();
-            }).catch(function(error){
-                console.log(error);
-            })
-        }   
-    }; 
+   $scope.addParticipantLink = "addParticipant/" + tripID;
+    console.log($scope.addParticipantLink); 
 }])
 
 .controller('adminPurpleTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentPurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentPurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
+
     console.log( "we are in the PurpleTripDetailsController now.")
-    //require admin
+
     $window.scrollTo(0, 0);
+
     UserService.isLoggedIn();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
         $scope.ME = me;
         $scope.loggedIn = true;
-
-        $scope.myColor = me.colorID;
-        console.log($scope.myColor);
-        if ($scope.myColor == "1") {
-            $scope.isGreen = true; 
-            console.log("My color group is Green");  
-        }
-        if ($scope.myColor == "2"){
-            $scope.isOrange = true;
-             console.log("My color group is Orange");
-        }
-        if ($scope.myColor == "3"){
-            $scope.isPurple = true;
-            console.log("My color group is Purple");
-        }
-        if ($scope.myColor == "4"){
-            $scope.isYellow = true;
-            console.log("My color group is Yellow");
-        }
     });
     $scope.logout = function () {
         UserService.logout().then(function(){
         $route.reload();
         });
     }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+
     var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
@@ -1118,101 +1191,32 @@ angular.module('FoundationTrips.controllers',[])
     console.log("this is the $scope.purpleTripSlots Array: ");
     console.log($scope.purpleTripSlots);
 
-    $scope.signMeUp = function() {
-        UserService.me().then(function(me) {
-            $scope.ME = me;
-            var data = {
-                userID: $scope.ME.id,
-                eventID: tripID,
-                colorID: $scope.ME.colorID,
-            }
-            console.log(data);
-
-            var userForEvent = new PurpleTripSlotsFactory(data);
-            userForEvent.$save(function (success) {
-                console.log('participant signed up successfully');
-                $route.reload();
-            }, function(err){
-                console.log(err);
-                alert('You are already signed up for this trip.');
-            })
-            
-        })
-    };
-
-
-   $scope.removeMe = function() {                                      
-        var shouldRemove = confirm('Remove you from this field trip?');
-        if (shouldRemove) {
-            var data = null;
-            UserService.me().then(function(me){
-                var data = {userID: me.id, eventID: tripID}
-                console.log(data);
-                
-                return data;
-            }).then (function(data){ 
-                
-               var mySlot = $http.get('/api/PurpleTripSlots/' + data.eventID + '/' + data.userID);
-               console.log(mySlot);
-
-               return mySlot;
-            }).then (function(mySlot) {
-                console.log(mySlot);
-                var slotToDelete = mySlot.data;
-                console.log(slotToDelete);
-                console.log(slotToDelete.id)
-
-                return slotToDelete;
-            }).then (function(slotToDelete){
-                var slotID = slotToDelete.id;
-                $http.delete('/api/PurpleTripSlots/delete/' + slotID);
-                console.log('deleted successfull')     
-                $route.reload();
-            }).catch(function(error){
-                console.log(error);
-            })
-        }   
-    }; 
+    $scope.addParticipantLink = "addParticipant/" + tripID;
+    console.log($scope.addParticipantLink);
 }])
 
 .controller('adminYellowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentYellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentYellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
     console.log( "we are in the YellowTripDetailsController now.")
-    //require admin
+    
     $window.scrollTo(0, 0);
+
     UserService.isLoggedIn();
     $scope.loggedIn = false;
-    $scope.isGreen = false;
-    $scope.isOrange = false;
-    $scope.isPurple = false;
-    $scope.isYellow = false;
     UserService.me().then(function(me){
         $scope.ME = me;
         $scope.loggedIn = true;
-
-        $scope.myColor = me.colorID;
-        console.log($scope.myColor);
-        if ($scope.myColor == "1") {
-            $scope.isGreen = true; 
-            console.log("My color group is Green");  
-        }
-        if ($scope.myColor == "2"){
-            $scope.isOrange = true;
-             console.log("My color group is Orange");
-        }
-        if ($scope.myColor == "3"){
-            $scope.isPurple = true;
-            console.log("My color group is Purple");
-        }
-        if ($scope.myColor == "4"){
-            $scope.isYellow = true;
-            console.log("My color group is Yellow");
-        }
     });
     $scope.logout = function () {
         UserService.logout().then(function(){
         $route.reload();
         });
     }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+
     var slotToDelete = [];
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
@@ -1224,39 +1228,91 @@ angular.module('FoundationTrips.controllers',[])
     console.log("this is the $scope.yellowTripSlots Array: ");
     console.log($scope.yellowTripSlots);
 
-    $scope.signMeUp = function() {
-        UserService.me().then(function(me) {
-            $scope.ME = me;
-            var data = {
-                userID: $scope.ME.id,
-                eventID: tripID,
-                colorID: $scope.ME.colorID,
-            }
-            console.log(data);
-
-            var userForEvent = new YellowTripSlotsFactory(data);
-            userForEvent.$save(function (success) {
-                console.log('participant signed up successfully');
-                $route.reload();
-            }, function(err){
-                console.log(err);
-                alert('You are already signed up for this trip.');
-            })
-            
-        })
-    };
+    $scope.addParticipantLink = "addParticipant/" + tripID;
+    console.log($scope.addParticipantLink);
 }])
 
-.controller('adminSlotDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'UpdateSlotFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UpdateSlotFactory){
+// .controller('adminYellowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentYellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentYellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
+//     console.log( "we are in the YellowTripDetailsController now.")
+//     //require admin
+//     $window.scrollTo(0, 0);
+//     UserService.isLoggedIn();
+//     $scope.loggedIn = false;
+//     $scope.isGreen = false;
+//     $scope.isOrange = false;
+//     $scope.isPurple = false;
+//     $scope.isYellow = false;
+//     UserService.me().then(function(me){
+//         $scope.ME = me;
+//         $scope.loggedIn = true;
 
-    UserService.requireLogin();
-    UserService.requireAdmin();
+//         $scope.myColor = me.colorID;
+//         console.log($scope.myColor);
+//         if ($scope.myColor == "1") {
+//             $scope.isGreen = true; 
+//             console.log("My color group is Green");  
+//         }
+//         if ($scope.myColor == "2"){
+//             $scope.isOrange = true;
+//              console.log("My color group is Orange");
+//         }
+//         if ($scope.myColor == "3"){
+//             $scope.isPurple = true;
+//             console.log("My color group is Purple");
+//         }
+//         if ($scope.myColor == "4"){
+//             $scope.isYellow = true;
+//             console.log("My color group is Yellow");
+//         }
+//     });
+//     $scope.logout = function () {
+//         UserService.logout().then(function(){
+//         $route.reload();
+//         });
+//     }
+//     var slotToDelete = [];
+//     var tripID =$routeParams.id;
+//     console.log("This is the tripID: " + tripID);
+//     $scope.yellowTrip = CurrentYellowTripsFactory.get( {id: tripID} );
+//     console.log("this is the $scope.yellowTrip: ");
+//     console.log($scope.yellowTrip);
+
+//     $scope.yellowTripSlots = YellowTripSlotsFactory.query( {id: tripID} );
+//     console.log("this is the $scope.yellowTripSlots Array: ");
+//     console.log($scope.yellowTripSlots);
+
+//     $scope.signMeUp = function() {
+//         UserService.me().then(function(me) {
+//             $scope.ME = me;
+//             var data = {
+//                 userID: $scope.ME.id,
+//                 eventID: tripID,
+//                 colorID: $scope.ME.colorID,
+//             }
+//             console.log(data);
+
+//             var userForEvent = new YellowTripSlotsFactory(data);
+//             userForEvent.$save(function (success) {
+//                 console.log('participant signed up successfully');
+//                 $route.reload();
+//             }, function(err){
+//                 console.log(err);
+//                 alert('You are already signed up for this trip.');
+//             })
+            
+//         })
+//     };
+// }])
+
+.controller('adminRainbowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentRainbowTripsFactory', 'RainbowTripSlotsFactory', 'RainbowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentRainbowTripsFactory, RainbowTripSlotsFactory, RainbowTripFilledSlotsFactory){
+    console.log( "we are in the adminRainbowTripDetailsController now.")
+
+    $window.scrollTo(0, 0);
+
     UserService.isLoggedIn();
-
+    $scope.loggedIn = false;
     UserService.me().then(function(me){
         $scope.ME = me;
-        console.log("this is $scope.ME: " )
-        console.log( $scope.ME);
         $scope.loggedIn = true;
     });
     $scope.logout = function () {
@@ -1264,7 +1320,49 @@ angular.module('FoundationTrips.controllers',[])
         $route.reload();
         });
     }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+
+
+    var slotToDelete = [];
+    var tripID =$routeParams.id;
+    console.log("This is the tripID: " + tripID);
+    $scope.rainbowTrip = CurrentRainbowTripsFactory.get( {id: tripID} );
+    console.log("this is the $scope.rainbowTrip: ");
+    console.log($scope.rainbowTrip);
+
+    $scope.rainbowTripSlots = RainbowTripSlotsFactory.query( {id: tripID} );
+    console.log("this is the $scope.rainbowTripSlots Array: ");
+    console.log($scope.rainbowTripSlots);
+
+    $scope.addParticipantLink = "addParticipant/" + tripID;
+    console.log($scope.addParticipantLink);
+
+}])
+
+.controller('adminSlotDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'UpdateSlotFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UpdateSlotFactory){
+
     $window.scrollTo(0, 0);
+
+    UserService.isLoggedIn();
+    $scope.loggedIn = false;
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        $scope.loggedIn = true;
+    });
+    $scope.logout = function () {
+        UserService.logout().then(function(){
+        $route.reload();
+        });
+    }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
 
 
             var slotID = $routeParams.slotID;
@@ -1315,14 +1413,11 @@ angular.module('FoundationTrips.controllers',[])
 }])
 .controller('adminAddTripController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'AdminTripFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, AdminTripFactory){
     $window.scrollTo(0, 0);
-    UserService.requireLogin();
-    UserService.requireAdmin();
-    UserService.isLoggedIn();
 
+    UserService.isLoggedIn();
+    $scope.loggedIn = false;
     UserService.me().then(function(me){
         $scope.ME = me;
-        console.log("this is $scope.ME: " )
-        console.log( $scope.ME);
         $scope.loggedIn = true;
     });
     $scope.logout = function () {
@@ -1330,6 +1425,11 @@ angular.module('FoundationTrips.controllers',[])
         $route.reload();
         });
     }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
 
     $scope.submitTripGreen = function() {
         var data = {
@@ -1345,7 +1445,7 @@ angular.module('FoundationTrips.controllers',[])
         var tripToSubmit = new AdminTripFactory(data);
         tripToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
-            $location.path('/adminAllEvents');
+            $location.path('/adminEventsNavMenu');
         });
     }
     $scope.submitTripOrange = function() {
@@ -1362,7 +1462,7 @@ angular.module('FoundationTrips.controllers',[])
         var tripToSubmit = new AdminTripFactory(data);
         tripToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
-            $location.path('/adminAllEvents');
+            $location.path('/adminEventsNavMenu');
         });
     }
      $scope.submitTripPurple = function() {
@@ -1379,7 +1479,7 @@ angular.module('FoundationTrips.controllers',[])
         var tripToSubmit = new AdminTripFactory(data);
         tripToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
-            $location.path('/adminAllEvents');
+            $location.path('/adminEventsNavMenu');
         });
     }
      $scope.submitTripYellow = function() {
@@ -1396,7 +1496,24 @@ angular.module('FoundationTrips.controllers',[])
         var tripToSubmit = new AdminTripFactory(data);
         tripToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
-            $location.path('/adminAllEvents');
+            $location.path('/adminEventsNavMenu');
+        });
+    }
+      $scope.submitTripRainbow = function() {
+        var data = {
+            eventName: $scope.trip.eventName,
+            eventDate: $scope.trip.eventDate,
+            eventDescription: $scope.trip.eventDescription,
+            colorID: '0',
+            eventTime: $scope.trip.eventTime,
+            eventCost: $scope.trip.eventCost,
+            maxSlots: $scope.trip.maxSlots,
+        }
+
+        var tripToSubmit = new AdminTripFactory(data);
+        tripToSubmit.$save(function (success) {
+            console.log("Trip submitted successfully");
+            $location.path('/adminEventsNavMenu');
         });
     }
 
@@ -1405,18 +1522,23 @@ angular.module('FoundationTrips.controllers',[])
 }])
 .controller('adminEditTripController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'AdminTripFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, AdminTripFactory){
     $window.scrollTo(0, 0);
+
     UserService.isLoggedIn();
-    UserService.isAdmin();
     $scope.loggedIn = false;
     UserService.me().then(function(me){
         $scope.ME = me;
         $scope.loggedIn = true;
     });
-    $scope.logout = function() {
-         UserService.logout().then(function(){
+    $scope.logout = function () {
+        UserService.logout().then(function(){
         $route.reload();
         });
     }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
 //===========================================================
     // EITHER THIS:
 
@@ -1436,7 +1558,7 @@ angular.module('FoundationTrips.controllers',[])
         $scope.tripToEdit.$update(function(success) {
             console.log('the trip was updated!');
             // $route.reload();
-            $location.path('/adminAllEvents');
+            $location.path('/adminEventsNavMenu');
         });
     };
 //========================================================
@@ -1482,14 +1604,12 @@ angular.module('FoundationTrips.controllers',[])
 
 }])
 .controller('adminUsersController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'AdminUserFactoryGreen', 'AdminUserFactoryOrange', 'AdminUserFactoryPurple', 'AdminUserFactoryYellow', function($scope, $location, $route, $http, $window, UserService, $routeParams, AdminUserFactoryGreen, AdminUserFactoryOrange, AdminUserFactoryPurple, AdminUserFactoryYellow){
-    UserService.requireLogin();
-    UserService.requireAdmin();
-    UserService.isLoggedIn();
+    $window.scrollTo(0, 0);
 
+    UserService.isLoggedIn();
+    $scope.loggedIn = false;
     UserService.me().then(function(me){
         $scope.ME = me;
-        console.log("this is $scope.ME: " )
-        console.log( $scope.ME);
         $scope.loggedIn = true;
     });
     $scope.logout = function () {
@@ -1497,6 +1617,11 @@ angular.module('FoundationTrips.controllers',[])
         $route.reload();
         });
     }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
 
     function getGreenUsers() {
         $scope.greenUsers = AdminUserFactoryGreen.query();
@@ -1545,7 +1670,7 @@ angular.module('FoundationTrips.controllers',[])
             $location.path('/adminAllUsers');
         }, function(err){
                 console.log(err);
-                alert('This User is already registered.');
+                alert('This User is already registered');
         
             });
     }
@@ -1615,14 +1740,11 @@ angular.module('FoundationTrips.controllers',[])
 
 .controller('adminEditUserController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'UserFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UserFactory){
     $window.scrollTo(0, 0);
-    UserService.requireLogin();
-    UserService.requireAdmin();
-    UserService.isLoggedIn();
 
+    UserService.isLoggedIn();
+    $scope.loggedIn = false;
     UserService.me().then(function(me){
         $scope.ME = me;
-        console.log("this is $scope.ME: " )
-        console.log( $scope.ME);
         $scope.loggedIn = true;
     });
     $scope.logout = function () {
@@ -1630,6 +1752,11 @@ angular.module('FoundationTrips.controllers',[])
         $route.reload();
         });
     }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
 //  script for editing a user
 
     var userID = $routeParams.id;
@@ -1660,10 +1787,77 @@ angular.module('FoundationTrips.controllers',[])
 
 }])
 
+.controller('addParticipantController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'UserFactory','AdminParticipantFactory', 'AdminTripFactory', 'AdminParticipantSignUpFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UserFactory, AdminParticipantFactory, AdminTripFactory, AdminParticipantSignUpFactory){
+    $window.scrollTo(0, 0);
+
+    UserService.isLoggedIn();
+    $scope.loggedIn = false;
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        $scope.loggedIn = true;
+    });
+    $scope.logout = function () {
+        UserService.logout().then(function(){
+        $route.reload();
+        });
+    }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+
+    $scope.class = "hideIfEmpty";
+    $scope.participantToSignUp = [];
+
+    $scope.tripArray = [];
+    var tripID = $routeParams.id;
+    $scope.trip = $http.get('/api/AdminTrips/' + tripID).then(function(success){
+        $scope.trip = success.data;
+        console.log($scope.trip);
+        $scope.tripArray.push($scope.trip);        
+    });
+    console.log($scope.trip);
+    // var colorID = $scope.trip.colorID;
+    console.log('colorID: ');
+    // console.log(colorID);
+
+
+    $scope.searchForParticipant = function(){
+        $scope.participantToSignUp = [];
+        var firstName = $scope.participant.firstName;
+        var lastName = $scope.participant.lastName;
+      
+        var returnedParticipant = AdminParticipantFactory.get( {firstName, lastName}, function(){
+        console.log($scope.participantToSignUp);
+        $scope.participantToSignUp.push(returnedParticipant);
+        console.log($scope.participantToSignUp);
+
+        $scope.class = "";
+        
+    });
+    };
+
+    $scope.submitParticipant = function(){
+        var data ={
+            userID: $scope.participantToSignUp[0].id,
+            eventID: tripID,
+            colorID: $scope.tripArray[0].colorID,
+        }
+        console.log(data);
+        var participantToSubmit = new AdminParticipantSignUpFactory(data);
+        participantToSubmit.$save(function(success){
+            console.log(participantToSubmit);
+            console.log("participant is now signed up");
+            $route.reload(); // write location string using colorID OF TRIP AND tripID;
+        }, function(err){
+            console.log(err);
+            alert('participant is already signed up for this event');
+        })
+    };
+
+    
 
 
 
-
-// .controller('HomeController', ['$scope', function(){
-
-// }])
+}])

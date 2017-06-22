@@ -4,7 +4,7 @@
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
         <a class="navbarLink hvr-grow" ng-click="logout()">logout</a>
-        <a class="navbarLink hvr-grow" href="/adminAllEvents">(Admin Trips)</a>
+        <a class="navbarLink hvr-grow" href="/adminEventsNavMenu">(Admin Trips)</a>
         <a class="navbarLink hvr-grow" href="/adminHome">(Admin Home)</a>
         
   </div>
@@ -16,10 +16,10 @@
       <p class="greenTripsDivTitle">{{greenTrip.eventName}} <span class="tripDateLine">{{greenTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
       <p class="greenTripDescriptionLine">{{greenTrip.eventDescription}} <span class="tripTimeLine">{{greenTrip.eventTime}}</span><span class="tripCostLine">${{greenTrip.eventCost}}</span></p>
 
-      <h3> Field Trip Slots:</h3>
+      <h3> Field Trip Slots: <span><a href="/{{addParticipantLink}}"><button class="addParticipantButton">add participant</button></a></span></h3>
       <ol>
         <li id="{{greenTripSlot.id}}" class="adminGreenTripSlots" ng-repeat="greenTripSlot in greenTripSlots" >
-          <a href="admin/slotDetails/{{ greenTripSlot.id }}"><button id="greenEditSlotButton" >edit</button></a>
+          <a href="admin/slotDetails/{{ greenTripSlot.id }}"><button id="greenEditSlotButton" >edit slot</button></a>
           <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{greenTripSlot.paid}}"></input></label>
           <span id="participantName">{{greenTripSlot.firstname}} {{greenTripSlot.lastname}} </span>
           <span ng-if="greenTripSlots.indexOf(greenTripSlot) +1 > greenTrip.maxSlots" class="adminWaitlist">** WaitListed **</span>

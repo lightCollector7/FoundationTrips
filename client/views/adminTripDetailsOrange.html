@@ -4,7 +4,7 @@
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
         <a class="navbarLink hvr-grow" ng-click="logout()">logout</a>
-        <a class="navbarLink hvr-grow" href="/adminAllEvents">(Admin Trips)</a>
+        <a class="navbarLink hvr-grow" href="/adminEventsNavMenu">(Admin Trips)</a>
         <a class="navbarLink hvr-grow" href="/adminHome">(Admin Home)</a>
        
   </div>
@@ -15,7 +15,7 @@
       <p class="orangeTripsDivTitle">{{orangeTrip.eventName}} <span class="tripDateLine">{{orangeTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
       <p class="orangeTripDescriptionLine">{{orangeTrip.eventDescription}} <span class="tripTimeLine">{{orangeTrip.eventTime}}</span><span class="tripCostLine">${{orangeTrip.eventCost}}</span></p>
       
-      <h3> Field Trip Slots:</h3>
+      <h3> Field Trip Slots: <span><a href="/{{addParticipantLink}}"><button class="addParticipantButton">add participant</button></a></span></h3>
       <ol>
         <li id="{{orangeTripSlot.id}}" class="adminOrangeTripSlots" ng-repeat="orangeTripSlot in orangeTripSlots" >
           <a href="admin/slotDetails/{{ orangeTripSlot.id }}"><button id="orangeEditSlotButton" >edit</button></a>

@@ -18,6 +18,8 @@ var ctrlCurrentPurpleTrips = require('./controllers/CurrentPurpleTrips.ctrl')
 var ctrlFuturePurpleTrips = require('./controllers/FuturePurpleTrips.ctrl')
 var ctrlCurrentYellowTrips = require('./controllers/CurrentYellowTrips.ctrl')
 var ctrlFutureYellowTrips = require('./controllers/FutureYellowTrips.ctrl')
+var ctrlCurrentRainbowTrips = require('./controllers/CurrentRainbowTrips.ctrl')
+var ctrlFutureRainbowTrips = require('./controllers/FutureRainbowTrips.ctrl')
 var ctrlAdminTrips = require('./controllers/AdminTrips.ctrl')
 
 
@@ -27,6 +29,7 @@ var ctrlGreenTripSlots = require('./controllers/GreenTripSlots.ctrl')
 var ctrlOrangeTripSlots = require('./controllers/OrangeTripSlots.ctrl')
 var ctrlPurpleTripSlots = require('./controllers/PurpleTripSlots.ctrl')
 var ctrlYellowTripSlots = require('./controllers/YellowTripSlots.ctrl')
+var ctrlRainbowTripSlots = require('./controllers/RainbowTripSlots.ctrl')
 var ctrlAdminTripSlots = require('./controllers/AdminTripSlots.ctrl')
 
 
@@ -50,6 +53,8 @@ router
     .use('/FuturePurpleTrips', ctrlFuturePurpleTrips)
     .use('/CurrentYellowTrips', ctrlCurrentYellowTrips)
     .use('/FutureYellowTrips', ctrlFutureYellowTrips)
+    .use('/CurrentRainbowTrips', ctrlCurrentRainbowTrips)
+    .use('/FutureRainbowTrips', ctrlFutureRainbowTrips)
     .use('/AdminTrips', ctrlAdminTrips)
    
 
@@ -57,6 +62,7 @@ router
     .use('/OrangeTripSlots', ctrlOrangeTripSlots)
     .use('/PurpleTripSlots', ctrlPurpleTripSlots)
     .use('/YellowTripSlots', ctrlYellowTripSlots)
+    .use('/RainbowTripSlots', ctrlRainbowTripSlots)
     .use('/AdminTripSlots', ctrlAdminTripSlots)
 
    

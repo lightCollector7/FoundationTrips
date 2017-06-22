@@ -2,7 +2,7 @@
         <div id="navbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-         <p id="navbarTitle">FIELD TRIPS</p>
+         <p id="navbarTitle">CURRENT FIELD TRIPS:</p>
          <a class="navbarLink hvr-grow" ng-click="logout()" href="">logout</a><a class="navbarLink" href="/adminHome" ng-show="isAdmin">ADMIN</a>
          <a class="navbarLink hvr-grow" href="/UserHomeMenu">Home Menu</a>
          <p id="signedInAs" class="navbarLink" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
@@ -63,7 +63,7 @@
   </ul>
 </div>
 
-<div id="rainbowTripsDiv" class="container" > 
+<div id="rainbowTripsDiv" class="container"> 
   <p class="rainbowTripsDivTitle"> Rainbow Field Trips</p>
   <ul>
      <li ng-repeat="rainbowTrip in rainbowTrips" class="rainbowLI">

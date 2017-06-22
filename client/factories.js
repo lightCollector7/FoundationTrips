@@ -54,7 +54,16 @@ angular.module('FoundationTrips.factories', [])
         update: {method: 'PUT' }
     });
 }])
-
+.factory('CurrentRainbowTripsFactory', ['$resource', function($resource) {
+    return $resource('/api/CurrentRainbowTrips/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+.factory('FutureRainbowTripsFactory', ['$resource', function($resource) {
+    return $resource('/api/FutureRainbowTrips/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
 .factory('GreenTripSlotsFactory', ['$resource', function($resource) {   
     return $resource('/api/GreenTripSlots/:id/', {id: '@id' }, {
         update: {method: 'PUT' }
@@ -96,28 +105,53 @@ angular.module('FoundationTrips.factories', [])
         update: {method: 'PUT' }
     });
 }]) 
+.factory('RainbowTripSlotsFactory', ['$resource', function($resource) {   
+    return $resource('/api/RainbowTripSlots/:id/', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+.factory('RainbowTripFilledSlotsFactory', ['$resource', function($resource) {  
+    return $resource('/api/RainbowTripSlots/mySlot/:userID/:eventID/:slotID', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}]) 
 .factory('UpdateSlotFactory', ['$resource', function($resource){
     return $resource('api/AdminTripSlots/slot/:id/', {id: '@id' }, {
     update: {method: 'PUT' }
     })
 }])
-
-.factory('AdminUserFactoryGreen', ['$resource', function($resource) {    // write this
+.factory('AdminParticipantSignUpFactory', ['$resource', function($resource){
+    return $resource('api/AdminTripSlots/:id', {id: '@id' }, {
+    update: {method: 'PUT' }
+    })
+}])
+.factory('AdminUserFactory', ['$resource', function($resource) {  
+    return $resource('api/AdminUsers/:id/', {id: '@id' },{
+        update: {method: 'PUT'}
+    });
+}])
+//WORKING HERE!!
+.factory('AdminParticipantFactory', ['$resource', function($resource) {    
+    return $resource('api/AdminUsers/Participant/', {id: '@id'}, {
+        update: {method: 'PUT'}
+    });
+}])
+.factory('AdminUserFactoryGreen', ['$resource', function($resource) {    
     return $resource('api/AdminUsers/GreenUsers/:id/', {id: '@id' },{
         update: {method: 'PUT'}
     });
 }])
-.factory('AdminUserFactoryOrange', ['$resource', function($resource) {    // write this
+.factory('AdminUserFactoryOrange', ['$resource', function($resource) {   
     return $resource('api/AdminUsers/OrangeUsers/:id/', {id: '@id' },{
         update: {method: 'PUT'}
     });
 }])
-.factory('AdminUserFactoryPurple', ['$resource', function($resource) {    // write this
+.factory('AdminUserFactoryPurple', ['$resource', function($resource) {  
     return $resource('api/AdminUsers/PurpleUsers/:id/', {id: '@id' },{
         update: {method: 'PUT'}
     });
 }])
-.factory('AdminUserFactoryYellow', ['$resource', function($resource) {    // write this
+.factory('AdminUserFactoryYellow', ['$resource', function($resource) {   
     return $resource('api/AdminUsers/YellowUsers/:id/', {id: '@id' },{
         update: {method: 'PUT'}
     });
