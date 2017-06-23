@@ -1,0 +1,30 @@
+  <div class="" id="navbar">
+        <div id="navbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+         <p id="navbarTitle">CURRENT FIELD TRIPS:</p>
+         <a class="navbarLink hvr-grow" ng-click="logout()" href="">logout</a><a class="navbarLink hvr-grow" href="/adminHome" ng-show="isAdmin">ADMIN</a>
+         <a class="navbarLink hvr-grow" href="/UserHomeMenu">Home Menu</a>
+         <p id="signedInAs" class="navbarLink" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
+        
+  </div>
+
+  <div id="Background">
+
+
+      <div id="AdminListDiv" class="container"> 
+          <p id="participantName">{{participant.firstName}} <span>{{participant.lastName}}</span></p>
+          <p id="tripListTitle"> Enrolled Field Trips:</p>
+          <div id="tripListDiv">
+            <table>
+                <tr class="participantTripLine" ng-repeat="participantTrip in participantTrips | orderBy: 'eventDate'">
+                    <td class="participantTripName">{{participantTrip.eventName}}</td> <td class="participantTripDateLineSmall" >{{participantTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</td><td class="participantTripCostLineSmall">${{participantTrip.eventCost}}</td>
+                </tr>
+            </table>
+            <p id="totalDueLine">Total Due:  <span id="totalDue">${{totalDue}}</span></p>
+          <div>
+          
+        
+      </div>
+
+  </div>   

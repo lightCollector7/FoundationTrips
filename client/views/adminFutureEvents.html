@@ -13,8 +13,9 @@
 
     <div id="adminGreenTripsDiv" class="container" > 
       <p class="greenTripsDivTitle">Green Field Trips <span><a href="/admin/addTripGreen"><button id="addTripButtonGreen" class="hvr-grow"> Add Trip</button></a></span> </p>
+      <div class="tripListDiv">
       <ul>
-        <li ng-repeat="greenTrip in greenTrips" class="greenLI adminLI">
+        <li ng-repeat="greenTrip in greenTrips | orderBy: 'eventDate'" class="greenLI adminLI">
           <a class="btn btn-primary singleTripLink adminTripLink"  ng-href="/admin/GreenTrips/{{greenTrip.id}}">  {{greenTrip.eventName}} </a>
           <span class="tripDateLineSmall">{{greenTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
           <!--<span class="tripTimeLineSmall">{{greenTrip.eventTime}}</span>-->
@@ -23,12 +24,14 @@
           <span><a href="/admin/editTrip/{{greenTrip.id}}"><button class="greenEditTripButton hvr-grow" href="">Edit Trip</button></a></span>
        </li>
       </ul>
+      </div>
     </div>
 
     <div id="adminOrangeTripsDiv" class="container " > 
       <p class="orangeTripsDivTitle">Orange Field Trips <span><a href="/admin/addTripOrange"><button id="addTripButtonOrange" class="hvr-grow"> Add Trip</button></a></span></p>
+      <div class="tripListDiv">
       <ul>
-        <li ng-repeat="orangeTrip in orangeTrips" class="orangeLI adminLI">
+        <li ng-repeat="orangeTrip in orangeTrips | orderBy: 'eventDate'" class="orangeLI adminLI">
           <a class="btn btn-primary singleTripLink adminTripLink"  ng-href="/admin/OrangeTrips/{{orangeTrip.id}}">  {{orangeTrip.eventName}} </a>
           <span class="tripDateLineSmall">{{orangeTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
           <!--<span class="tripTimeLineSmall">{{orangeTrip.eventTime}}</span>-->
@@ -37,13 +40,14 @@
           <span><a href="/admin/editTrip/{{orangeTrip.id}}"><button class="orangeEditTripButton hvr-grow">Edit Trip</button></a></span>
           </li>                  
       </ul>
-
+       </div>
     </div>
 
     <div id="adminPurpleTripsDiv" class="container "> 
       <p class="purpleTripsDivTitle">Purple Field Trips <span><a href="/admin/addTripPurple"><button id="addTripButtonPurple" class="hvr-grow"> Add Trip</button></a></span></p>
+      <div class="tripListDiv">
       <ul>
-          <li ng-repeat="purpleTrip in purpleTrips" class="purpleLI adminLI">
+          <li ng-repeat="purpleTrip in purpleTrips | orderBy: 'eventDate'" class="purpleLI adminLI">
             <a class="btn btn-primary singleTripLink adminTripLink"  ng-href="/admin/PurpleTrips/{{purpleTrip.id}}">  {{purpleTrip.eventName}} </a>
             <span class="tripDateLineSmall">{{purpleTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
             <!--<span class="tripTimeLineSmall">{{purpleTrip.eventTime}}</span>-->
@@ -52,12 +56,14 @@
             <span><a href="/admin/editTrip/{{purpleTrip.id}}"><button class="purpleEditTripButton hvr-grow" href="">Edit Trip</button></a></span>
           </li>  
       </ul>
+       </div>
     </div>
 
     <div id="adminYellowTripsDiv" class="container " > 
       <p class="yellowTripsDivTitle"> Yellow Field Trips <span><a href="/admin/addTripYellow"><button id="addTripButtonYellow" class="hvr-grow"> Add Trip</button></a></span></p>
+      <div class="tripListDiv">
       <ul>
-        <li ng-repeat="yellowTrip in yellowTrips" class="yellowLI adminLI">
+        <li ng-repeat="yellowTrip in yellowTrips | orderBy: 'eventDate'" class="yellowLI adminLI">
           <a class="btn btn-primary singleTripLink adminTripLink "  ng-href="/admin/YellowTrips/{{yellowTrip.id}}">  {{yellowTrip.eventName}} </a>
           <span class="tripDateLineSmall">{{yellowTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
           <!--<span class="tripTimeLineSmall">{{yellowTrip.eventTime}}</span>-->
@@ -66,13 +72,15 @@
           <span><a href="/admin/editTrip/{{yellowTrip.id}}"><button class="yellowEditTripButton hvr-grow" href="">Edit Trip</button></a></span>
           </li>  
       </ul>
+       </div>
     </div>
 
   <div id="adminRainbowTripsDiv" class="container"> 
   <p class="rainbowTripsDivTitle"> Rainbow Field Trips <span><a href="/admin/addTripRainbow"><button id="addTripButtonRainbow" class="hvr-grow"> Add Trip</button></a></span></p>
+  <div class="tripListDiv">
   <ul>
-     <li ng-repeat="rainbowTrip in rainbowTrips" class="rainbowLI adminLI">
-       <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/admin/RainbowTrips/{{rainbowTrip.id}}">  {{rainbowTrip.eventName}} </a>
+     <li ng-repeat="rainbowTrip in rainbowTrips | orderBy: 'eventDate'" class="rainbowLI adminLI">
+       <a class="btn btn-primary singleTripLink adminTripLink"  ng-href="/admin/RainbowTrips/{{rainbowTrip.id}}">  {{rainbowTrip.eventName}} </a>
         <span class="tripDateLineSmall">{{rainbowTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
         <!--<span class="tripTimeLineSmall">{{rainbowTrip.eventTime}}</span>-->
         <span class="tripCostLineSmall">${{rainbowTrip.eventCost}}</span>
@@ -80,5 +88,5 @@
         <span><a href="/admin/editTrip/{{rainbowTrip.id}}"><button class="rainbowEditTripButton hvr-grow" href="">Edit Trip</button></a></span>
        </li>  
   </ul>
-</div>
+ </div>
 </div>

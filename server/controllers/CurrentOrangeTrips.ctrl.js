@@ -6,7 +6,7 @@ var router = express.Router();
 
 router.route('/')
     .get(function(req, res) {
-        procedures.procGetTrips_Orange().then(function(data){
+        procedures.procGetTrips_Orange_Current().then(function(data){
             res.send(data);
             console.log(data);
         }, function(err) {

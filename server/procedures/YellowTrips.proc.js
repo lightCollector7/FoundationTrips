@@ -1,13 +1,9 @@
 var db = require('../config/db');
 
-exports.procGetTrips_Yellow = function() {
-    return db.fnRows('procGetTrips_Yellow');    
-}
-
 exports.procGetTrips_Yellow_Current = function(){
     return db.fnRows('procGetTrips_Yellow_Current');
 }
-exports.procGetTrips_Orange_Future = function(){
+exports.procGetTrips_Yellow_Future = function(){
     return db.fnRows('procGetTrips_Yellow_Future');
 }
 

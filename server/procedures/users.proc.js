@@ -23,6 +23,9 @@ exports.procGetUsersPurple = function() {
 exports.procGetUsersYellow = function() {
     return db.fnRows('procGetUsersYellow');
 }
+exports.procGetUsersAdmins = function() {
+    return db.fnRows('procGetUsersAdmins');
+}
 
 exports.procGetUserByEmail = function(email){
         return db.fnRow('procGetUserByEmail',[email]);

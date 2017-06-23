@@ -16,7 +16,10 @@
             <label>Last Name:<input id="userLastNameBox" type="text" ng-model="user.lastName" required></label><br><br>
             <label>Email: <input id="userEmailBox" type="text" ng-model="user.email" required></label><br><br>
             <label>Password: <input id="userPasswordBox" type="text" ng-model="user.password" placeholder="enter new password" required></label><br><br>
-            <label>Role: <input id="userRoleBox" type="text" ng-model="user.role" required></label><br><br>
+            <label>Role: <select id="userRoleBox" ng-model="user.role" placeholder="role" required>
+                             <option value="user">User</option>
+                             <!--<option value="admin">Admin</option>-->
+                         </select></label>        
         </form>
         <button id="submitUserButton" ng-click="submitUserPurple()" ng-disabled="addUserForm.$invalid">Submit User</button>
         

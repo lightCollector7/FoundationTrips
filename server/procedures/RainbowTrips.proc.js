@@ -1,8 +1,5 @@
 var db = require('../config/db');
 
-// exports.procGetTrips_Rainbow = function() {
-//     return db.fnRows('procGetTrips_Rainbow');    
-// }
 exports.procGetTrips_Rainbow_Current = function(){
     return db.fnRows('procGetTrips_Rainbow_Current');
 }
@@ -42,3 +39,5 @@ exports.procGetSlotByUserAndTrip = function(eventID, userID) {
 exports.procRemoveMe = function(slotID) {
     return db.fnEmpty('procRemoveMe', [slotID])
 }
+
+

@@ -1001,7 +1001,6 @@ angular.module('FoundationTrips.controllers',[])
 }])
 
 .controller('AdminFutureEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'FutureGreenTripsFactory', 'FutureOrangeTripsFactory', 'FuturePurpleTripsFactory', 'FutureYellowTripsFactory', 'FutureRainbowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, FutureGreenTripsFactory, FutureOrangeTripsFactory, FuturePurpleTripsFactory, FutureYellowTripsFactory, FutureRainbowTripsFactory, $routeParams) {
-    //restrict to admins only
 
     UserService.me().then(function(me){
         $scope.ME = me;
@@ -1504,7 +1503,7 @@ angular.module('FoundationTrips.controllers',[])
             eventName: $scope.trip.eventName,
             eventDate: $scope.trip.eventDate,
             eventDescription: $scope.trip.eventDescription,
-            colorID: '0',
+            colorID: '5',
             eventTime: $scope.trip.eventTime,
             eventCost: $scope.trip.eventCost,
             maxSlots: $scope.trip.maxSlots,
@@ -1597,13 +1596,13 @@ angular.module('FoundationTrips.controllers',[])
             console.log($scope.tripToEdit);
 
             $scope.tripToEdit.$delete(function (success) {
-                $location.path('/adminAllEvents');
+                $location.path('/adminEventsNavMenu');
             });
         };
     };
 
 }])
-.controller('adminUsersController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'AdminUserFactoryGreen', 'AdminUserFactoryOrange', 'AdminUserFactoryPurple', 'AdminUserFactoryYellow', function($scope, $location, $route, $http, $window, UserService, $routeParams, AdminUserFactoryGreen, AdminUserFactoryOrange, AdminUserFactoryPurple, AdminUserFactoryYellow){
+.controller('adminUsersController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'AdminUserFactoryGreen', 'AdminUserFactoryOrange', 'AdminUserFactoryPurple', 'AdminUserFactoryYellow','AdminUserFactoryAdmin', function($scope, $location, $route, $http, $window, UserService, $routeParams, AdminUserFactoryGreen, AdminUserFactoryOrange, AdminUserFactoryPurple, AdminUserFactoryYellow, AdminUserFactoryAdmin){
     $window.scrollTo(0, 0);
 
     UserService.isLoggedIn();
@@ -1650,6 +1649,13 @@ angular.module('FoundationTrips.controllers',[])
         console.log($scope.yellowUsers);
     }
     getYellowUsers();
+
+    function getAdminUsers(){
+         $scope.administrators = AdminUserFactoryAdmin.query();
+        console.log('this is the Administrators ARRAY: ')
+        console.log($scope.administrators);
+    }
+    getAdminUsers();
 
 
     //========== now write functions for adding Users for all 4 color groups ======= //
@@ -1726,6 +1732,26 @@ angular.module('FoundationTrips.controllers',[])
         }
 
         var userToSubmit = new AdminUserFactoryYellow(data);
+        userToSubmit.$save(function (success) {
+            console.log("Trip submitted successfully");
+            $location.path('/adminAllUsers');
+        }, function(err){
+                console.log(err);
+                alert('This User is already registered.');
+        
+            });
+    }
+        $scope.submitUserAdmin = function() {
+        var data = {
+            firstName: $scope.user.firstName,
+            lastName: $scope.user.lastName,
+            email: $scope.user.email,
+            password: $scope.user.password,
+            colorID: '0',
+            role: $scope.user.role,
+        }
+
+        var userToSubmit = new AdminUserFactoryAdmin(data);
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
@@ -1856,6 +1882,116 @@ angular.module('FoundationTrips.controllers',[])
         })
     };
 
+    
+
+
+
+}])
+
+.controller('adminUserProfileController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'UserFactory', 'UserTripFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UserFactory, UserTripFactory){
+    $window.scrollTo(0, 0);
+
+    UserService.isLoggedIn();
+    $scope.loggedIn = false;
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        $scope.loggedIn = true;
+    });
+    $scope.logout = function () {
+        UserService.logout().then(function(){
+        $route.reload();
+        });
+    }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+
+    userID = $routeParams.id;
+    $scope.participant = UserFactory.get({id: userID },function(){
+        console.log($scope.participant);
+    })
+
+    // $scope.participantTrips = UserTripFactory.query({id: userID}, function(){
+    //     console.log($scope.participantTrips);
+    // })
+
+     var httpParticipantTrips = $http.get('/api/userTrips/' + userID).then(function(success){
+        $scope.participantTrips = success.data;
+        httpParticipantTrips = success.data;
+        console.log(httpParticipantTrips);
+        return httpParticipantTrips;
+    }).then(function(httpParticipantTrips){   
+            var totalDue = 0;         
+            for ( z = 0; z < httpParticipantTrips.length; z++) {  
+                
+                console.log("event cost for httpParticipantTrips[" + z + "]: ");
+                console.log(httpParticipantTrips[z].eventCost);
+
+                totalDue = totalDue + httpParticipantTrips[z].eventCost;
+
+                console.log('total due: ');
+                $scope.totalDue = totalDue;
+                console.log($scope.totalDue);
+        }
+         return $scope.totalDue;
+    })
+
+    
+    
+
+
+
+}])
+
+.controller('UserProfileController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'UserFactory', 'UserTripFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UserFactory, UserTripFactory){
+    $window.scrollTo(0, 0);
+
+    UserService.isLoggedIn();
+    $scope.loggedIn = false;
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        $scope.loggedIn = true;
+    });
+    $scope.logout = function () {
+        UserService.logout().then(function(){
+        $route.reload();
+        });
+    }
+
+    UserService.requireLogin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+
+    userID = $routeParams.id;
+    $scope.participant = UserFactory.get({id: userID },function(){
+        console.log($scope.participant);
+    })
+
+
+     var httpParticipantTrips = $http.get('/api/userTrips/' + userID).then(function(success){
+        $scope.participantTrips = success.data;
+        httpParticipantTrips = success.data;
+        console.log(httpParticipantTrips);
+        return httpParticipantTrips;
+    }).then(function(httpParticipantTrips){   
+            var totalDue = 0;         
+            for ( z = 0; z < httpParticipantTrips.length; z++) {  
+                
+                console.log("event cost for httpParticipantTrips[" + z + "]: ");
+                console.log(httpParticipantTrips[z].eventCost);
+
+                totalDue = totalDue + httpParticipantTrips[z].eventCost;
+
+                console.log('total due: ');
+                $scope.totalDue = totalDue;
+                console.log($scope.totalDue);
+        }
+         return $scope.totalDue;
+    })
+
+    
     
 
 

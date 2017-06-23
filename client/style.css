@@ -3,14 +3,14 @@
   top: 0;
   right: 0;
   width: 100%;
-  height: 3500px;
+  height: 3650px;
   overflow: hidden;
   -webkit-transition: right 0.2s linear;
   transition: right 0.2s linear;
 }
 
 .app .site-content {
-  height: 6000px;
+  height: 3650px;
   /*-webkit-overflow-scrolling: touch;*/
   /*background:#CAE1FF;*/
   background: dodgerblue;
@@ -124,8 +124,8 @@
 .homeLinks{
   color: white;
   float: left;
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-left: 50px;
+  margin-right: 50px;
   
 }
 
@@ -151,14 +151,13 @@
 
 /*=================== All Events Page ============================*/
 
-.tripsDivTitle{         /* can delete this one now?*/
+/*.tripsDivTitle{         
   margin-left: 10px;
   margin-right: 10px;
-  /*margin-top: 20px;*/
   font-size: 25px;
   color:white;
   border-bottom: 3px solid limegreen;
-}
+}*/
 
 #greenTripsDiv{
   margin-left: 10%;
@@ -167,12 +166,12 @@
   padding-left: 20px;
   padding-right: 20px;
   width: 80%;
-  height: 500px;
+  height: 600px;
   border-radius: 10px;
   border: 5px solid white;
   background-color:royalblue;
   color: white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
   
 
 }
@@ -183,6 +182,18 @@
   font-size: 25px;
   color:white;
   border-bottom: 3px solid limegreen;
+}
+.tripListDiv{
+  /*margin-left: 10%;*/
+  /*margin-top: 45px;*/
+  /*padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;*/
+  width: 95%;
+  height: 380px;
+  /*background-color:royalblue;*/
+  color: white;
+  overflow-y: auto;
 }
 .singleTripLink{
   position: relative;
@@ -305,12 +316,12 @@
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 500px;
+  height: 600px;
   border-radius: 10px;
   border: 5px solid white;
   background-color: royalblue;
   color: white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 
 .orangeTripsDivTitle{
@@ -341,12 +352,12 @@
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 500px;
+  height: 600px;
   border-radius: 10px;
   border: 5px solid white;
   background-color: royalblue;
   color:white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 .purpleTripsDivTitle{
   margin-left: 10px;
@@ -377,12 +388,12 @@
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 500px;
+  height: 600px;
   border-radius: 10px;
   border: 5px solid white;
   background-color: royalblue;
   color:white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 .yellowTripsDivTitle{
   margin-left: 10px;
@@ -412,7 +423,7 @@
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 500px;
+  height: 600px;
   border-radius: 10px;
   border-top: 3px solid limegreen;
   border-right: 3px solid orange;
@@ -420,7 +431,7 @@
   border-left: 3px solid yellow;
   background-color: royalblue;
   color:white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 .rainbowTripsDivTitle{
    margin-left: 10px;
@@ -438,6 +449,10 @@
   border-bottom: 1px solid red;
   width: 95%;
   padding: 10px;
+}
+.rainbowSlotIsMine{
+  border: 1px solid purple;
+  padding: 5px;
 }
 
 .waitlist{
@@ -527,12 +542,12 @@ a {
   padding:20px;
   padding-top: 10px;
   width: 80%;
-  height: 500px;
+  height: 600px;
   border-radius: 10px;
   border: 5px solid limegreen;
   background-color: black;
   color: white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 #adminOrangeTripsDiv{
   margin-left: 10%;
@@ -540,12 +555,12 @@ a {
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 500px;
+  height: 600px;
   border-radius: 10px;
   border: 5px solid orange;
   background-color: black;
   color: white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 #adminPurpleTripsDiv{
   margin-left: 10%;
@@ -553,12 +568,12 @@ a {
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 500px;
+  height: 600px;
   border-radius: 10px;
   border: 5px solid purple;
   background-color: black;
   color:white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 #adminYellowTripsDiv{
   margin-left: 10%;
@@ -566,12 +581,12 @@ a {
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 500px;
+  height: 600px;
   border-radius: 10px;
   border: 5px solid yellow;
   background-color: black;
   color:white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 #adminRainbowTripsDiv{
   margin-left: 10%;
@@ -579,7 +594,7 @@ a {
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 500px;
+  height: 600px;
   border-radius: 10px;
   border-top: 3px solid limegreen;
   border-right: 3px solid orange;
@@ -587,7 +602,7 @@ a {
   border-left: 3px solid yellow;
   background-color: black;
   color:white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 .adminTripLink{
   color: white;
@@ -983,7 +998,7 @@ a {
   border: 5px solid Orange;
   background-color: black;
   color: white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 #orangeUsersDivTitle{
   margin-left: 10px;
@@ -1005,7 +1020,7 @@ a {
   border: 5px solid Purple;
   background-color: black;
   color: white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 #purpleUsersDivTitle{
     margin-left: 10px;
@@ -1027,7 +1042,7 @@ a {
   border: 5px solid yellow;
   background-color: black;
   color: white;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 #yellowUsersDivTitle{
   margin-left: 10px;
@@ -1038,27 +1053,56 @@ a {
   border-bottom: 3px solid yellow;
   
 }
+#AdminListDiv{
+  margin-left: 10%;
+  margin-top: 25px;
+  padding:20px;
+  padding-top: 10px;
+  width: 80%;
+  height: 500px;
+  border-radius: 10px;
+  border: 5px solid white;
+  background-color: black;
+  color: lightslategray;
+}
+#AdminListDivTitle{
+  margin-left: 10px;
+  margin-right: 10px;
+  /*margin-top: 20px;*/
+  font-size: 25px;
+  color:white;
+  border-bottom: 3px solid darkgray;
+}
 
 .greenUser{
   margin-top: 10px;
+  border-bottom: 1px solid #333333;
 }
 
 .orangeUser{
   margin-top: 10px;
+  border-bottom: 1px solid #333333;
 }
 
 .purpleUser{
   margin-top: 10px;
+  border-bottom: 1px solid #333333;
 }
 
 .yellowUser{
   margin-top: 10px;
+  border-bottom: 1px solid #333333;
+}
+.administrator{
+  margin-top: 10px;
+  border-bottom: 1px solid #333333;
 }
 
 
 
 #greenEditUserButton{
   margin:5px;
+  margin-left: 25px;
   background-color: black;
   border: 1px solid limegreen;
   color: white;
@@ -1110,11 +1154,28 @@ a {
   color: white;
 
 }
+#addAdminButton{
+  position: relative;
+  float: center;
+  margin: 20px;
+  height: 40px;
+  width: 80px;
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+
+}
 
 #yellowEditUserButton{
   margin:5px;
   background-color: black;
   border: 1px solid yellow;
+  color: white;
+}
+#EditAdminButton{
+  margin:5px;
+  background-color: black;
+  border: 1px solid darkgray;
   color: white;
 }
 #addUserButtonYellow{
@@ -1127,4 +1188,84 @@ a {
   border: 2px solid yellow;
   color: white;
 
+}
+
+.userProfileLink{
+  margin-left: 30px;
+  font-size: 12px;
+  width: 200px;
+  background-color: black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid white;
+  border: none;
+  color: white;
+  text-align: left;
+
+}
+
+/*========================  userProfile Page ======================================*/
+#participantName{
+  font-size: 20px;
+  color: white;
+  border-bottom: 2px solid lightslategray;
+}
+
+#tripListTitle{
+  position:relative;
+  float: clear;
+  width: 95%;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid white;
+
+}
+.participantTripLine{
+  margin-bottom: 3px;
+  margin-left: 20px;
+  margin-right: 10px;
+  /*height: 14px;*/
+  width: 93%;
+  border-bottom: 1px solid lightslategray;
+}
+.participantTripName{
+  position: relative;
+  float: left;
+  width: 200px;
+  color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.participantTripDateLineSmall{
+  position: relative;
+  float: left;
+  width: 200px;
+  color: gray;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.participantTripCostLineSmall{
+  position: relative;
+  float: left;
+  width: 50px;
+  color: white;
+  margin-left: 20px;
+}
+
+#totalDueLine{
+  position:relative;
+  float: clear;
+  width: 95%;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid white;
+
+}
+#totalDue{
+  color: white;
+  margin-left: 15px;
+  
 }

@@ -6,7 +6,7 @@ var router = express.Router();
 
 router.route('/')
     .get(function(req, res) {
-        procedures.procGetTrips_Yellow().then(function(data){
+        procedures.procGetTrips_Yellow_Current().then(function(data){
             res.send(data);
             console.log(data);
         }, function(err) {

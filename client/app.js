@@ -137,14 +137,23 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/adminAddUserYellow.html',
             controller: 'adminUsersController'
         })
+        .when('/admin/addAdmin', {
+            templateUrl: 'views/adminAddAdmin.html',
+            controller: 'adminUsersController'
+        })
         .when('/admin/editUser/:id', {
             templateUrl: 'views/adminEditUser.html',
             controller: 'adminEditUserController'
         })
-        // .when('/adminDeleteAllTrips', {
-        //     templateUrl: 'views/adminDeleteAllTrips.html',
-        //     controller: 'adminHomeController'
-        // })
+        .when('/admin/userProfile/:id', {
+            templateUrl: 'views/adminUserProfile.html',
+            controller: 'adminUserProfileController'
+        })
+        .when('/userProfile/:id', {
+            templateUrl: 'views/UserProfile.html',
+            controller: 'UserProfileController'
+        })
+      
         .otherwise({
             redirectTo: '/'
         });

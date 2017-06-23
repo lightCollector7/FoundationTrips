@@ -1,12 +1,12 @@
 var express = require('express');
-var procedures = require('../procedures/PurpleTrips.proc');
+var procedures = require('../procedures/YellowTrips.proc');
 var auth = require('../middleware/auth.mw');
 
 var router = express.Router();
 
 router.route('/')
     .get(function(req, res) {
-        procedures.procGetTrips_Purple_Future().then(function(data){
+        procedures.procGetTrips_Yellow_Future().then(function(data){
             res.send(data);
             console.log(data);
         }, function(err) {

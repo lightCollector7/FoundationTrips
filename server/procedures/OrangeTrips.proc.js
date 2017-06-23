@@ -1,9 +1,5 @@
 var db = require('../config/db');
 
-exports.procGetTrips_Orange = function() {
-    return db.fnRows('procGetTrips_Orange');    
-}
-
 exports.procGetTrips_Orange_Current = function(){
     return db.fnRows('procGetTrips_Orange_Current');
 }

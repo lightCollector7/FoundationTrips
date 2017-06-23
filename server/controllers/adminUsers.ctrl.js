@@ -91,6 +91,28 @@ router.route('/YellowUsers')
             res.sendStatus(500);
         });
     });
+router.route('/AdminUsers')
+    .get(function(req, res) {
+        procedures.procGetUsersAdmins().then(function(yellowUsers) {
+            res.send(yellowUsers);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        });
+    })
+     .post(auth.isAdmin, function(req, res){  // make the procedure to create new users and finish this
+        var u = req.body
+        console.log('u: ');
+        console.log(u);
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
+        .then(function(data){
+            res.status(201).send(data);
+        }, function(err) {
+            console.log(err);
+            // alert(err);
+            res.sendStatus(500);
+        });
+    });
 
 router.route('/Participant/')       // is this written right?
     .get(function(req, res) {

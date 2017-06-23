@@ -32,6 +32,8 @@ var ctrlYellowTripSlots = require('./controllers/YellowTripSlots.ctrl')
 var ctrlRainbowTripSlots = require('./controllers/RainbowTripSlots.ctrl')
 var ctrlAdminTripSlots = require('./controllers/AdminTripSlots.ctrl')
 
+var ctrlUserTrips = require('./controllers/UserTrips.ctrl')
+
 
 
 
@@ -64,6 +66,8 @@ router
     .use('/YellowTripSlots', ctrlYellowTripSlots)
     .use('/RainbowTripSlots', ctrlRainbowTripSlots)
     .use('/AdminTripSlots', ctrlAdminTripSlots)
+
+    .use('/UserTrips', ctrlUserTrips)
 
    
 

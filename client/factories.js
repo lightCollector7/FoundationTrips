@@ -156,6 +156,17 @@ angular.module('FoundationTrips.factories', [])
         update: {method: 'PUT'}
     });
 }])
+.factory('AdminUserFactoryAdmin', ['$resource', function($resource) {  
+    return $resource('api/AdminUsers/AdminUsers/:id/', {id: '@id' },{
+        update: {method: 'PUT'}
+    });
+}])
+.factory('UserTripFactory', ['$resource', function($resource){
+    return $resource('api/UserTrips/:id', {id: '@id'},{
+        update: {method: 'PUT'}
+    });
+}])
+
 
 
 //====================================================================
