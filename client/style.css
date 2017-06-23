@@ -1121,6 +1121,7 @@ a {
 }
 #orangeEditUserButton{
   margin:5px;
+  margin-left: 25px;
   background-color: black;
   border: 1px solid orange;
   color: white;
@@ -1139,6 +1140,7 @@ a {
 
 #purpleEditUserButton{
   margin:5px;
+  margin-left: 25px;
   background-color: black;
   border: 1px solid purple;
   color: white;
@@ -1168,12 +1170,14 @@ a {
 
 #yellowEditUserButton{
   margin:5px;
+  margin-left: 25px;
   background-color: black;
   border: 1px solid yellow;
   color: white;
 }
 #EditAdminButton{
   margin:5px;
+  margin-left: 25px;
   background-color: black;
   border: 1px solid darkgray;
   color: white;
