@@ -3,8 +3,8 @@
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
          <p id="navbarTitle">CURRENT FIELD TRIPS:</p>
-         <a class="navbarLink hvr-grow" ng-click="logout()" href="">logout</a><a class="navbarLink hvr-grow" href="/adminHome" ng-show="isAdmin">ADMIN</a>
-         <a class="navbarLink hvr-grow" href="/UserHomeMenu">Home Menu</a>
+         <a class="navbarLink hvr-grow" ng-click="logout()" href="">(logout)</a><a class="navbarLink hvr-grow" href="/adminHome" ng-show="isAdmin">ADMIN</a>
+         <a class="navbarLink hvr-grow" href="/UserHomeMenu">(home menu)</a>
          <p id="signedInAs" class="navbarLink" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
         
   </div>
@@ -21,7 +21,9 @@
                     <td class="participantTripName">{{participantTrip.eventName}}</td> <td class="participantTripDateLineSmall" >{{participantTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</td><td class="participantTripCostLineSmall">${{participantTrip.eventCost}}</td>
                 </tr>
             </table>
-            <p id="totalDueLine">Total Due:  <span id="totalDue">${{totalDue}}</span></p>
+            <p id="totalDueLine">Total Due for This Month:  <span id="totalDue">${{currentTotalDue}}</span></p>
+            <p id="totalDueLine">Total Due for Next Month:  <span id="totalDue">${{futureTotalDue}}</span></p>
+            <!--<p id="totalDueLine">Grand Total Due:  <span id="totalDue">${{totalDue}}</span></p>-->
           <div>
           
         

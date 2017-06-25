@@ -2,16 +2,17 @@
         <div id="navbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-         <p id="navbarTitle">CURRENT FIELD TRIPS:</p>
-         <a class="navbarLink hvr-grow" ng-click="logout()" href="">logout</a><a class="navbarLink hvr-grow" href="/adminHome" ng-show="isAdmin">ADMIN</a>
-         <a class="navbarLink hvr-grow" href="/UserHomeMenu">Home Menu</a>
+         <p id="navbarTitle">FIELD TRIPS</p>
+         <a class="navbarLink hvr-grow" ng-click="logout()" href="">(logout)</a>
+         <a class="navbarLink hvr-grow" href="/adminHome" ng-show="isAdmin">(admin)</a>
+         <a class="navbarLink hvr-grow" href="/UserHomeMenu">(home menu)</a>
          <p id="signedInAs" class="navbarLink" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
         
   </div>
 
 
 <div id="greenTripsDiv" class="container" ng-show="isGreen || isTheRainbow"> 
-  <p class="greenTripsDivTitle">Green Field Trips</p>
+  <p class="greenTripsDivTitle">Current Green Field Trips</p>
   <div class="tripListDiv">
   <ul>
     <li ng-repeat="greenTrip in greenTrips | orderBy: 'eventDate'" class="greenLI">
@@ -26,7 +27,7 @@
 </div>
 
 <div id="orangeTripsDiv" class="container" ng-show="isOrange || isTheRainbow"> 
-  <p class="orangeTripsDivTitle">Orange Field Trips</p>
+  <p class="orangeTripsDivTitle">Current Orange Field Trips</p>
   <div class="tripListDiv">
   <ul>
     <li ng-repeat="orangeTrip in orangeTrips | orderBy: 'eventDate'" class="orangeLI">
@@ -41,7 +42,7 @@
 </div>
 
 <div id="purpleTripsDiv" class="container" ng-show="isPurple || isTheRainbow"> 
-  <p class="purpleTripsDivTitle">Purple Field Trips</p>
+  <p class="purpleTripsDivTitle">Current Purple Field Trips</p>
   <div class="tripListDiv">
   <ul>
       <li ng-repeat="purpleTrip in purpleTrips | orderBy: 'eventDate'" class="purpleLI">
@@ -56,7 +57,7 @@
 </div>
 
 <div id="yellowTripsDiv" class="container" ng-show="isYellow || isTheRainbow"> 
-  <p class="yellowTripsDivTitle"> Yellow Field Trips</p>
+  <p class="yellowTripsDivTitle">Current Yellow Field Trips</p>
   <div class="tripListDiv">
   <ul>
      <li ng-repeat="yellowTrip in yellowTrips | orderBy: 'eventDate'" class="yellowLI">
@@ -71,7 +72,7 @@
 </div>
 
 <div id="rainbowTripsDiv" class="container"> 
-  <p class="rainbowTripsDivTitle"> Rainbow Field Trips</p>
+  <p class="rainbowTripsDivTitle">Current Rainbow Field Trips</p>
   <div class="tripListDiv">
   <ul>
      <li ng-repeat="rainbowTrip in rainbowTrips | orderBy: 'eventDate'" class="rainbowLI">

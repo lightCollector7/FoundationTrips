@@ -1907,6 +1907,7 @@ angular.module('FoundationTrips.controllers',[])
     UserService.requireAdmin();
     UserService.isLoggedIn();
     UserService.isAdmin();
+  
 
     userID = $routeParams.id;
     $scope.participant = UserFactory.get({id: userID },function(){
@@ -1918,10 +1919,10 @@ angular.module('FoundationTrips.controllers',[])
     // })
 
      var httpParticipantTrips = $http.get('/api/userTrips/' + userID).then(function(success){
-        $scope.participantTrips = success.data;
-        httpParticipantTrips = success.data;
-        console.log(httpParticipantTrips);
-        return httpParticipantTrips;
+                $scope.participantTrips = success.data;
+                httpParticipantTrips = success.data;
+                console.log(httpParticipantTrips);
+                return httpParticipantTrips;
     }).then(function(httpParticipantTrips){   
             var totalDue = 0;         
             for ( z = 0; z < httpParticipantTrips.length; z++) {  
@@ -1936,6 +1937,51 @@ angular.module('FoundationTrips.controllers',[])
                 console.log($scope.totalDue);
         }
          return $scope.totalDue;
+    })
+
+    var CurrentParticipantTrips = $http.get('/api/userTrips/current/' + userID).then(function(success){
+                CurrentParticipantTrips = success.data;
+                console.log(CurrentParticipantTrips);
+                return CurrentParticipantTrips;
+    }).then(function(CurrentParticipantTrips){   
+            var currentTotalDue = 0;
+            $scope.futureTotalDue = 0;         
+            for ( z = 0; z < CurrentParticipantTrips.length; z++) {  
+                
+                console.log("event cost for CurrentParticipantTrips[" + z + "]: ");
+                console.log(CurrentParticipantTrips[z].eventCost);
+
+                currentTotalDue = currentTotalDue + CurrentParticipantTrips[z].eventCost;
+            }
+            console.log('Current total due: ');
+            $scope.currentTotalDue = currentTotalDue;
+            console.log($scope.currentTotalDue);
+            return $scope.currentTotalDue;
+    })
+
+      var FutureParticipantTrips = $http.get('/api/userTrips/future/' + userID).then(function(success){
+                FutureParticipantTrips = success.data;
+                console.log(FutureParticipantTrips);
+                return FutureParticipantTrips;
+        }).then(function(FutureParticipantTrips){   
+            var futureTotalDue = 0;  
+            $scope.futureTotalDue = 0;       
+            for ( z = 0; z < FutureParticipantTrips.length; z++) {  
+                
+                console.log("event cost for FutureParticipantTrips[" + z + "]: ");
+                console.log(FutureParticipantTrips[z].eventCost);
+
+                futureTotalDue = futureTotalDue + FutureParticipantTrips[z].eventCost;
+
+                // console.log('Future total due: ');
+                // $scope.futureTotalDue = futureTotalDue;
+                // console.log($scope.futureTotalDue);
+            }
+            console.log('Future total due: ');
+            $scope.futureTotalDue = futureTotalDue;
+            console.log($scope.futureTotalDue);
+            return $scope.futureTotalDue;
+         
     })
 
     
@@ -1955,14 +2001,17 @@ angular.module('FoundationTrips.controllers',[])
         $scope.loggedIn = true;
     });
     $scope.logout = function () {
+        $location.path('/')
         UserService.logout().then(function(){
-        $route.reload();
+        
         });
     }
 
     UserService.requireLogin();
     UserService.isLoggedIn();
     UserService.isAdmin();
+    UserService.isMyProfile();
+    UserService.requireIsMyProfile();
 
     userID = $routeParams.id;
     $scope.participant = UserFactory.get({id: userID },function(){
@@ -1971,10 +2020,11 @@ angular.module('FoundationTrips.controllers',[])
 
 
      var httpParticipantTrips = $http.get('/api/userTrips/' + userID).then(function(success){
-        $scope.participantTrips = success.data;
-        httpParticipantTrips = success.data;
-        console.log(httpParticipantTrips);
-        return httpParticipantTrips;
+                $scope.participantTrips = success.data;
+                httpParticipantTrips = success.data;
+                console.log('httpParticipantTrips array: ')
+                console.log(httpParticipantTrips);
+                return httpParticipantTrips;
     }).then(function(httpParticipantTrips){   
             var totalDue = 0;         
             for ( z = 0; z < httpParticipantTrips.length; z++) {  
@@ -1989,6 +2039,51 @@ angular.module('FoundationTrips.controllers',[])
                 console.log($scope.totalDue);
         }
          return $scope.totalDue;
+    })
+
+    var CurrentParticipantTrips = $http.get('/api/userTrips/current/' + userID).then(function(success){
+                CurrentParticipantTrips = success.data;
+                console.log(CurrentParticipantTrips);
+                return CurrentParticipantTrips;
+    }).then(function(CurrentParticipantTrips){   
+            var currentTotalDue = 0;
+            $scope.futureTotalDue = 0;         
+            for ( z = 0; z < CurrentParticipantTrips.length; z++) {  
+                
+                console.log("event cost for CurrentParticipantTrips[" + z + "]: ");
+                console.log(CurrentParticipantTrips[z].eventCost);
+
+                currentTotalDue = currentTotalDue + CurrentParticipantTrips[z].eventCost;
+            }
+            console.log('Current total due: ');
+            $scope.currentTotalDue = currentTotalDue;
+            console.log($scope.currentTotalDue);
+            return $scope.currentTotalDue;
+    })
+
+      var FutureParticipantTrips = $http.get('/api/userTrips/future/' + userID).then(function(success){
+                FutureParticipantTrips = success.data;
+                console.log(FutureParticipantTrips);
+                return FutureParticipantTrips;
+        }).then(function(FutureParticipantTrips){   
+            var futureTotalDue = 0;  
+            $scope.futureTotalDue = 0;       
+            for ( z = 0; z < FutureParticipantTrips.length; z++) {  
+                
+                console.log("event cost for FutureParticipantTrips[" + z + "]: ");
+                console.log(FutureParticipantTrips[z].eventCost);
+
+                futureTotalDue = futureTotalDue + FutureParticipantTrips[z].eventCost;
+
+                // console.log('Future total due: ');
+                // $scope.futureTotalDue = futureTotalDue;
+                // console.log($scope.futureTotalDue);
+            }
+            console.log('Future total due: ');
+            $scope.futureTotalDue = futureTotalDue;
+            console.log($scope.futureTotalDue);
+            return $scope.futureTotalDue;
+         
     })
 
     

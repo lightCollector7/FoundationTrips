@@ -3,16 +3,17 @@
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
-        <a class="navbarLink hvr-grow" ng-click="logout()" href="">logout</a><a class="navbarLink" href="/adminHome" ng-show="isAdmin">ADMIN</a>
+        <a class="navbarLink hvr-grow" ng-click="logout()" href="">(logout)</a>
+        <a class="navbarLink hvr-grow" href="/adminHome" ng-show="isAdmin">(admin)</a>
         <p id="signedInAs" class="" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
         
   </div>
 
 
-  <div>
-       <h1><a class="homeLinks hvr-grow" href="/CurrentEvents">Current Events</a></h1>
+  <div id="homeLinksDiv">
+       <a class="homeLinks hvr-grow" href="/CurrentEvents"><h1 class="hvr-grow">CURRENT EVENTS</h1></a>
 
-       <h1><a class="homeLinks hvr-grow" href="/FutureEvents">Future Events</a></h1>
+       <a class="homeLinks hvr-grow" href="/FutureEvents"><h1 class="hvr-grow">FUTURE EVENTS</h1></a>
 
-       <h1><a class="homeLinks hvr-grow" href="/userProfile/{{ME.id}}">My Profile</a></h1>
+       <a class="homeLinks hvr-grow" href="/userProfile/{{ME.id}}"><h1 class="hvr-grow">MY PROFILE</h1></a>
   </div>

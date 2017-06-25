@@ -3,18 +3,20 @@
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
         <p id="navbarTitle">FIELD TRIPS</p>
-        <a class="navbarLink hvr-grow" ng-click="logout()">logout</a>
-        <a class="navbarLink hvr-grow" href="/adminHome">(Admin Home)</a>
-        <a class="navbarLink hvr-grow" href="/">(exit ADMIN)</a>
+        <a class="navbarLink hvr-grow" ng-click="logout()">(logout)</a>
+        <a class="navbarLink hvr-grow" href="/adminHome">(admin home)</a>
+        <a class="navbarLink hvr-grow" href="/">(exit admin)</a>
         
 </div>
 
 <div id="adminBackground">
+    <div id="homeLinksDiv">
     <h1 class="adminHomeTitle">Welcome to admin Home.</h1>
 
-    <h1><a class="adminHomeLinks hvr-grow" href="/adminCurrentEvents">Current Events</a></h1>
+    <a class="adminHomeLinks hvr-grow" href="/adminCurrentEvents"><h1 class="hvr-grow">CURRENT EVENTS</h1></a>
 
-    <h1><a class="adminHomeLinks hvr-grow" href="/adminFutureEvents">Future Events</a></h1>
+    <a class="adminHomeLinks hvr-grow" href="/adminFutureEvents"><h1 class="hvr-grow">FUTURE EVENTS</h1></a>
 
     <!--<h1><a class="adminHomeLinks" href="/adminEditColors">Color Groups</a></h1>-->
+    </div>
 </div>

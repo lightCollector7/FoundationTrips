@@ -1,5 +1,5 @@
 angular.module('FoundationTrips.services', [])
-.service('UserService', ['$http', '$location', function($http, $location) {
+.service('UserService', ['$http', '$location', '$route', '$routeParams', function($http, $location, $route, $routeParams) {
 
     var user;
 
@@ -34,6 +34,41 @@ angular.module('FoundationTrips.services', [])
                 return false;
             }
         })
+    }
+
+    this.isMyProfile = function(){
+        return this.me().then(function(me){
+            var profileID = $routeParams.id;
+            console.log(profileID)
+            console.log(me.id);
+            if (me.id == profileID){
+                console.log('isMyProfile is true')
+                return true;
+            }else if(me.role === 'admin') {
+                console.log('isMyProfile is true');
+                return true;
+            }else {
+                console.log('isMyProfile is false');
+                return false;
+            }
+        })
+    }
+
+    this.requireIsMyProfile = function(){
+            return this.isMyProfile().then(function(iAmMe) {
+            if (!iAmMe) { // if the profile is not mine
+                alert('Denied Access: unauthorized user');
+                $location.path('/').replace();
+            }
+        }, function(err) { // if there was an error getting 'me' (AKA, the user is not logged in with a session on the server)
+            alert('You must be an admin to access this page.');
+            $location.path('/').replace();
+        });
+
+        // if(!this.isAdmin()) {
+        //     $location.path('/posts').replace();
+        // }
+    
     }
 
     this.requireAdmin = function() {

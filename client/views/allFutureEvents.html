@@ -2,9 +2,9 @@
         <div id="navbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-        <p id="navbarTitle">UPCOMING FIELD TRIPS:</p>
-        <a class="navbarLink hvr-grow" ng-click="logout()" href="">logout</a><a class="navbarLink hvr-grow" href="/adminHome" ng-show="isAdmin">ADMIN</a>
-        <a class="navbarLink hvr-grow" href="/UserHomeMenu">Home Menu</a>
+        <p id="navbarTitle">FIELD TRIPS</p>
+        <a class="navbarLink hvr-grow" ng-click="logout()" href="">(logout)</a><a class="navbarLink hvr-grow" href="/adminHome" ng-show="isAdmin">(admin)</a>
+        <a class="navbarLink hvr-grow" href="/UserHomeMenu">(home menu)</a>
         <p id="signedInAs" class="" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
         
   </div>
@@ -56,7 +56,7 @@
 </div>
 
 <div id="yellowTripsDiv" class="container" ng-show="isYellow || isTheRainbow"> 
-  <p class="yellowTripsDivTitle"> Upcoming Yellow Field Trips</p>
+  <p class="yellowTripsDivTitle">Upcoming Yellow Field Trips</p>
   <div class="tripListDiv">
   <ul>
      <li ng-repeat="yellowTrip in yellowTrips | orderBy: 'eventDate'" class="yellowLI">
@@ -71,7 +71,7 @@
 </div>
 
 <div id="rainbowTripsDiv" class="container" > 
-  <p class="rainbowTripsDivTitle"> Upcoming Rainbow Field Trips</p>
+  <p class="rainbowTripsDivTitle">Upcoming Rainbow Field Trips</p>
   <div class="tripListDiv">
   <ul>
      <li ng-repeat="rainbowTrip in rainbowTrips | orderBy: 'eventDate'" class="rainbowLI">
