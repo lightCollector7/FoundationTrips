@@ -54,18 +54,26 @@
 #navbar{
   height: 150px;
   width: 100%;
+  position: fixed;
+  overflow: hidden;
+  top: 0px;
   background-color: rgb(018, 055,156);
   border: 5px solid rgb(018, 055,156);
   padding: 15px;
   border-bottom: 1px solid white;
+  z-index: 1;
  
 }
 #adminNavbar{
+  position: fixed;
+  overflow: hidden;
+  top:0px;
   height: 150px;
   width: 100%;
   background-color: black;
   border-bottom: 1px solid white;
   padding: 15px;
+  z-index: 1;
   
 }
 #navbarLogo{
@@ -130,6 +138,13 @@
 
 
 /*=================== Welcome Page ============================*/
+#backgroundDiv{
+  position: absolute;
+  top: 175px;
+  height: 100%;
+  left: 0;
+  width: 100%;
+}
 #welcome{
     color: white;
     margin-top: 100px;
@@ -145,6 +160,9 @@
   margin-right: 25%;
 }
 #homeLinksDiv{
+  position: fixed;
+  top: 250px;
+  width: 100%;
   text-align: center;
 }
 .homeLinks{
@@ -193,7 +211,7 @@
   padding-left: 20px;
   padding-right: 20px;
   width: 80%;
-  height: 600px;
+  height: 525px;
   border-radius: 10px;
   border: 5px solid white;
   background-color:royalblue;
@@ -217,7 +235,7 @@
   padding-left: 20px;
   padding-right: 20px;*/
   width: 95%;
-  height: 380px;
+  height: 340px;
   /*background-color:royalblue;*/
   color: white;
   overflow-y: auto;
@@ -343,7 +361,7 @@
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 600px;
+  height: 525px;
   border-radius: 10px;
   border: 5px solid white;
   background-color: royalblue;
@@ -379,7 +397,7 @@
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 600px;
+  height: 525px;
   border-radius: 10px;
   border: 5px solid white;
   background-color: royalblue;
@@ -415,7 +433,7 @@
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 600px;
+  height: 525px;
   border-radius: 10px;
   border: 5px solid white;
   background-color: royalblue;
@@ -450,7 +468,7 @@
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 600px;
+  height: 525px;
   border-radius: 10px;
   border-top: 3px solid limegreen;
   border-right: 3px solid orange;
@@ -557,10 +575,11 @@ a {
 
 #adminBackground{
   position: absolute;
-  top: 150;
+  top: 150px;
   height: 100%;
   width: 100%;
   background-color: black;
+  margin-top: 30px;
   /*border-top: 5px solid gray;*/
 
 }
@@ -570,7 +589,7 @@ a {
   padding:20px;
   padding-top: 10px;
   width: 80%;
-  height: 600px;
+  height: 525px;
   border-radius: 10px;
   border: 5px solid limegreen;
   background-color: black;
@@ -583,7 +602,7 @@ a {
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 600px;
+  height: 525px;
   border-radius: 10px;
   border: 5px solid orange;
   background-color: black;
@@ -596,7 +615,7 @@ a {
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 600px;
+  height: 525px;
   border-radius: 10px;
   border: 5px solid purple;
   background-color: black;
@@ -609,7 +628,7 @@ a {
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 600px;
+  height: 525px;
   border-radius: 10px;
   border: 5px solid yellow;
   background-color: black;
@@ -622,7 +641,7 @@ a {
   padding-top: 10px;
   padding: 20px;
   width: 80%;
-  height: 600px;
+  height: 525px;
   border-radius: 10px;
   border-top: 3px solid limegreen;
   border-right: 3px solid orange;
@@ -828,7 +847,7 @@ a {
 
 
 #editSlotHeader{
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid lightslategray;
 }
 #editSlotDiv{
   margin-left: 10%;
@@ -841,7 +860,7 @@ a {
   border-radius: 10px;
   border: 5px solid white;
   /*background-color: #BCD2EE;*/
-  background-color:gray;
+  background-color:black;
   color: white;
 }
 
@@ -925,7 +944,7 @@ a {
   border-radius: 10px;
   border: 5px solid white;
   /*background-color: #BCD2EE;*/
-  background-color:gray;
+  background-color:black;;
   color: white;
 }
 
@@ -1082,12 +1101,13 @@ a {
   
 }
 #AdminListDiv{
+  position: relative;
   margin-left: 10%;
   margin-top: 25px;
   padding:20px;
   padding-top: 10px;
   width: 80%;
-  height: 600px;
+  height: 525px;
   border-radius: 10px;
   border: 5px solid white;
   background-color: black;
@@ -1238,7 +1258,7 @@ a {
 }
 
 /*========================  userProfile Page ======================================*/
-#participantName{
+#profileParticipantName{
   font-size: 20px;
   color: white;
   border-bottom: 2px solid lightslategray;
@@ -1294,10 +1314,12 @@ a {
   margin-top: 25px;
   margin-bottom: 20px;
   border-bottom: 1px solid white;
+  color: lightslategray;
 
 }
 #totalDue{
   color: white;
   margin-left: 15px;
+  margin-right: 20px;
   
 }

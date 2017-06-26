@@ -9,21 +9,22 @@
   </div>
 
 
+<div id="backgroundDiv" class="container">
+  <div id="orangeTripsDiv" class="container"> 
+    <p class="orangeTripsDivTitle">{{orangeTrip.eventName}} <span class="tripDateLine">{{orangeTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
+    <p class="orangeTripDescriptionLine">{{orangeTrip.eventDescription}} <span class="tripTimeLine">{{orangeTrip.eventTime}}</span><span class="tripCostLine">${{orangeTrip.eventCost}}</span></p>
+    
+    <h3> Field Trip Slots:</h3>
+    <ol>
+    <li class="tripSlots" ng-repeat="orangeTripSlot in orangeTripSlots">
+        <p ng-if="ME.id !== orangeTripSlot.userID" class="slotIsNotMine">this slot is filled <span ng-if="orangeTripSlots.indexOf(orangeTripSlot) +1 > orangeTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
+        <p ng-if="ME.id === orangeTripSlot.userID" class="orangeSlotIsMine">{{orangeTripSlot.firstname}} {{orangeTripSlot.lastname}} <span ng-if="orangeTripSlots.indexOf(orangeTripSlot) +1 > orangeTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
+      </li>
+    </ol>
 
-<div id="orangeTripsDiv" class="container"> 
-  <p class="orangeTripsDivTitle">{{orangeTrip.eventName}} <span class="tripDateLine">{{orangeTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
-  <p class="orangeTripDescriptionLine">{{orangeTrip.eventDescription}} <span class="tripTimeLine">{{orangeTrip.eventTime}}</span><span class="tripCostLine">${{orangeTrip.eventCost}}</span></p>
-  
-  <h3> Field Trip Slots:</h3>
-  <ol>
-   <li class="tripSlots" ng-repeat="orangeTripSlot in orangeTripSlots">
-      <p ng-if="ME.id !== orangeTripSlot.userID" class="slotIsNotMine">this slot is filled <span ng-if="orangeTripSlots.indexOf(orangeTripSlot) +1 > orangeTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
-      <p ng-if="ME.id === orangeTripSlot.userID" class="orangeSlotIsMine">{{orangeTripSlot.firstname}} {{orangeTripSlot.lastname}} <span ng-if="orangeTripSlots.indexOf(orangeTripSlot) +1 > orangeTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
-    </li>
-  </ol>
-
-  <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
-  <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>
+    <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
+    <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>
+  </div>
 </div>
 
 

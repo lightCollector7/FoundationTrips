@@ -1914,10 +1914,6 @@ angular.module('FoundationTrips.controllers',[])
         console.log($scope.participant);
     })
 
-    // $scope.participantTrips = UserTripFactory.query({id: userID}, function(){
-    //     console.log($scope.participantTrips);
-    // })
-
      var httpParticipantTrips = $http.get('/api/userTrips/' + userID).then(function(success){
                 $scope.participantTrips = success.data;
                 httpParticipantTrips = success.data;
@@ -1945,18 +1941,39 @@ angular.module('FoundationTrips.controllers',[])
                 return CurrentParticipantTrips;
     }).then(function(CurrentParticipantTrips){   
             var currentTotalDue = 0;
+            var amtPaidThisMonth = 0;
+            var currentBalance = 0;
             $scope.futureTotalDue = 0;         
             for ( z = 0; z < CurrentParticipantTrips.length; z++) {  
                 
                 console.log("event cost for CurrentParticipantTrips[" + z + "]: ");
                 console.log(CurrentParticipantTrips[z].eventCost);
+                if (CurrentParticipantTrips[z].paid == 1){
+                    amtPaidThisMonth = amtPaidThisMonth + CurrentParticipantTrips[z].eventCost;
+                    console.log('amtPaidThisMonth: ');
+                    console.log(amtPaidThisMonth);
+                }
 
                 currentTotalDue = currentTotalDue + CurrentParticipantTrips[z].eventCost;
+                
+                
             }
-            console.log('Current total due: ');
+            currentBalance = currentTotalDue - amtPaidThisMonth;
+            console.log("currentBalance: ")
+            console.log(currentBalance);
+            $scope.currentBalance = currentBalance;
+
             $scope.currentTotalDue = currentTotalDue;
+            console.log('Current total due: ');
             console.log($scope.currentTotalDue);
-            return $scope.currentTotalDue;
+            
+            $scope.amtPaidThisMonth = amtPaidThisMonth;
+            console.log('amtPaidThisMonth: ');
+            console.log(amtPaidThisMonth);
+
+            
+
+            return $scope.currentTotalDue, $scope.amtPaidThisMonth, $scope.currentBalance;
     })
 
       var FutureParticipantTrips = $http.get('/api/userTrips/future/' + userID).then(function(success){

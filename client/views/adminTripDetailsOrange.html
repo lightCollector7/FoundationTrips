@@ -2,7 +2,7 @@
         <div id="adminNavbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-        <p id="navbarTitle">FIELD TRIPS</p>
+        <p id="navbarTitle">TRIP DETAILS</p>
         <a class="navbarLink hvr-grow" ng-click="logout()">(logout)</a>
         <a class="navbarLink hvr-grow" href="/adminEventsNavMenu">(admin trips)</a>
         <a class="navbarLink hvr-grow" href="/adminHome">(admin home)</a>
@@ -20,7 +20,7 @@
         <li id="{{orangeTripSlot.id}}" class="adminOrangeTripSlots" ng-repeat="orangeTripSlot in orangeTripSlots" >
           <a href="admin/slotDetails/{{ orangeTripSlot.id }}"><button id="orangeEditSlotButton" >edit</button></a>
           <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{orangeTripSlot.paid}}"></input></label>
-            <span id="participantName">{{orangeTripSlot.firstname}} {{orangeTripSlot.lastname}} </span>
+            <span id="participantName"><a href="/admin/userProfile/{{orangeTripSlot.userID}}">{{orangeTripSlot.firstname}} {{orangeTripSlot.lastname}}</a> </span>
             <span ng-if="orangeTripSlots.indexOf(orangeTripSlot) +1 > orangeTrip.maxSlots" class="adminWaitlist">** WaitListed **</span>
         </li>
       </ol>
@@ -30,3 +30,5 @@
     </div>
 
 </div>
+
+

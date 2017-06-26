@@ -2,18 +2,19 @@
         <div id="navbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-        <p id="navbarTitle">FIELD TRIPS</p>
+        <p id="navbarTitle">HOME MENU</p>
         <a class="navbarLink hvr-grow" ng-click="logout()" href="">(logout)</a>
         <a class="navbarLink hvr-grow" href="/adminHome" ng-show="isAdmin">(admin)</a>
         <p id="signedInAs" class="" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
         
   </div>
 
+<div id="backgroundDiv" class="container">
+    <div id="homeLinksDiv">
+        <a class="homeLinks hvr-grow" href="/CurrentEvents"><h1 class="hvr-grow">CURRENT EVENTS</h1></a>
 
-  <div id="homeLinksDiv">
-       <a class="homeLinks hvr-grow" href="/CurrentEvents"><h1 class="hvr-grow">CURRENT EVENTS</h1></a>
+        <a class="homeLinks hvr-grow" href="/FutureEvents"><h1 class="hvr-grow">FUTURE EVENTS</h1></a>
 
-       <a class="homeLinks hvr-grow" href="/FutureEvents"><h1 class="hvr-grow">FUTURE EVENTS</h1></a>
-
-       <a class="homeLinks hvr-grow" href="/userProfile/{{ME.id}}"><h1 class="hvr-grow">MY PROFILE</h1></a>
-  </div>
+        <a class="homeLinks hvr-grow" href="/userProfile/{{ME.id}}"><h1 class="hvr-grow">MY PROFILE</h1></a>
+    </div>
+</div>

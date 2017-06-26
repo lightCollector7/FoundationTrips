@@ -2,7 +2,7 @@
         <div id="adminNavbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-        <p id="navbarTitle">FIELD TRIPS</p>
+        <p id="navbarTitle">USER PROFILE</p>
         <a class="navbarLink hvr-grow hvr-grow" ng-click="logout()">(logout)</a>
         <a class="navbarLink hvr-grow" href="/Events">(exit admin)</a>
         <a class="navbarLink hvr-grow" href="/adminHome">(admin home)</a>
@@ -13,7 +13,7 @@
 
 
       <div id="AdminListDiv" class="container"> 
-          <p id="participantName">{{participant.firstName}} <span>{{participant.lastName}}</span></p>
+          <p id="profileParticipantName">{{participant.firstName}} <span>{{participant.lastName}}</span></p>
           <p id="tripListTitle"> Enrolled Field Trips:</p>
           <div class="tripListDiv">
             <table>
@@ -24,7 +24,10 @@
          
             <!--<p id="totalDueLine">Grand Total Due:  <span id="totalDue">${{totalDue}}</span></p>-->
           </div>
-         <p id="totalDueLine">Total Due for This Month:  <span id="totalDue">${{currentTotalDue}}</span></p>
+         <p id="totalDueLine">Total Due for This Month: <span id="totalDue">${{currentTotalDue}}</span>
+             <span id="totalDueLine">Amount Paid This Month: </span><span id="totalDue"> ${{amtPaidThisMonth}}</span>
+             <span id="totalDueLine">Current Balance: </span><span id="totalDue"> ${{currentBalance}}</span>
+        </p>
          <p id="totalDueLine">Total Due for Next Month:  <span id="totalDue">${{futureTotalDue}}</span></p>
           
         

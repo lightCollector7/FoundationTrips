@@ -2,7 +2,7 @@
         <div id="adminNavbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-        <p id="navbarTitle">FIELD TRIPS</p>
+        <p id="navbarTitle">MANUAL ENROLLMENT</p>
         <a class="navbarLink hvr-grow" ng-click="logout()">(logout)</a>
         <a class="navbarLink hvr-grow" href="/adminEventsNavMenu">(admin trips)</a>
         <a class="navbarLink hvr-grow" href="/adminHome">(admin home)</a>
@@ -11,8 +11,8 @@
 
   <div id="adminBackground">
       <div id="searchParticipantDiv">
-          <p>Trip to sign Participant up for: <span>{{trip.eventName}}</span></p>
-          <p>Date: <span>{{trip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}<span>
+          <p id="totalDueLine">Trip to sign Participant up for: <span id="totalDue">{{trip.eventName}}</span></p>
+          <p id="totalDueLine">Date: <span id='totalDue'>{{trip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}<span>
           <!--<p>Trip ID: {{trip.id}}</p>-->
           <!--<p>Color ID:<span ng-bind="trip.colorID"></span></p>-->
           <form name="addParticipantForm">

@@ -2,7 +2,7 @@
         <div id="adminNavbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-        <p id="navbarTitle">FIELD TRIPS</p>
+        <p id="navbarTitle"></p>
         <a class="navbarLink hvr-grow" ng-click="logout()">(logout)</a>
         <a class="navbarLink hvr-grow" href="/adminAllEvents">(admin trips)</a>
         <a class="navbarLink hvr-grow" href="/adminHome">(admin home)</a>
@@ -14,9 +14,9 @@
       <h1 id="editSlotHeader"> Edit Slot</h1>
 
       <form name="updateSlotForm">
-        <label>First Name: <span> {{slotToEdit.firstName}} </span></label>
+        <label id="totalDueLine">Name: <span id="totalDue"> {{slotToEdit.firstName}} {{slotToEdit.lastName}}</span></label>
         <p></p>
-        <label>Last Name: <span> {{slotToEdit.lastName}} </span></label>
+        <!--<label>Last Name: <span> {{slotToEdit.lastName}} </span></label>-->
         <p></p>
         <label>paid<input id="paidCheckBox" name="paid" type="checkbox" ng-model="slotToEdit.paid" ng-checked="slotToEdit.paid" value="slotToEdit.paid" ng-true-value="1" ng-false-value="0"></input></label>
     </form>

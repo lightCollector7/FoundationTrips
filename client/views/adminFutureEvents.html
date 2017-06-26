@@ -2,7 +2,7 @@
         <div id="adminNavbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-        <p id="navbarTitle">UPCOMING FIELD TRIPS:</p>
+        <p id="navbarTitle">FUTURE FIELD TRIPS:</p>
         <a class="navbarLink hvr-grow" ng-click="logout()">(logout)</a>
          <a class="navbarLink hvr-grow" href="/">(exit admin)</a>
          <a class="navbarLink hvr-grow" href="/adminHome">(admin home)</a>
@@ -60,7 +60,7 @@
     </div>
 
     <div id="adminYellowTripsDiv" class="container " > 
-      <p class="yellowTripsDivTitle"> Yellow Field Trips <span><a href="/admin/addTripYellow"><button id="addTripButtonYellow" class="hvr-grow"> Add Trip</button></a></span></p>
+      <p class="yellowTripsDivTitle">Yellow Field Trips <span><a href="/admin/addTripYellow"><button id="addTripButtonYellow" class="hvr-grow"> Add Trip</button></a></span></p>
       <div class="tripListDiv">
       <ul>
         <li ng-repeat="yellowTrip in yellowTrips | orderBy: 'eventDate'" class="yellowLI adminLI">
@@ -76,7 +76,7 @@
     </div>
 
   <div id="adminRainbowTripsDiv" class="container"> 
-  <p class="rainbowTripsDivTitle"> Rainbow Field Trips <span><a href="/admin/addTripRainbow"><button id="addTripButtonRainbow" class="hvr-grow"> Add Trip</button></a></span></p>
+  <p class="rainbowTripsDivTitle">Rainbow Field Trips <span><a href="/admin/addTripRainbow"><button id="addTripButtonRainbow" class="hvr-grow"> Add Trip</button></a></span></p>
   <div class="tripListDiv">
   <ul>
      <li ng-repeat="rainbowTrip in rainbowTrips | orderBy: 'eventDate'" class="rainbowLI adminLI">

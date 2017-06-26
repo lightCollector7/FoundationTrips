@@ -2,7 +2,7 @@
         <div id="navbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-         <p id="navbarTitle">FIELD TRIPS</p>
+         <p id="navbarTitle">CURRENT FIELD TRIPS</p>
          <a class="navbarLink hvr-grow" ng-click="logout()" href="">(logout)</a>
          <a class="navbarLink hvr-grow" href="/adminHome" ng-show="isAdmin">(admin)</a>
          <a class="navbarLink hvr-grow" href="/UserHomeMenu">(home menu)</a>
@@ -10,80 +10,82 @@
         
   </div>
 
+<div id="backgroundDiv">
 
-<div id="greenTripsDiv" class="container" ng-show="isGreen || isTheRainbow"> 
-  <p class="greenTripsDivTitle">Current Green Field Trips</p>
-  <div class="tripListDiv">
-  <ul>
-    <li ng-repeat="greenTrip in greenTrips | orderBy: 'eventDate'" class="greenLI">
-      <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/GreenTrips/{{greenTrip.id}}">  {{greenTrip.eventName}} </a>
-      <span class="tripDateLineSmall">{{greenTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
-      <!--<span class="tripTimeLineSmall">{{greenTrip.eventTime | date: 'shortTime'}}</span>-->
-      <span class="tripCostLineSmall">${{greenTrip.eventCost}}</span>
-      <!--<span class="tripMaxSlotsLineSmall">Max Slots: {{greenTrip.maxSlots}}</span>-->
-    </li>
-  </ul>
-  </div>
-</div>
+    <div id="greenTripsDiv" class="container" ng-show="isGreen || isTheRainbow"> 
+      <p class="greenTripsDivTitle">Green Field Trips</p>
+      <div class="tripListDiv">
+      <ul>
+        <li ng-repeat="greenTrip in greenTrips | orderBy: 'eventDate'" class="greenLI">
+          <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/GreenTrips/{{greenTrip.id}}">  {{greenTrip.eventName}} </a>
+          <span class="tripDateLineSmall">{{greenTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
+          <!--<span class="tripTimeLineSmall">{{greenTrip.eventTime | date: 'shortTime'}}</span>-->
+          <span class="tripCostLineSmall">${{greenTrip.eventCost}}</span>
+          <!--<span class="tripMaxSlotsLineSmall">Max Slots: {{greenTrip.maxSlots}}</span>-->
+        </li>
+      </ul>
+      </div>
+    </div>
 
-<div id="orangeTripsDiv" class="container" ng-show="isOrange || isTheRainbow"> 
-  <p class="orangeTripsDivTitle">Current Orange Field Trips</p>
-  <div class="tripListDiv">
-  <ul>
-    <li ng-repeat="orangeTrip in orangeTrips | orderBy: 'eventDate'" class="orangeLI">
-      <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/OrangeTrips/{{orangeTrip.id}}">  {{orangeTrip.eventName}} </a>
-      <span class="tripDateLineSmall">{{orangeTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
-      <!--<span class="tripTimeLineSmall">{{orangeTrip.eventTime | date: 'shortTime'}}</span>-->
-      <span class="tripCostLineSmall">${{orangeTrip.eventCost}}</span>
-      <!--<span class="tripMaxSlotsLineSmall">Max Slots: {{orangeTrip.maxSlots}}</span>-->
-    </li>                  
-  </ul>
- </div>
-</div>
+    <div id="orangeTripsDiv" class="container" ng-show="isOrange || isTheRainbow"> 
+      <p class="orangeTripsDivTitle">Orange Field Trips</p>
+      <div class="tripListDiv">
+      <ul>
+        <li ng-repeat="orangeTrip in orangeTrips | orderBy: 'eventDate'" class="orangeLI">
+          <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/OrangeTrips/{{orangeTrip.id}}">  {{orangeTrip.eventName}} </a>
+          <span class="tripDateLineSmall">{{orangeTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
+          <!--<span class="tripTimeLineSmall">{{orangeTrip.eventTime | date: 'shortTime'}}</span>-->
+          <span class="tripCostLineSmall">${{orangeTrip.eventCost}}</span>
+          <!--<span class="tripMaxSlotsLineSmall">Max Slots: {{orangeTrip.maxSlots}}</span>-->
+        </li>                  
+      </ul>
+    </div>
+    </div>
 
-<div id="purpleTripsDiv" class="container" ng-show="isPurple || isTheRainbow"> 
-  <p class="purpleTripsDivTitle">Current Purple Field Trips</p>
-  <div class="tripListDiv">
-  <ul>
-      <li ng-repeat="purpleTrip in purpleTrips | orderBy: 'eventDate'" class="purpleLI">
-        <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/PurpleTrips/{{purpleTrip.id}}">  {{purpleTrip.eventName}} </a>
-        <span class="tripDateLineSmall">{{purpleTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
-        <!--<span class="tripTimeLineSmall">{{purpleTrip.eventTime | date: 'h:mm a'}}</span>-->
-        <span class="tripCostLineSmall">${{purpleTrip.eventCost}}</span>
-        <!--<span class="tripMaxSlotsLineSmall">Max Slots: {{purpleTrip.maxSlots}}</span>-->
-     </li>  
-  </ul>
-  </div>
-</div>
+    <div id="purpleTripsDiv" class="container" ng-show="isPurple || isTheRainbow"> 
+      <p class="purpleTripsDivTitle">Purple Field Trips</p>
+      <div class="tripListDiv">
+      <ul>
+          <li ng-repeat="purpleTrip in purpleTrips | orderBy: 'eventDate'" class="purpleLI">
+            <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/PurpleTrips/{{purpleTrip.id}}">  {{purpleTrip.eventName}} </a>
+            <span class="tripDateLineSmall">{{purpleTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
+            <!--<span class="tripTimeLineSmall">{{purpleTrip.eventTime | date: 'h:mm a'}}</span>-->
+            <span class="tripCostLineSmall">${{purpleTrip.eventCost}}</span>
+            <!--<span class="tripMaxSlotsLineSmall">Max Slots: {{purpleTrip.maxSlots}}</span>-->
+        </li>  
+      </ul>
+      </div>
+    </div>
 
-<div id="yellowTripsDiv" class="container" ng-show="isYellow || isTheRainbow"> 
-  <p class="yellowTripsDivTitle">Current Yellow Field Trips</p>
-  <div class="tripListDiv">
-  <ul>
-     <li ng-repeat="yellowTrip in yellowTrips | orderBy: 'eventDate'" class="yellowLI">
-       <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/YellowTrips/{{yellowTrip.id}}">  {{yellowTrip.eventName}} </a>
-        <span class="tripDateLineSmall">{{yellowTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
-        <!--<span class="tripTimeLineSmall">{{yellowTrip.eventTime | date: 'h:mm a'}}</span>-->
-        <span class="tripCostLineSmall">${{yellowTrip.eventCost}}</span>
-        <!--<span class="tripMaxSlotsLineSmall">Max Slots: {{yellowTrip.maxSlots}}</span>-->
-       </li>  
-  </ul>
-  </div>
-</div>
+    <div id="yellowTripsDiv" class="container" ng-show="isYellow || isTheRainbow"> 
+      <p class="yellowTripsDivTitle">Yellow Field Trips</p>
+      <div class="tripListDiv">
+      <ul>
+        <li ng-repeat="yellowTrip in yellowTrips | orderBy: 'eventDate'" class="yellowLI">
+          <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/YellowTrips/{{yellowTrip.id}}">  {{yellowTrip.eventName}} </a>
+            <span class="tripDateLineSmall">{{yellowTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
+            <!--<span class="tripTimeLineSmall">{{yellowTrip.eventTime | date: 'h:mm a'}}</span>-->
+            <span class="tripCostLineSmall">${{yellowTrip.eventCost}}</span>
+            <!--<span class="tripMaxSlotsLineSmall">Max Slots: {{yellowTrip.maxSlots}}</span>-->
+          </li>  
+      </ul>
+      </div>
+    </div>
 
-<div id="rainbowTripsDiv" class="container"> 
-  <p class="rainbowTripsDivTitle">Current Rainbow Field Trips</p>
-  <div class="tripListDiv">
-  <ul>
-     <li ng-repeat="rainbowTrip in rainbowTrips | orderBy: 'eventDate'" class="rainbowLI">
-       <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/RainbowTrips/{{rainbowTrip.id}}">  {{rainbowTrip.eventName}} </a>
-        <span class="tripDateLineSmall">{{rainbowTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
-        <!--<span class="tripTimeLineSmall">{{rainbowTrip.eventTime}}</span>-->
-        <span class="tripCostLineSmall">${{rainbowTrip.eventCost}}</span>
-        <!--<span class="tripMaxSlotsLineSmall">Max Slots: {{rainbowTrip.maxSlots}}</span>-->
-       </li>  
-  </ul>
-  </div>
+    <div id="rainbowTripsDiv" class="container"> 
+      <p class="rainbowTripsDivTitle">Rainbow Field Trips</p>
+      <div class="tripListDiv">
+      <ul>
+        <li ng-repeat="rainbowTrip in rainbowTrips | orderBy: 'eventDate'" class="rainbowLI">
+          <a class="btn btn-primary singleTripLink hvr-grow"  ng-href="/RainbowTrips/{{rainbowTrip.id}}">  {{rainbowTrip.eventName}} </a>
+            <span class="tripDateLineSmall">{{rainbowTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span>
+            <!--<span class="tripTimeLineSmall">{{rainbowTrip.eventTime}}</span>-->
+            <span class="tripCostLineSmall">${{rainbowTrip.eventCost}}</span>
+            <!--<span class="tripMaxSlotsLineSmall">Max Slots: {{rainbowTrip.maxSlots}}</span>-->
+          </li>  
+      </ul>
+      </div>
+    </div>
 </div>
 
 
