@@ -10,23 +10,22 @@
   </div>
 
 <div id="adminBackground">
- 
-
     <div id="adminGreenTripsDiv" class="container"> 
       <p class="greenTripsDivTitle">{{greenTrip.eventName}} <span class="tripDateLine">{{greenTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
-      <p class="greenTripDescriptionLine">{{greenTrip.eventDescription}} <span class="tripTimeLine">{{greenTrip.eventTime}}</span><span class="tripCostLine">${{greenTrip.eventCost}}</span></p>
+      <p class="greenTripDescriptionLine">{{greenTrip.eventDescription}} <span class="tripTimeLine">{{greenTrip.eventTime}}</span><span class="tripCostLine">${{greenTrip.eventCost}}</span><span class="tripMaxSlotsLine">Max Slots: {{greenTrip.maxSlots}}</span></p>
 
       <h3> Field Trip Slots: <span><a href="/{{addParticipantLink}}"><button class="addParticipantButton">add participant</button></a></span></h3>
-      <ol>
-        <li id="{{greenTripSlot.id}}" class="adminGreenTripSlots" ng-repeat="greenTripSlot in greenTripSlots" >
-          <a href="admin/slotDetails/{{ greenTripSlot.id }}"><button id="greenEditSlotButton" >edit slot</button></a>
-          <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{greenTripSlot.paid}}"></input></label>
-          <span id="participantName"><a href="/admin/userProfile/{{greenTripSlot.userID}}">{{greenTripSlot.firstname}} {{greenTripSlot.lastname}} </a></span>
-          <span ng-if="greenTripSlots.indexOf(greenTripSlot) +1 > greenTrip.maxSlots" class="adminWaitlist">** WaitListed **</span>
-        </li>
-      </ol>
-    <!--
-      <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
-      <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>-->
+      
+      <div class="listDiv">
+          <ol>
+            <li id="{{greenTripSlot.id}}" class="adminGreenTripSlots" ng-repeat="greenTripSlot in greenTripSlots" >
+              <a href="admin/slotDetails/{{ greenTripSlot.id }}"><button id="greenEditSlotButton" >edit slot</button></a>
+              <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{greenTripSlot.paid}}"></input></label>
+              <span id="participantName"><a href="/admin/userProfile/{{greenTripSlot.userID}}">{{greenTripSlot.firstname}} {{greenTripSlot.lastname}} </a></span>
+              <span ng-if="greenTripSlots.indexOf(greenTripSlot) +1 > greenTrip.maxSlots" class="adminWaitlist">** WaitListed **</span>
+            </li>
+          </ol>
+      </div>
+   
     </div>
 </div>

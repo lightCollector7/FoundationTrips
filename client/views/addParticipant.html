@@ -23,7 +23,9 @@
         <button id="searchForParticipantButton" ng-click="searchForParticipant()" ng-disabled="">Search</button>
 
         <div id="returnedParticipantDiv" ng-class="class" >
-            <p id="participantSearchResult" ng-bind="participantToSignUp[0].firstName"> <span id="participantLastName" ng-bind="participantToSignUp[0].lastName"></span></p>
+            <p id="participantSearchResult" ng-bind="participantToSignUp[0].firstName">
+            <p id="participantSearchResult" ng-bind="participantToSignUp[0].lastName"></>
+            </p>
             <!--<span>{{participantToSignUp.lastName}}</span>-->
             <p >userID: <span id="participantUserID" ng-bind="participantToSignUp[0].id"></span></p>
             <button id="submitParticipantButton" ng-click="submitParticipant()">Sign Participant Up</button>

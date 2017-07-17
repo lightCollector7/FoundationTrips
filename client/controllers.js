@@ -1,6 +1,9 @@
 angular.module('FoundationTrips.controllers',[])
 
-.controller('LoginController', ['$scope', '$location', 'UserService', function($scope, $location, UserService) {
+.controller('LoginController', ['$scope', '$location', '$window', 'UserService', function($scope, $location, $window, UserService) {
+    
+    $window.scrollTo(0, 0);
+
     UserService.me().then(function(me) {
         redirect();
     });
@@ -804,7 +807,7 @@ angular.module('FoundationTrips.controllers',[])
             var data = {
                 userID: $scope.ME.id,
                 eventID: tripID,
-                colorID: $scope.ME.colorID,
+                colorID: 5,
             }
             console.log(data);
 

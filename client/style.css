@@ -216,7 +216,7 @@
   border: 5px solid white;
   background-color:royalblue;
   color: white;
-  /*overflow-y: auto;*/
+  overflow-y: auto;
   
 
 }
@@ -238,6 +238,13 @@
   height: 340px;
   /*background-color:royalblue;*/
   color: white;
+  overflow-y: auto;
+}
+.listDiv{
+  position: relative;
+  float: clear;
+  height: 320px;
+  width: 100%;
   overflow-y: auto;
 }
 .singleTripLink{
@@ -264,7 +271,7 @@
   /*left: 150px;*/
   font-size: 14px;
   color: white;
-  width: 150px;
+  width: 175px;
 }
 .tripTimeLineSmall{
   position: relative;
@@ -293,7 +300,15 @@
   color: white;
   width: 100px;
 }
-
+.tripMaxSlotsLine{
+  position: relative;
+  float: right;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 20px;
+  color: white;
+  width: 150px;
+}
 .greenTripDescriptionLine{
   margin-left: 60px;
   margin-right: 20px;

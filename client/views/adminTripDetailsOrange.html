@@ -9,26 +9,25 @@
        
   </div>
 
-
 <div id="adminBackground">
     <div id="adminOrangeTripsDiv" class="container"> 
       <p class="orangeTripsDivTitle">{{orangeTrip.eventName}} <span class="tripDateLine">{{orangeTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
-      <p class="orangeTripDescriptionLine">{{orangeTrip.eventDescription}} <span class="tripTimeLine">{{orangeTrip.eventTime}}</span><span class="tripCostLine">${{orangeTrip.eventCost}}</span></p>
+      <p class="orangeTripDescriptionLine">{{orangeTrip.eventDescription}} <span class="tripTimeLine">{{orangeTrip.eventTime}}</span><span class="tripCostLine">${{orangeTrip.eventCost}}</span><span class="tripMaxSlotsLine">Max Slots: {{orangeTrip.maxSlots}}</span></p>
       
       <h3> Field Trip Slots: <span><a href="/{{addParticipantLink}}"><button class="addParticipantButton">add participant</button></a></span></h3>
-      <ol>
-        <li id="{{orangeTripSlot.id}}" class="adminOrangeTripSlots" ng-repeat="orangeTripSlot in orangeTripSlots" >
-          <a href="admin/slotDetails/{{ orangeTripSlot.id }}"><button id="orangeEditSlotButton" >edit</button></a>
-          <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{orangeTripSlot.paid}}"></input></label>
-            <span id="participantName"><a href="/admin/userProfile/{{orangeTripSlot.userID}}">{{orangeTripSlot.firstname}} {{orangeTripSlot.lastname}}</a> </span>
-            <span ng-if="orangeTripSlots.indexOf(orangeTripSlot) +1 > orangeTrip.maxSlots" class="adminWaitlist">** WaitListed **</span>
-        </li>
-      </ol>
-
-      <!--<button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
-      <button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>-->
+       
+       <div class="listDiv">
+          <ol>
+            <li id="{{orangeTripSlot.id}}" class="adminOrangeTripSlots" ng-repeat="orangeTripSlot in orangeTripSlots" >
+              <a href="admin/slotDetails/{{ orangeTripSlot.id }}"><button id="orangeEditSlotButton" >edit</button></a>
+              <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{orangeTripSlot.paid}}"></input></label>
+                <span id="participantName"><a href="/admin/userProfile/{{orangeTripSlot.userID}}">{{orangeTripSlot.firstname}} {{orangeTripSlot.lastname}}</a> </span>
+                <span ng-if="orangeTripSlots.indexOf(orangeTripSlot) +1 > orangeTrip.maxSlots" class="adminWaitlist">** WaitListed **</span>
+            </li>
+          </ol>
+       </div>
+    
     </div>
-
 </div>
 
 
