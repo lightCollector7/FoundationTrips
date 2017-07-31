@@ -27,6 +27,17 @@ router.route('/future/:userID')
         })
     })
 
+router.route('/currentFuture/:userID')
+    .get(function(req, res){
+          procedures.procGetUserTrips_CurrentFuture(req.params.userID).then(function(userTrips){
+            res.send(userTrips);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        
+        })
+    })
+
 router.route('/:userID')
     .get(function(req,res) {
         procedures.procGetUserTrips(req.params.userID).then(function(userTrips){

@@ -1127,6 +1127,7 @@ a {
   border: 5px solid white;
   background-color: black;
   color: lightslategray;
+  overflow-y: auto;
 }
 #AdminListDivTitle{
   margin-left: 10px;

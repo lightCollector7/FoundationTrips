@@ -1917,7 +1917,7 @@ angular.module('FoundationTrips.controllers',[])
         console.log($scope.participant);
     })
 
-     var httpParticipantTrips = $http.get('/api/userTrips/' + userID).then(function(success){
+     var httpParticipantTrips = $http.get('/api/userTrips/currentFuture/' + userID).then(function(success){
                 $scope.participantTrips = success.data;
                 httpParticipantTrips = success.data;
                 console.log(httpParticipantTrips);
@@ -2039,7 +2039,7 @@ angular.module('FoundationTrips.controllers',[])
     })
 
 
-     var httpParticipantTrips = $http.get('/api/userTrips/' + userID).then(function(success){
+     var httpParticipantTrips = $http.get('/api/userTrips/currentFuture/' + userID).then(function(success){
                 $scope.participantTrips = success.data;
                 httpParticipantTrips = success.data;
                 console.log('httpParticipantTrips array: ')
