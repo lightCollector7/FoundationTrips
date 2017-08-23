@@ -1872,6 +1872,7 @@ angular.module('FoundationTrips.controllers',[])
             userID: $scope.participantToSignUp[0].id,
             eventID: tripID,
             colorID: $scope.tripArray[0].colorID,
+            paid: '1',
         }
         console.log(data);
         var participantToSubmit = new AdminParticipantSignUpFactory(data);

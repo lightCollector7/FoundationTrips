@@ -21,7 +21,7 @@
               <ol>
               <li id="{{purpleTripSlot.id}}" class="adminPurpleTripSlots" ng-repeat="purpleTripSlot in purpleTripSlots" >
                 <a href="admin/slotDetails/{{ purpleTripSlot.id }}"><button id="purpleEditSlotButton" >edit</button></a>
-                <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{purpleTripSlot.paid}}"></input></label>
+                <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{purpleTripSlot.paid}}" disabled="disabled"></input></label>
                   <span id="participantName"><a href="/admin/userProfile/{{purpleTripSlot.userID}}">{{purpleTripSlot.firstname}} {{purpleTripSlot.lastname}} </a></span>
                   <span ng-if="purpleTripSlots.indexOf(purpleTripSlot) +1 > purpleTrip.maxSlots" class="adminWaitlist">** WaitListed **</span>
               </li>

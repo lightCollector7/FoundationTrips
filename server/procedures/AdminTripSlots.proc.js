@@ -15,12 +15,14 @@ exports.procDeleteSlot = function(id){
     return db.fnEmpty('procDeleteSlot', [id] );
 }
 
-exports.procSignParticipantUp = function(userID, eventID, colorID) {
+exports.procSignParticipantUp = function(userID, eventID, colorID, paid) {
     console.log('userID: ');
     console.log(userID);
     console.log("eventID: ");
     console.log(eventID);
     console.log('colorID: ');
     console.log(colorID);
-    return db.fnRow('procSignParticipantUp', [userID, eventID, colorID]);
+    console.log('paid: ');
+    console.log(paid);
+    return db.fnRow('procSignParticipantUp', [userID, eventID, colorID, paid]);
 }

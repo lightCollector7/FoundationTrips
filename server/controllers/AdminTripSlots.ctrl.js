@@ -11,7 +11,7 @@ var router = express.Router();
 router.route('/')
       .post(function (req, res) {
         var u = req.body;
-        procedures.procSignParticipantUp(u.userID, u.eventID, u.colorID)
+        procedures.procSignParticipantUp(u.userID, u.eventID, u.colorID, u.paid)
             .then(function (id) {
                 res.status(201).send(id);
             }, function (err) {
