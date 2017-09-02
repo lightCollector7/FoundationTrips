@@ -291,19 +291,16 @@ angular.module('FoundationTrips.controllers',[])
     }
 
     
-
-
-    
     var tripID =$routeParams.id;
     console.log("This is the tripID: " + tripID);
     $scope.greenTrip = CurrentGreenTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.greenTrip: ");
     console.log($scope.greenTrip);
-    // console.log("$scope.greenTrip.eventDate: ")
-    // console.log($scope.greenTrip.eventDate);
-    // console.log("$scope.greenTrip.maxSlots: ")
-    // console.log($scope.greenTrip.maxSlots);
 
+    $scope.showDetails = function(){
+        alert($scope.greenTrip.eventDetails);
+    }
+   
     $scope.maxSlots = $http.get('/api/CurrentGreenTrips/' + tripID).then(function(success){
         console.log(success.data.maxSlots);
         maxSlots = success.data.maxSlots;
@@ -313,53 +310,8 @@ angular.module('FoundationTrips.controllers',[])
 
     $scope.greenTripSlots = GreenTripSlotsFactory.query( {id: tripID} );
     console.log("this is the $scope.greenTripSlots Array: ");
-    console.log($scope.greenTripSlots);
+    console.log($scope.greenTripSlots); 
 
-    // $scope.greenTripSlots = [];
-    // $scope.greenTripSlots = $http.get('/api/GreenTripSlots/' + tripID).then(function(success){
-    //     $scope.greenTripSlots = success.data;
-    //     console.log("this is the $scope.greenTripSlots Array: ");
-    //     console.log($scope.greenTripSlots);
-    //     var tripSlotsArray = $scope.greenTripSlots;
-    //     return tripSlotsArray;
-    // }).then(function(tripSlotsArray){
-    //     for (var i=0; i<tripSlotsArray.length; i++ ){
-    //         var ngSlot = $scope.greenTripSlots[i];
-    //         console.log(ngSlot);
-    //         $scope.slotIsMine = false;
-    //         if(ngSlot.userID == $scope.ME.id){       //faulty logic to hide names with ng-show="slotisMine" and ng-hide="slotisMine"
-    //             $scope.slotIsMine = true;
-                
-    //             console.log('values to compare: ')
-    //             console.log("ngSlot.userID: " + ngSlot.userID);
-    //             console.log("$scope.ME.id: " + $scope.ME.id);
-    //             console.log("if both are equal than slotIsMine = true")
-    //             console.log($scope.slotIsMine);
-    //             }
-    //         }
-    //     });
-    
-    
-
-    // $scope.greenTripSlots = GreenTripSlotsFactory.query( {id: tripID} ).then(function(){
-    //     function isSlotMine(i){                                     // get this to work next!
-    //     var ngSlot = document.getElementById('slot'+i);
-    //     console.log(ngSlot);
-    //         $scope.slotIsMe = false;
-    //         if (ngSlot.userID == $scope.ME.id){
-    //             $scope.slotIsMe = true;
-    //         }
-    //     };
-  
-
-    //     for (var i = 0; i < $scope.greenTripSlots.length; i++ ){
-    //         isSlotMine(i);
-    //         console.log('isSlotMine is running');
-    //     }
-    // });
-
-
-   
     
 
     $scope.signMeUp = function() {
@@ -384,39 +336,39 @@ angular.module('FoundationTrips.controllers',[])
         })
     };
 
-   var slotToDelete = []; 
-   $scope.removeMe = function() {                                      
-        var shouldRemove = confirm('Remove you from this field trip?');
-        if (shouldRemove) {
-            var data = null;
-            UserService.me().then(function(me){
-                var data = {userID: me.id, eventID: tripID}
-                console.log(data);
+//    var slotToDelete = [];            // WE DECIDED TO LEAVE THIS FEATURE OUT!
+//    $scope.removeMe = function() {                                      
+//         var shouldRemove = confirm('Remove you from this field trip?');
+//         if (shouldRemove) {
+//             var data = null;
+//             UserService.me().then(function(me){
+//                 var data = {userID: me.id, eventID: tripID}
+//                 console.log(data);
                 
-                return data;
-            }).then (function(data){ 
+//                 return data;
+//             }).then (function(data){ 
                 
-               var mySlot = $http.get('/api/GreenTripSlots/' + data.eventID + '/' + data.userID);
-               console.log(mySlot);
+//                var mySlot = $http.get('/api/GreenTripSlots/' + data.eventID + '/' + data.userID);
+//                console.log(mySlot);
 
-               return mySlot;
-            }).then (function(mySlot) {
-                console.log(mySlot);
-                var slotToDelete = mySlot.data;
-                console.log(slotToDelete);
-                console.log(slotToDelete.id)
+//                return mySlot;
+//             }).then (function(mySlot) {
+//                 console.log(mySlot);
+//                 var slotToDelete = mySlot.data;
+//                 console.log(slotToDelete);
+//                 console.log(slotToDelete.id)
 
-                return slotToDelete;
-            }).then (function(slotToDelete){
-                var slotID = slotToDelete.id;
-                $http.delete('/api/GreenTripSlots/delete/' + slotID);
-                console.log('deleted successfull')     
-                $route.reload();
-            }).catch(function(error){
-                console.log(error);
-            })
-        }   
-    };    
+//                 return slotToDelete;
+//             }).then (function(slotToDelete){
+//                 var slotID = slotToDelete.id;
+//                 $http.delete('/api/GreenTripSlots/delete/' + slotID);
+//                 console.log('deleted successfull')     
+//                 $route.reload();
+//             }).catch(function(error){
+//                 console.log(error);
+//             })
+//         }   
+//     };    
 
 }])
 
@@ -461,6 +413,10 @@ angular.module('FoundationTrips.controllers',[])
     $scope.orangeTrip = CurrentOrangeTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.orangeTrip: ");
     console.log($scope.orangeTrip);
+
+    $scope.showDetails = function(){
+        alert($scope.orangeTrip.eventDetails);
+    }
 
     $scope.maxSlots = $http.get('/api/CurrentOrangeTrips/' + tripID).then(function(success){
         console.log(success.data.maxSlots);
@@ -568,6 +524,10 @@ angular.module('FoundationTrips.controllers',[])
     $scope.purpleTrip = CurrentPurpleTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.purpleTrip: ");
     console.log($scope.purpleTrip);
+
+    $scope.showDetails = function(){
+        alert($scope.purpleTrip.eventDetails);
+    }
 
     $scope.maxSlots = $http.get('/api/CurrentPurpleTrips/' + tripID).then(function(success){
         console.log(success.data.maxSlots);
@@ -680,6 +640,10 @@ angular.module('FoundationTrips.controllers',[])
     console.log("this is the $scope.yellowTrip: ");
     console.log($scope.yellowTrip);
 
+    $scope.showDetails = function(){
+        alert($scope.yellowTrip.eventDetails);
+    }
+
     $scope.maxSlots = $http.get('/api/CurrentYellowTrips/' + tripID).then(function(success){
         console.log(success.data.maxSlots);
         maxSlots = success.data.maxSlots;
@@ -789,7 +753,11 @@ angular.module('FoundationTrips.controllers',[])
     console.log("This is the tripID: " + tripID);
     $scope.rainbowTrip = CurrentRainbowTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.rainbowTrip: ");
-    console.log($scope.yellowTrip);
+    console.log($scope.rainbowTrip);
+
+    $scope.showDetails = function(){
+        alert($scope.rainbowTrip.eventDetails);
+    }
 
     $scope.maxSlots = $http.get('/api/CurrentRainbowTrips/' + tripID).then(function(success){
         console.log(success.data.maxSlots);
@@ -1060,21 +1028,6 @@ angular.module('FoundationTrips.controllers',[])
     }
     getRainbowTrips();
 
-    // $scope.deleteAllTripsAndSlots = function(){     // bind this to button on adminDeleteAllTrips.html
-
-    //       $scope.promptDeleteAllTripsAndSlots = function () {
-    //         var confirmDeleteTripsAndSlots = confirm('This will delete every Field Trip and associated user enrollments. Are you sure you want to delete this slot?');
-    //         if (shouldDelete) {
-    //             var secondConfirmation = confirm('Clicking ok will do it, I promise. Last chance to turn back!')
-    //         } if (secondConfirmation){
-    //             $http.delete('/api/deleteAllTripsAndSlots').then(function(success){
-    //                 alert('the Database has been reset! You can now enter new Field Trips')
-    //                 $location.path('/adminAllEvents');
-    //             })
-    //         }
-    //       }
-    // };
-
 
 }])
 
@@ -1107,6 +1060,10 @@ angular.module('FoundationTrips.controllers',[])
     $scope.greenTrip = CurrentGreenTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.greenTrip: ");
     console.log($scope.greenTrip);
+
+    $scope.showDetails = function(){
+        alert($scope.greenTrip.eventDetails);
+    }
 
     $scope.greenTripSlots = $http.get('/api/GreenTripSlots/' + tripID).then(function(success){
         $scope.greenTripSlots = success.data;
@@ -1151,6 +1108,10 @@ angular.module('FoundationTrips.controllers',[])
     console.log("this is the $scope.orangeTrip: ");
     console.log($scope.orangeTrip);
 
+    $scope.showDetails = function(){
+        alert($scope.orangeTrip.eventDetails);
+    }
+
     $scope.orangeTripSlots = OrangeTripSlotsFactory.query( {id: tripID} );
     console.log("this is the $scope.orangeTripSlots Array: ");
     console.log($scope.orangeTripSlots);
@@ -1189,6 +1150,10 @@ angular.module('FoundationTrips.controllers',[])
     console.log("this is the $scope.purpleTrip: ");
     console.log($scope.purpleTrip);
 
+    $scope.showDetails = function(){
+        alert($scope.purpleTrip.eventDetails);
+    }
+
     $scope.purpleTripSlots = PurpleTripSlotsFactory.query( {id: tripID} );
     console.log("this is the $scope.purpleTripSlots Array: ");
     console.log($scope.purpleTripSlots);
@@ -1226,6 +1191,10 @@ angular.module('FoundationTrips.controllers',[])
     console.log("this is the $scope.yellowTrip: ");
     console.log($scope.yellowTrip);
 
+    $scope.showDetails = function(){
+        alert($scope.yellowTrip.eventDetails);
+    }
+
     $scope.yellowTripSlots = YellowTripSlotsFactory.query( {id: tripID} );
     console.log("this is the $scope.yellowTripSlots Array: ");
     console.log($scope.yellowTripSlots);
@@ -1234,77 +1203,6 @@ angular.module('FoundationTrips.controllers',[])
     console.log($scope.addParticipantLink);
 }])
 
-// .controller('adminYellowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentYellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentYellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
-//     console.log( "we are in the YellowTripDetailsController now.")
-//     //require admin
-//     $window.scrollTo(0, 0);
-//     UserService.isLoggedIn();
-//     $scope.loggedIn = false;
-//     $scope.isGreen = false;
-//     $scope.isOrange = false;
-//     $scope.isPurple = false;
-//     $scope.isYellow = false;
-//     UserService.me().then(function(me){
-//         $scope.ME = me;
-//         $scope.loggedIn = true;
-
-//         $scope.myColor = me.colorID;
-//         console.log($scope.myColor);
-//         if ($scope.myColor == "1") {
-//             $scope.isGreen = true; 
-//             console.log("My color group is Green");  
-//         }
-//         if ($scope.myColor == "2"){
-//             $scope.isOrange = true;
-//              console.log("My color group is Orange");
-//         }
-//         if ($scope.myColor == "3"){
-//             $scope.isPurple = true;
-//             console.log("My color group is Purple");
-//         }
-//         if ($scope.myColor == "4"){
-//             $scope.isYellow = true;
-//             console.log("My color group is Yellow");
-//         }
-//     });
-//     $scope.logout = function () {
-//         UserService.logout().then(function(){
-//         $route.reload();
-//         });
-//     }
-//     var slotToDelete = [];
-//     var tripID =$routeParams.id;
-//     console.log("This is the tripID: " + tripID);
-//     $scope.yellowTrip = CurrentYellowTripsFactory.get( {id: tripID} );
-//     console.log("this is the $scope.yellowTrip: ");
-//     console.log($scope.yellowTrip);
-
-//     $scope.yellowTripSlots = YellowTripSlotsFactory.query( {id: tripID} );
-//     console.log("this is the $scope.yellowTripSlots Array: ");
-//     console.log($scope.yellowTripSlots);
-
-//     $scope.signMeUp = function() {
-//         UserService.me().then(function(me) {
-//             $scope.ME = me;
-//             var data = {
-//                 userID: $scope.ME.id,
-//                 eventID: tripID,
-//                 colorID: $scope.ME.colorID,
-//             }
-//             console.log(data);
-
-//             var userForEvent = new YellowTripSlotsFactory(data);
-//             userForEvent.$save(function (success) {
-//                 console.log('participant signed up successfully');
-//                 $route.reload();
-//             }, function(err){
-//                 console.log(err);
-//                 alert('You are already signed up for this trip.');
-//             })
-            
-//         })
-//     };
-// }])
 
 .controller('adminRainbowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentRainbowTripsFactory', 'RainbowTripSlotsFactory', 'RainbowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentRainbowTripsFactory, RainbowTripSlotsFactory, RainbowTripFilledSlotsFactory){
     console.log( "we are in the adminRainbowTripDetailsController now.")
@@ -1335,6 +1233,10 @@ angular.module('FoundationTrips.controllers',[])
     $scope.rainbowTrip = CurrentRainbowTripsFactory.get( {id: tripID} );
     console.log("this is the $scope.rainbowTrip: ");
     console.log($scope.rainbowTrip);
+
+    $scope.showDetails = function(){
+        alert($scope.rainbowTrip.eventDetails);
+    }
 
     $scope.rainbowTripSlots = RainbowTripSlotsFactory.query( {id: tripID} );
     console.log("this is the $scope.rainbowTripSlots Array: ");
@@ -1442,6 +1344,7 @@ angular.module('FoundationTrips.controllers',[])
             eventTime: $scope.trip.eventTime,
             eventCost: $scope.trip.eventCost,
             maxSlots: $scope.trip.maxSlots,
+            eventDetails: $scope.trip.eventDetails,
         }
 
         var tripToSubmit = new AdminTripFactory(data);
@@ -1459,6 +1362,7 @@ angular.module('FoundationTrips.controllers',[])
             eventTime: $scope.trip.eventTime,
             eventCost: $scope.trip.eventCost,
             maxSlots: $scope.trip.maxSlots,
+            eventDetails: $scope.trip.eventDetails,
         }
 
         var tripToSubmit = new AdminTripFactory(data);
@@ -1476,6 +1380,7 @@ angular.module('FoundationTrips.controllers',[])
             eventTime: $scope.trip.eventTime,
             eventCost: $scope.trip.eventCost,
             maxSlots: $scope.trip.maxSlots,
+            eventDetails: $scope.trip.eventDetails,
         }
 
         var tripToSubmit = new AdminTripFactory(data);
@@ -1493,6 +1398,7 @@ angular.module('FoundationTrips.controllers',[])
             eventTime: $scope.trip.eventTime,
             eventCost: $scope.trip.eventCost,
             maxSlots: $scope.trip.maxSlots,
+            eventDetails: $scope.trip.eventDetails,
         }
 
         var tripToSubmit = new AdminTripFactory(data);
@@ -1510,6 +1416,7 @@ angular.module('FoundationTrips.controllers',[])
             eventTime: $scope.trip.eventTime,
             eventCost: $scope.trip.eventCost,
             maxSlots: $scope.trip.maxSlots,
+            eventDetails: $scope.trip.eventDetails,
         }
 
         var tripToSubmit = new AdminTripFactory(data);
@@ -1892,7 +1799,7 @@ angular.module('FoundationTrips.controllers',[])
 
 }])
 
-.controller('adminUserProfileController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'UserFactory', 'UserTripFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UserFactory, UserTripFactory){
+.controller('adminUserProfileController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'UserFactory', 'UserTripFactory', 'UpdateSlotFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UserFactory, UserTripFactory, UpdateSlotFactory){
     $window.scrollTo(0, 0);
 
     UserService.isLoggedIn();
@@ -1918,37 +1825,21 @@ angular.module('FoundationTrips.controllers',[])
         console.log($scope.participant);
     })
 
-     var httpParticipantTrips = $http.get('/api/userTrips/currentFuture/' + userID).then(function(success){
-                $scope.participantTrips = success.data;
-                httpParticipantTrips = success.data;
-                console.log(httpParticipantTrips);
-                return httpParticipantTrips;
-    }).then(function(httpParticipantTrips){   
-            var totalDue = 0;         
-            for ( z = 0; z < httpParticipantTrips.length; z++) {  
-                
-                console.log("event cost for httpParticipantTrips[" + z + "]: ");
-                console.log(httpParticipantTrips[z].eventCost);
-
-                totalDue = totalDue + httpParticipantTrips[z].eventCost;
-
-                console.log('total due: ');
-                $scope.totalDue = totalDue;
-                console.log($scope.totalDue);
-        }
-         return $scope.totalDue;
-    })
-
     var CurrentParticipantTrips = $http.get('/api/userTrips/current/' + userID).then(function(success){
                 CurrentParticipantTrips = success.data;
+                $scope.CurrentParticipantTrips = CurrentParticipantTrips;
+                console.log("CurrentParticipantTrips: ")
                 console.log(CurrentParticipantTrips);
                 return CurrentParticipantTrips;
     }).then(function(CurrentParticipantTrips){   
             var currentTotalDue = 0;
             var amtPaidThisMonth = 0;
             var currentBalance = 0;
+            var currentSlotIDs = [];
             $scope.futureTotalDue = 0;         
-            for ( z = 0; z < CurrentParticipantTrips.length; z++) {  
+            for ( z = 0; z < CurrentParticipantTrips.length; z++) {
+                currentSlotIDs.push(CurrentParticipantTrips[z].id);
+                  
                 
                 console.log("event cost for CurrentParticipantTrips[" + z + "]: ");
                 console.log(CurrentParticipantTrips[z].eventCost);
@@ -1962,48 +1853,162 @@ angular.module('FoundationTrips.controllers',[])
                 
                 
             }
+            
+            $scope.currentTotalDue = currentTotalDue;
+            console.log('Current total due: ');
+            console.log($scope.currentTotalDue);
+
+            $scope.amtPaidThisMonth = amtPaidThisMonth;
+            console.log('amtPaidThisMonth: ');
+            console.log(amtPaidThisMonth);
+
             currentBalance = currentTotalDue - amtPaidThisMonth;
             console.log("currentBalance: ")
             console.log(currentBalance);
             $scope.currentBalance = currentBalance;
 
-            $scope.currentTotalDue = currentTotalDue;
-            console.log('Current total due: ');
-            console.log($scope.currentTotalDue);
-            
-            $scope.amtPaidThisMonth = amtPaidThisMonth;
-            console.log('amtPaidThisMonth: ');
-            console.log(amtPaidThisMonth);
+            console.log('Current Slot IDs array: ')
+            console.log(currentSlotIDs);
 
             
+            return $scope.currentTotalDue, $scope.amtPaidThisMonth, $scope.currentBalance, currentSlotIDs;
+    }).then(function(currentSlotIDs){
+            
+            $scope.markCurrentAsPaid = function(){
+            
+                console.log(currentSlotIDs);
 
-            return $scope.currentTotalDue, $scope.amtPaidThisMonth, $scope.currentBalance;
-    })
+                for(i=0; i< currentSlotIDs.length; i++){
+                    $scope.slotToEdit= $http.get('api/AdminTripSlots/slot/' + currentSlotIDs[i]).then( function(success){
+                    $scope.slotToEdit = success.data;
+                    var slotToEdit = $scope.slotToEdit;
+                    console.log("slotToEdit: ")
+                    console.log(slotToEdit);
+                    return slotToEdit;                
+                    }).then(function(slotToEdit){
+                        $scope.slotToEdit = slotToEdit;
+                        console.log("current value of $scope.slotToEdit.paid: ")
+                        console.log($scope.slotToEdit.paid);
+                        $scope.slotToEdit.paid = '1';  
+                        console.log("hardcoding paid value as: ")
+                        console.log($scope.slotToEdit.paid);
+                        var data = {
+                           paid: slotToEdit.paid,
+                        };
+
+                        $http.put( 'api/AdminTripSlots/slot/'+ slotToEdit.id +'/?', data)
+                        .success(function (data, status){
+                            console.log("success");
+                            console.log(data);
+                            $scope.ServerResponse = data;
+                            $route.reload();
+                        })
+                        .error(function (data, status){
+                            (console.log("error"))
+                            console.log(data);
+                            console.log(status);
+                        })
+
+                    })
+                
+                };
+
+                
+
+            };
+    });
 
       var FutureParticipantTrips = $http.get('/api/userTrips/future/' + userID).then(function(success){
                 FutureParticipantTrips = success.data;
+                $scope.FutureParticipantTrips = FutureParticipantTrips;
+                console.log("FutureParticipantTrips: ")
                 console.log(FutureParticipantTrips);
                 return FutureParticipantTrips;
         }).then(function(FutureParticipantTrips){   
-            var futureTotalDue = 0;  
+            var futureTotalDue = 0;
+            var amtPaidForNextMonth = 0;
+            var futureBalance = 0; 
+            var futureSlotIDs = []; 
             $scope.futureTotalDue = 0;       
-            for ( z = 0; z < FutureParticipantTrips.length; z++) {  
+            for ( z = 0; z < FutureParticipantTrips.length; z++) {
+                futureSlotIDs.push(FutureParticipantTrips[z].id);
+                  
                 
                 console.log("event cost for FutureParticipantTrips[" + z + "]: ");
                 console.log(FutureParticipantTrips[z].eventCost);
+                if (FutureParticipantTrips[z].paid == 1){
+                    amtPaidForNextMonth = amtPaidForNextMonth + FutureParticipantTrips[z].eventCost;
+                    console.log('amtPaidForNextMonth: ');
+                    console.log(amtPaidForNextMonth);
+                }
 
                 futureTotalDue = futureTotalDue + FutureParticipantTrips[z].eventCost;
+                console.log(futureTotalDue);
 
-                // console.log('Future total due: ');
-                // $scope.futureTotalDue = futureTotalDue;
-                // console.log($scope.futureTotalDue);
             }
-            console.log('Future total due: ');
+            
             $scope.futureTotalDue = futureTotalDue;
+            console.log('Future total due: ');
             console.log($scope.futureTotalDue);
-            return $scope.futureTotalDue;
+
+            $scope.amtPaidForNextMonth = amtPaidForNextMonth;
+            console.log('amtPaidForNextMonth: ');
+            console.log(amtPaidForNextMonth);
+
+            futureBalance = futureTotalDue - amtPaidForNextMonth;
+            console.log("futureBalance: ")
+            console.log(futureBalance);
+            $scope.futureBalance = futureBalance;
+
+            console.log('Future Slot IDs array: ')
+            console.log(futureSlotIDs);
+
+
+
+            return $scope.futureTotalDue, $scope.amtPaidForNextMonth, $scope.futureBalance, futureSlotIDs;
          
+    }).then(function(futureSlotIDs){
+            $scope.markFutureAsPaid = function(){
+                console.log(futureSlotIDs);
+                for( i=0; i < futureSlotIDs.length; i++){
+                    $scope.slotToEdit= $http.get('api/AdminTripSlots/slot/' + futureSlotIDs[i]).then( function(success){
+                    $scope.slotToEdit = success.data;
+                    var slotToEdit = $scope.slotToEdit;
+                    console.log("slotToEdit: ")
+                    console.log(slotToEdit);
+                    return slotToEdit;                
+                    }).then(function(slotToEdit){
+                        $scope.slotToEdit = slotToEdit;
+                        console.log("current value of $scope.slotToEdit.paid: ")
+                        console.log($scope.slotToEdit.paid);
+                        $scope.slotToEdit.paid = '1';
+                        console.log("hardcoding paid value as: ")
+                        console.log($scope.slotToEdit.paid);
+                        var data = {
+                           paid: slotToEdit.paid,
+                        };
+
+                        $http.put( 'api/AdminTripSlots/slot/'+ slotToEdit.id +'/?', data)
+                        .success(function (data, status){
+                            console.log("success");
+                            console.log(data);
+                            $scope.ServerResponse = data;
+                            $route.reload();
+                        })
+                        .error(function (data, status){
+                            (console.log("error"))
+                            console.log(data);
+                            console.log(status);
+                        })
+
+                    })
+                }
+
+        
+            };
+
     })
+
 
     
     
@@ -2040,72 +2045,116 @@ angular.module('FoundationTrips.controllers',[])
     })
 
 
-     var httpParticipantTrips = $http.get('/api/userTrips/currentFuture/' + userID).then(function(success){
-                $scope.participantTrips = success.data;
-                httpParticipantTrips = success.data;
-                console.log('httpParticipantTrips array: ')
-                console.log(httpParticipantTrips);
-                return httpParticipantTrips;
-    }).then(function(httpParticipantTrips){   
-            var totalDue = 0;         
-            for ( z = 0; z < httpParticipantTrips.length; z++) {  
+    //  var httpParticipantTrips = $http.get('/api/userTrips/currentFuture/' + userID).then(function(success){
+    //             $scope.participantTrips = success.data;
+    //             httpParticipantTrips = success.data;
+    //             console.log('httpParticipantTrips array: ')
+    //             console.log(httpParticipantTrips);
+    //             return httpParticipantTrips;
+    // }).then(function(httpParticipantTrips){   
+    //         var totalDue = 0;         
+    //         for ( z = 0; z < httpParticipantTrips.length; z++) {  
                 
-                console.log("event cost for httpParticipantTrips[" + z + "]: ");
-                console.log(httpParticipantTrips[z].eventCost);
+    //             console.log("event cost for httpParticipantTrips[" + z + "]: ");
+    //             console.log(httpParticipantTrips[z].eventCost);
 
-                totalDue = totalDue + httpParticipantTrips[z].eventCost;
+    //             totalDue = totalDue + httpParticipantTrips[z].eventCost;
 
-                console.log('total due: ');
-                $scope.totalDue = totalDue;
-                console.log($scope.totalDue);
-        }
-         return $scope.totalDue;
-    })
+    //             console.log('total due: ');
+    //             $scope.totalDue = totalDue;
+    //             console.log($scope.totalDue);
+    //     }
+    //      return $scope.totalDue;
+    // })
 
     var CurrentParticipantTrips = $http.get('/api/userTrips/current/' + userID).then(function(success){
+                $scope.CurrentParticipantTrips = success.data;
                 CurrentParticipantTrips = success.data;
                 console.log(CurrentParticipantTrips);
                 return CurrentParticipantTrips;
     }).then(function(CurrentParticipantTrips){   
-            var currentTotalDue = 0;
+           var currentTotalDue = 0;
+            var amtPaidThisMonth = 0;
+            var currentBalance = 0;
             $scope.futureTotalDue = 0;         
             for ( z = 0; z < CurrentParticipantTrips.length; z++) {  
+               
                 
                 console.log("event cost for CurrentParticipantTrips[" + z + "]: ");
                 console.log(CurrentParticipantTrips[z].eventCost);
+                if (CurrentParticipantTrips[z].paid == 1){
+                    amtPaidThisMonth = amtPaidThisMonth + CurrentParticipantTrips[z].eventCost;
+                    console.log('amtPaidThisMonth: ');
+                    console.log(amtPaidThisMonth);
+                }
 
                 currentTotalDue = currentTotalDue + CurrentParticipantTrips[z].eventCost;
+                
+                
             }
-            console.log('Current total due: ');
+            
             $scope.currentTotalDue = currentTotalDue;
+            console.log('Current total due: ');
             console.log($scope.currentTotalDue);
-            return $scope.currentTotalDue;
+
+            $scope.amtPaidThisMonth = amtPaidThisMonth;
+            console.log('amtPaidThisMonth: ');
+            console.log(amtPaidThisMonth);
+
+            currentBalance = currentTotalDue - amtPaidThisMonth;
+            console.log("currentBalance: ")
+            console.log(currentBalance);
+            $scope.currentBalance = currentBalance;
+
+            
+            return $scope.currentTotalDue, $scope.amtPaidThisMonth, $scope.currentBalance;
     })
 
       var FutureParticipantTrips = $http.get('/api/userTrips/future/' + userID).then(function(success){
+                $scope.FutureParticipantTrips = success.data;
                 FutureParticipantTrips = success.data;
                 console.log(FutureParticipantTrips);
                 return FutureParticipantTrips;
         }).then(function(FutureParticipantTrips){   
-            var futureTotalDue = 0;  
+            var futureTotalDue = 0;
+            var amtPaidForNextMonth = 0;
+            var futureBalance = 0;  
             $scope.futureTotalDue = 0;       
             for ( z = 0; z < FutureParticipantTrips.length; z++) {  
                 
                 console.log("event cost for FutureParticipantTrips[" + z + "]: ");
                 console.log(FutureParticipantTrips[z].eventCost);
+                if (FutureParticipantTrips[z].paid == 1){
+                    amtPaidForNextMonth = amtPaidForNextMonth + FutureParticipantTrips[z].eventCost;
+                    console.log('amtPaidForNextMonth: ');
+                    console.log(amtPaidForNextMonth);
+                }
 
                 futureTotalDue = futureTotalDue + FutureParticipantTrips[z].eventCost;
+                console.log(futureTotalDue);
 
-                // console.log('Future total due: ');
-                // $scope.futureTotalDue = futureTotalDue;
-                // console.log($scope.futureTotalDue);
             }
-            console.log('Future total due: ');
+            
             $scope.futureTotalDue = futureTotalDue;
+            console.log('Future total due: ');
             console.log($scope.futureTotalDue);
-            return $scope.futureTotalDue;
+
+            $scope.amtPaidForNextMonth = amtPaidForNextMonth;
+            console.log('amtPaidForNextMonth: ');
+            console.log(amtPaidForNextMonth);
+
+            futureBalance = futureTotalDue - amtPaidForNextMonth;
+            console.log("futureBalance: ")
+            console.log(futureBalance);
+            $scope.futureBalance = futureBalance;
+
+
+
+            return $scope.futureTotalDue, $scope.amtPaidForNextMonth, $scope.futureBalance;
          
     })
+
+ 
 
     
     

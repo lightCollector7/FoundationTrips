@@ -796,7 +796,12 @@ a {
   border-bottom: 1px solid lightblue;
   width: 95%;
 }
-
+#tripDetailsButton{
+  margin:10px;
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+}
 #editSlotButton {
   background-color: black;
   color: white;
@@ -944,6 +949,11 @@ a {
 #tripMaxSlotsBox{
   position: absolute;
   left: 350px;
+}
+#tripEventDetailsBox{
+  position: absolute;
+  left: 350px;
+  height: 200px;
 }
 
 /*========================  addParticipant to Trip Page ======================================*/
@@ -1288,6 +1298,17 @@ a {
   margin-bottom: 20px;
   border-bottom: 1px solid white;
 
+}
+
+.markAsPaidBtn{
+  margin-left: 25px;
+  background-color: lightblue;
+  border-radius: 10px;
+}
+
+.userProfileTableHeader{
+  float: left;
+  color: cornflowerblue;
 }
 .participantTripLine{
   margin-bottom: 3px;

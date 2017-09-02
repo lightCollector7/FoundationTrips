@@ -17,8 +17,20 @@
           <p id="tripListTitle"> Enrolled Field Trips:</p>
           <div class="tripListDiv">
             <table>
-                <tr class="participantTripLine" ng-repeat="participantTrip in participantTrips | orderBy: 'eventDate'">
+                <!--<tr class="participantTripLine" ng-repeat="participantTrip in participantTrips | orderBy: 'eventDate'">
                     <td class="participantTripName">{{participantTrip.eventName}}</td> <td class="participantTripDateLineSmall" >{{participantTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</td><td class="participantTripCostLineSmall">${{participantTrip.eventCost}}</td>
+                </tr>-->
+                 <th class="userProfileTableHeader"> Current Trips <button class="markAsPaidBtn" ng-click="markCurrentAsPaid()">Mark all as paid</button></th>
+                 <tr class="participantTripLine" ng-repeat="CurrentParticipantTrip in CurrentParticipantTrips | orderBy: 'eventDate'">
+                    <td class="participantTripName">{{CurrentParticipantTrip.eventName}}</td> <td class="participantTripDateLineSmall" >{{CurrentParticipantTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</td><td class="participantTripCostLineSmall">${{CurrentParticipantTrip.eventCost}}</td>
+                    <td><label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{CurrentParticipantTrip.paid}}" disabled="disabled"></input></label></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <th class="userProfileTableHeader"> Future Trips <button class="markAsPaidBtn" ng-click="markFutureAsPaid()">Mark all as paid</button></th>
+                 <tr class="participantTripLine" ng-repeat="FutureParticipantTrip in FutureParticipantTrips | orderBy: 'eventDate'">
+                    <td class="participantTripName">{{FutureParticipantTrip.eventName}}</td> <td class="participantTripDateLineSmall" >{{FutureParticipantTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</td><td class="participantTripCostLineSmall">${{FutureParticipantTrip.eventCost}}</td>
+                    <td><label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{FutureParticipantTrip.paid}}" disabled="disabled"></input></label></td>
                 </tr>
             </table>
          
@@ -26,9 +38,12 @@
           </div>
          <p id="totalDueLine">Total Due for This Month: <span id="totalDue">${{currentTotalDue}}</span>
              <span id="totalDueLine">Amount Paid This Month: </span><span id="totalDue"> ${{amtPaidThisMonth}}</span>
-             <span id="totalDueLine">Current Balance: </span><span id="totalDue"> ${{currentBalance}}</span>
+             <span id="totalDueLine">Current Balance Due: </span><span id="totalDue"> ${{currentBalance}}</span>
         </p>
-         <p id="totalDueLine">Total Due for Next Month:  <span id="totalDue">${{futureTotalDue}}</span></p>
+         <p id="totalDueLine">Total Due for Next Month:  <span id="totalDue">${{futureTotalDue}}</span>
+            <span id="totalDueLine">Amount Paid for Next Month: </span><span id="totalDue"> ${{amtPaidForNextMonth}}</span>
+            <span id="totalDueLine">Future Balance Due: </span><span id="totalDue">${{futureBalance}}</span>
+         </p>
           
         
       </div>

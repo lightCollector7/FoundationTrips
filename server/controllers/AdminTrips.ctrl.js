@@ -8,7 +8,7 @@ var router = express.Router();
 router.route('/')
     .post(auth.isAdmin, function(req, res){
         var trip = req.body
-        procedures.procInsertTrip(trip.eventName, trip.eventDescription, trip.colorID, trip.eventDate, trip.eventTime, trip.eventCost, trip.maxSlots)
+        procedures.procInsertTrip(trip.eventName, trip.eventDescription, trip.colorID, trip.eventDate, trip.eventTime, trip.eventCost, trip.maxSlots, trip.eventDetails)
         .then(function(data){
             res.status(201).send(data);
         }, function(err) {
@@ -36,7 +36,7 @@ router.route('/:id')
        .put(function (req, res) {
         var trip = req.body;
         console.log("trying to update");
-        procedures.procUpdateTrip(req.params.id, trip.eventName, trip.eventDescription, trip.eventDate, trip.eventCost, trip.maxSlots)
+        procedures.procUpdateTrip(req.params.id, trip.eventName, trip.eventDescription, trip.eventDate, trip.eventCost, trip.maxSlots, trip.eventDetails)
             .then(function () {
                 res.sendStatus(204);
             }, function (err) {

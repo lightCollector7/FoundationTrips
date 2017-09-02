@@ -11,7 +11,7 @@
 <div id="backgroundDiv" class="container">
   <div id="yellowTripsDiv" class="container"> 
     <p class="yellowTripsDivTitle">{{yellowTrip.eventName}} <span class="tripDateLine">{{yellowTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
-    <p class="yellowTripDescriptionLine">{{yellowTrip.eventDescription}} <span class="tripTimeLine">{{yellowTrip.eventTime}}</span><span class="tripCostLine">${{yellowTrip.eventCost}}</span></p>
+    <p class="yellowTripDescriptionLine">{{yellowTrip.eventDescription}}<span><button id="tripDetailsButton" ng-click="showDetails()">Details</button></span>  <span class="tripTimeLine">{{yellowTrip.eventTime}}</span><span class="tripCostLine">${{yellowTrip.eventCost}}</span></p>
     
     <h3> Field Trip Slots:</h3>
         <div class="listDiv">

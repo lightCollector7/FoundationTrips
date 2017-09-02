@@ -5,7 +5,9 @@ exports.procGetSlotBySlotID = function(id) {
 }
 
 exports.procUpdateSlot = function(id, paidValue){
+    console.log("id: ")
     console.log(id);
+    console.log('paidValue: ')
     console.log(paidValue);
     return db.fnEmpty('procUpdateSlot', [id, paidValue]);
 }
