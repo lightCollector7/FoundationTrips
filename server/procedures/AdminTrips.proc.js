@@ -5,7 +5,7 @@ exports.procGetTrip = function(id) {
     return db.fnRow('procGetTrip', [id]);
 }
 
-exports.procInsertTrip = function(eventName, eventDescription, eventColorID, eventDate, eventTime, eventCost, eventMaxSlots, eventDetails) {
+exports.procInsertTrip = function(eventName, eventDescription, eventColorID, eventDate, eventTime, eventCost, eventMaxSlots, eventDetails, publish) {
     console.log(eventName);
     console.log(eventDate);
     console.log(eventDescription);
@@ -14,10 +14,12 @@ exports.procInsertTrip = function(eventName, eventDescription, eventColorID, eve
     var formattedDate = new Date(eventDate);
     console.log(eventCost);
     console.log(eventMaxSlots);
-    return db.fnRow('procInsertTrip', [eventName, eventDescription, eventColorID, formattedDate, eventTime, eventCost, eventMaxSlots, eventDetails] );
+    console.log('publish value: ');
+    console.log(publish);
+    return db.fnRow('procInsertTrip', [eventName, eventDescription, eventColorID, formattedDate, eventTime, eventCost, eventMaxSlots, eventDetails, publish] );
 }
 
-exports.procUpdateTrip = function(id, eventName, eventDescription, eventDate, eventCost, eventMaxSlots, eventDetails) {
+exports.procUpdateTrip = function(id, eventName, eventDescription, eventDate, eventCost, eventMaxSlots, eventDetails, publish) {
     console.log(eventDate);
    
     var formattedDate = Date.parse(eventDate);  
@@ -25,7 +27,9 @@ exports.procUpdateTrip = function(id, eventName, eventDescription, eventDate, ev
     console.log(formattedDate);
     formattedDate = new Date(formattedDate);
     console.log(formattedDate);
-    return db.fnEmpty('procUpdateTrip', [id, eventName, eventDescription, formattedDate, eventCost, eventMaxSlots, eventDetails]);
+    console.log('publish value: ')
+    console.log(publish);
+    return db.fnEmpty('procUpdateTrip', [id, eventName, eventDescription, formattedDate, eventCost, eventMaxSlots, eventDetails, publish]);
 }
 
 exports.procDeleteTrip = function(id){

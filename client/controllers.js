@@ -1458,6 +1458,8 @@ angular.module('FoundationTrips.controllers',[])
         console.log($scope.tripToEdit.eventDate);
         console.log("this is the $scope.tripToEdit: ");
         console.log($scope.tripToEdit);
+        
+        // $scope.tripToEdit.paid = String($scope.tripToEdit.paid); // did this copying adminEditSlotDetails update function
     } );
     
 
@@ -1702,6 +1704,29 @@ angular.module('FoundationTrips.controllers',[])
         
     }
 
+    // function generatePassword() {
+    //     var length = 8,
+    //         charset = "abcdefghijkmnopqrstuvwxyzACDEFGHJKMNPQRSTUVWXY345679",
+    //         retVal = "";
+    //     for (var i = 0, n = charset.length; i < length; ++i) {
+    //         retVal += charset.charAt(Math.floor(Math.random() * n));
+    //     }
+    //     return retVal;
+    // }
+    $scope.generatePassword = function (){
+        var length = 8,
+         charset = "abcdefghijkmnopqrstuvwxyzACDEFGHJKMNPQRSTUVWXY345679",
+         retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+        $scope.newPassword = retVal;
+        console.log($scope.newPassword);
+        $scope.user.password = $scope.newPassword;
+        return $scope.newPassword;
+    };
+    // $scope.generatePassword = generatePassword();
+
     $scope.updateThisUser = function(){
         console.log('this is the user to be edited: ' );
         console.log($scope.user);
@@ -1821,11 +1846,19 @@ angular.module('FoundationTrips.controllers',[])
   
 
     userID = $routeParams.id;
-    $scope.participant = UserFactory.get({id: userID },function(){
+    $scope.participant = $http.get('/api/users/' + userID).then(function(success){
+        $scope.participant = success.data;
         console.log($scope.participant);
-    })
-
-    var CurrentParticipantTrips = $http.get('/api/userTrips/current/' + userID).then(function(success){
+        var participant = $scope.participant;
+        return participant;
+    }).then(function(participant){
+       var colorGroup = participant.Colors;
+       console.log('colorGroup')
+       console.log(colorGroup);
+       $scope.colorGroup = colorGroup;
+       return colorGroup;
+    }).then(function(colorGroup){
+          var CurrentParticipantTrips = $http.get('/api/userTrips/current/' + userID).then(function(success){
                 CurrentParticipantTrips = success.data;
                 $scope.CurrentParticipantTrips = CurrentParticipantTrips;
                 console.log("CurrentParticipantTrips: ")
@@ -2008,6 +2041,15 @@ angular.module('FoundationTrips.controllers',[])
             };
 
     })
+
+
+
+
+
+
+    })
+
+  
 
 
     

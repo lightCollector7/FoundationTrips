@@ -11,7 +11,7 @@
 
 <div id="adminBackground">
     <div id="adminOrangeTripsDiv" class="container"> 
-      <p class="orangeTripsDivTitle">{{orangeTrip.eventName}} <span class="tripDateLine">{{orangeTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</span></p>
+      <p class="orangeTripsDivTitle">{{orangeTrip.eventName}} <span class="tripDateLine">{{orangeTrip.eventDate | date: "EEE MM/dd/yyyy 'at' h:mma"}}</span></p>
       <p class="orangeTripDescriptionLine">{{orangeTrip.eventDescription}}<span><button id="tripDetailsButton" ng-click="showDetails()">Details</button></span>  <span class="tripTimeLine">{{orangeTrip.eventTime}}</span><span class="tripCostLine">${{orangeTrip.eventCost}}</span><span class="tripMaxSlotsLine">Max Slots: {{orangeTrip.maxSlots}}</span></p>
       
       <h3> Field Trip Slots: <span><a href="/{{addParticipantLink}}"><button class="addParticipantButton">add participant</button></a></span></h3>

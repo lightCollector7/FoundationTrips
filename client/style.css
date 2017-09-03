@@ -1059,6 +1059,10 @@ a {
   overflow-y: auto;
 }
 
+#passwordGenerator{
+  margin-left: 225px;
+}
+
 #adminOrangeUsersDiv{
   margin-left: 10%;
   margin-top: 25px;

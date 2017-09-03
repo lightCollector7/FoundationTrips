@@ -22,7 +22,7 @@
                 </tr>-->
                  <th class="userProfileTableHeader"> Current Trips <button class="markAsPaidBtn" ng-click="markCurrentAsPaid()">Mark all as paid</button></th>
                  <tr class="participantTripLine" ng-repeat="CurrentParticipantTrip in CurrentParticipantTrips | orderBy: 'eventDate'">
-                    <td class="participantTripName">{{CurrentParticipantTrip.eventName}}</td> <td class="participantTripDateLineSmall" >{{CurrentParticipantTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</td><td class="participantTripCostLineSmall">${{CurrentParticipantTrip.eventCost}}</td>
+                    <td class="participantTripName"><a href="/admin/{{colorGroup}}Trips/{{CurrentParticipantTrip.eventID}}">{{CurrentParticipantTrip.eventName}}</a></td> <td class="participantTripDateLineSmall" >{{CurrentParticipantTrip.eventDate | date: "MM/dd/yyyy 'at' h:mma"}}</td><td class="participantTripCostLineSmall">${{CurrentParticipantTrip.eventCost}}</td>
                     <td><label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{CurrentParticipantTrip.paid}}" disabled="disabled"></input></label></td>
                 </tr>
                 <tr></tr>

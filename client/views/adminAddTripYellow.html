@@ -19,6 +19,7 @@
             <label>Cost: <input id="tripCostBox" type="text" ng-model="trip.eventCost" placeholder="_.__" required></label><br><br>
             <label>Max Slots: <input id="tripMaxSlotsBox" type="text" ng-model="trip.maxSlots" placeholder="ex. = 15" required></label><br><br>
             <label>Event Details: <input id="tripEventDetailsBox" type="text" ng-model="trip.eventDetails" placeholder="Trip Details..." required></label><br><br>
+            <label>Publish? <input id="publishValue" type="checkbox" ng-checked="trip.publish"></label><br><br>
         </form>
         <button id="submitTripButton" ng-click="submitTripYellow()" ng-disabled="addTripForm.$invalid">Submit Trip</button>
           
