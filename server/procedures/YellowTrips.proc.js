@@ -7,6 +7,13 @@ exports.procGetTrips_Yellow_Future = function(){
     return db.fnRows('procGetTrips_Yellow_Future');
 }
 
+exports.procGetPublishedTrips_Yellow_Current = function(){
+    return db.fnRows('procGetPublishedTrips_Yellow_Current');
+}
+exports.procGetPublishedTrips_Yellow_Future = function(){
+    return db.fnRows('procGetPublishedTrips_Yellow_Future');
+}
+
 exports.procGetTrip = function(id) {
     return db.fnRow('procGetTrip', [id]);
 }

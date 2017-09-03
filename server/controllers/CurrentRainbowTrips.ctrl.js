@@ -15,6 +15,17 @@ router.route('/')
         });
     });
 
+    router.route('/published')
+    .get(function(req, res) {
+        procedures.procGetPublishedTrips_Rainbow_Current().then(function(data){
+            res.send(data);
+            console.log(data);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        });
+    })
+
 // = /api/CurrentRainbowTrips/:id
 router.route('/:id')
     .get(function(req, res) {

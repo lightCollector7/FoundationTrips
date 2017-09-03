@@ -7,6 +7,13 @@ exports.procGetTrips_Rainbow_Future = function(){
     return db.fnRows('procGetTrips_Rainbow_Future');
 }
 
+exports.procGetPublishedTrips_Rainbow_Current = function(){
+    return db.fnRows('procGetPublishedTrips_Rainbow_Current');
+}
+exports.procGetPublishedTrips_Rainbow_Future = function(){
+    return db.fnRows('procGetPublishedTrips_Rainbow_Future');
+}
+
 exports.procGetTrip = function(id) {
     return db.fnRow('procGetTrip', [id]);
 }

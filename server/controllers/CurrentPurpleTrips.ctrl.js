@@ -15,6 +15,17 @@ router.route('/')
         });
     });
 
+    router.route('/published')
+    .get(function(req, res) {
+        procedures.procGetPublishedTrips_Purple_Current().then(function(data){
+            res.send(data);
+            console.log(data);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        });
+    })
+
 // = /api/PurpleTrips/:id
 router.route('/:id')
     .get(function(req, res) {

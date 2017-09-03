@@ -78,7 +78,7 @@ angular.module('FoundationTrips.controllers',[])
     }
 }])
 
-.controller('allCurrentEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'CurrentGreenTripsFactory', 'CurrentOrangeTripsFactory', 'CurrentPurpleTripsFactory', 'CurrentYellowTripsFactory', 'CurrentRainbowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, CurrentGreenTripsFactory, CurrentOrangeTripsFactory, CurrentPurpleTripsFactory, CurrentYellowTripsFactory, CurrentRainbowTripsFactory, $routeParams) {
+.controller('allCurrentEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'CurrentGreenTripsFactory_Published', 'CurrentOrangeTripsFactory_Published', 'CurrentPurpleTripsFactory_Published', 'CurrentYellowTripsFactory_Published', 'CurrentRainbowTripsFactory_Published', '$routeParams', function($scope, $location, $route, $http, UserService, CurrentGreenTripsFactory_Published, CurrentOrangeTripsFactory_Published, CurrentPurpleTripsFactory_Published, CurrentYellowTripsFactory_Published, CurrentRainbowTripsFactory_Published, $routeParams) {
     UserService.requireLogin();
     UserService.isLoggedIn();
 
@@ -131,35 +131,35 @@ angular.module('FoundationTrips.controllers',[])
     }
  
     function getGreenTrips() {
-        $scope.greenTrips = CurrentGreenTripsFactory.query();
+        $scope.greenTrips = CurrentGreenTripsFactory_Published.query();
         console.log('this is the GREENTRIPS ARRAY: ')
         console.log($scope.greenTrips)
     }
     getGreenTrips();
 
     function getOrangeTrips() {
-       $scope.orangeTrips = CurrentOrangeTripsFactory.query();
+       $scope.orangeTrips = CurrentOrangeTripsFactory_Published.query();
         console.log('this is the ORANGETRIPS ARRAY: ')
         console.log($scope.orangeTrips)
     }
     getOrangeTrips();
 
     function getPurpleTrips() {
-       $scope.purpleTrips = CurrentPurpleTripsFactory.query();
+       $scope.purpleTrips = CurrentPurpleTripsFactory_Published.query();
         console.log('this is the PURPLETRIPS ARRAY: ')
         console.log($scope.purpleTrips)
     }
     getPurpleTrips();
 
     function getYellowTrips() {
-       $scope.yellowTrips = CurrentYellowTripsFactory.query();
+       $scope.yellowTrips = CurrentYellowTripsFactory_Published.query();
         console.log('this is the YELLOWTRIPS ARRAY: ')
         console.log($scope.yellowTrips)
     }
     getYellowTrips();
 
     function getRainbowTrips(){
-        $scope.rainbowTrips = CurrentRainbowTripsFactory.query();
+        $scope.rainbowTrips = CurrentRainbowTripsFactory_Published.query();
         console.log('this is the RAINBOWTRIPS ARRAY: ')
         console.log($scope.rainbowTrips);
     }
@@ -167,7 +167,7 @@ angular.module('FoundationTrips.controllers',[])
 
 }])
 
-.controller('allFutureEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'FutureGreenTripsFactory', 'FutureOrangeTripsFactory', 'FuturePurpleTripsFactory', 'FutureYellowTripsFactory', 'FutureRainbowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, FutureGreenTripsFactory, FutureOrangeTripsFactory, FuturePurpleTripsFactory, FutureYellowTripsFactory, FutureRainbowTripsFactory, $routeParams) {
+.controller('allFutureEventsController', ['$scope', '$location', '$route', '$http', 'UserService', 'FutureGreenTripsFactory_Published', 'FutureOrangeTripsFactory_Published', 'FuturePurpleTripsFactory_Published', 'FutureYellowTripsFactory_Published', 'FutureRainbowTripsFactory_Published', '$routeParams', function($scope, $location, $route, $http, UserService, FutureGreenTripsFactory_Published, FutureOrangeTripsFactory_Published, FuturePurpleTripsFactory_Published, FutureYellowTripsFactory_Published, FutureRainbowTripsFactory_Published, $routeParams) {
     UserService.requireLogin();
     UserService.isLoggedIn();
 
@@ -220,34 +220,34 @@ angular.module('FoundationTrips.controllers',[])
     }
  
     function getGreenTrips() {
-        $scope.greenTrips = FutureGreenTripsFactory.query();
+        $scope.greenTrips = FutureGreenTripsFactory_Published.query();
         console.log('this is the GREENTRIPS ARRAY: ')
         console.log($scope.greenTrips)
     }
     getGreenTrips();
 
     function getOrangeTrips() {
-       $scope.orangeTrips = FutureOrangeTripsFactory.query();
+       $scope.orangeTrips = FutureOrangeTripsFactory_Published.query();
         console.log('this is the ORANGETRIPS ARRAY: ')
         console.log($scope.orangeTrips)
     }
     getOrangeTrips();
 
     function getPurpleTrips() {
-       $scope.purpleTrips = FuturePurpleTripsFactory.query();
+       $scope.purpleTrips = FuturePurpleTripsFactory_Published.query();
         console.log('this is the PURPLETRIPS ARRAY: ')
         console.log($scope.purpleTrips)
     }
     getPurpleTrips();
 
     function getYellowTrips() {
-       $scope.yellowTrips = FutureYellowTripsFactory.query();
+       $scope.yellowTrips = FutureYellowTripsFactory_Published.query();
         console.log('this is the YELLOWTRIPS ARRAY: ')
         console.log($scope.yellowTrips)
     }
     getYellowTrips();
        function getRainbowTrips(){
-        $scope.rainbowTrips = FutureRainbowTripsFactory.query();
+        $scope.rainbowTrips = FutureRainbowTripsFactory_Published.query();
         console.log('this is the RAINBOWTRIPS ARRAY: ')
         console.log($scope.rainbowTrips);
     }
@@ -1345,10 +1345,13 @@ angular.module('FoundationTrips.controllers',[])
             eventCost: $scope.trip.eventCost,
             maxSlots: $scope.trip.maxSlots,
             eventDetails: $scope.trip.eventDetails,
+            publish: $scope.trip.publish,
         }
 
         var tripToSubmit = new AdminTripFactory(data);
         tripToSubmit.$save(function (success) {
+            console.log(tripToSubmit.publish);
+            console.log(data.publish);
             console.log("Trip submitted successfully");
             $location.path('/adminEventsNavMenu');
         });
@@ -1363,6 +1366,7 @@ angular.module('FoundationTrips.controllers',[])
             eventCost: $scope.trip.eventCost,
             maxSlots: $scope.trip.maxSlots,
             eventDetails: $scope.trip.eventDetails,
+            publish: $scope.trip.publish,
         }
 
         var tripToSubmit = new AdminTripFactory(data);
@@ -1381,6 +1385,7 @@ angular.module('FoundationTrips.controllers',[])
             eventCost: $scope.trip.eventCost,
             maxSlots: $scope.trip.maxSlots,
             eventDetails: $scope.trip.eventDetails,
+            publish: $scope.trip.publish,
         }
 
         var tripToSubmit = new AdminTripFactory(data);
@@ -1399,6 +1404,7 @@ angular.module('FoundationTrips.controllers',[])
             eventCost: $scope.trip.eventCost,
             maxSlots: $scope.trip.maxSlots,
             eventDetails: $scope.trip.eventDetails,
+            publish: $scope.trip.publish,
         }
 
         var tripToSubmit = new AdminTripFactory(data);
@@ -1417,6 +1423,7 @@ angular.module('FoundationTrips.controllers',[])
             eventCost: $scope.trip.eventCost,
             maxSlots: $scope.trip.maxSlots,
             eventDetails: $scope.trip.eventDetails,
+            publish: $scope.trip.publish,
         }
 
         var tripToSubmit = new AdminTripFactory(data);

@@ -774,6 +774,11 @@ a {
   color: white;
 }
 
+#publishIndicator{
+  margin-left:10px;
+  font-size: 14px;
+  
+}
 /*========================  adminTripDetails Pages ======================================*/
 
 .adminGreenTripSlots{

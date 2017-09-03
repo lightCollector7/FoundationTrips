@@ -16,9 +16,20 @@ angular.module('FoundationTrips.factories', [])
         update: {method: 'PUT' }
     });
 }])
+.factory('CurrentGreenTripsFactory_Published', ['$resource', function($resource) {
+    return $resource('/api/CurrentGreenTrips/published/:id', {id: '@id'}, {
+         update: {method: 'PUT' }
+    });
+}])
 
 .factory('CurrentOrangeTripsFactory', ['$resource', function($resource) {
     return $resource('/api/CurrentOrangeTrips/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+
+.factory('CurrentOrangeTripsFactory_Published', ['$resource', function($resource) {
+    return $resource('/api/CurrentOrangeTrips/published/:id', {id: '@id' }, {
         update: {method: 'PUT' }
     });
 }])
@@ -29,8 +40,32 @@ angular.module('FoundationTrips.factories', [])
     });
 }])
 
+.factory('CurrentPurpleTripsFactory_Published', ['$resource', function($resource) {
+    return $resource('/api/CurrentPurpleTrips/published/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+
 .factory('CurrentYellowTripsFactory', ['$resource', function($resource) {
     return $resource('/api/CurrentYellowTrips/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+
+.factory('CurrentYellowTripsFactory_Published', ['$resource', function($resource) {
+    return $resource('/api/CurrentYellowTrips/published/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+
+.factory('CurrentRainbowTripsFactory', ['$resource', function($resource) {
+    return $resource('/api/CurrentRainbowTrips/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+
+.factory('CurrentRainbowTripsFactory_Published', ['$resource', function($resource) {
+    return $resource('/api/CurrentRainbowTrips/published/:id', {id: '@id' }, {
         update: {method: 'PUT' }
     });
 }])
@@ -39,8 +74,18 @@ angular.module('FoundationTrips.factories', [])
         update: {method: 'PUT' }
     });
 }])
+.factory('FutureGreenTripsFactory_Published', ['$resource', function($resource) {
+    return $resource('/api/FutureGreenTrips/published/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
 .factory('FutureOrangeTripsFactory', ['$resource', function($resource) {
     return $resource('/api/FutureOrangeTrips/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+.factory('FutureOrangeTripsFactory_Published', ['$resource', function($resource) {
+    return $resource('/api/FutureOrangeTrips/published/:id', {id: '@id' }, {
         update: {method: 'PUT' }
     });
 }])
@@ -49,18 +94,29 @@ angular.module('FoundationTrips.factories', [])
         update: {method: 'PUT' }
     });
 }])
+.factory('FuturePurpleTripsFactory_Published', ['$resource', function($resource) {
+    return $resource('/api/FuturePurpleTrips/published/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
 .factory('FutureYellowTripsFactory', ['$resource', function($resource) {
     return $resource('/api/FutureYellowTrips/:id', {id: '@id' }, {
         update: {method: 'PUT' }
     });
 }])
-.factory('CurrentRainbowTripsFactory', ['$resource', function($resource) {
-    return $resource('/api/CurrentRainbowTrips/:id', {id: '@id' }, {
+.factory('FutureYellowTripsFactory_Published', ['$resource', function($resource) {
+    return $resource('/api/FutureYellowTrips/published/:id', {id: '@id' }, {
         update: {method: 'PUT' }
     });
 }])
+
 .factory('FutureRainbowTripsFactory', ['$resource', function($resource) {
     return $resource('/api/FutureRainbowTrips/:id', {id: '@id' }, {
+        update: {method: 'PUT' }
+    });
+}])
+.factory('FutureRainbowTripsFactory_Published', ['$resource', function($resource) {
+    return $resource('/api/FutureRainbowTrips/published/:id', {id: '@id' }, {
         update: {method: 'PUT' }
     });
 }])

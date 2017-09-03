@@ -15,6 +15,18 @@ router.route('/')
         });
     })
 
+router.route('/published')
+    .get(function(req, res) {
+        procedures.procGetPublishedTrips_Green_Current().then(function(data){
+            res.send(data);
+            console.log(data);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        });
+    })
+
+
 
 // = /api/GreenTrips/:id
 router.route('/:id')
