@@ -35,6 +35,12 @@ exports.procGetUser = function(id){
     return db.fnRow('procGetUser', [id]);
 }
 
+exports.procGetUserToEdit = function(id){
+    return db.fnRow('procGetUserToEdit', [id]);
+}
+
+
+
 
 exports.procInsertUser = function(firstname, lastname, email, password, colorID, role){
     return db.fnRow('procInsertUser', [firstname, lastname, email, password, colorID, role])  

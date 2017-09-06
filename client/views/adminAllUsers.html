@@ -72,7 +72,7 @@
                  <li class="administrator" class="administrator" ng-repeat="administrator in administrators | orderBy: ['lastName', 'firstName']">
                     
                     <a class=" hvr-grow"><span><button class="userProfileLink">{{administrator.firstName}} {{administrator.lastName}}</button></span></a>
-                    <a href="/admin/editUser/{{administrator.id}}"><button id="EditAdminButton" class="hvr-grow">edit</button></a>
+                    <a href="/admin/editAdmin/{{administrator.id}}"><button id="EditAdminButton" class="hvr-grow">edit</button></a>
                  </li>
             </ol>
             </div>

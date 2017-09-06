@@ -2,6 +2,7 @@ var express = require('express');
 var passport = require('passport');
 var procedures = require('../procedures/users.proc');
 var auth = require('../middleware/auth.mw');
+var emailSvc = require('../services/email.svc');
 
 var router = express.Router();
 
@@ -46,9 +47,19 @@ router.route('/')
     })
     .post(auth.isAdmin, function(req, res){  // make the procedure to create new users and finish this
         var u = req.body
-        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role, u.subject, u.body)
         .then(function(data){
+            emailSvc.sendEmail(req.body.toAddress, req.body.fromAddress, req.body.subject, req.body.body)     // is this right?
+                        .then(function (success) {
+                            console.log('payments.ctrl.js: email sent!');
+                            res.sendStatus(204);
+                        }, function(err) {
+                            console.log('error sending email');
+                            console.log(err);
+                            res.sendStatus(500);
+                        });
             res.status(201).send(data);
+
         }, function(err) {
             console.log(err);
             alert(err);
@@ -84,6 +95,37 @@ router.route('/:id')
     })
     .get(function(req, res) {
         procedures.procGetUser(req.params.id).then(function(post) {
+            res.send(post);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        });
+    })
+
+// = /api/users/:id
+router.route('/edit/:id')
+    .delete(function(req, res){
+        procedures.procDeleteUserAndSlots(req.params.id)
+        .then(function() {
+            res.sendStatus(204);
+        }, function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        
+        });
+    })
+    .put(function(req, res){
+        var u = req.body;
+        procedures.procUpdateUser(req.params.id, u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
+        .then(function(){
+            res.sendStatus(204);
+        }, function(err){
+            console.log(err);
+            res.sendStatus(500);
+        });
+    })
+    .get(function(req, res) {
+        procedures.procGetUserToEdit(req.params.id).then(function(post) {
             res.send(post);
         }, function(err) {
             console.log(err);

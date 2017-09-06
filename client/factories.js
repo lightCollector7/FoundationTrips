@@ -5,6 +5,12 @@ angular.module('FoundationTrips.factories', [])
         update: { method: 'PUT' }
     });      
 }])
+.factory('EditUserFactory', ['$resource', function($resource) {
+    return $resource('/api/users/edit/:id', { id: '@id' }, {
+        update: { method: 'PUT' }
+    });      
+}])
+
 
 .factory('AdminTripFactory', ['$resource', function($resource) {
     return $resource('/api/AdminTrips/:id', {id: '@id'}, {

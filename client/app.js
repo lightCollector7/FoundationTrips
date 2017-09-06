@@ -1,5 +1,5 @@
 
-angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.controllers', 'FoundationTrips.services', 'FoundationTrips.factories'])
+angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.controllers', 'FoundationTrips.services', 'FoundationTrips.factories', 'FoundationTrips.directives'])
 
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
@@ -144,6 +144,10 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
         .when('/admin/editUser/:id', {
             templateUrl: 'views/adminEditUser.html',
             controller: 'adminEditUserController'
+        })
+        .when('/admin/editAdmin/:id', {
+            templateUrl: 'views/adminEditAdmin.html',
+            controller: 'adminEditAdminController'
         })
         .when('/admin/userProfile/:id', {
             templateUrl: 'views/adminUserProfile.html',

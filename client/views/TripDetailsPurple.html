@@ -12,7 +12,7 @@
 <div id="backgroundDiv" class="container">
     <div id="purpleTripsDiv" class="container"> 
       <p class="purpleTripsDivTitle">{{purpleTrip.eventName}} <span class="tripDateLine">{{purpleTrip.eventDate | date: "EEE MM/dd/yyyy 'at' h:mma"}}</span></p>
-      <p class="purpleTripDescriptionLine">{{purpleTrip.eventDescription}}<span><button id="tripDetailsButton" ng-click="showDetails()">Details</button></span>  <span class="tripTimeLine">{{purpleTrip.eventTime}}</span><span class="tripCostLine">${{purpleTrip.eventCost}}</span></p>
+      <p class="purpleTripDescriptionLine">{{purpleTrip.eventDescription}}<span><button id="tripDetailsButton">Details</button></span>  <span class="tripTimeLine">{{purpleTrip.eventTime}}</span><span class="tripCostLine">${{purpleTrip.eventCost}}</span></p>
       
       <h3> Field Trip Slots:</h3>
           <div class="listDiv">
@@ -28,6 +28,20 @@
         <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
         <!--<button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>-->
     </div>
+</div>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+     <h2>Trip Details:</h2>
+     <markdown-renderer text="purpleTrip.eventDetails"></markdown-renderer>
+      <!--<p>{{purpleTrip.eventDetails}}</p>-->
+  </div>
+
 </div>
 
  

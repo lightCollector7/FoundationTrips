@@ -2,7 +2,7 @@
         <div id="adminNavbarLogoBox">
              <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
         </div>
-        <p id="navbarTitle">EDIT USER</p>
+        <p id="navbarTitle">EDIT ADMIN</p>
         <a class="navbarLink hvr-grow" ng-click="logout()">(logout)</a>
         <a class="navbarLink hvr-grow" href="/adminAllUsers">(admin users)</a>
         <a class="navbarLink hvr-grow" href="/adminHome">(admin home)</a>
@@ -18,17 +18,15 @@
             <label>Password: <input id="userPasswordBox" type="text" ng-model="user.password" required></label><button id="passwordGenerator" ng-click="generatePassword()">Generate Password</button><br><br>
             <label>ColorID: 
                 <select id="userColorIdBox"  ng-model="user.colorID" placeholder="colorID" required>
-                    <option value="1">Green = 1</option>
-                    <option value="2">Orange = 2</option>
-                    <option value="3">Purple = 3</option>
-                    <option value="4">Yellow = 4</option>
-                   
+                    
+                    <option value="0">Admin = 0 </option>
                 </select>
                 <span id="currentColorID">(Currently {{user.Colors}} = {{user.colorID}})</span>
             </label><br><br>
              <label>Role: 
                  <select id="userRoleBox" ng-model="user.role" placeholder="role" required>
-                    <option value="user">User</option>
+                    
+                    <option value="admin">Admin</option>
                 </select>
             </label><br><br>
         </form>

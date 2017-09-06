@@ -13,7 +13,7 @@
 <div id="adminBackground">
     <div id="adminRainbowTripsDiv" class="container"> 
       <p class="rainbowTripsDivTitle">{{rainbowTrip.eventName}} <span class="tripDateLine">{{rainbowTrip.eventDate | date: "EEE MM/dd/yyyy 'at' h:mma"}}</span></p>
-      <p class="purpleTripDescriptionLine">{{rainbowTrip.eventDescription}}<span><button id="tripDetailsButton" ng-click="showDetails()">Details</button></span>  <span class="tripTimeLine">{{rainbowTrip.eventTime}}</span><span class="tripCostLine">${{rainbowTrip.eventCost}}</span><span class="tripMaxSlotsLine">Max Slots: {{rainbowTrip.maxSlots}}</span></p>
+      <p class="purpleTripDescriptionLine">{{rainbowTrip.eventDescription}}<span><button id="tripDetailsButton">Details</button></span>  <span class="tripTimeLine">{{rainbowTrip.eventTime}}</span><span class="tripCostLine">${{rainbowTrip.eventCost}}</span><span class="tripMaxSlotsLine">Max Slots: {{rainbowTrip.maxSlots}}</span></p>
       
       <h3> Field Trip Slots: <span><a href="/{{addParticipantLink}}"><button class="addParticipantButton">add participant</button></a></span></h3>
        
@@ -29,4 +29,18 @@
       </div>
 
     </div>
+</div>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Trip Details:</h2>
+    <markdown-renderer text="rainbowTrip.eventDetails"></markdown-renderer>
+     
+  </div>
+
 </div>

@@ -13,7 +13,7 @@
   <div id="adminBackground"> 
     <div id="adminYellowTripsDiv" class="container"> 
       <p class="yellowTripsDivTitle">{{yellowTrip.eventName}} <span class="tripDateLine">{{yellowTrip.eventDate | date: "EEE MM/dd/yyyy 'at' h:mma"}}</span></p>
-      <p class="yellowTripDescriptionLine">{{yellowTrip.eventDescription}}<span><button id="tripDetailsButton" ng-click="showDetails()">Details</button></span>  <span class="tripTimeLine">{{yellowTrip.eventTime}}</span><span class="tripCostLine">${{yellowTrip.eventCost}}</span><span class="tripMaxSlotsLine">Max Slots: {{yellowTrip.maxSlots}}</span></p>
+      <p class="yellowTripDescriptionLine">{{yellowTrip.eventDescription}}<span><button id="tripDetailsButton">Details</button></span>  <span class="tripTimeLine">{{yellowTrip.eventTime}}</span><span class="tripCostLine">${{yellowTrip.eventCost}}</span><span class="tripMaxSlotsLine">Max Slots: {{yellowTrip.maxSlots}}</span></p>
       
       <h3> Field Trip Slots: <span><a href="/{{addParticipantLink}}"><button class="addParticipantButton">add participant</button></a></span></h3>
        <div class="listDiv">
@@ -29,3 +29,17 @@
 
     </div>
   </div>
+
+
+  <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Trip Details:</h2>
+    <markdown-renderer text="yellowTrip.eventDetails"></markdown-renderer>
+     
+  </div>
+
+</div>

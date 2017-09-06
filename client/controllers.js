@@ -336,6 +336,38 @@ angular.module('FoundationTrips.controllers',[])
         })
     };
 
+
+    //-------------------------------  MODAL script
+
+                        // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("tripDetailsButton");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+
+    //--------------------------------
+
 //    var slotToDelete = [];            // WE DECIDED TO LEAVE THIS FEATURE OUT!
 //    $scope.removeMe = function() {                                      
 //         var shouldRemove = confirm('Remove you from this field trip?');
@@ -483,6 +515,37 @@ angular.module('FoundationTrips.controllers',[])
             })
         }   
     }; 
+
+        //-------------------------------  MODAL script
+
+                        // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("tripDetailsButton");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+
+    //--------------------------------
 }])
 
 .controller('PurpleTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentPurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentPurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
@@ -594,6 +657,37 @@ angular.module('FoundationTrips.controllers',[])
             })
         }   
     }; 
+
+        //-------------------------------  MODAL script
+
+                        // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("tripDetailsButton");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+
+    //--------------------------------
 }])
 
 .controller('YellowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentYellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentYellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
@@ -709,6 +803,37 @@ angular.module('FoundationTrips.controllers',[])
             })
         }   
     }; 
+
+        //-------------------------------  MODAL script
+
+                        // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("tripDetailsButton");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+
+    //--------------------------------
 }])
 
 .controller('RainbowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentRainbowTripsFactory', 'RainbowTripSlotsFactory', 'RainbowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentRainbowTripsFactory, RainbowTripSlotsFactory, RainbowTripFilledSlotsFactory){
@@ -824,6 +949,36 @@ angular.module('FoundationTrips.controllers',[])
             })
         }   
     }; 
+        //-------------------------------  MODAL script
+
+                        // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("tripDetailsButton");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+
+    //--------------------------------
 }])
 
 .controller('AdminHomeController', ['$scope', '$location', '$route', '$http', 'UserService', 'CurrentGreenTripsFactory', 'CurrentOrangeTripsFactory', 'CurrentPurpleTripsFactory', 'CurrentYellowTripsFactory', '$routeParams', function($scope, $location, $route, $http, UserService, CurrentGreenTripsFactory, CurrentOrangeTripsFactory, CurrentPurpleTripsFactory, CurrentYellowTripsFactory, $routeParams) {
@@ -1072,6 +1227,37 @@ angular.module('FoundationTrips.controllers',[])
 
     $scope.addParticipantLink = "addParticipant/" + tripID;
     console.log($scope.addParticipantLink);
+
+            //-------------------------------  MODAL script
+
+                        // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("tripDetailsButton");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+
+            //--------------------------------
       
 
 }])
@@ -1118,6 +1304,38 @@ angular.module('FoundationTrips.controllers',[])
 
    $scope.addParticipantLink = "addParticipant/" + tripID;
     console.log($scope.addParticipantLink); 
+
+            //-------------------------------  MODAL script
+
+                        // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("tripDetailsButton");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+
+            //--------------------------------
+
 }])
 
 .controller('adminPurpleTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentPurpleTripsFactory', 'PurpleTripSlotsFactory', 'PurpleTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentPurpleTripsFactory, PurpleTripSlotsFactory, PurpleTripFilledSlotsFactory){
@@ -1160,6 +1378,38 @@ angular.module('FoundationTrips.controllers',[])
 
     $scope.addParticipantLink = "addParticipant/" + tripID;
     console.log($scope.addParticipantLink);
+
+            //-------------------------------  MODAL script
+
+                        // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("tripDetailsButton");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+
+            //--------------------------------
+
 }])
 
 .controller('adminYellowTripDetailsController', ['$scope', '$location', '$route', '$http', '$window', 'UserService', '$routeParams', 'CurrentYellowTripsFactory', 'YellowTripSlotsFactory', 'YellowTripFilledSlotsFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, CurrentYellowTripsFactory, YellowTripSlotsFactory, YellowTripFilledSlotsFactory){
@@ -1201,6 +1451,38 @@ angular.module('FoundationTrips.controllers',[])
 
     $scope.addParticipantLink = "addParticipant/" + tripID;
     console.log($scope.addParticipantLink);
+
+            //-------------------------------  MODAL script
+
+                        // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("tripDetailsButton");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+
+            //--------------------------------
+
 }])
 
 
@@ -1244,6 +1526,38 @@ angular.module('FoundationTrips.controllers',[])
 
     $scope.addParticipantLink = "addParticipant/" + tripID;
     console.log($scope.addParticipantLink);
+
+            //-------------------------------  MODAL script
+
+                        // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("tripDetailsButton");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+
+            //--------------------------------
+
 
 }])
 
@@ -1578,6 +1892,19 @@ angular.module('FoundationTrips.controllers',[])
 
 
     //========== now write functions for adding Users for all 4 color groups ======= //
+        $scope.generatePassword = function (){
+        var length = 8,
+         charset = "abcdefghijkmnopqrstuvwxyzACDEFGHJKMNPQRSTUVWXY345679",
+         retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+        $scope.newPassword = retVal;
+        console.log($scope.newPassword);
+        $scope.user.password = $scope.newPassword;
+        return $scope.newPassword;
+    };
+
 
      $scope.submitUserGreen = function() {
         var data = {
@@ -1587,6 +1914,8 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '1',
             role: $scope.user.role,
+            subject: "New EF-TRIPS Password",
+            body: "Your user account for the EF-TRIPS may be accessed with the following credentials: " + "login: " + $scope.user.email + "password: " + $scope.user.password
         }
 
         var userToSubmit = new AdminUserFactoryGreen(data);
@@ -1608,6 +1937,8 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '2',
             role: $scope.user.role,
+            subject: "New EF-TRIPS Password",
+            body: "Your user account for the EF-TRIPS may be accessed with the following credentials: " + "login: " + $scope.user.email + "password: " + $scope.user.password
         }
 
         var userToSubmit = new AdminUserFactoryOrange(data);
@@ -1628,6 +1959,8 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '3',
             role: $scope.user.role,
+            subject: "New EF-TRIPS Password",
+            body: "Your user account for the EF-TRIPS may be accessed with the following credentials: " + "login: " + $scope.user.email + "password: " + $scope.user.password
         }
 
         var userToSubmit = new AdminUserFactoryPurple(data);
@@ -1648,6 +1981,8 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '4',
             role: $scope.user.role,
+            subject: "New EF-TRIPS Password",
+            body: "Your user account for the EF-TRIPS may be accessed with the following credentials: " + "login: " + $scope.user.email + "password: " + $scope.user.password
         }
 
         var userToSubmit = new AdminUserFactoryYellow(data);
@@ -1668,6 +2003,9 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '0',
             role: $scope.user.role,
+            subject: "New EF-TRIPS Password",
+            body: "Your user account for the EF-TRIPS may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            fromAddress: 'pinckc7@gmail.com',
         }
 
         var userToSubmit = new AdminUserFactoryAdmin(data);
@@ -1683,7 +2021,7 @@ angular.module('FoundationTrips.controllers',[])
 
 }])
 
-.controller('adminEditUserController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'UserFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UserFactory){
+.controller('adminEditUserController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'EditUserFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, EditUserFactory){
     $window.scrollTo(0, 0);
 
     UserService.isLoggedIn();
@@ -1705,21 +2043,29 @@ angular.module('FoundationTrips.controllers',[])
 //  script for editing a user
 
     var userID = $routeParams.id;
+    
 
-    $scope.user = UserFactory.get({id: userID}), function(){
-        $scope.user = success.data;
-        
-    }
+    $scope.user = $http.get('api/users/edit/' + userID).then( function(success){
+         $scope.user = success.data;
+         var user = $scope.user;
+         return user
+    }).then(function(user){
+           //HERE
+         $scope.user.colorID = $scope.user.colorID.toString();
+         console.log($scope.user.colorID);
 
-    // function generatePassword() {
-    //     var length = 8,
-    //         charset = "abcdefghijkmnopqrstuvwxyzACDEFGHJKMNPQRSTUVWXY345679",
-    //         retVal = "";
-    //     for (var i = 0, n = charset.length; i < length; ++i) {
-    //         retVal += charset.charAt(Math.floor(Math.random() * n));
-    //     }
-    //     return retVal;
-    // }
+        console.log("$scope.user: ");
+        console.log($scope.user);
+        console.log($scope.user.role);
+        console.log($scope.user.colorID);
+        return user;
+
+
+    });
+ 
+
+   
+
     $scope.generatePassword = function (){
         var length = 8,
          charset = "abcdefghijkmnopqrstuvwxyzACDEFGHJKMNPQRSTUVWXY345679",
@@ -1732,24 +2078,169 @@ angular.module('FoundationTrips.controllers',[])
         $scope.user.password = $scope.newPassword;
         return $scope.newPassword;
     };
-    // $scope.generatePassword = generatePassword();
+
 
     $scope.updateThisUser = function(){
         console.log('this is the user to be edited: ' );
         console.log($scope.user);
-        $scope.user.$update(function(success){
-           console.log('The slot was updated!');
-           $location.path('/adminAllUsers') ;
-        })
+        // $scope.user.$update(function(success){
+        //    console.log('The slot was updated!');
+        //    $location.path('/adminAllUsers') ;
+        // })
+        var data = {
+            firstName: $scope.user.firstName,
+            lastName: $scope.user.lastName,
+            email: $scope.user.email,
+            password: $scope.user.password,
+            colorID: $scope.user.colorID,
+            role: $scope.user.role,
+        }
+        $http.put( 'api/users/edit/'+ userID +'/?', data)
+                        .success(function (data, status){
+                            console.log("success");
+                            console.log(data);
+                            $scope.ServerResponse = data;
+                            console.log('The slot was updated!');
+                            $location.path('/adminAllUsers') ;
+                        })
+                        .error(function (data, status){
+                            (console.log("error"))
+                            console.log(data);
+                            console.log(status);
+                        })
     }
 
     $scope.promptDeleteThisUser = function(){
         var shouldDelete = confirm('Are you sure you want to delete this user?');
         if(shouldDelete) {
             console.log($scope.user);
-            $scope.user.$delete(function(sucess){
-                $location.path('/adminAllUsers');
-            })
+            $http.delete( 'api/users/edit/'+ userID +'/?')
+                        .success(function (data, status){
+                            console.log("success");
+                            console.log(data);
+                            $scope.ServerResponse = data;
+                            console.log('The slot was updated!');
+                            $location.path('/adminAllUsers') ;
+                        })
+                        .error(function (data, status){
+                            (console.log("error"))
+                            console.log(data);
+                            console.log(status);
+                        })
+        }
+    }
+
+}])
+
+.controller('adminEditAdminController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'EditUserFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, EditUserFactory){
+    $window.scrollTo(0, 0);
+
+    UserService.isLoggedIn();
+    $scope.loggedIn = false;
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        $scope.loggedIn = true;
+    });
+    $scope.logout = function () {
+        UserService.logout().then(function(){
+        $route.reload();
+        });
+    }
+
+    UserService.requireLogin();
+    UserService.requireAdmin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+//  script for editing a user
+
+    var userID = $routeParams.id;
+    
+
+    $scope.user = $http.get('api/users/edit/' + userID).then( function(success){
+         $scope.user = success.data;
+         var user = $scope.user;
+         return user
+    }).then(function(user){
+           //HERE
+         $scope.user.colorID = $scope.user.colorID.toString();
+         console.log($scope.user.colorID);
+
+        console.log("$scope.user: ");
+        console.log($scope.user);
+        console.log($scope.user.role);
+        console.log($scope.user.colorID);
+        return user;
+
+
+    });
+ 
+
+   
+
+    $scope.generatePassword = function (){
+        var length = 8,
+         charset = "abcdefghijkmnopqrstuvwxyzACDEFGHJKMNPQRSTUVWXY345679",
+         retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+        $scope.newPassword = retVal;
+        console.log($scope.newPassword);
+        $scope.user.password = $scope.newPassword;
+        return $scope.newPassword;
+    };
+
+
+    $scope.updateThisUser = function(){
+        console.log('this is the user to be edited: ' );
+        console.log($scope.user);
+        // $scope.user.$update(function(success){
+        //    console.log('The slot was updated!');
+        //    $location.path('/adminAllUsers') ;
+        // })
+        var data = {
+            firstName: $scope.user.firstName,
+            lastName: $scope.user.lastName,
+            email: $scope.user.email,
+            password: $scope.user.password,
+            colorID: $scope.user.colorID,
+            role: $scope.user.role,
+        }
+        $http.put( 'api/users/edit/'+ userID +'/?', data)
+                        .success(function (data, status){
+                            console.log("success");
+                            console.log(data);
+                            $scope.ServerResponse = data;
+                            console.log('The slot was updated!');
+                            $location.path('/adminAllUsers') ;
+                        })
+                        .error(function (data, status){
+                            (console.log("error"))
+                            console.log(data);
+                            console.log(status);
+                        })
+    }
+
+    $scope.promptDeleteThisUser = function(){
+        var shouldDelete = confirm('Are you sure you want to delete this user?');
+        if(shouldDelete) {
+            console.log($scope.user);
+            // $scope.user.$delete(function(sucess){
+            //     $location.path('/adminAllUsers');
+            // })
+            $http.delete( 'api/users/edit/'+ userID +'/?')
+                        .success(function (data, status){
+                            console.log("success");
+                            console.log(data);
+                            $scope.ServerResponse = data;
+                            console.log('The slot was updated!');
+                            $location.path('/adminAllUsers') ;
+                        })
+                        .error(function (data, status){
+                            (console.log("error"))
+                            console.log(data);
+                            console.log(status);
+                        })
         }
     }
 
@@ -1792,23 +2283,36 @@ angular.module('FoundationTrips.controllers',[])
 
 
     $scope.searchForParticipant = function(){
-        $scope.participantToSignUp = [];
+        $scope.participantToSignUpArray = [];
+        var searchResultsArray = [];
         var firstName = $scope.participant.firstName;
         var lastName = $scope.participant.lastName;
       
         var returnedParticipant = AdminParticipantFactory.get( {firstName, lastName}, function(){
-        console.log($scope.participantToSignUp);
-        $scope.participantToSignUp.push(returnedParticipant);
-        console.log($scope.participantToSignUp);
+        console.log(returnedParticipant);
 
-        $scope.class = "";
+   
+
+        searchResultsArray.push(returnedParticipant);
+
+       
+        if ( (JSON.stringify(searchResultsArray[0] ) === '{}') ){    
+            alert("No Results found for " + firstName + " " +lastName);
+            
+           
+        }else{
+            
+            $scope.participantToSignUpArray.push(searchResultsArray[0]);
+
+            $scope.class = "";
+        }
         
     });
     };
 
     $scope.submitParticipant = function(){
         var data ={
-            userID: $scope.participantToSignUp[0].id,
+            userID: $scope.participantToSignUpArray[0].id,
             eventID: tripID,
             colorID: $scope.tripArray[0].colorID,
             paid: '1',
@@ -1818,7 +2322,7 @@ angular.module('FoundationTrips.controllers',[])
         participantToSubmit.$save(function(success){
             console.log(participantToSubmit);
             console.log("participant is now signed up");
-            $route.reload(); // write location string using colorID OF TRIP AND tripID;
+            $route.reload(); // write location string using colorID OF TRIP AND tripID?;
         }, function(err){
             console.log(err);
             alert('participant is already signed up for this event');

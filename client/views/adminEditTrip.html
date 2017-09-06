@@ -19,7 +19,7 @@
             <!--<label>Time: <input id="tripTimeBox" type="time" ng-model="tripToEdit.eventTime" required></label><br><br>-->
             <label>Cost: <input id="tripCostBox" type="text" ng-model="tripToEdit.eventCost" required></label><br><br>
             <label>Max Slots: <input id="tripMaxSlotsBox" type="text" ng-model="tripToEdit.maxSlots" required></label><br><br>
-            <label>Event Details: <input id="tripEventDetailsBox" type="text" ng-model="tripToEdit.eventDetails" required></label><br><br>
+            <label>Event Details: <textarea id="tripEventDetailsBox" style="width:400px;height:px;rows:20;" ng-model="tripToEdit.eventDetails" required></textarea></label><br><br>
             <label>Publish? <input id="publishValue" type="checkbox" ng-model="tripToEdit.publish" ng-checked="tripToEdit.publish" value="tripToEdit.publish" ng-true-value="1" ng-false-value="0"></label><br><br>
         </form>
         <button id="updateTripButton" ng-click="updateTrip()" ng-disabled="editTripForm.$invalid">Submit Changes</button>
