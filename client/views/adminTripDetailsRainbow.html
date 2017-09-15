@@ -13,7 +13,7 @@
 <div id="adminBackground">
     <div id="adminRainbowTripsDiv" class="container"> 
       <p class="rainbowTripsDivTitle">{{rainbowTrip.eventName}} <span class="tripDateLine">{{rainbowTrip.eventDate | date: "EEE MM/dd/yyyy 'at' h:mma"}}</span></p>
-      <p class="purpleTripDescriptionLine">{{rainbowTrip.eventDescription}}<span><button id="tripDetailsButton">Details</button></span>  <span class="tripTimeLine">{{rainbowTrip.eventTime}}</span><span class="tripCostLine">${{rainbowTrip.eventCost}}</span><span class="tripMaxSlotsLine">Max Slots: {{rainbowTrip.maxSlots}}</span></p>
+      <p class="purpleTripDescriptionLine">{{rainbowTrip.eventDescription}}<span><button id="tripDetailsButton" class="hvr-grow">Details</button></span>  <span class="tripTimeLine">{{rainbowTrip.eventTime}}</span><span class="tripCostLine">${{rainbowTrip.eventCost}}</span><span class="tripMaxSlotsLine">Max Slots: {{rainbowTrip.maxSlots}}</span></p>
       
       <h3> Field Trip Slots: <span><a href="/{{addParticipantLink}}"><button class="addParticipantButton">add participant</button></a></span></h3>
        

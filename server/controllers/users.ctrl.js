@@ -103,6 +103,35 @@ router.route('/:id')
     })
 
 // = /api/users/:id
+// router.route('/edit/:id')
+//     .delete(function(req, res){
+//         procedures.procDeleteUserAndSlots(req.params.id)
+//         .then(function() {
+//             res.sendStatus(204);
+//         }, function(err) {
+//             console.log(err);
+//             res.sendStatus(500);
+        
+//         });
+//     })
+//     .put(function(req, res){
+//         var u = req.body;
+//         procedures.procUpdateUser(req.params.id, u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
+//         .then(function(){
+//             res.sendStatus(204);
+//         }, function(err){
+//             console.log(err);
+//             res.sendStatus(500);
+//         });
+//     })
+//     .get(function(req, res) {
+//         procedures.procGetUserToEdit(req.params.id).then(function(post) {
+//             res.send(post);
+//         }, function(err) {
+//             console.log(err);
+//             res.sendStatus(500);
+//         });
+//     })
 router.route('/edit/:id')
     .delete(function(req, res){
         procedures.procDeleteUserAndSlots(req.params.id)
@@ -119,10 +148,25 @@ router.route('/edit/:id')
         procedures.procUpdateUser(req.params.id, u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
         .then(function(){
             res.sendStatus(204);
+            return u;
         }, function(err){
             console.log(err);
             res.sendStatus(500);
-        });
+        }).then(function(u){
+            console.log('u: ')
+            console.log(u);
+            console.log(u.email);
+            console.log('new password: ');
+            console.log(u.password);
+            emailSvc.sendNewPwordEmail(u.email, u.password)    //WORK HERE
+            .then(function(success){
+                res.status(204).send('email sent')
+            }, function(err){
+                console.log('adminUsers.ctrl.js: There was an error!');
+                console.log(err);
+                res.status(500);
+            });
+        })
     })
     .get(function(req, res) {
         procedures.procGetUserToEdit(req.params.id).then(function(post) {

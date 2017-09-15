@@ -243,7 +243,7 @@
 .listDiv{
   position: relative;
   float: clear;
-  height: 320px;
+  height: 310px;
   width: 100%;
   overflow-y: auto;
 }
@@ -526,6 +526,8 @@ a {
  }
 .submitMeButton{
   margin-left: 10px;
+  margin-bottom: 20px;
+  hvr-grw
 }
 
 .removeMeButton{
@@ -1353,6 +1355,10 @@ a {
   border-bottom: 2px solid lightslategray;
 }
 
+#editMyInfoButton{
+  margin-left: 25px;
+}
+
 #tripListTitle{
   position:relative;
   float: clear;
@@ -1422,4 +1428,26 @@ a {
   margin-left: 15px;
   margin-right: 20px;
   
+}
+
+#editMyInfoDiv{
+  postion: relative;
+  margin-left: 10%;
+  margin-top: 25px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 80%;
+  height: 500px;
+  border-radius: 10px;
+  border: 5px solid white;
+  /*background-color: #BCD2EE;*/
+  background-color:gray;
+  color: white;
+}
+
+.passwordBox{
+  position: absolute;
+  left: 300px;
+  margin-left: 20px;
 }

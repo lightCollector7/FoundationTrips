@@ -157,6 +157,10 @@ angular.module('FoundationTrips', ['ngRoute', 'ngResource', 'FoundationTrips.con
             templateUrl: 'views/UserProfile.html',
             controller: 'UserProfileController'
         })
+        .when('/user/editMyInfo/:id',{
+            templateUrl: 'views/UserProfileInfo.html',
+            controller: 'UserProfileInfoController'
+        })
       
         .otherwise({
             redirectTo: '/'

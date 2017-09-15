@@ -12,7 +12,7 @@
 <div id="backgroundDiv" class="container">
     <div id="greenTripsDiv" class="container"> 
       <p class="greenTripsDivTitle">{{greenTrip.eventName}} <span class="tripDateLine">{{greenTrip.eventDate | date: "EEE MM/dd/yyyy 'at' h:mma"}}</span></p>
-      <p class="greenTripDescriptionLine">{{greenTrip.eventDescription}}<span><button id="tripDetailsButton">Details</button></span>  <span class="tripTimeLine">{{greenTrip.eventTime}}</span><span class="tripCostLine">${{greenTrip.eventCost}}</span></p>
+      <p class="greenTripDescriptionLine">{{greenTrip.eventDescription}}<span><button id="tripDetailsButton" class="hvr-grow">Details</button></span>  <span class="tripTimeLine">{{greenTrip.eventTime}}</span><span class="tripCostLine">${{greenTrip.eventCost}}</span></p>
 
       <h3> Field Trip Slots:</h3>
       <div class="listDiv">
@@ -25,7 +25,7 @@
         </ol>
         
       </div>
-      <button type="button" class="btn btn-default submitMeButton" ng-click="signMeUp()">Sign Me Up</button>
+      <button type="button" class="btn btn-default submitMeButton hvr-grow" ng-click="signMeUp()">Sign Me Up</button>
       <!--<button type="button" class="btn btn-default removeMeButton" ng-click="removeMe()">Remove Me</button>-->
 
       

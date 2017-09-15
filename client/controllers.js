@@ -1915,16 +1915,18 @@ angular.module('FoundationTrips.controllers',[])
             colorID: '1',
             role: $scope.user.role,
             subject: "New EF-TRIPS Password",
-            body: "Your user account for the EF-TRIPS may be accessed with the following credentials: " + "login: " + $scope.user.email + "password: " + $scope.user.password
+            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            toAddress: $scope.user.email,
+            fromAddress: 'pinckc7@gmail.com',
         }
 
-        var userToSubmit = new AdminUserFactoryGreen(data);
+        var userToSubmit = new AdminUserFactoryAdmin(data);
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
         }, function(err){
                 console.log(err);
-                alert('This User is already registered');
+                alert('This User is already registered.');
         
             });
     }
@@ -1938,16 +1940,19 @@ angular.module('FoundationTrips.controllers',[])
             colorID: '2',
             role: $scope.user.role,
             subject: "New EF-TRIPS Password",
-            body: "Your user account for the EF-TRIPS may be accessed with the following credentials: " + "login: " + $scope.user.email + "password: " + $scope.user.password
+            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            toAddress: $scope.user.email,
+            fromAddress: 'pinckc7@gmail.com',
         }
 
-        var userToSubmit = new AdminUserFactoryOrange(data);
+        var userToSubmit = new AdminUserFactoryAdmin(data);
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
         }, function(err){
                 console.log(err);
                 alert('This User is already registered.');
+        
             });
     }
 
@@ -1960,10 +1965,12 @@ angular.module('FoundationTrips.controllers',[])
             colorID: '3',
             role: $scope.user.role,
             subject: "New EF-TRIPS Password",
-            body: "Your user account for the EF-TRIPS may be accessed with the following credentials: " + "login: " + $scope.user.email + "password: " + $scope.user.password
+            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            toAddress: $scope.user.email,
+            fromAddress: 'pinckc7@gmail.com',
         }
 
-        var userToSubmit = new AdminUserFactoryPurple(data);
+        var userToSubmit = new AdminUserFactoryAdmin(data);
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
@@ -1982,10 +1989,12 @@ angular.module('FoundationTrips.controllers',[])
             colorID: '4',
             role: $scope.user.role,
             subject: "New EF-TRIPS Password",
-            body: "Your user account for the EF-TRIPS may be accessed with the following credentials: " + "login: " + $scope.user.email + "password: " + $scope.user.password
+            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            toAddress: $scope.user.email,
+            fromAddress: 'pinckc7@gmail.com',
         }
 
-        var userToSubmit = new AdminUserFactoryYellow(data);
+        var userToSubmit = new AdminUserFactoryAdmin(data);
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
@@ -1995,7 +2004,7 @@ angular.module('FoundationTrips.controllers',[])
         
             });
     }
-        $scope.submitUserAdmin = function() {
+    $scope.submitUserAdmin = function() {
         var data = {
             firstName: $scope.user.firstName,
             lastName: $scope.user.lastName,
@@ -2004,7 +2013,8 @@ angular.module('FoundationTrips.controllers',[])
             colorID: '0',
             role: $scope.user.role,
             subject: "New EF-TRIPS Password",
-            body: "Your user account for the EF-TRIPS may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            toAddress: $scope.user.email,
             fromAddress: 'pinckc7@gmail.com',
         }
 
@@ -2715,3 +2725,37 @@ angular.module('FoundationTrips.controllers',[])
 
 
 }])
+
+.controller('UserProfileInfoController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'UserFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UserFactory){
+    $window.scrollTo(0, 0);
+
+    UserService.isLoggedIn();
+    $scope.loggedIn = false;
+    UserService.me().then(function(me){
+        $scope.ME = me;
+        $scope.loggedIn = true;
+    });
+    $scope.logout = function () {
+        $location.path('/')
+        UserService.logout().then(function(){
+        
+        });
+    }
+
+    UserService.requireLogin();
+    UserService.isLoggedIn();
+    UserService.isAdmin();
+    UserService.isMyProfile();
+    UserService.requireIsMyProfile();
+
+    userID = $routeParams.id;
+    $scope.participant = UserFactory.get({id: userID },function(){
+        console.log($scope.participant);
+    })
+
+    // WRITE ALL LOGIC TO UPDATE PASSWORD
+        //including a new stored procedure that gets "my Password" to start
+        //then compare new password to the confirmed new password
+        // THEN figure out how to bind the new password box to the 'model' even though the current password box is bound to it already
+
+}]);

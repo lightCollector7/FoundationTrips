@@ -1,0 +1,28 @@
+  <div class="" id="navbar">
+        <div id="navbarLogoBox">
+             <img id="navbarLogo" class="" src="./assets/ExceptionalFoundationLogo.png">
+        </div>
+         <p id="navbarTitle">USER PROFILE</p>
+         <a class="navbarLink hvr-grow" ng-click="logout()" href="">(logout)</a><a class="navbarLink hvr-grow" href="/adminHome" ng-show="isAdmin">ADMIN</a>
+         <a class="navbarLink hvr-grow" href="/UserHomeMenu">(home menu)</a>
+         <p id="signedInAs" class="navbarLink" ng-show="loggedIn">Signed in as {{ ME.firstName }} {{ ME.lastName }}</p>
+        
+  </div>
+
+ <div id="backgroundDiv" class="container">
+
+  <div id="editMyInfoDiv">
+        <form name="editUserForm">
+            
+            
+            <label>Current Password: <input id="userPasswordBox" class="passwordBox" type="text" ng-model="participant.password" required></label><br><br>
+
+            <label>New Password: <input id="userNewPasswordBox" class="passwordBox" type="text" required></label><br><br>
+
+            <label>Confirm New Password: <input id="userConfirmPasswordBox" class="passwordBox" type="text" ng-model="user.password" required></label><br><br>
+            
+        </form>
+        <button id="updateUserButton" ng-click="updateThisUser()" ng-disabled="editUserForm.$invalid">Submit New Password</button>
+        
+    </div>
+ </div>

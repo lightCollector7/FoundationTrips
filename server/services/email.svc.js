@@ -1,32 +1,48 @@
 
-var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.sendEmail = function(toAddress, fromAddress, subject, content){
-    var request = sg.emptyRequest({
-        method: 'POST',
-        path: '/v3/mail/send',
-        body: {
-            personalizations: [
-                {
-                    to: [
-                        {
-                            email: toAddress
-                        }
-                    ],
-                    subject: subject
-                }
-            ],
-            from: {
-                email: fromAddress
-            },
-            content: [
-                {
-                    type: 'text/html',
-                    value: content
-                }
-            ]
-        }
-    });
 
-    return sg.API(request);
+
+        const msg = {
+        to: toAddress,
+        from: fromAddress,
+        subject: subject,
+        text: content,
+        };
+        sgMail.send(msg).then(function(success){
+            console.log('email sent successfully');
+        }).catch(function(error){
+            console.log(error);
+            console.log(error.response.body);
+
+        })
+
+
+
 }
+
+exports.sendNewPwordEmail = function(userEmail, newPassword){
+
+        const msg = {
+            to: userEmail,
+            from: 'pinckc7@gmail.com',
+            subject: 'new password',
+            text: 'Your account info has been updated. Your login credentials are: '+ 'login: ' +userEmail + ' password: '  + newPassword,
+        };
+        sgMail.send(msg).then(function(success){
+            console.log('email sent successfully');
+        }).catch(function(error){
+            console.log(error);
+            console.log(error.response.body);
+
+        })
+
+
+}
+
+
+
+
