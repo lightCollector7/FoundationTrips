@@ -15,7 +15,7 @@
             <label>First Name: <input id="userFirstNameBox" type="text" ng-model="user.firstName" required></label><br><br>
             <label>Last Name:<input id="userLastNameBox" type="text" ng-model="user.lastName" required></label><br><br>
             <label>Email: <input id="userEmailBox" type="text" ng-model="user.email" required></label><br><br>
-            <label>Password: <input id="userPasswordBox" type="text" ng-model="user.password" required></label><button id="passwordGenerator" ng-click="generatePassword()">Generate Password</button><br><br>
+            
             <label>ColorID: 
                 <select id="userColorIdBox"  ng-model="user.colorID" placeholder="colorID" required>
                     
@@ -32,7 +32,18 @@
         </form>
         <button id="updateUserButton" ng-click="updateThisUser()" ng-disabled="editUserForm.$invalid">Submit Changes</button>
         <button class="btn btn-default" id="deleteUserButton" ng-click="promptDeleteThisUser()">DELETE USER</button>
+        
+        <div id="editPasswordDiv">
+                    <form name="editPasswordForm">
+                        <label>Password: <input id="userPasswordBox" type="text" ng-model="newPassword"></label><button id="passwordGenerator" ng-click="generatePassword()">Generate Password</button><br><br>
+                    </form>
+                    <button class="" id="" ng-click="resetPassword()">Update Password</button>
+
+        </div>
+   
     </div>
+
+    
 
 
 

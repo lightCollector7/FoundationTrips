@@ -6,6 +6,7 @@ exports.encryptPassword = function(pw){
     return new Promise(function(resolve, reject){
         bcrypt.hash(pw, saltRounds, function(err, hash){ //pw=plaintext password, constant saltRounds
             if(err){
+                console.log(err);
                 reject(err);
             }else{
                 resolve(hash); //returns the generated hash on resolve

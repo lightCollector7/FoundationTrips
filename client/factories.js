@@ -228,6 +228,11 @@ angular.module('FoundationTrips.factories', [])
         update: {method: 'PUT'}
     });
 }])
+.factory('UserToEditFactory', ['$resource', function($resource){
+    return $resource('api/users/edit/:id', {id: '@id'},{
+        update: {method: 'PUT'}
+    });
+}])
 
 
 

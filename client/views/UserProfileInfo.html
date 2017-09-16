@@ -15,14 +15,14 @@
         <form name="editUserForm">
             
             
-            <label>Current Password: <input id="userPasswordBox" class="passwordBox" type="text" ng-model="participant.password" required></label><br><br>
+            <label>Current Password: <input id="userPasswordBox" class="passwordBox" type="text" ng-model="confirmOldPassword" required></label><br><br>
 
-            <label>New Password: <input id="userNewPasswordBox" class="passwordBox" type="text" required></label><br><br>
+            <label>New Password: <input id="userNewPasswordBox" class="passwordBox" type="text" ng-model="newPassword" required></label><br><br>
 
-            <label>Confirm New Password: <input id="userConfirmPasswordBox" class="passwordBox" type="text" ng-model="user.password" required></label><br><br>
+            <label>Confirm New Password: <input id="userConfirmPasswordBox" class="passwordBox" type="text" ng-model="confirmNewPassword" required></label><br><br>
             
         </form>
-        <button id="updateUserButton" ng-click="updateThisUser()" ng-disabled="editUserForm.$invalid">Submit New Password</button>
+        <button id="updateUserButton" ng-click="updatePassword()" ng-disabled="editUserForm.$invalid">Submit New Password</button>
         
     </div>
  </div>

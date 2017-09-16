@@ -7,6 +7,7 @@ var utils = require('../utils');
 
 var router = express.Router();
 
+
 router.route('/GreenUsers')
     .get(function(req, res) {
         procedures.procGetUsersGreen().then(function(greenUsers) {
@@ -18,7 +19,11 @@ router.route('/GreenUsers')
     })
      .post(auth.isAdmin, function(req, res){  
         var u = req.body
-        var hash = utils.encryptPassword(u.password);
+        var hash = utils.encryptPassword(u.password).then(function(hash){              
+        console.log('var u: ');
+        console.log(u);
+        console.log('hash: ');
+        console.log(hash);
         procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
         .then(function(data){
             console.log(data);
@@ -29,7 +34,7 @@ router.route('/GreenUsers')
                 res.sendStatus(500);
         }).then(function(u){
             console.log('u: ')
-            console.log(u); // this works
+            console.log(u); 
             console.log(u.toAddress);
             emailSvc.sendEmail(u.toAddress, u.fromAddress, u.subject, u.body)
             .then(function(success){
@@ -40,6 +45,7 @@ router.route('/GreenUsers')
                 res.status(500);
             });
         });
+    });
     });
 
 router.route('/OrangeUsers')
@@ -53,7 +59,12 @@ router.route('/OrangeUsers')
     }) 
     .post(auth.isAdmin, function(req, res){  
         var u = req.body
-        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress)
+        var hash = utils.encryptPassword(u.password).then(function(hash){              
+        console.log('var u: ');
+        console.log(u);
+        console.log('hash: ');
+        console.log(hash);
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
         .then(function(data){
             console.log(data);
             res.status(201).send(data);
@@ -63,7 +74,7 @@ router.route('/OrangeUsers')
                 res.sendStatus(500);
         }).then(function(u){
             console.log('u: ')
-            console.log(u); // this works
+            console.log(u); 
             console.log(u.toAddress);
             emailSvc.sendEmail(u.toAddress, u.fromAddress, u.subject, u.body)
             .then(function(success){
@@ -74,6 +85,7 @@ router.route('/OrangeUsers')
                 res.status(500);
             });
         });
+    });
     });
 
 router.route('/PurpleUsers')
@@ -87,7 +99,12 @@ router.route('/PurpleUsers')
     })
      .post(auth.isAdmin, function(req, res){  
         var u = req.body
-        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress)
+        var hash = utils.encryptPassword(u.password).then(function(hash){              
+        console.log('var u: ');
+        console.log(u);
+        console.log('hash: ');
+        console.log(hash);
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
         .then(function(data){
             console.log(data);
             res.status(201).send(data);
@@ -97,7 +114,7 @@ router.route('/PurpleUsers')
                 res.sendStatus(500);
         }).then(function(u){
             console.log('u: ')
-            console.log(u); // this works
+            console.log(u); 
             console.log(u.toAddress);
             emailSvc.sendEmail(u.toAddress, u.fromAddress, u.subject, u.body)
             .then(function(success){
@@ -108,6 +125,7 @@ router.route('/PurpleUsers')
                 res.status(500);
             });
         });
+    });
     });
 
     
@@ -122,7 +140,12 @@ router.route('/YellowUsers')
     })
      .post(auth.isAdmin, function(req, res){  
         var u = req.body
-        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress)
+        var hash = utils.encryptPassword(u.password).then(function(hash){              
+        console.log('var u: ');
+        console.log(u);
+        console.log('hash: ');
+        console.log(hash);
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
         .then(function(data){
             console.log(data);
             res.status(201).send(data);
@@ -132,7 +155,7 @@ router.route('/YellowUsers')
                 res.sendStatus(500);
         }).then(function(u){
             console.log('u: ')
-            console.log(u); // this works
+            console.log(u); 
             console.log(u.toAddress);
             emailSvc.sendEmail(u.toAddress, u.fromAddress, u.subject, u.body)
             .then(function(success){
@@ -143,6 +166,7 @@ router.route('/YellowUsers')
                 res.status(500);
             });
         });
+    });
     });
 router.route('/AdminUsers')
     .get(function(req, res) {
@@ -155,7 +179,12 @@ router.route('/AdminUsers')
     })
      .post(auth.isAdmin, function(req, res){  
         var u = req.body
-        procedures.procInsertUser(u.firstName, u.lastName, u.email, u.password, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress)
+        var hash = utils.encryptPassword(u.password).then(function(hash){              
+        console.log('var u: ');
+        console.log(u);
+        console.log('hash: ');
+        console.log(hash);
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
         .then(function(data){
             console.log(data);
             res.status(201).send(data);
@@ -165,7 +194,7 @@ router.route('/AdminUsers')
                 res.sendStatus(500);
         }).then(function(u){
             console.log('u: ')
-            console.log(u); // this works
+            console.log(u); 
             console.log(u.toAddress);
             emailSvc.sendEmail(u.toAddress, u.fromAddress, u.subject, u.body)
             .then(function(success){
@@ -176,6 +205,8 @@ router.route('/AdminUsers')
                 res.status(500);
             });
         });
+    });
+    });
      
    
 
@@ -196,7 +227,7 @@ router.route('/Participant/')
             res.sendStatus(500);
         });
     });
-})
+
 
 
 

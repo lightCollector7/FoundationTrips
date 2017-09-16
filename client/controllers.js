@@ -1920,7 +1920,7 @@ angular.module('FoundationTrips.controllers',[])
             fromAddress: 'pinckc7@gmail.com',
         }
 
-        var userToSubmit = new AdminUserFactoryAdmin(data);
+        var userToSubmit = new AdminUserFactoryGreen(data);
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
@@ -1945,7 +1945,7 @@ angular.module('FoundationTrips.controllers',[])
             fromAddress: 'pinckc7@gmail.com',
         }
 
-        var userToSubmit = new AdminUserFactoryAdmin(data);
+        var userToSubmit = new AdminUserFactoryOrange(data);
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
@@ -1970,7 +1970,7 @@ angular.module('FoundationTrips.controllers',[])
             fromAddress: 'pinckc7@gmail.com',
         }
 
-        var userToSubmit = new AdminUserFactoryAdmin(data);
+        var userToSubmit = new AdminUserFactoryPurple(data);
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
@@ -1994,7 +1994,7 @@ angular.module('FoundationTrips.controllers',[])
             fromAddress: 'pinckc7@gmail.com',
         }
 
-        var userToSubmit = new AdminUserFactoryAdmin(data);
+        var userToSubmit = new AdminUserFactoryYellow(data);
         userToSubmit.$save(function (success) {
             console.log("Trip submitted successfully");
             $location.path('/adminAllUsers');
@@ -2101,7 +2101,7 @@ angular.module('FoundationTrips.controllers',[])
             firstName: $scope.user.firstName,
             lastName: $scope.user.lastName,
             email: $scope.user.email,
-            password: $scope.user.password,
+           
             colorID: $scope.user.colorID,
             role: $scope.user.role,
         }
@@ -2110,7 +2110,30 @@ angular.module('FoundationTrips.controllers',[])
                             console.log("success");
                             console.log(data);
                             $scope.ServerResponse = data;
-                            console.log('The slot was updated!');
+                            console.log('The user was updated!');
+                            $location.path('/adminAllUsers') ;
+                        })
+                        .error(function (data, status){
+                            (console.log("error"))
+                            console.log(data);
+                            console.log(status);
+                        })
+    }
+
+    $scope.resetPassword = function(){
+        console.log('this is the user to be edited: ' );
+        console.log($scope.user);
+
+        var data = {
+            email: $scope.user.email,
+            password: $scope.newPassword,
+        }
+        $http.put( 'api/users/admin/edit/password/' + userID +'/?', data)
+                        .success(function (data, status){
+                            console.log("success");
+                            console.log(data);
+                            $scope.ServerResponse = data;
+                            console.log('The password was updated!');
                             $location.path('/adminAllUsers') ;
                         })
                         .error(function (data, status){
@@ -2212,7 +2235,7 @@ angular.module('FoundationTrips.controllers',[])
             firstName: $scope.user.firstName,
             lastName: $scope.user.lastName,
             email: $scope.user.email,
-            password: $scope.user.password,
+            
             colorID: $scope.user.colorID,
             role: $scope.user.role,
         }
@@ -2222,6 +2245,29 @@ angular.module('FoundationTrips.controllers',[])
                             console.log(data);
                             $scope.ServerResponse = data;
                             console.log('The slot was updated!');
+                            $location.path('/adminAllUsers') ;
+                        })
+                        .error(function (data, status){
+                            (console.log("error"))
+                            console.log(data);
+                            console.log(status);
+                        })
+    }
+
+    $scope.resetPassword = function(){
+        console.log('this is the user to be edited: ' );
+        console.log($scope.user);
+
+        var data = {
+            email: $scope.user.email,
+            password: $scope.newPassword,
+        }
+        $http.put( 'api/users/admin/edit/password/' + userID +'/?', data)
+                        .success(function (data, status){
+                            console.log("success");
+                            console.log(data);
+                            $scope.ServerResponse = data;
+                            console.log('The password was updated!');
                             $location.path('/adminAllUsers') ;
                         })
                         .error(function (data, status){
@@ -2726,7 +2772,7 @@ angular.module('FoundationTrips.controllers',[])
 
 }])
 
-.controller('UserProfileInfoController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'UserFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UserFactory){
+.controller('UserProfileInfoController', ['$scope', '$location', '$route', '$http',  '$window', 'UserService', '$routeParams', 'UserToEditFactory', function($scope, $location, $route, $http, $window, UserService, $routeParams, UserToEditFactory){
     $window.scrollTo(0, 0);
 
     UserService.isLoggedIn();
@@ -2749,13 +2795,40 @@ angular.module('FoundationTrips.controllers',[])
     UserService.requireIsMyProfile();
 
     userID = $routeParams.id;
-    $scope.participant = UserFactory.get({id: userID },function(){
-        console.log($scope.participant);
+    $scope.participant = UserToEditFactory.get({id: userID },function(){
+        console.log($scope.participant); // don't do this!'
     })
 
     // WRITE ALL LOGIC TO UPDATE PASSWORD
         //including a new stored procedure that gets "my Password" to start
-        //then compare new password to the confirmed new password
+        //then compare new password to the confirmed new password (DO THIS BACKEND)
         // THEN figure out how to bind the new password box to the 'model' even though the current password box is bound to it already
+   
+    //disable submit password button if $scope.newPassword !== $scope.confirmNewPassword
 
+    $scope.updatePassword = function(){
+        var data = {
+            email: $scope.participant.email,
+            confirmOldPassword: $scope.confirmOldPassword,
+            newPassword: $scope.newPassword,   
+        }
+        $http.put( 'api/users/user/edit/password/'+ userID +'/?', data)
+                        .success(function (data, status){
+                            console.log("success");
+                            console.log(data);
+                            $scope.ServerResponse = data;
+                            console.log('The user was updated!');
+                            $location.path('/UserHomeMenu') ;
+                        })
+                        .error(function (data, status){
+                            (console.log("error"))
+                            console.log(data);
+                            console.log(status);
+                        })
+
+
+
+    //disable submit password button if $scope.newPassword !== $scope.confirmNewPassword
+        
+    }
 }]);

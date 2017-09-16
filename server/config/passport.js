@@ -12,18 +12,28 @@ function configurePassport (app) {
             usernameField: 'email',
             passwordField: 'password'
         }, function(email, password, done) {
-            userProc.procGetUserByEmail(email).then(function(user) {
-                if (!user) {
-                    return done(null, false, {message: 'Incorrect login!' });
+            userProc.procGetUserByEmail(email)
+        .then(function(user) {
+            console.log('got user for authenticate');
+            console.log(user);
+            if(!user){
+                return done(null, false, { message: 'Incorrect Login!' });
+            }
+            console.log('checking password');
+            utils.checkPassword(password, user.password)
+            .then(function(passwordMatches){
+                console.log('password checked!');
+                console.log(passwordMatches);
+                if (passwordMatches) {
+                    return done(null, user);
+                } else {
+                    return done(null, false, {message: 'Incorrect Login!'});
                 }
-                if (user.password !== password) {
-                    return done(null, false, {message: 'Incorrect login!' });
-                }
-                return done(null, user);
-            }, function(err) {
-                return done(err);
             });
-        }));
+        }, function(err){
+            return done(err); 
+        });
+    }));
 
     passport.serializeUser(function(user, done) {
             done(null, user.id);

@@ -35,27 +35,41 @@ exports.procGetUser = function(id){
     return db.fnRow('procGetUser', [id]);
 }
 
-exports.procGetUserToEdit = function(id){
+exports.procGetUserToEdit = function(id, newHash){
+    console.log('MAYBE HERE: ')
+    console.log('proc.newHash: ' +newHash);
     return db.fnRow('procGetUserToEdit', [id]);
+    
 }
 
 
 
 
 exports.procInsertUser = function(firstname, lastname, email, password, colorID, role){
+    console.log(password);
     return db.fnRow('procInsertUser', [firstname, lastname, email, password, colorID, role])  
 }
 
-exports.procUpdateUser = function(id, firstName, lastName, email, password, colorID, role){
+exports.procUpdateUser = function(id, firstName, lastName, email, colorID, role){
     console.log(id);
     console.log(firstName);
     console.log(lastName);
     console.log(email);
-    console.log(password);
+    
     console.log(colorID);
     console.log(role);
 
-    return db.fnEmpty('procUpdateUser', [id, firstName, lastName, email, password, colorID, role])
+    return db.fnEmpty('procUpdateUser', [id, firstName, lastName, email, colorID, role])
+}
+
+exports.procAdminResetPassword = function(id, password){
+    console.log(password);
+    return db.fnEmpty('procAdminResetPassword', [id, password])
+}
+
+exports.procUserUpdatePassword = function(id, password){
+    console.log(password);
+    return db.fnEmpty('procAdminResetPassword', [id, password])
 }
 
 exports.procDeleteUser = function(id){
