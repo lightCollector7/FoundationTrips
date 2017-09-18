@@ -3,7 +3,7 @@ var express = require('express');
 
 
 var ctrlUsers = require('./controllers/users.ctrl');
-var ctrlAdminUsers = require('./controllers/AdminUsers.ctrl')
+var ctrlAdminUsers = require('./controllers/adminUsers.ctrl')
 
 var ctrlColors = require('./controllers/colors.ctrl');
 

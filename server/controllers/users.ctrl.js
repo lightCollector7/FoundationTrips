@@ -163,7 +163,7 @@ router.route('/edit/:id')
     })
 
 router.route('/admin/edit/password/:id')
-        .put(function(req, res){     // when updating a user included password (and emailSvc)
+        .put(function(req, res){ 
         var u = req.body;
         var hash = utils.encryptPassword(u.password).then(function(hash){
 
@@ -176,11 +176,6 @@ router.route('/admin/edit/password/:id')
             console.log(err);
             res.sendStatus(500);
         }).then(function(u){
-            console.log('u: ')
-            console.log(u);
-            console.log(u.email);
-            console.log('new password: ');
-            console.log(u.password);
             emailSvc.sendNewPwordEmail(u.email, u.password)
             .then(function(success){
                 res.status(204).send('email sent')
@@ -201,36 +196,24 @@ router.route('/user/edit/password/:id')
         console.log(u.confirmOldPassword);
         var confirmOldPassword = u.confirmOldPassword;
         var newHash = utils.encryptPassword(u.newPassword).then(function(newHash){
-                
-                    
                     procedures.procGetUserToEdit(req.params.id, newHash)
                     .then(function(userToEdit){
-                        
-
                         var oldPassword = userToEdit.password;
-                        
                         var data={
-                            
                             oldPassword: oldPassword,
                             confirmOldPassword: confirmOldPassword,
                             newHash: newHash,
                             email: u.email,
                             newPassword: u.newPassword
-                              
                         }
                         console.log(data);
                         return data;
                     }).then(function(data){
-                            
                             procedures.procUserUpdatePassword(req.params.id, data.newHash)
                             .then(function(){
-
                                     utils.checkPassword(data.confirmOldPassword, data.oldPassword).then(function(passwordsMatch){
-                                        
                                         if (passwordsMatch) {
                                             res.sendStatus(204);
-                                            
-                                            
                                             return data;
                                         } else {
                                             console.log(' utils.checkPassword: error');
@@ -239,7 +222,6 @@ router.route('/user/edit/password/:id')
                                         }
                                     })
                             }).then(function(){ 
-                                
                                 emailSvc.sendNewPwordEmail(u.email, u.newPassword)
                                 .then(function(success){
                                     res.status(204).send('email sent')
