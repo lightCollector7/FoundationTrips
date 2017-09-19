@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server/index.js",
+  "engines":{
+    "node":"6.5.0"
+  },
   "scripts": {
     "test": "source .variables && nodemon",
     "start": "node server/index.js"
