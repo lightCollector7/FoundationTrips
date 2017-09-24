@@ -1,11 +1,11 @@
-var express = require('express');
+var express = require('express')
 
 
 
-var ctrlUsers = require('./controllers/users.ctrl');
-var ctrlAdminUsers = require('./controllers/AdminUsers.ctrl')
+var ctrlUsers = require('./controllers/users.ctrl')
 
-var ctrlColors = require('./controllers/colors.ctrl');
+
+var ctrlColors = require('./controllers/colors.ctrl')
 
 
 
@@ -33,6 +33,7 @@ var ctrlRainbowTripSlots = require('./controllers/RainbowTripSlots.ctrl')
 var ctrlAdminTripSlots = require('./controllers/AdminTripSlots.ctrl')
 
 var ctrlUserTrips = require('./controllers/UserTrips.ctrl')
+var ctrlAdminUsers = require('./controllers/AdminUsers.ctrl')
 
 
 
