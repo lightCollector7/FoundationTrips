@@ -33,7 +33,7 @@ var ctrlRainbowTripSlots = require('./controllers/RainbowTripSlots.ctrl')
 var ctrlAdminTripSlots = require('./controllers/AdminTripSlots.ctrl')
 
 var ctrlUserTrips = require('./controllers/UserTrips.ctrl')
-var ctrlAdminUsers = require('./controllers/AdminUsers.ctrl')
+var ctrlAdminUsers = require('./controllers/adminUsers.ctrl')
 
 
 
