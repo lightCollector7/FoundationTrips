@@ -43,7 +43,7 @@ var router = express.Router();
 
 router                              
     .use('/users', ctrlUsers)
-    .use('/AdminUsers', ctrlAdminUsers)
+   
 
     .use('/colors', ctrlColors)
     
@@ -68,6 +68,8 @@ router
     .use('/AdminTripSlots', ctrlAdminTripSlots)
 
     .use('/UserTrips', ctrlUserTrips)
+
+    .use('/AdminUsers', ctrlAdminUsers)
 
    
 
