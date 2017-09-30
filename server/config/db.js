@@ -2,13 +2,13 @@ var mysql = require('mysql');
 
 //=============FOR RDS DATABASE===================//
 
-// var pool = mysql.createPool({
-//     connectionLimit:10,
-//     host: process.env.HEROKU_DB_HOSTNAME,
-//     user: process.env.HEROKU_DB_USERNAME,
-//     password: process.env.HEROKU_DB_PASSWORD,
-//     database: process.env.HEROKU_DB_DATABASE
-// });
+var pool = mysql.createPool({
+    connectionLimit:10,
+    host: process.env.HEROKU_DB_HOSTNAME,
+    user: process.env.HEROKU_DB_USERNAME,
+    password: process.env.HEROKU_DB_PASSWORD,
+    database: process.env.HEROKU_DB_DATABASE
+});
 
 //-------------------------------------------------------
 
