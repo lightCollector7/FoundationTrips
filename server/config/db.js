@@ -2,28 +2,28 @@ var mysql = require('mysql');
 
 //=============FOR RDS DATABASE===================//
 
-var pool = mysql.createPool({
-    connectionLimit:10,
-    host: process.env.HEROKU_DB_HOSTNAME,
-    user: process.env.HEROKU_DB_USERNAME,
-    password: process.env.HEROKU_DB_PASSWORD,
-    database: process.env.HEROKU_DB_DATABASE
-});
+// var pool = mysql.createPool({
+//     connectionLimit:10,
+//     host: process.env.HEROKU_DB_HOSTNAME,
+//     user: process.env.HEROKU_DB_USERNAME,
+//     password: process.env.HEROKU_DB_PASSWORD,
+//     database: process.env.HEROKU_DB_DATABASE
+// });
 
 //-------------------------------------------------------
 
 //=============== jaws db/ heroku ====================//
-// var connection = mysql.createConnection(process.env.JAWSDB_URL);
+var connection = mysql.createConnection(process.env.JAWSDB_URL);
 
-// connection.connect();
+connection.connect();
 
-// connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-//   if (err) throw err;
+connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+  if (err) throw err;
 
-//   console.log('The solution is: ', rows[0].solution);
-// });
+  console.log('The solution is: ', rows[0].solution);
+});
 
-// connection.end();
+connection.end();
 
 //----------------------------------------------//
 
@@ -37,7 +37,7 @@ var pool = mysql.createPool({
 // });
 //----------------------------------------------//
 
-exports.pool = pool;
+// exports.pool = pool;
 
 
 // Use this function to call a procedure that doesn't return anything
