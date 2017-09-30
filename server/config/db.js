@@ -9,10 +9,10 @@ var mysql = require('mysql');
 //     password: process.env.HEROKU_DB_PASSWORD,
 //     database: process.env.HEROKU_DB_DATABASE
 // });
-//---------------------------------------------------// 
 
-//===============FOR HEROKU JAWSDB ===================//
+//-------------------------------------------------------
 
+//=============== jaws db/ heroku ====================//
 var connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 connection.connect();
@@ -37,7 +37,7 @@ connection.end();
 // });
 //----------------------------------------------//
 
-// exports.pool = pool;     // commented out for heroku
+exports.pool = pool;
 
 
 // Use this function to call a procedure that doesn't return anything
@@ -76,7 +76,7 @@ function callProcedure(procName, args) {
         }
     }
     return new Promise(function(resolve, reject) {
-        connection.getConnection(function(err, connection) {   // changed pool.getConnection to connection.getConnection for HEROKU
+        pool.getConnection(function(err, connection) {
             if (err) {
                 reject(err);
             } else {

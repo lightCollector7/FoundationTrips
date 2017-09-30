@@ -4,10 +4,7 @@ var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 var LocalStrategy = require('passport-local').Strategy;
 var userProc = require('../procedures/users.proc');
-
-// var pool = require('./db').pool;    // changed to connection for HEROKU
-var connection = require('./db').connection;
-
+var pool = require('./db').pool;
 var utils = require('../utils');
 
 function configurePassport (app) {
@@ -52,7 +49,7 @@ function configurePassport (app) {
 
     var sessionStore = new MySQLStore({
         createDatabaseTable: true
-    }, connection);
+    }, pool);
 
     app.use(session({
         secret: 'tJh6axupI16E',
