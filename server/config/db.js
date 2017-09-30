@@ -2,13 +2,13 @@ var mysql = require('mysql');
 
 //=============FOR RDS DATABASE===================//
 
-var pool = mysql.createPool({
-    connectionLimit:10,
-    host: process.env.HEROKU_DB_HOSTNAME,
-    user: process.env.HEROKU_DB_USERNAME,
-    password: process.env.HEROKU_DB_PASSWORD,
-    database: process.env.HEROKU_DB_DATABASE
-});
+// var pool = mysql.createPool({
+//     connectionLimit:10,
+//     host: process.env.HEROKU_DB_HOSTNAME,
+//     user: process.env.HEROKU_DB_USERNAME,
+//     password: process.env.HEROKU_DB_PASSWORD,
+//     database: process.env.HEROKU_DB_DATABASE
+// });
 
 //-------------------------------------------------------
 
@@ -28,13 +28,13 @@ var pool = mysql.createPool({
 //----------------------------------------------//
 
 //==================FOR LOCAL DATABASE===========//
-// var pool = mysql.createPool({
-//     connectionLimit:10,      // DOES THIS NEED TO CHANGE FOR PRODUCTION??
-//     host: 'localhost',       
-//     user: 'CharleyHannah',   
-//     password: 'cphpl8285',   
-//     database: 'efTrips'      
-// });
+var pool = mysql.createPool({
+    connectionLimit:2,      // DOES THIS NEED TO CHANGE FOR PRODUCTION??
+    host: 'localhost',       
+    user: 'CharleyHannah',   
+    password: 'cphpl8285',   
+    database: 'efTrips'      
+});
 //----------------------------------------------//
 
 exports.pool = pool;
