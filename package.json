@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "server/index.js",
-  "engines":{
-    "node":"6.11.3"
+  "engines": {
+    "node": "6.11.3"
   },
   "scripts": {
     "test": "source .variables && nodemon",
@@ -30,6 +30,7 @@
     "express-mysql-session": "^1.2.0",
     "express-session": "^1.14.2",
     "mysql": "^2.12.0",
+    "node-mysql": "^0.4.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "process-env": "^1.1.0",

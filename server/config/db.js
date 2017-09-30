@@ -37,7 +37,7 @@ connection.end();
 // });
 //----------------------------------------------//
 
-exports.pool = pool;
+// exports.pool = pool;     // commented out for heroku
 
 
 // Use this function to call a procedure that doesn't return anything
