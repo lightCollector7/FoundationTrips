@@ -76,6 +76,7 @@ function callProcedure(procName, args) {
         }
     }
     return new Promise(function(resolve, reject) {
+        console.log(process.env.HEROKU_DB_DATABASE);
         pool.getConnection(function(err, connection) {
             if (err) {
                 reject(err);
