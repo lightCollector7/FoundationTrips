@@ -153,7 +153,7 @@ router.route('/edit/:id')
         })
     })
 
-    .get(function(req, res) {
+    .get(auth.isAdmin, function(req, res) {
         procedures.procGetUserToEdit(req.params.id).then(function(post) {
             res.send(post);
         }, function(err) {
