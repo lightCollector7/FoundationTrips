@@ -2,15 +2,15 @@ var mysql = require('mysql');
 
 //=============FOR RDS DATABASE===================//
 
-var pool = mysql.createPool(
-    process.env.JAWSDB_URL + '?connectionLimit=10' 
+var pool = mysql.createPool({
+    // process.env.JAWSDB_URL + '?connectionLimit=10' 
 
-    // connectionLimit:10,
-    // host: process.env.HEROKU_DB_HOSTNAME,
-    // user: process.env.HEROKU_DB_USERNAME,
-    // password: process.env.HEROKU_DB_PASSWORD,
-    // database: process.env.HEROKU_DB_DATABASE
-);
+    connectionLimit:10,
+    host: process.env.HEROKU_DB_URL,
+    user: process.env.HEROKU_DB_USER,
+    password: process.env.HEROKU_DB_PASSWORD,
+    database: process.env.HEROKU_DB_DATABASE
+});
 
 //-------------------------------------------------------
 
@@ -78,7 +78,12 @@ function callProcedure(procName, args) {
         }
     }
     return new Promise(function(resolve, reject) {
-        // console.log(process.env.HEROKU_DB_DATABASE);
+        console.log(process.env.HEROKU_DB_DATABASE);
+        console.log(process.env.HEROKU_DB_URL);
+        console.log(process.env.HEROKU_DB_USER);
+        console.log(process.env.HEROKU_DB_PASSWORD);
+
+
         pool.getConnection(function(err, connection) {
             if (err) {
                 reject(err);
