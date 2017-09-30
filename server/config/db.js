@@ -13,17 +13,17 @@ var pool = mysql.createPool({
 //-------------------------------------------------------
 
 //=============== jaws db/ heroku ====================//
-var connection = mysql.createConnection(process.env.JAWSDB_URL);
+// var connection = mysql.createConnection(process.env.JAWSDB_URL);
 
-connection.connect();
+// connection.connect();
 
-connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-  if (err) throw err;
+// connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+//   if (err) throw err;
 
-  console.log('The solution is: ', rows[0].solution);
-});
+//   console.log('The solution is: ', rows[0].solution);
+// });
 
-connection.end();
+// connection.end();
 
 //----------------------------------------------//
 
