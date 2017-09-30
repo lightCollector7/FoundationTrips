@@ -14,20 +14,6 @@ var pool = mysql.createPool({
 
 //-------------------------------------------------------
 
-//=============== jaws db/ heroku ====================//
-// var connection = mysql.createConnection(process.env.JAWSDB_URL);
-
-// connection.connect();
-
-// connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-//   if (err) throw err;
-
-//   console.log('The solution is: ', rows[0].solution);
-// });
-
-// connection.end();
-
-//----------------------------------------------//
 
 //==================FOR LOCAL DATABASE===========//
 // var pool = mysql.createPool({
@@ -78,12 +64,6 @@ function callProcedure(procName, args) {
         }
     }
     return new Promise(function(resolve, reject) {
-        console.log(process.env.HEROKU_DB_DATABASE);
-        console.log(process.env.HEROKU_DB_URL);
-        console.log(process.env.HEROKU_DB_USER);
-        console.log(process.env.HEROKU_DB_PASSWORD);
-
-
         pool.getConnection(function(err, connection) {
             if (err) {
                 reject(err);
