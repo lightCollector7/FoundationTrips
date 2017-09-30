@@ -3,7 +3,7 @@ var mysql = require('mysql');
 //=============FOR RDS DATABASE===================//
 
 var pool = mysql.createPool({
-    connectionLimit:1,
+    connectionLimit:10,
     host: process.env.HEROKU_DB_HOSTNAME,
     user: process.env.HEROKU_DB_USERNAME,
     password: process.env.HEROKU_DB_PASSWORD,
@@ -76,7 +76,7 @@ function callProcedure(procName, args) {
         }
     }
     return new Promise(function(resolve, reject) {
-        console.log(process.env.HEROKU_DB_DATABASE);
+        // console.log(process.env.HEROKU_DB_DATABASE);
         pool.getConnection(function(err, connection) {
             if (err) {
                 reject(err);
