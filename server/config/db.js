@@ -76,7 +76,7 @@ function callProcedure(procName, args) {
         }
     }
     return new Promise(function(resolve, reject) {
-        pool.getConnection(function(err, connection) {
+        connection.getConnection(function(err, connection) {   // changed pool.getConnection to connection.getConnection for HEROKU
             if (err) {
                 reject(err);
             } else {
