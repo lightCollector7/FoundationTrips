@@ -11,8 +11,8 @@
 
 <div id="backgroundDiv" class="container">
     <div id="greenTripsDiv" class="container"> 
-      <p class="greenTripsDivTitle">{{greenTrip.eventName}} <span class="tripDateLine">{{greenTrip.eventDate | date: "EEE MM/dd/yyyy 'at' h:mma"}}</span></p>
-      <p class="greenTripDescriptionLine">{{greenTrip.eventDescription}}<span><button id="tripDetailsButton" class="hvr-grow">Details</button></span>  <span class="tripTimeLine">{{greenTrip.eventTime}}</span><span class="tripCostLine">${{greenTrip.eventCost}}</span></p>
+      <p class="greenTripsDivTitle">{{greenTrip.eventName}}<span><button id="tripDetailsButton" class="hvr-grow">Details</button></span> <span class="tripDateLine">{{greenTrip.eventDate | date: "EEE MM/dd/yyyy 'at' h:mma"}}</span></p>
+      <p class="greenTripDescriptionLine">{{greenTrip.eventDescription}}  <span class="tripTimeLine">{{greenTrip.eventTime}}</span><span class="tripCostLine">${{greenTrip.eventCost}}</span></p>
 
       <h3> Field Trip Slots:</h3>
       <div class="listDiv">
