@@ -24,24 +24,30 @@ exports.sendEmail = function(toAddress, fromAddress, subject, content){
 
 }
 
-exports.sendNewPwordEmail = function(userEmail, newPassword){
+                    //REINSTATE THIS FUNCTION AFTER TESTING PERIOD IS OVER!!!
+//==============================================================================================
 
-        const msg = {
-            to: userEmail,
-            from: 'pinckc7@gmail.com',
-            subject: 'new password',
-            text: 'Your account info has been updated. Your login credentials are: '+ 'login: ' +userEmail + ' password: '  + newPassword,
-        };
-        sgMail.send(msg).then(function(success){
-            console.log('email sent successfully');
-        }).catch(function(error){
-            console.log(error);
-            console.log(error.response.body);
+// exports.sendNewPwordEmail = function(userEmail, newPassword){
 
-        })
+//         const msg = {
+//             to: userEmail,
+//             from: 'hlawrence@exceptionalfoundation.org',
+//             subject: 'new password',
+//             text: 'Your account info has been updated. Your login credentials are: '+ 'login: ' +userEmail + ' password: '  + newPassword,
+//         };
+//         sgMail.send(msg).then(function(success){
+//             console.log('email sent successfully');
+//         }).catch(function(error){
+//             console.log(error);
+//             console.log(error.response.body);
+
+//         })
 
 
-}
+// }
+
+
+//---------------------------------------------------------------------------------------------------
 
 
 
