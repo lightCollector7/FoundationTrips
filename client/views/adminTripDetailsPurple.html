@@ -19,6 +19,7 @@
           
         <div class="listDiv">
               <ol>
+                <p ng-if="!purpleTripSlots.length">There are currently no particapants signed up </p>
               <li id="{{purpleTripSlot.id}}" class="adminPurpleTripSlots" ng-repeat="purpleTripSlot in purpleTripSlots" >
                 <a href="admin/slotDetails/{{ purpleTripSlot.id }}"><button id="purpleEditSlotButton" >edit</button></a>
                 <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{purpleTripSlot.paid}}" disabled="disabled"></input></label>

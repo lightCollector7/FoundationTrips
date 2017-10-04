@@ -17,6 +17,7 @@
       <h3> Field Trip Slots:</h3>
       <div class="listDiv">
         <ol>
+          <p ng-if="!greenTripSlots.length">There are currently no particapants signed up </p>
         <li class="tripSlots" ng-repeat="greenTripSlot in greenTripSlots" >
           <p ng-if="ME.id !== greenTripSlot.userID" class="slotIsNotMine">this slot is filled <span ng-if="greenTripSlots.indexOf(greenTripSlot) +1 > greenTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
           <p ng-if="ME.id === greenTripSlot.userID" class="greenSlotIsMine">{{greenTripSlot.firstname}} {{greenTripSlot.lastname}}   <span ng-if="greenTripSlots.indexOf(greenTripSlot) +1 > greenTrip.maxSlots" class="waitlist">** WaitListed **</span></p>
