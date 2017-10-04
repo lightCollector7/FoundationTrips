@@ -18,6 +18,7 @@
       
       <div class="listDiv">
           <ol>
+            <li ng-if="!greenTripSlots"><p>There are currently no particapants signed up </p></li>
             <li id="{{greenTripSlot.id}}" class="adminGreenTripSlots" ng-repeat="greenTripSlot in greenTripSlots" >
               <a href="admin/slotDetails/{{ greenTripSlot.id }}"><button id="greenEditSlotButton" >edit slot</button></a>
               <label>paid<input id="hasPaidOrNot" type="radio" ng-checked="{{greenTripSlot.paid}}" disabled="disabled"></input></label>
