@@ -69,7 +69,7 @@ exports.procUpdateUser = function(id, firstName, lastName, email, colorID, role)
 exports.procAdminResetPassword = function(id, password, userName){ //added userName
     console.log(password);
     console.log(userName);
-    return db.fnEmpty('procAdminResetPassword', [id, password, username])
+    return db.fnEmpty('procAdminResetPassword', [id, password, userName])
 }
 
 exports.procUserUpdatePassword = function(id, password){  
