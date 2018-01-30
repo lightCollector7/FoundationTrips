@@ -2261,6 +2261,7 @@ angular.module('FoundationTrips.controllers',[])
         var data = {
             email: $scope.user.email,
             password: $scope.newPassword,
+            userName: $scope.user.firstName + "." + $scope.user.lastName,
         }
         $http.put( 'api/users/admin/edit/password/' + userID +'/?', data)
                         .success(function (data, status){
