@@ -15,7 +15,7 @@ angular.module('FoundationTrips.controllers',[])
         $location.path(dest).search('p', null).replace();
     }
     $scope.login = function() {
-        UserService.login($scope.email, $scope.password)
+        UserService.login($scope.userName, $scope.password)
         .then(function() {
             redirect();
         }, function(err) {
