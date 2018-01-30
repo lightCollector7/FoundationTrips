@@ -2138,8 +2138,9 @@ angular.module('FoundationTrips.controllers',[])
                             $location.path('/adminAllUsers') ;
                         })
                         .error(function (data, status){
-                            (console.log("error"))
                             console.log(data);
+                            console.log("error")
+                            
                             console.log(status);
                         })
     }
