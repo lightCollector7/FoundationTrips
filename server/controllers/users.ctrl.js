@@ -168,7 +168,7 @@ router.route('/admin/edit/password/:id')
         var hash = utils.encryptPassword(u.password).then(function(hash){
 
         
-        procedures.procAdminResetPassword(req.params.id, hash, userName, u.email) //added userName
+        procedures.procAdminResetPassword(req.params.id, hash, u.userName, u.email) //added userName
         .then(function(){
             res.sendStatus(204);
             return u;
