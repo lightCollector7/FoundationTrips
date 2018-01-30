@@ -39,7 +39,7 @@ router.all('*', auth.isLoggedIn);
 
 // =  this is actually /api/users/
 router.route('/')
-    .get(auth.isLoggedIn, function(req, res) {
+    .get(auth.isAdmin, function(req, res) {
         procedures.procGetUsers().then(function(data) {
             res.send(data);
         }, function(err) {

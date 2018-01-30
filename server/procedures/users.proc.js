@@ -31,6 +31,10 @@ exports.procGetUserByEmail = function(email){
         return db.fnRow('procGetUserByEmail',[email]);
 }
 
+exports.procGetUserByUserName = function(userName){                 // use this for passport.js instead
+        return db.fnRow('procGetUserByUserName',[userName]);
+}
+
 exports.procGetUser = function(id){
     return db.fnRow('procGetUser', [id]);
 }
