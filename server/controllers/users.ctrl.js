@@ -116,9 +116,9 @@ router.route('/edit/:id')
         
         });
     })
-    // .put(function(req, res){     // when updating a user included password (and emailSvc)
+    // .put(function(req, res){     // pretty sure this was moved to the route: /admin/edit/password/:id
     //     var u = req.body;
-    //     procedures.procUpdateUser(req.params.id, u.firstName, u.lastName, u.email, u.password, u.colorID, u.role)
+    //     procedures.procUpdateUser(req.params.id, u.firstName, u.lastName, u.email, u.password, u.colorID, u.role, u.userName)
     //     .then(function(){
     //         res.sendStatus(204);
     //         return u;
@@ -176,7 +176,7 @@ router.route('/admin/edit/password/:id')
             console.log(err);
             res.sendStatus(500);
         }).then(function(u){
-            emailSvc.sendNewPwordEmail(u.email, u.password)
+            emailSvc.sendNewPwordEmail(u.email, u.password, u.userName)  
             .then(function(success){
                 res.status(204).send('email sent')
             }, function(err){
@@ -204,7 +204,7 @@ router.route('/user/edit/password/:id')
                             confirmOldPassword: confirmOldPassword,
                             newHash: newHash,
                             email: u.email,
-                            newPassword: u.newPassword
+                            newPassword: u.newPassword,
                         }
                         console.log(data);
                         return data;
@@ -222,7 +222,7 @@ router.route('/user/edit/password/:id')
                                         }
                                     })
                             }).then(function(){ 
-                                emailSvc.sendNewPwordEmail(u.email, u.newPassword)
+                                emailSvc.sendNewPwordEmail(u.email, u.newPassword, u.userName)  
                                 .then(function(success){
                                     res.status(204).send('email sent')
                                 }, function(err){
