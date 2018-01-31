@@ -1916,7 +1916,7 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '1',
             role: $scope.user.role,
-            userName: $scope.user.firstName +"."+$scope.user.lastName,  //
+            userName: $scope.user.userName,  //
             subject: "New EF-TRIPS Password",
             body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.userName + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
@@ -1935,6 +1935,7 @@ angular.module('FoundationTrips.controllers',[])
     }
 
     $scope.submitUserOrange = function() {
+        $scope.user.userName = $scope.user.firstName +"."+$scope.user.lastName;
         var data = {
             firstName: $scope.user.firstName,
             lastName: $scope.user.lastName,
@@ -1942,7 +1943,7 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '2',
             role: $scope.user.role,
-            userName: $scope.user.firstName +"."+$scope.user.lastName,  //
+            userName: $scope.user.userName,  //
             subject: "New EF-TRIPS Password",
             body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.userName + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
@@ -1961,6 +1962,7 @@ angular.module('FoundationTrips.controllers',[])
     }
 
     $scope.submitUserPurple = function() {
+        $scope.user.userName = $scope.user.firstName +"."+$scope.user.lastName;
         var data = {
             firstName: $scope.user.firstName,
             lastName: $scope.user.lastName,
@@ -1968,7 +1970,7 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '3',
             role: $scope.user.role,
-            userName: $scope.user.firstName +"."+$scope.user.lastName,  //
+            userName: $scope.user.userName, //
             subject: "New EF-TRIPS Password",
             body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.userName + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
@@ -1986,6 +1988,7 @@ angular.module('FoundationTrips.controllers',[])
             });
     }
     $scope.submitUserYellow = function() {
+        $scope.user.userName = $scope.user.firstName +"."+$scope.user.lastName;
         var data = {
             firstName: $scope.user.firstName,
             lastName: $scope.user.lastName,
@@ -1993,7 +1996,7 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '4',
             role: $scope.user.role,
-            userName: $scope.user.firstName +"."+$scope.user.lastName,  //
+            userName: $scope.user.userName,  //
             subject: "New EF-TRIPS Password",
             body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.userName + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
@@ -2011,6 +2014,7 @@ angular.module('FoundationTrips.controllers',[])
             });
     }
     $scope.submitUserAdmin = function() {
+        $scope.user.userName = $scope.user.firstName +"."+$scope.user.lastName;
         var data = {
             firstName: $scope.user.firstName,
             lastName: $scope.user.lastName,
@@ -2018,7 +2022,7 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '0',
             role: $scope.user.role,
-            userName: $scope.user.firstName +"."+$scope.user.lastName,  //
+            userName: $scope.user.userName,  //
             subject: "New EF-TRIPS Password",
             body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.userName + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
