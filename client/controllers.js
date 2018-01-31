@@ -1892,7 +1892,8 @@ angular.module('FoundationTrips.controllers',[])
 
 
     //========== now write functions for adding Users for all 4 color groups ======= //
-        $scope.generatePassword = function (){
+    
+    $scope.generatePassword = function (){
         var length = 8,
          charset = "abcdefghijkmnopqrstuvwxyzACDEFGHJKMNPQRSTUVWXY345679",
          retVal = "";
@@ -1914,6 +1915,7 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '1',
             role: $scope.user.role,
+            userName: $scope.user.firstName +"."+$scope.user.lastName,  //
             subject: "New EF-TRIPS Password",
             body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
@@ -1939,6 +1941,7 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '2',
             role: $scope.user.role,
+            userName: $scope.user.firstName +"."+$scope.user.lastName,  //
             subject: "New EF-TRIPS Password",
             body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
@@ -1964,6 +1967,7 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '3',
             role: $scope.user.role,
+            userName: $scope.user.firstName +"."+$scope.user.lastName,  //
             subject: "New EF-TRIPS Password",
             body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
@@ -1988,6 +1992,7 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '4',
             role: $scope.user.role,
+            userName: $scope.user.firstName +"."+$scope.user.lastName,  //
             subject: "New EF-TRIPS Password",
             body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
@@ -2012,6 +2017,7 @@ angular.module('FoundationTrips.controllers',[])
             password: $scope.user.password,
             colorID: '0',
             role: $scope.user.role,
+            userName: $scope.user.firstName +"."+$scope.user.lastName,  //
             subject: "New EF-TRIPS Password",
             body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
             toAddress: $scope.user.email,

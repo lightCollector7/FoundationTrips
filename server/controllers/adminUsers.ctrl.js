@@ -24,7 +24,7 @@ router.route('/GreenUsers')
         console.log(u);
         console.log('hash: ');
         console.log(hash);
-        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.userName, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
         .then(function(data){
             console.log(data);
             res.status(201).send(data);
@@ -64,7 +64,7 @@ router.route('/OrangeUsers')
         console.log(u);
         console.log('hash: ');
         console.log(hash);
-        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.userName, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
         .then(function(data){
             console.log(data);
             res.status(201).send(data);
@@ -104,7 +104,7 @@ router.route('/PurpleUsers')
         console.log(u);
         console.log('hash: ');
         console.log(hash);
-        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.userName, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
         .then(function(data){
             console.log(data);
             res.status(201).send(data);
@@ -145,7 +145,7 @@ router.route('/YellowUsers')
         console.log(u);
         console.log('hash: ');
         console.log(hash);
-        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.userName, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
         .then(function(data){
             console.log(data);
             res.status(201).send(data);
@@ -184,7 +184,7 @@ router.route('/AdminUsers')
         console.log(u);
         console.log('hash: ');
         console.log(hash);
-        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
+        procedures.procInsertUser(u.firstName, u.lastName, u.email, hash, u.colorID, u.role, u.userName, u.subject, u.body, u.fromAddress, u.toAddress, u.password)
         .then(function(data){
             console.log(data);
             res.status(201).send(data);

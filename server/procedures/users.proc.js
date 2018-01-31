@@ -49,9 +49,9 @@ exports.procGetUserToEdit = function(id, newHash){
 
 
 
-exports.procInsertUser = function(firstname, lastname, email, password, colorID, role){
+exports.procInsertUser = function(firstname, lastname, email, password, colorID, role, userName){
     console.log(password);
-    return db.fnRow('procInsertUser', [firstname, lastname, email, password, colorID, role])  
+    return db.fnRow('procInsertUser', [firstname, lastname, email, password, colorID, role, userName])  
 }
 
 exports.procUpdateUser = function(id, firstName, lastName, email, colorID, role){
@@ -59,10 +59,8 @@ exports.procUpdateUser = function(id, firstName, lastName, email, colorID, role)
     console.log(firstName);
     console.log(lastName);
     console.log(email);
-    
     console.log(colorID);
     console.log(role);
-
     return db.fnEmpty('procUpdateUser', [id, firstName, lastName, email, colorID, role])
 }
 
