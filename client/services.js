@@ -92,7 +92,7 @@ angular.module('FoundationTrips.services', [])
             method: 'POST',
             url: '/api/users/login',
             data: {
-                email: e,
+                email: e,    //passing username now instead of email
                 password: p
             }
         }).then(function(success) {
