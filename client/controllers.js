@@ -1908,6 +1908,7 @@ angular.module('FoundationTrips.controllers',[])
 
 
      $scope.submitUserGreen = function() {
+        $scope.user.userName = $scope.user.firstName +"."+$scope.user.lastName;
         var data = {
             firstName: $scope.user.firstName,
             lastName: $scope.user.lastName,
@@ -1917,7 +1918,7 @@ angular.module('FoundationTrips.controllers',[])
             role: $scope.user.role,
             userName: $scope.user.firstName +"."+$scope.user.lastName,  //
             subject: "New EF-TRIPS Password",
-            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.userName + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
             fromAddress: 'pinckc7@gmail.com',
         }
@@ -1943,7 +1944,7 @@ angular.module('FoundationTrips.controllers',[])
             role: $scope.user.role,
             userName: $scope.user.firstName +"."+$scope.user.lastName,  //
             subject: "New EF-TRIPS Password",
-            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.userName + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
             fromAddress: 'pinckc7@gmail.com',
         }
@@ -1969,7 +1970,7 @@ angular.module('FoundationTrips.controllers',[])
             role: $scope.user.role,
             userName: $scope.user.firstName +"."+$scope.user.lastName,  //
             subject: "New EF-TRIPS Password",
-            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.userName + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
             fromAddress: 'pinckc7@gmail.com',
         }
@@ -1994,7 +1995,7 @@ angular.module('FoundationTrips.controllers',[])
             role: $scope.user.role,
             userName: $scope.user.firstName +"."+$scope.user.lastName,  //
             subject: "New EF-TRIPS Password",
-            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.userName + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
             fromAddress: 'pinckc7@gmail.com',
         }
@@ -2019,7 +2020,7 @@ angular.module('FoundationTrips.controllers',[])
             role: $scope.user.role,
             userName: $scope.user.firstName +"."+$scope.user.lastName,  //
             subject: "New EF-TRIPS Password",
-            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.email + " password: " + $scope.user.password,
+            body: "Your user account for the EF-Trips web portal may be accessed with the following credentials: " + "login: " + $scope.user.userName + " password: " + $scope.user.password,
             toAddress: $scope.user.email,
             fromAddress: 'pinckc7@gmail.com',
         }
